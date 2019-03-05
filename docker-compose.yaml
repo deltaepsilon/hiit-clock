@@ -1,0 +1,11 @@
+version: '3'
+services:
+  dev:
+    build: ./dev
+    env_file: ./dev/env.list
+    ports:
+      - '3000:3000'
+      - '8080:8080'
+      - '41000:41000'
+    volumes:
+      - './app:/app'

@@ -1,0 +1,19 @@
+{
+  "name": "@quiver/hiit-clock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://gitlab.com/deltaepsilon/hiit-click.git",
+  "author": "Chris Esplin <chris@christopheresplin.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "docker-compose build",
+    "deploy:interactive": "docker-compose run --rm deploy sh",
+    "deploy": "docker-compose run --rm deploy yarn deploy",
+    "ci:build": "docker build -t registry.gitlab.com/deltaepsilon/hiit-clock .",
+    "ci:push": "docker push registry.gitlab.com/deltaepsilon/hiit-clock",
+    "start": "docker-compose run --rm --service-ports dev bash -ci \"yarn start\"",
+    "dev": "docker-compose build dev && docker-compose run --service-ports --rm dev zsh",
+    "windows:watch": "powershell ./bin/watch.ps1"
+  }
+}
