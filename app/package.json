@@ -9,9 +9,8 @@
     "react-dom": "^16.8.2"
   },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start"
+    "start": "node server.js",
+    "export": "next build && next export",
+    "deploy:hosting": "yarn export && firebase deploy --only hosting"
   }
 }

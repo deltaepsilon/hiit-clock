@@ -5,8 +5,8 @@ const copyFile = promisify(fs.copyFile);
 
 module.exports = {
   exportPathMap: async function(defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-    // console.log('dir, outDir', dir, outDir, distDir);
-    // await copyFile(join(dir, 'manifest.json'), join(distDir, 'manifest.json'));
+    await copyFile(join(dir, 'root', 'sw.js'), join(distDir, 'sw.js'));
+    await copyFile(join(dir, 'root', 'robots.txt'), join(distDir, 'robots.txt'));
 
     return defaultPathMap;
   },
