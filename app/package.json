@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "export": "next build && next export",
+    "export": "rm -rf out && next build && next export",
     "serve:static": "yarn export && npx http-server out",
     "deploy:hosting": "yarn export && firebase deploy --only hosting"
   }
