@@ -13,12 +13,16 @@ export default class CustomDocument extends Document {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <link rel="icon" href="/static/images/favicon.ico"></link>
-          <link rel="manifest" href="/static/manifest.json"></link>
+          <link rel="icon" href="/static/images/favicon.ico" />
+          <link rel="manifest" href="/static/manifest.json" />
         </Head>
         <body>
           <Main />
           <NextScript />
+          <noscript>
+            <p>Please enable JavaScript to use HiiT Clock.</p>
+            <p>Email chris@chrisesplin.com with questions.</p>
+          </noscript>
         </body>
       </html>
     );

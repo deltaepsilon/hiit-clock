@@ -1,0 +1,48 @@
+:root {
+  /* Theme */
+  /* https://material.io/tools/color/#!/?view.left=0&view.right=1&primary.color=177f62&secondary.color=BDBDBD */
+
+  --mdc-theme-primary: #011627;
+  --mdc-theme-primary-light: #2a3c4f;
+  --mdc-theme-primary-dark: #000000;
+  --mdc-theme-primary-text: #ffffff;
+
+  --mdc-theme-secondary: #df2935;
+  --mdc-theme-secondary-light: #ff635f;
+  --mdc-theme-secondary-dark: #a5000f;
+  --mdc-theme-secondary-text: #ffffff;
+
+  --color-gray-light: #f6f7eb;
+  --color-gray-dark: #3d3b3c;
+  --color-green: #27fb6b;
+
+  /* Fonts */
+  --font-book: 'p22-underground', Arial, Helvetica, sans-serif !important;
+  --font-bold: 'prohibition', Arial, Helvetica, sans-serif !important;
+}
+
+body {
+  color: var(--mdc-theme-primary-text);
+  margin: 0;
+  background: var(--mdc-theme-primary);
+  font-display: swap;
+}
+
+body,
+.text-book {
+  font-family: var(--font-book);
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-bold {
+  font-family: var(--font-bold);
+  font-weight: 400;
+  font-style: normal;
+}

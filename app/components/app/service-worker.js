@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-export default props => {
+export default () => {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

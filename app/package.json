@@ -4,13 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-source-maps": "^0.0.3",
+    "firebase-tools": "^6.4.0",
     "next": "^8.0.3",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "replace-in-file": "^3.4.3"
   },
   "scripts": {
     "start": "node server.js",
     "export": "next build && next export",
+    "serve:static": "yarn export && npx http-server out",
     "deploy:hosting": "yarn export && firebase deploy --only hosting"
   }
 }
