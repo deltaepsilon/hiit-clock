@@ -5,7 +5,7 @@ import AppMeta from './app-meta';
 
 import './app.css';
 
-export default function AppBase({ children }) {
+export function AppBase({ children }) {
   return (
     <>
       <ServiceWorker />
@@ -15,3 +15,5 @@ export default function AppBase({ children }) {
     </>
   );
 }
+
+export default AppBase;

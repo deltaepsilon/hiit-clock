@@ -1,8 +1,5 @@
 const functions = require('firebase-functions');
+const context = require('./utilities/prod-context');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const HealthCheck = require('./src/health-check');
+exports.healthCheck = functions.https.onRequest(HealthCheck(context));

@@ -1,2 +1,15 @@
 # HiiT Clock
 
+## Gitlab
+
+### Make sure to base64 encode your service-acount.json file
+
+See [Export secret file to Gitlab pipeline](https://medium.com/@michalkalita/export-secret-file-to-gitlab-pipeline-75789eee35bd)
+
+Run `sh bin/encode-service-account.sh` to get the encoded string.
+
+### Set the environment variables in GitLab
+
+- FIREBASE_DATABASE_URL
+- FIREBASE_TOKEN, obtained by running `yarn ci:login` from inside the `dev` container.
+- SERVICE_ACCOUNT_BASE64

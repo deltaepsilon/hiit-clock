@@ -1,0 +1,1 @@
+cat $PWD/functions/service-account.json | base64
