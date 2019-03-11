@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-export default function AppFonts() {
+export default function Firebase() {
   return (
     <Head>
       <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js" />

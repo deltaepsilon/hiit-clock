@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-export default function AppFonts() {
+export default function Fonts() {
   return (
     <Head>
       <link rel="preconnect" href="https://use.typekit.net"></link>

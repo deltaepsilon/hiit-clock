@@ -2,4 +2,10 @@ node_modules
 .next
 out
 service-account.json
-app/functions/environments
+app/environments/*.json
+app/environments/app-env.dev.js
+app/environments/app-env.test.js
+app/environments/app-env.prod.js
+app/functions/environments/functions-env.dev.json
+app/functions/environments/functions-env.test.json
+app/functions/environments/functions-env.prod.json

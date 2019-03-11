@@ -14,6 +14,6 @@ describe('AppBase', () => {
   });
 
   it('should render children', () => {
-    expect(wrapper.find('div').length).toEqual(1);
+    expect(wrapper.find('div').length > 1).toEqual(true);
   });
 });

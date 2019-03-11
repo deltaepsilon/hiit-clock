@@ -5,7 +5,8 @@
 Front-end environments
 
 1. Copy `app/environments/app-env.js.dist` to `app/environments/app-env.dev.js`
-2. Modify the new file appropriately
+2. Copy `app/environments/app-env.js.dist` to `app/environments/app-env.prod.js`
+3. Modify the new file appropriately
 
 Firebase Functions environments
 

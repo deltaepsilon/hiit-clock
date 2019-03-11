@@ -3,8 +3,6 @@ import { Button } from '@rmwc/button';
 import '@material/button/dist/mdc.button.css';
 import effects from '../../effects';
 
-console.log('effects', effects);
-
 const buttonWrapperStyle = {
   display: 'flex',
   flexDirection: 'column',
@@ -15,10 +13,10 @@ const buttonWrapperStyle = {
 export default props => {
   return (
     <div style={buttonWrapperStyle}>
-      <Button raised className="accent">
+      <Button raised className="accent" onClick={effects.logInWithGoogle}>
         Login
       </Button>
-      <Button raised onClick={effects.logInAnonymously}>
+      <Button raised onClick={effects.signInAnonymously}>
         Guest Mode
       </Button>
     </div>
