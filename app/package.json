@@ -16,6 +16,7 @@
     "start": "node server.js",
     "export": "rm -rf out && next build && next export",
     "serve:static": "yarn export && npx http-server out",
+    "deploy": "firebase deploy",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:hosting": "yarn export && firebase deploy --only hosting",
     "test": "jest && yarn test:functions",

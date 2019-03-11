@@ -1,0 +1,73 @@
+stages:
+  - build:client
+  - build:functions
+  - test
+  - release
+  - deploy
+
+image: mhart/alpine-node:8
+
+variables:
+  NODE_ENV: development
+
+before_script:
+  - cd app
+
+build-client:
+  stage: build:client
+  cache:
+    key: shared-cache
+    paths:
+      - app/node_modules/
+      - app/functions/node_modules/
+    policy: pull-push
+  script:
+    - yarn
+    - yarn export
+  artifacts:
+    paths:
+      - app/out/
+
+build-functions:
+  stage: build:functions
+  cache:
+    key: shared-cache
+    paths:
+      - app/node_modules/
+      - app/functions/node_modules/
+    policy: pull-push
+  script:
+    - cd functions
+    - yarn
+  artifacts:
+    paths:
+      - app/functions/
+
+test:
+  stage: test
+  variables:
+    NODE_ENV: test
+  cache:
+    key: shared-cache
+    paths:
+      - app/node_modules/
+      - app/functions/node_modules/
+    policy: pull
+  script:
+    - yarn environment:update
+    - echo $SERVICE_ACCOUNT_BASE64 | base64 -d > functions/service-account.json
+    - yarn test
+
+deploy:
+  stage: deploy
+  cache:
+    key: shared-cache
+    paths:
+      - app/node_modules/
+      - app/functions/node_modules/
+    policy: pull
+  only:
+    - master
+  script:
+    - echo $NODE_ENV
+    - yarn deploy
