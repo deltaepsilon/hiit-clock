@@ -1,5 +1,18 @@
 # HiiT Clock
 
+## Installation
+
+Front-end environments
+
+1. Copy `app/environments/app-env.js.dist` to `app/environments/app-env.dev.js`
+2. Modify the new file appropriately
+
+Firebase Functions environments
+
+1. Copy `app/functions/environments/functions-env.json.dist` to `app/functions/environments/functions-env.test.json`
+2. Copy `app/functions/environments/functions-env.json.dist` to `app/functions/environments/functions-env.test.json`
+3. Modify the new files appropriately
+
 ## Gitlab
 
 ### Make sure to base64 encode your service-acount.json file

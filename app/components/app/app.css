@@ -24,7 +24,7 @@
 body {
   color: var(--mdc-theme-primary-text);
   margin: 0;
-  background: var(--mdc-theme-primary);
+  background: var(--color-gray-dark);
   font-display: swap;
 }
 
@@ -45,4 +45,17 @@ h6,
   font-family: var(--font-bold);
   font-weight: 400;
   font-style: normal;
+}
+
+#app-base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* MDC Patches */
+.mdc-button.accent {
+  background-color: var(--mdc-theme-secondary) !important;
+  color: var(--mdc-theme-secondary-text) !important;
 }

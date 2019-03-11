@@ -54,7 +54,6 @@ test:
       - app/functions/node_modules/
     policy: pull
   script:
-    - yarn environment:update
     - echo $SERVICE_ACCOUNT_BASE64 | base64 -d > functions/service-account.json
     - yarn test
 

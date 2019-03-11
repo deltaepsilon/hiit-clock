@@ -1120,6 +1120,127 @@
     "@types/istanbul-lib-coverage" "^1.1.0"
     "@types/yargs" "^12.0.9"
 
+"@material/animation@^0.41.0":
+  version "0.41.0"
+  resolved "https://registry.npmjs.org/@material/animation/-/animation-0.41.0.tgz#315b45b32e1aeebee8a4cf555b8ad52076d09ddd"
+  integrity sha512-yYAwJbX3Q2AFd4dr6IYOsWLQy2HN8zWOFVl9AbUXunjzTfJCa/ecfXCriaT6qkmoNoHeTdJHRrsQJZC5GsPvzA==
+
+"@material/base@^0.41.0":
+  version "0.41.0"
+  resolved "https://registry.npmjs.org/@material/base/-/base-0.41.0.tgz#badadce711b4c25b1eb889a5e7581e32cd07c421"
+  integrity sha512-tEyzwBRu3d1H120SfKsDVYZHcqT5lKohh/7cWKR93aAaPDkSvjpKJIjyu2yuSkjpDduVZGzVocYbOvhUKhhzXQ==
+
+"@material/button@^0.44.0":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/button/-/button-0.44.1.tgz#2a0bc0e6961128ace81e050770695c4aaad7f3bd"
+  integrity sha512-+eI0nI2zkxZOanPfeWzZPoQDbv2NqgUhUhPxERKoXEqkyJIne7gWRYMHqHjKPctsD2xmzgqGmGCLcrvhgFZ+FQ==
+  dependencies:
+    "@material/elevation" "^0.44.1"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^0.44.1"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^0.44.1"
+    "@material/theme" "^0.43.0"
+    "@material/typography" "^0.44.1"
+
+"@material/elevation@^0.44.1":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/elevation/-/elevation-0.44.1.tgz#19efa293e195b00141711899e3c3fde6a3670454"
+  integrity sha512-Gr2x/FHysM4ty7sctLPT48pw7YItLZvhXsB4ZzXpdhuy7QshxllBW9NGlAMffzrmNu16MTl3ouGzbhArUYz4jw==
+  dependencies:
+    "@material/animation" "^0.41.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^0.43.0"
+
+"@material/feature-targeting@^0.44.1":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/feature-targeting/-/feature-targeting-0.44.1.tgz#afafc80294e5efab94bee31a187273d43d34979a"
+  integrity sha512-90cc7njn4aHbH9UxY8qgZth1W5JgOgcEdWdubH1t7sFkwqFxS5g3zgxSBt46TygFBVIXNZNq35Xmg80wgqO7Pg==
+
+"@material/ripple@^0.44.0", "@material/ripple@^0.44.1":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/ripple/-/ripple-0.44.1.tgz#79cb2ddf1f998498d877d3e3c46b50fed6f13b01"
+  integrity sha512-prJ1p3bR+GvwAtJgtdeIixsnRVApN3bizGnX7upKoqxsqbBDHj84JxaO8EsG9bjruG/LJu8Fb6WKKdIp2oXHTA==
+  dependencies:
+    "@material/animation" "^0.41.0"
+    "@material/base" "^0.41.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^0.43.0"
+
+"@material/rtl@^0.42.0":
+  version "0.42.0"
+  resolved "https://registry.npmjs.org/@material/rtl/-/rtl-0.42.0.tgz#1836e78186c2d8b996f6fbf97adab203535335bc"
+  integrity sha512-VrnrKJzhmspsN8WXHuxxBZ69yM5IwhCUqWr1t1eNfw3ZEvEj7i1g3P31HGowKThIN1dc1Wh4LE14rCISWCtv5w==
+
+"@material/shape@^0.44.1":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/shape/-/shape-0.44.1.tgz#ff4d5d42b07c5781306677bffee43234b756ea8e"
+  integrity sha512-8mCDQmyTEhDK+HX8Tap2Lc82QlVySlXU8zDCNkWoIn1ge+UnRezSDjE4y4P1ABegN5PrkJZPartuQ1U0ttIYXw==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
+"@material/theme@^0.43.0":
+  version "0.43.0"
+  resolved "https://registry.npmjs.org/@material/theme/-/theme-0.43.0.tgz#6d9fa113c82e841817882172c152d60d2d203ca6"
+  integrity sha512-/zndZL6EihI18v2mYd4O8xvOBAAXmLeHyHVK28LozSAaJ9okQgD25wq5Ktk95oMTmPIC+rH66KcK6371ivNk8g==
+
+"@material/typography@^0.44.1":
+  version "0.44.1"
+  resolved "https://registry.npmjs.org/@material/typography/-/typography-0.44.1.tgz#a94f01172f9122180bc2ce0aa55658183a35590d"
+  integrity sha512-wMXHusg+Lp5Fdgoj3m0c+Lt6GCeGSh3EPRtQ1TQ2bwdBa0et2FqBaQRgXoq3tVmr0O/7unTfa0DoXlh4nVp1wA==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
+"@rmwc/base@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.1.8.tgz#b17e3189c278213ba2d69cd5fa4762963a845459"
+  integrity sha512-jNA1xZyXWB0SjI13FBG9is5+pfKXV7SVCMT6X8q+/N7G5c07XaiKfIr5Pgsz7a0IQgw1JGOfxXBAzXM9Jk4Euw==
+  dependencies:
+    "@rmwc/types" "^5.1.8"
+    classnames "^2.2.5"
+    focus-trap "^4.0.2"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
+"@rmwc/button@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/button/-/button-5.1.8.tgz#a42cb930e314e1c91556597986f66bf33acb4ee7"
+  integrity sha512-v3WIg46Jdf9YlK7QTXubuZt6DafvpYZ7B/0eyaWcRD6Ml3o1eojGPJ2e9fUVvfKJlTfeHhA6Xt7kRo4iF6NUeQ==
+  dependencies:
+    "@material/button" "^0.44.0"
+    "@rmwc/base" "^5.1.8"
+    "@rmwc/icon" "^5.1.8"
+    "@rmwc/provider" "^5.1.8"
+    "@rmwc/ripple" "^5.1.8"
+
+"@rmwc/icon@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.1.8.tgz#6de481b9de2dc5b75d6fed6361a20c0a04b3c852"
+  integrity sha512-xmdFupybvp3e/netevWj5a7BD7uFWZu07JxJLUbnwYuHIz9H2B2f0w4ITp2Peju/l6gll4pmtiBIVKXY7KBK8g==
+  dependencies:
+    "@rmwc/base" "^5.1.8"
+    "@rmwc/provider" "^5.1.8"
+
+"@rmwc/provider@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.1.8.tgz#076e21085175e7ff0300fd3e455fed025782e7df"
+  integrity sha512-CB58p9yGzRtaXdu3Ak4pNJLi1zm6JPXdwcZ0i0RFnAX1AIMsbumBPXeBI8Q/HVrQjq6tOXuN/juShFPJRB0OKA==
+  dependencies:
+    "@rmwc/base" "^5.1.8"
+
+"@rmwc/ripple@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.1.8.tgz#3ad5271073e4b246399482d497210b27feb156f3"
+  integrity sha512-mswNOsq8fl6TT27oc5RB1lr6G9JVc5TSLMbWLOp1FIRvIvUUHAzgxOxro2ti/fJwBpz9cAffrurwBwt+lQAROQ==
+  dependencies:
+    "@material/ripple" "^0.44.0"
+    "@rmwc/base" "^5.1.8"
+
+"@rmwc/types@^5.1.8":
+  version "5.1.8"
+  resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.1.8.tgz#f559c793054a9ee6168850a24d075b5fb18715a9"
+  integrity sha512-QEB6PrvHYrgQlHnCQSyA5IPcW7n8dJ+ZgyiSKctNqEAi4DeLSKqHa7qwQi4Sen+NMZnaw5DWP6nc0rX/m1Rjhg==
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.npmjs.org/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -2404,6 +2525,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.5:
+  version "2.2.6"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 cli-boxes@^1.0.0:
   version "1.0.0"
@@ -3879,6 +4005,14 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
+focus-trap@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/focus-trap/-/focus-trap-4.0.2.tgz#4ee2b96547c9ea0e4252a2d4b2cca68944194663"
+  integrity sha512-HtLjfAK7Hp2qbBtLS6wEznID1mPT+48ZnP2nkHzgjpL4kroYHg0CdqJ5cTXk+UO5znAxF5fRUkhdyfgrhh8Lzw==
+  dependencies:
+    tabbable "^3.1.2"
+    xtend "^4.0.1"
+
 follow-redirects@^1.3.0:
   version "1.7.0"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.7.0.tgz#489ebc198dc0e7f64167bd23b03c4c19b5784c76"
@@ -4541,6 +4675,11 @@ https-proxy-agent@^2.2.1:
   dependencies:
     agent-base "^4.1.0"
     debug "^3.1.0"
+
+hyperform@^0.9.9:
+  version "0.9.22"
+  resolved "https://registry.npmjs.org/hyperform/-/hyperform-0.9.22.tgz#6a69e61fae9345140ad7c5c6ff406d1ce96fa631"
+  integrity sha512-zJ6Bif/qAnN633pfOcvkEbwvCXnKPjqNgR6VdcRsxXcr+zGV9AdH5m5C/g4Xui16mdotlqweCb8CtkD42x6omQ==
 
 i@0.3.x:
   version "0.3.6"
@@ -6307,6 +6446,11 @@ ms@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+
+mutation-observer@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/mutation-observer/-/mutation-observer-1.0.3.tgz#42e9222b101bca82e5ba9d5a7acf4a14c0f263d0"
+  integrity sha512-M/O/4rF2h776hV7qGMZUH3utZLO/jK7p8rnNgGkjKUw8zCGjRQPxB8z6+5l8+VjRUQ3dNYu4vjqXYLr+U8ZVNA==
 
 mute-stream@0.0.5:
   version "0.0.5"
@@ -8702,6 +8846,11 @@ symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
   integrity sha1-rifbOPZgp64uHDt9G8KQgZuFGeY=
+
+tabbable@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/tabbable/-/tabbable-3.1.2.tgz#f2d16cccd01f400e38635c7181adfe0ad965a4a2"
+  integrity sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ==
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"

@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const environment = require('../environments/environment-test.json');
+const environment = require('../environments/functions-env.test.json');
 const serviceAccount = require('../service-account.json');
 
 admin.initializeApp({

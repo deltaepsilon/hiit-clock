@@ -6,6 +6,7 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const environment = require('./environments/app-env.dev');
 
 app.prepare().then(() => {
   createServer((req, res) => {
@@ -20,7 +21,17 @@ app.prepare().then(() => {
     } else if (pathname == '/sitemap.txt') {
       createReadStream('./root/sitemap.txt').pipe(res);
     } else if (pathname == '/__/firebase/init.js') {
-      createReadStream('./root/init.js').pipe(res);
+      const initJs = `
+        if (typeof firebase === 'undefined')
+          throw new Error(
+            'hosting/init-error: Firebase SDK not detected. You must include it before /__/firebase/init.js'
+          );
+        firebase.initializeApp(${JSON.stringify(environment.firebase)});
+      `;
+
+      res.writeHeader(200, { 'Content-Type': 'text/html' });
+      res.write(initJs);
+      res.end();
     } else {
       handle(req, res, parsedUrl);
     }
