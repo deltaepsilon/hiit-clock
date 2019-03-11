@@ -4,9 +4,10 @@ module.exports = {
       '<rootDir>/__mocks__/file-mock.js',
     '\\.(css|less)$': '<rootDir>/__mocks__/style-mock.js',
   },
+  roots: ['components'],
+  setupFiles: ['./config/jest-setup.js'],
   transformIgnorePatterns: ['node_modules', 'functions'],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
   },
-  roots: ['components'],
 };
