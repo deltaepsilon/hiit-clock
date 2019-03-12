@@ -4,15 +4,13 @@
 
 Front-end environments
 
-1. Copy `app/environments/app-env.js.dist` to `app/environments/app-env.dev.js`
-2. Copy `app/environments/app-env.js.dist` to `app/environments/app-env.prod.js`
-3. Modify the new file appropriately
+1. Edit `app/environments/app-env.dev.js`
+2. Edit `app/environments/app-env.prod.js`
 
 Firebase Functions environments
 
-1. Copy `app/functions/environments/functions-env.json.dist` to `app/functions/environments/functions-env.test.json`
-2. Copy `app/functions/environments/functions-env.json.dist` to `app/functions/environments/functions-env.test.json`
-3. Modify the new files appropriately
+1. Edit `app/functions/environments/functions-env.test.json`
+2. Edit `app/functions/environments/functions-env.test.json`
 
 ## Gitlab
 
