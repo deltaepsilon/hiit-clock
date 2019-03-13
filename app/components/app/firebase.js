@@ -1,4 +1,5 @@
-import React from 'react';
+/* globals window */
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 export default function Firebase() {
@@ -10,7 +11,7 @@ export default function Firebase() {
       <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-firestore.js" />
       {/* <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-messaging.js" /> */}
       {/* <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-functions.js" /> */}
-
+      />
       <script src="__/firebase/init.js" />
     </Head>
   );

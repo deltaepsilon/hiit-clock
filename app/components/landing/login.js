@@ -13,7 +13,7 @@ const buttonWrapperStyle = {
 export default props => {
   return (
     <div style={buttonWrapperStyle}>
-      <Button raised className="accent" onClick={effects.logInWithGoogle}>
+      <Button raised className="accent" onClick={effects.signInWithGoogle}>
         Login
       </Button>
       <Button raised onClick={effects.signInAnonymously}>

@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServiceWorker from './service-worker';
-import Environment from "./environment";
+import Environment from './environment';
 import Firebase from './firebase';
 import Fonts from './fonts';
 import Meta from './meta';
+import Router from './router';
+import AuthenticationProvider from '../contexts/authentication-context';
 
 import './app.css';
 
-export function AppBase({ children }) {
+export function AppBase({ children, secure }) {
+  const [loaded, setLoaded] = useState(getPersistentIsLoaded());
+
+  useEffect(() => {
+    !loaded && window.addEventListener('load', () => setLoaded(true), setPersistentIsLoaded(true));
+  }, [loaded]);
+
   return (
     <>
       <ServiceWorker />
@@ -15,9 +23,20 @@ export function AppBase({ children }) {
       <Firebase />
       <Fonts />
       <Meta />
-      <div id="app-base">{children}</div>
+      <AuthenticationProvider loaded={loaded}>
+        <div id="app-base">{children}</div>
+        <Router secure={secure} />
+      </AuthenticationProvider>
     </>
   );
 }
 
 export default AppBase;
+
+function getPersistentIsLoaded() {
+  return (typeof window != 'undefined' && window.inMemoryIsLoaded) || false;
+}
+
+function setPersistentIsLoaded() {
+  window.inMemoryIsLoaded = true;
+}

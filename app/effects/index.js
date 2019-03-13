@@ -8,7 +8,10 @@ export default {
 };
 
 function wrapEffect(effect) {
-  const isDev = window.environment.environment == 'development';
+  const isDev =
+    typeof window != 'undefined' &&
+    window.environment &&
+    window.environment.environment == 'development';
   const name = effect.name;
 
   return async (...args) => {
