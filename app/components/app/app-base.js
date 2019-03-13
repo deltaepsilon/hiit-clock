@@ -6,6 +6,7 @@ import Fonts from './fonts';
 import Meta from './meta';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
+import TopBar from '../top-bar/top-bar';
 
 import './app.css';
 
@@ -24,7 +25,10 @@ export function AppBase({ children, secure }) {
       <Fonts />
       <Meta />
       <AuthenticationProvider loaded={loaded}>
-        <div id="app-base">{children}</div>
+        <div id="app-base">
+          {secure && <TopBar />}
+          <div id="page-content">{children}</div>
+        </div>
         <Router secure={secure} />
       </AuthenticationProvider>
     </>
