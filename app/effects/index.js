@@ -1,10 +1,12 @@
 /* globals window */
 import signInAnonymously from './sign-in-anonymously';
 import signInWithGoogle from './sign-in-with-google';
+import signOut from './sign-out';
 
 export default {
   signInAnonymously: wrapEffect(signInAnonymously),
   signInWithGoogle: wrapEffect(signInWithGoogle),
+  signOut: wrapEffect(signOut),
 };
 
 function wrapEffect(effect) {

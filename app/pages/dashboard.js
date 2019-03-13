@@ -1,10 +1,11 @@
 import React from 'react';
 import AppBase from '../components/app/app-base';
+import Dashboard from '../components/page-components/dashboard';
 
 export default props => {
   return (
     <AppBase secure>
-      <h1>Dashboard</h1>
+      <Dashboard />
     </AppBase>
   );
 };

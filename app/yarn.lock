@@ -1125,10 +1125,24 @@
   resolved "https://registry.npmjs.org/@material/animation/-/animation-0.41.0.tgz#315b45b32e1aeebee8a4cf555b8ad52076d09ddd"
   integrity sha512-yYAwJbX3Q2AFd4dr6IYOsWLQy2HN8zWOFVl9AbUXunjzTfJCa/ecfXCriaT6qkmoNoHeTdJHRrsQJZC5GsPvzA==
 
+"@material/animation@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/animation/-/animation-1.0.0.tgz#dfd8575c8b031203917dc838ac0e3c0fe0f6709b"
+  integrity sha512-Ed5/vggn6ZhSJ87yn3ZS1d826VJNFz73jHF2bSsgRtHDoB8KCuOwQMfdgAgDa4lKDF6CDIPCKBZPKrs2ubehdw==
+  dependencies:
+    tslib "^1.9.3"
+
 "@material/base@^0.41.0":
   version "0.41.0"
   resolved "https://registry.npmjs.org/@material/base/-/base-0.41.0.tgz#badadce711b4c25b1eb889a5e7581e32cd07c421"
   integrity sha512-tEyzwBRu3d1H120SfKsDVYZHcqT5lKohh/7cWKR93aAaPDkSvjpKJIjyu2yuSkjpDduVZGzVocYbOvhUKhhzXQ==
+
+"@material/base@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/base/-/base-1.0.0.tgz#e4ef0b22c54aa887af94f5988fb1c0cb3245beba"
+  integrity sha512-5dxFp46x5FA+Epg6YHLzN+5zRt9S2wR84UdvVAEJ1egea94m9UHUg7y9tAnNSN16aexRSywmzyLwPr+i8PGEYA==
+  dependencies:
+    tslib "^1.9.3"
 
 "@material/button@^0.44.0":
   version "0.44.1"
@@ -1143,6 +1157,13 @@
     "@material/theme" "^0.43.0"
     "@material/typography" "^0.44.1"
 
+"@material/dom@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/dom/-/dom-1.0.1.tgz#a0bff19e5c3d14a147dca91f55eb8410eee31739"
+  integrity sha512-7gb9Tk8YBn2fLEa5fJfvDexG0QxvRGDb8c6uZEhvK4bTd2ZHCfHg9KrO+smC6Trbn5jC+FsBvdRZBbMjtS/E4g==
+  dependencies:
+    tslib "^1.9.3"
+
 "@material/elevation@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/elevation/-/elevation-0.44.1.tgz#19efa293e195b00141711899e3c3fde6a3670454"
@@ -1152,10 +1173,71 @@
     "@material/feature-targeting" "^0.44.1"
     "@material/theme" "^0.43.0"
 
+"@material/elevation@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/elevation/-/elevation-1.0.0.tgz#c993d1d59b11357198d1b38947b141e4b4ab9a2d"
+  integrity sha512-TqmvEXmZDYLm2X5lEnjKCsZMDkCXpxFFxL22AfCAQB5L4d0gAS7vqDEE797y4Rp+BBKEcOP71mum1l56RI3NBQ==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.0.0"
+
 "@material/feature-targeting@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/feature-targeting/-/feature-targeting-0.44.1.tgz#afafc80294e5efab94bee31a187273d43d34979a"
   integrity sha512-90cc7njn4aHbH9UxY8qgZth1W5JgOgcEdWdubH1t7sFkwqFxS5g3zgxSBt46TygFBVIXNZNq35Xmg80wgqO7Pg==
+
+"@material/icon-button@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/icon-button/-/icon-button-1.0.1.tgz#47293ba077a4da886b2fe5778d8c07e12718cfb3"
+  integrity sha512-a2jnwYMTDwPVsOIc4+osZIbXwQM7ujy1grQtjvvS0CVogsOdLXYzqUYrI8V9aHxdAdndos3ssm3JAziQhbsuEQ==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/ripple" "^1.0.1"
+    "@material/theme" "^1.0.0"
+    tslib "^1.9.3"
+
+"@material/list@^1.0.0", "@material/list@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/list/-/list-1.0.1.tgz#772d29f8061f4e81c950c42a925a7175ca8e394e"
+  integrity sha512-u9Bx+mghPy2qCHcSH2b0+0jbjTtkXNdiWjb8JDQcYmOUTfFoeQ16GqvjTybRPwoKA0UC9Hc/4U8gYvnK+bReRw==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.0.1"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^1.0.1"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^1.0.0"
+    "@material/theme" "^1.0.0"
+    "@material/typography" "^1.0.0"
+    tslib "^1.9.3"
+
+"@material/menu-surface@^1.0.0", "@material/menu-surface@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/menu-surface/-/menu-surface-1.0.1.tgz#b6675771464ecf9ffa397bc2375c4fe29ff07396"
+  integrity sha512-JFUa3kQ+NtpuK/mgWIcyhC1AClKmt9EQdW4SG2KQhPAGg0juWiZwyMySDIjf+V0buSUZXZ7N26bi32+Y1LvZ3w==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/elevation" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^1.0.0"
+    "@material/theme" "^1.0.0"
+    tslib "^1.9.3"
+
+"@material/menu@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/menu/-/menu-1.0.1.tgz#379a593a82281feed9b80c40c4c5b856370a0c35"
+  integrity sha512-fmBBHADc4hlp/yJSRHY+rjO0mzMYajSrTdXVycAv/pyml7VsjMa2MUf6NTSUpzpJf/snGcbfXo5RDJOGP1VbXg==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/list" "^1.0.1"
+    "@material/menu-surface" "^1.0.1"
+    "@material/ripple" "^1.0.1"
+    "@material/rtl" "^0.42.0"
+    tslib "^1.9.3"
 
 "@material/ripple@^0.44.0", "@material/ripple@^0.44.1":
   version "0.44.1"
@@ -1166,6 +1248,18 @@
     "@material/base" "^0.41.0"
     "@material/feature-targeting" "^0.44.1"
     "@material/theme" "^0.43.0"
+
+"@material/ripple@^1.0.0", "@material/ripple@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/ripple/-/ripple-1.0.1.tgz#2287f893ea4462a7f3a96d207397c6d2258e541e"
+  integrity sha512-aBigRoVMjIU2lLDq7TMocI2H2YFbO1hICs5FTdSRp4Yis/QFTrgaW32q8yuHdZI56j+b2BWIWapqA2xpSmCMXQ==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.0.1"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.0.0"
+    tslib "^1.9.3"
 
 "@material/rtl@^0.42.0":
   version "0.42.0"
@@ -1179,15 +1273,36 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
+"@material/shape@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/shape/-/shape-1.0.0.tgz#bef17de1f282e5c71138338a34078d8402308f65"
+  integrity sha512-zfXEacPQZmH+ujVtaFyfAsYiF46j1QCcFzJeZVouG4pznrbA7XD6614Ywg0wbyWX5iB6hD52ld/IN+R/6oxKqA==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
 "@material/theme@^0.43.0":
   version "0.43.0"
   resolved "https://registry.npmjs.org/@material/theme/-/theme-0.43.0.tgz#6d9fa113c82e841817882172c152d60d2d203ca6"
   integrity sha512-/zndZL6EihI18v2mYd4O8xvOBAAXmLeHyHVK28LozSAaJ9okQgD25wq5Ktk95oMTmPIC+rH66KcK6371ivNk8g==
 
+"@material/theme@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/theme/-/theme-1.0.0.tgz#6fd9ee1bb7fd2a5bdc6b7465cb15fe345e435670"
+  integrity sha512-Bg/BQLU5MmCwtQ3DHcSs9DodZB8PTvuItv1wXrP54S/wBVwryIB5uMDmERhnItbNnAFbkKhlAuhn1asMmMzfkQ==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
 "@material/typography@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/typography/-/typography-0.44.1.tgz#a94f01172f9122180bc2ce0aa55658183a35590d"
   integrity sha512-wMXHusg+Lp5Fdgoj3m0c+Lt6GCeGSh3EPRtQ1TQ2bwdBa0et2FqBaQRgXoq3tVmr0O/7unTfa0DoXlh4nVp1wA==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
+"@material/typography@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material/typography/-/typography-1.0.0.tgz#327ecfcac5ee3af8a3a102f3f125a761202f4189"
+  integrity sha512-Oeqbjci1cC7jTE8/n3dwnkqKe9ZeWiaE+rgMtRYtRFw1HvAw14SpGA5EEAS/Li2Hu2KZ50FYCe3HYqShfxtChA==
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
@@ -1198,6 +1313,17 @@
   dependencies:
     "@rmwc/types" "^5.1.8"
     classnames "^2.2.5"
+    focus-trap "^4.0.2"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
+"@rmwc/base@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.2.0.tgz#f9fe6e46a635cdfa8e637a87b8aecaebd2f39e00"
+  integrity sha512-p5Y3ET7kBCxxOhHD59TxRZbUfsSAGxD0wwa6FNjUYhPPoFnQz1IWbjwrcE+5RG357tW9DINkV0PFQIcyh/EiZg==
+  dependencies:
+    "@rmwc/types" "^5.2.0"
+    classnames "^2.2.6"
     focus-trap "^4.0.2"
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
@@ -1213,6 +1339,17 @@
     "@rmwc/provider" "^5.1.8"
     "@rmwc/ripple" "^5.1.8"
 
+"@rmwc/icon-button@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/icon-button/-/icon-button-5.2.0.tgz#823f65136c85a83e050f29538d091ca2a088ace5"
+  integrity sha512-rzPiEoduSdANxoiNqAlj7VBr07B6A3hscBBPYBVyPjuuwhC1QMDMX636YtCNhI/kTmBQ5y4ksJ/2TTQz5zee2w==
+  dependencies:
+    "@material/icon-button" "^1.0.0"
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/icon" "^5.2.0"
+    "@rmwc/ripple" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
+
 "@rmwc/icon@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.1.8.tgz#6de481b9de2dc5b75d6fed6361a20c0a04b3c852"
@@ -1221,12 +1358,52 @@
     "@rmwc/base" "^5.1.8"
     "@rmwc/provider" "^5.1.8"
 
+"@rmwc/icon@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.2.0.tgz#cb2342717bd92096b88d4cc5236acef0e5c0a1ad"
+  integrity sha512-5zIxIHqs+9jAcPPzmnZOh02pUsGyskf03ngpbbUhgnZy01DtmLUf1NTeMyQehShHwcxxuHeQGfLtT8uKvUELoA==
+  dependencies:
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/provider" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
+
+"@rmwc/list@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/list/-/list-5.2.0.tgz#e09762d061fbb307ea0dfd2780a7605a0ab02339"
+  integrity sha512-vNAezJluBH5xDXo6seInbL+tF2hbuhc+x7eGQ4ycs2B3QDq1G0K5qV7j5qvGIQuUTwhzlW8burL4q57oZKV5Xg==
+  dependencies:
+    "@material/list" "^1.0.0"
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/icon" "^5.2.0"
+    "@rmwc/provider" "^5.2.0"
+    "@rmwc/ripple" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
+
+"@rmwc/menu@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/menu/-/menu-5.2.0.tgz#4bb812dd454739f58bf151984e1ebbf63ef902c2"
+  integrity sha512-SElbMZezi/sgPu5oowTzfbGo1uF3fPleO+3o0Gsf3TTBz+ckb8vSaB3LGkaZyhHj5vvurjScmDTVzHwYPwcq9g==
+  dependencies:
+    "@material/menu" "^1.0.0"
+    "@material/menu-surface" "^1.0.0"
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/list" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
+
 "@rmwc/provider@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.1.8.tgz#076e21085175e7ff0300fd3e455fed025782e7df"
   integrity sha512-CB58p9yGzRtaXdu3Ak4pNJLi1zm6JPXdwcZ0i0RFnAX1AIMsbumBPXeBI8Q/HVrQjq6tOXuN/juShFPJRB0OKA==
   dependencies:
     "@rmwc/base" "^5.1.8"
+
+"@rmwc/provider@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.2.0.tgz#e96e6cd64678127f94ad55a7ac84ca0faf376c78"
+  integrity sha512-+X2S0UaUHu6TEcRHrr3/cblPEC3Knn+rVli+L80ttV9pGo1T/4AqS8x36VNHEnOPiWoYObOBFxb0rVUba8fOjQ==
+  dependencies:
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
 
 "@rmwc/ripple@^5.1.8":
   version "5.1.8"
@@ -1236,10 +1413,25 @@
     "@material/ripple" "^0.44.0"
     "@rmwc/base" "^5.1.8"
 
+"@rmwc/ripple@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.2.0.tgz#bd54f6719fdb392d8ed8cb43f815bf9976a1f0cf"
+  integrity sha512-3aksQMGdBPt9I6r0yNQDTJQkIgf/XAoNK3YM9pe7EELpTwscyPvs7/z0xYh7jT5+QZ6lFhpfS3B2HdpVLjRjaA==
+  dependencies:
+    "@material/ripple" "^1.0.0"
+    "@rmwc/base" "^5.2.0"
+    "@rmwc/provider" "^5.2.0"
+    "@rmwc/types" "^5.2.0"
+
 "@rmwc/types@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.1.8.tgz#f559c793054a9ee6168850a24d075b5fb18715a9"
   integrity sha512-QEB6PrvHYrgQlHnCQSyA5IPcW7n8dJ+ZgyiSKctNqEAi4DeLSKqHa7qwQi4Sen+NMZnaw5DWP6nc0rX/m1Rjhg==
+
+"@rmwc/types@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.2.0.tgz#cc487ca514ecf3e6c18c7d19bc18d9f41ece351d"
+  integrity sha512-oKecdqz3J8zRFMae4fPkNeYbTsQEW/gii5ixtq7a2v6/VxvALD1I28NlbdBwHRYODGXAQj+Nefx7E/Pz+R82ZA==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -2526,7 +2718,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -9066,7 +9258,7 @@ try-require@^1.0.0:
   resolved "https://registry.npmjs.org/try-require/-/try-require-1.2.1.tgz#34489a2cac0c09c1cc10ed91ba011594d4333be2"
   integrity sha1-NEiaLKwMCcHMEO2RugEVlNQzO+I=
 
-tslib@^1.9.0:
+tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==

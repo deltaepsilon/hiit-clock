@@ -1,11 +1,11 @@
 import React from 'react';
 import AppBase from '../components/app/app-base';
-import Login from '../components/page-components/login';
+import Profile from '../components/page-components/profile';
 
 export default props => {
   return (
-    <AppBase>
-      <Login />
+    <AppBase secure>
+      <Profile />
     </AppBase>
   );
 };
