@@ -11,4 +11,7 @@ export default {
     '/dashboard': 'HiiT Clock',
     '/profile': 'profile',
   },
+  LOCALSTORAGE: {
+    PROFILE: 'profile',
+  },
 };
