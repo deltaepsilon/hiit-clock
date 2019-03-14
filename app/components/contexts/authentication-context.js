@@ -7,7 +7,7 @@ export default ({ children, loaded }) => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    loaded && window.firebase.auth().onAuthStateChanged(setCurrentUser);
+    return loaded ? window.firebase.auth().onAuthStateChanged(setCurrentUser) : () => {};
   }, [loaded]);
 
   return (

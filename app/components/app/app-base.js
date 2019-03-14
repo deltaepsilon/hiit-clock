@@ -14,7 +14,18 @@ export function AppBase({ children, secure }) {
   const [loaded, setLoaded] = useState(getPersistentIsLoaded());
 
   useEffect(() => {
-    !loaded && window.addEventListener('load', () => setLoaded(true), setPersistentIsLoaded(true));
+    function onLoad() {
+      setLoaded(true);
+      setPersistentIsLoaded(true);
+    }
+
+    function subscribe() {
+      window.addEventListener('load', onLoad);
+
+      return () => window.removeEventListener('load', onLoad);
+    }
+
+    return loaded ? () => {} : subscribe();
   }, [loaded]);
 
   return (

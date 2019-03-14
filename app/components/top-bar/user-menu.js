@@ -20,32 +20,37 @@ export default props => {
   const { currentUser } = useContext(AuthenticationContext);
   const photoURL = !currentUser ? '' : currentUser.photoURL || constants.PATHS.ACCOUNT_CIRCLE;
 
+  const menuItems = [
+    {
+      html: <MenuItem key="dashboard">Dashboard</MenuItem>,
+      action: () => Router.push(constants.ROUTES.DASHBOARD),
+      hidden: location.pathname == constants.ROUTES.DASHBOARD,
+    },
+    {
+      html: <MenuItem key="profile">Profile</MenuItem>,
+      action: () => Router.push(constants.ROUTES.PROFILE),
+      hidden: location.pathname == constants.ROUTES.PROFILE,
+    },
+    {
+      html: <ListDivider key="bottom-divider" />,
+    },
+    { html: <MenuItem key="log-out">Log Out</MenuItem>, action: () => effects.signOut() },
+  ].filter(({ hidden }) => !hidden);
+
   return (
     <div id="user-menu">
       <MenuSurfaceAnchor>
         <Menu
           open={isOpen}
           onSelect={e => {
-            console.log('e.detail.index', e.detail.index);
-            switch (e.detail.index) {
-              case 0:
-                Router.push(constants.ROUTES.PROFILE);
-                break;
+            const menuItemsWithActions = menuItems.filter(({ action }) => !!action);
+            const i = e.detail.index;
 
-              case 1:
-                effects.signOut();
-                break;
-
-              default:
-                setIsOpen(false);
-                break;
-            }
+            menuItemsWithActions[i].action();
           }}
           onClose={() => setIsOpen(false)}
         >
-          <MenuItem>Profile</MenuItem>
-          <ListDivider />
-          <MenuItem>Log Out</MenuItem>
+          {menuItems.map(({ html }) => html)}
         </Menu>
         <IconButton
           icon={photoURL}
@@ -57,3 +62,5 @@ export default props => {
     </div>
   );
 };
+
+function get(params) {}
