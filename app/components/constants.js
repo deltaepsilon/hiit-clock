@@ -7,4 +7,8 @@ export default {
   PATHS: {
     ACCOUNT_CIRCLE: '/static/images/material-design-icons/account-circle-512px.png',
   },
+  TITLES: {
+    '/dashboard': 'HiiT Clock',
+    '/profile': 'profile',
+  },
 };

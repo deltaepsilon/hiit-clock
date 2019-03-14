@@ -3,3 +3,8 @@
   width: calc(100vw - 2rem);
   padding: 1rem;
 }
+
+#top-bar h1 {
+  text-align: center;
+  margin: 1px 0 0;
+}
