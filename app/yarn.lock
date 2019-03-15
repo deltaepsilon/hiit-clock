@@ -1199,6 +1199,18 @@
     "@material/typography" "^1.0.0"
     tslib "^1.9.3"
 
+"@material/form-field@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/form-field/-/form-field-1.0.1.tgz#67832a4132dec8f1d715cf90703324943f918081"
+  integrity sha512-waYkRZvREMPawjO6f7FYeoxbX+ewtA6j1jwL/YEza9gR2kKjCCNDHMcTDT2FlnrWvtePTfgmYD6RmptCfFw4og==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/ripple" "^1.0.1"
+    "@material/rtl" "^0.42.0"
+    "@material/theme" "^1.0.0"
+    "@material/typography" "^1.0.0"
+    tslib "^1.9.3"
+
 "@material/icon-button@^1.0.0":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@material/icon-button/-/icon-button-1.0.1.tgz#47293ba077a4da886b2fe5778d8c07e12718cfb3"
@@ -1315,6 +1327,21 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
+"@material/switch@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@material/switch/-/switch-1.0.1.tgz#c3f1e01bea3832ef54de6b2813d60dd31ce71863"
+  integrity sha512-McSLQA+VQdNV+wT6pRLpvlXv7V2BLsUkyIuCog8+Cs0Gsi4Lgs17I6iqdzQi4tySAX+G7nl6vqdUem/udUJZmw==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.0.1"
+    "@material/elevation" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^1.0.1"
+    "@material/rtl" "^0.42.0"
+    "@material/theme" "^1.0.0"
+    tslib "^1.9.3"
+
 "@material/textfield@^1.0.0":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@material/textfield/-/textfield-1.0.1.tgz#9b602dbb6cff56f483215c56c9be80a9eaa2664d"
@@ -1381,6 +1408,17 @@
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
 
+"@rmwc/base@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.2.1.tgz#deb729f0a8c78f77f9cae77265a237d80e3965cd"
+  integrity sha512-HBxMLpS4K/LQxJ2mhUcKEcHpZ4tqjw1moam/nm/0k9JFDAqeAa3Dt+3/ZgebrGQlNCEyWfm6tWh4XWPerQW52w==
+  dependencies:
+    "@rmwc/types" "^5.2.1"
+    classnames "^2.2.6"
+    focus-trap "^4.0.2"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
 "@rmwc/button@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/button/-/button-5.1.8.tgz#a42cb930e314e1c91556597986f66bf33acb4ee7"
@@ -1400,6 +1438,15 @@
     "@material/floating-label" "^1.0.0"
     "@rmwc/base" "^5.2.0"
     "@rmwc/types" "^5.2.0"
+
+"@rmwc/formfield@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/formfield/-/formfield-5.2.1.tgz#6ccf9e7a60ddf0ab6394e8f1c9b4c5b831a1d0ea"
+  integrity sha512-hVJMpSMr95DbXp2u5PFnSFA+gXA3vmyqIjaFVU31kUffsGlJPeTBUp9Lp8aJjfRSEWSQTLiJfSuZ7d5i1bP1Gg==
+  dependencies:
+    "@material/form-field" "^1.0.0"
+    "@rmwc/base" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
 
 "@rmwc/icon-button@^5.2.0":
   version "5.2.0"
@@ -1485,6 +1532,14 @@
     "@rmwc/base" "^5.2.0"
     "@rmwc/types" "^5.2.0"
 
+"@rmwc/provider@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.2.1.tgz#cd8442238769829376fda49578b266331e03dbc4"
+  integrity sha512-GUyinJ5Wj8UWd8wYWYmgue1uTLnLLB4nC2bKH52rUbEGGF93bTpfAb09AkpsOXNVzDCBH1ncgPIM6yf4nkWzdw==
+  dependencies:
+    "@rmwc/base" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
 "@rmwc/ripple@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.1.8.tgz#3ad5271073e4b246399482d497210b27feb156f3"
@@ -1503,6 +1558,28 @@
     "@rmwc/provider" "^5.2.0"
     "@rmwc/types" "^5.2.0"
 
+"@rmwc/ripple@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.2.1.tgz#9e89cf626bc23ae3eda08648b004386ba8ed04d6"
+  integrity sha512-nKXXyA+U5qkMtwvPs9pwPhPi2SU0qjgg7lMcX2jT9k8SUUiORIVLjuImV/tPxpM+A4ixGw3vre5gs+c+VNdBnw==
+  dependencies:
+    "@material/ripple" "^1.0.0"
+    "@rmwc/base" "^5.2.1"
+    "@rmwc/provider" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
+"@rmwc/switch@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/switch/-/switch-5.2.1.tgz#2a1a67e277b90a31b9150d3209419250ed907623"
+  integrity sha512-c+FxmpDkPOQ6y4bLevwPthYz0bV2KLnitn9ZJuBG5TOqJ1UxZ/yEdnkk7bSKqN6HTyZ67e+fyJYXzymvx9m1LQ==
+  dependencies:
+    "@material/switch" "^1.0.0"
+    "@rmwc/base" "^5.2.1"
+    "@rmwc/formfield" "^5.2.1"
+    "@rmwc/ripple" "^5.2.1"
+    "@rmwc/toggleable" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
 "@rmwc/textfield@^5.2.0":
   version "5.2.0"
   resolved "https://registry.npmjs.org/@rmwc/textfield/-/textfield-5.2.0.tgz#5be5069e0718fae05abd7262a28b366d9d2f7ddb"
@@ -1517,6 +1594,15 @@
     "@rmwc/ripple" "^5.2.0"
     "@rmwc/types" "^5.2.0"
 
+"@rmwc/toggleable@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/toggleable/-/toggleable-5.2.1.tgz#2536e1354b8286742fb4417d8d3bfa73d6a2bb04"
+  integrity sha512-27CEBlbBHXr1lahic4Bga8izuQC3KsIbBOyJhoklQGTyh7rAuMVyv0z38ITAOCjkInjXc0bHTqSouak6pReOdQ==
+  dependencies:
+    "@rmwc/base" "^5.2.1"
+    "@rmwc/formfield" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
 "@rmwc/types@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.1.8.tgz#f559c793054a9ee6168850a24d075b5fb18715a9"
@@ -1526,6 +1612,11 @@
   version "5.2.0"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.2.0.tgz#cc487ca514ecf3e6c18c7d19bc18d9f41ece351d"
   integrity sha512-oKecdqz3J8zRFMae4fPkNeYbTsQEW/gii5ixtq7a2v6/VxvALD1I28NlbdBwHRYODGXAQj+Nefx7E/Pz+R82ZA==
+
+"@rmwc/types@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.2.1.tgz#5b9ab207cc40421b5085a07f3389423589c811f9"
+  integrity sha512-mwQA66A9C5i7j6kBUyXAFObmB9ZWR0BLm+J3rx/thw1q7xPzYeVyLR6M5KdNrAy+zkruN6qxg1GLAQ+UExm+MA==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"

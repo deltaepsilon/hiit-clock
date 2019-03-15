@@ -8,6 +8,7 @@
     "@rmwc/icon-button": "^5.2.0",
     "@rmwc/list": "^5.2.0",
     "@rmwc/menu": "^5.2.0",
+    "@rmwc/switch": "^5.2.1",
     "@rmwc/textfield": "^5.2.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-source-maps": "^0.0.3",

@@ -2,7 +2,7 @@ export default {
   ROUTES: {
     LOGIN: '/',
     DASHBOARD: '/dashboard',
-    PROFILE: '/profile',
+    SETTINGS: '/settings',
   },
   PATHS: {
     ACCOUNT_CIRCLE: '/static/images/material-design-icons/account-circle-512px.png',
@@ -13,5 +13,6 @@ export default {
   },
   LOCALSTORAGE: {
     PROFILE: 'profile',
+    SETTINGS: 'settings',
   },
 };

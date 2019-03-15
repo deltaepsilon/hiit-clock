@@ -27,9 +27,9 @@ export default props => {
       hidden: location.pathname == constants.ROUTES.DASHBOARD,
     },
     {
-      html: <MenuItem key="profile">Profile</MenuItem>,
-      action: () => Router.push(constants.ROUTES.PROFILE),
-      hidden: location.pathname == constants.ROUTES.PROFILE,
+      html: <MenuItem key="settings">Settings</MenuItem>,
+      action: () => Router.push(constants.ROUTES.SETTINGS),
+      hidden: location.pathname == constants.ROUTES.SETTINGS,
     },
     {
       html: <ListDivider key="bottom-divider" />,

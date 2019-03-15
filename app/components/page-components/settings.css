@@ -1,0 +1,33 @@
+#settings form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 4rem);
+  padding: 2rem;
+  max-width: 500px;
+}
+
+#settings .mdc-text-field {
+  width: 100%;
+}
+
+#settings input {
+  color: var(--color-gray-light) !important;
+}
+
+#settings .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
+#settings .mdc-text-field-helper-text {
+  color: var(--color-gray-light);
+}
+
+#settings .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+#settings .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+#settings .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: var(--color-gray-light);
+}
+
+#settings hr {
+  height: 2rem;
+  border: none;
+}
