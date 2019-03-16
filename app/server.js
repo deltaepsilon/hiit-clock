@@ -22,10 +22,11 @@ app.prepare().then(() => {
       createReadStream('./root/sitemap.txt').pipe(res);
     } else if (pathname == '/__/firebase/init.js') {
       const initJs = `
-        if (typeof firebase === 'undefined')
+        if (typeof firebase === 'undefined') {
           throw new Error(
             'hosting/init-error: Firebase SDK not detected. You must include it before /__/firebase/init.js'
-          );
+            );
+        }
         firebase.initializeApp(${JSON.stringify(environment.firebase)});
       `;
 

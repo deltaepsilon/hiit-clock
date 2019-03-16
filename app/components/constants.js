@@ -9,7 +9,7 @@ export default {
   },
   TITLES: {
     '/dashboard': 'HiiT Clock',
-    '/profile': 'profile',
+    '/settings': 'settings',
   },
   LOCALSTORAGE: {
     PROFILE: 'profile',

@@ -6,7 +6,7 @@ import constants from '../constants';
 
 import '@material/icon-button/dist/mdc.icon-button.css';
 
-const showDashboardLinkPaths = ['/profile'];
+const showDashboardLinkPaths = [constants.ROUTES.SETTINGS];
 
 export default props => {
   const isVisible = showDashboardLinkPaths.includes(location.pathname);

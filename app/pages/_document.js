@@ -15,6 +15,13 @@ export default class CustomDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
           <link rel="icon" href="/static/images/favicon.ico" />
           <link rel="manifest" href="/static/manifest.json" />
+          <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js" />
+          <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js" />
+          <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js" />
+          {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-database.js" /> */}
+          {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js" /> */}
+          {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-functions.js" /> */}
+          {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-storage.js" /> */}
         </Head>
         <body>
           <Main />

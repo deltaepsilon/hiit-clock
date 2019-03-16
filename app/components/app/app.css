@@ -12,12 +12,12 @@
   --mdc-theme-secondary-dark: #a5000f;
   --mdc-theme-secondary-text: #ffffff;
 
-  --color-gray-light: #f6f7eb;
+  --color-gray-light: #ffffff;
   --color-gray-dark: #3d3b3c;
   --color-green: #27fb6b;
 
   /* Fonts */
-  --font-book: 'p22-underground', Arial, Helvetica, sans-serif;
+  --font-book: 'factoria', Arial, Helvetica, sans-serif;
   --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
 }
 
@@ -31,7 +31,7 @@ body {
 body,
 .text-book {
   font-family: var(--font-book);
-  font-weight: 300;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -65,6 +65,7 @@ h6,
 }
 
 .mdc-text-field__input,
+.mdc-text-field-helper-text,
 .mdc-floating-label,
 .mdc-form-field {
   font-family: var(--font-book) !important;
