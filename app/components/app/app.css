@@ -17,8 +17,8 @@
   --color-green: #27fb6b;
 
   /* Fonts */
-  --font-book: 'p22-underground', Arial, Helvetica, sans-serif !important;
-  --font-bold: 'prohibition', Arial, Helvetica, sans-serif !important;
+  --font-book: 'p22-underground', Arial, Helvetica, sans-serif;
+  --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -62,4 +62,10 @@ h6,
 .mdc-button.accent {
   background-color: var(--mdc-theme-secondary) !important;
   color: var(--mdc-theme-secondary-text) !important;
+}
+
+.mdc-text-field__input,
+.mdc-floating-label,
+.mdc-form-field {
+  font-family: var(--font-book) !important;
 }

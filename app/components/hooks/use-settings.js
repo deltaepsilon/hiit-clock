@@ -12,20 +12,22 @@ export default function useSettings() {
 
   useEffect(() => {
     return subscribe(setSettings);
-  });
+  }, []);
 
   return settings;
 }
 
 function subscribe(setSettings) {
   function getAndSetProfile() {
-    const settingsString = localStorage.getItem(constants.LOCALSTORAGE.SETTINGS) || '';
+    const settingsString = localStorage.getItem(constants.LOCALSTORAGE.SETTINGS) || '{}';
     const settings = JSON.parse(settingsString);
 
     setSettings(settings);
   }
 
   window.addEventListener('storage', getAndSetProfile);
+
+  getAndSetProfile();
 
   return () => window.removeEventListener('storage', getAndSetProfile);
 }

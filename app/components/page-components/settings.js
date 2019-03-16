@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { ProfileContext } from '../contexts/profile-context';
 import { SettingsContext } from '../contexts/settings-context';
@@ -16,15 +16,15 @@ import '@material/form-field/dist/mdc.form-field.css';
 
 import './settings.css';
 
-export default props => {
+export default () => {
   const { currentUser } = useContext(AuthenticationContext);
   const profile = useContext(ProfileContext);
-
-  console.log('profile', profile);
   const settings = useContext(SettingsContext);
   const [username, setUsername] = useState(profile.username);
 
-  console.log('currentUser', currentUser);
+  useEffect(() => setUsername(profile.username), [profile.username]);
+
+  const isEmailDisabled = !currentUser || currentUser.isAnonymous;
 
   return (
     <div id="settings">
@@ -43,22 +43,20 @@ export default props => {
 
             setUsername(username);
           }}
-          // disabled={!currentUser || currentUser.isAnonymous}
+          disabled={isEmailDisabled}
         />
-        {currentUser && currentUser.isAnonymous && (
-          <aside>Usernames are disabled in guest mode</aside>
-        )}
+        {isEmailDisabled && <aside>Usernames are disabled in guest mode</aside>}
 
         <hr />
         <Switch
           checked={!!settings.soundAlertsEnabled}
-          onChange={e => console.log(e.target.checked)}
+          onChange={e => effects.saveSettings({ soundAlertsEnabled: e.target.checked })}
         >
           Sound Alerts
         </Switch>
         <Switch
           checked={!!settings.flashAlertsEnabled}
-          onChange={e => console.log(e.target.checked)}
+          onChange={e => effects.saveSettings({ flashAlertsEnabled: e.target.checked })}
         >
           Flash Alerts
         </Switch>

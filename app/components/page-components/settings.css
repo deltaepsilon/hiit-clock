@@ -31,3 +31,13 @@
   height: 2rem;
   border: none;
 }
+
+#settings .mdc-form-field {
+  width: 100%;
+  padding: 1rem;
+}
+
+#settings .mdc-form-field label {
+  color: var(--color-gray-light);
+  margin-left: 1rem;
+}

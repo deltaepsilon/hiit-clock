@@ -1,25 +1,22 @@
 /* globals window */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import constants from '../constants';
 import schema from '../schema';
 
 const defaultProfile = {
-  name: '',
-  email: '',
+  username: '',
 };
 
 export default function useProfile(uid) {
   const [profile, setProfile] = useState(defaultProfile);
 
-  useEffect(() => {
-    return uid ? subscribe(uid, setProfile) : () => {};
-  }, [uid]);
+  useEffect(() => (uid ? subscribe(uid, setProfile) : () => {}), [uid]);
 
   return profile;
 }
 
 function subscribe(uid, setProfile) {
-  const localProfileString = localStorage.getItem(constants.LOCALSTORAGE.PROFILE) || '';
+  const localProfileString = localStorage.getItem(constants.LOCALSTORAGE.PROFILE) || '{}';
   const localProfile = JSON.parse(localProfileString);
   const profileRef = schema.getProfileRef(uid);
 
@@ -30,6 +27,6 @@ function subscribe(uid, setProfile) {
     const dbProfileString = JSON.stringify(dbProfile);
 
     localStorage.setItem(constants.LOCALSTORAGE.PROFILE, dbProfileString);
-    setProfile({ ...defaultProfile, dbProfile });
+    setProfile({ ...defaultProfile, ...dbProfile });
   });
 }

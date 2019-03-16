@@ -6,9 +6,9 @@ export const AuthenticationContext = React.createContext();
 export default ({ children, loaded }) => {
   const [currentUser, setCurrentUser] = useState();
 
-  useEffect(() => {
-    return loaded ? window.firebase.auth().onAuthStateChanged(setCurrentUser) : () => {};
-  }, [loaded]);
+  useEffect(() => (loaded ? window.firebase.auth().onAuthStateChanged(setCurrentUser) : () => {}), [
+    loaded,
+  ]);
 
   return (
     <AuthenticationContext.Provider value={{ currentUser }}>
