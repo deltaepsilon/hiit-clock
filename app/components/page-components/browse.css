@@ -1,0 +1,75 @@
+#browse h1 {
+  font-size: 15vw;
+  margin: 1rem 0 0;
+}
+
+#browse .cta {
+  justify-content: center;
+  min-height: 25vh;
+}
+
+#browse h1,
+#browse h2 {
+  text-align: center;
+}
+
+#browse h2 {
+  font-size: 10vw;
+}
+
+#browse section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  max-width: calc(100vw - 4rem);
+}
+
+#browse p {
+  max-width: 500px;
+}
+
+#browse ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+#browse li {
+  padding: 1rem 0;
+}
+
+#browse .mdc-button {
+  height: 5vw;
+  min-height: 2rem;
+
+  width: 100%;
+}
+
+#browse .mdc-button__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#browse .mdc-button.crossfit {
+  background: var(--color-background-crossfit);
+  color: var(--color-foreground-crossfit);
+}
+
+#browse .mdc-button.powerlifting {
+  background: var(--color-background-powerlifting);
+  color: var(--color-foreground-powerlifting);
+}
+
+#browse .mdc-button.stronglifts {
+  background: var(--color-background-stronglifts);
+  color: var(--color-foreground-stronglifts);
+}
+
+#browse .mdc-button.tabata {
+  background: var(--color-background-tabata);
+  color: var(--color-foreground-tabata);
+}

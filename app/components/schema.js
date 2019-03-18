@@ -4,6 +4,7 @@ export default {
     db()
       .collection('profiles')
       .doc(uid),
+  getTimersRef: () => db().collection('timers'),
 };
 
 function db() {

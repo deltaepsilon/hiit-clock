@@ -19,6 +19,16 @@
   /* Fonts */
   --font-book: 'factoria', Arial, Helvetica, sans-serif;
   --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
+
+  /* themes */
+  --color-background-crossfit: #9E0059;
+  --color-foreground-crossfit: #ffffff;
+  --color-background-powerlifting: #FF5400;
+  --color-foreground-powerlifting: #ffffff;
+  --color-background-stronglifts: #FFBD00;
+  --color-foreground-stronglifts: #ffffff;
+  --color-background-tabata: #1d4e89;
+  --color-foreground-tabata: #ffffff;
 }
 
 body {
