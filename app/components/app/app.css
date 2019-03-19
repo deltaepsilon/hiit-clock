@@ -16,16 +16,19 @@
   --color-gray-dark: #3d3b3c;
   --color-green: #27fb6b;
 
+  --color-light-background: #ffffff;
+  --color-light-background-text: var(--mdc-theme-primary);
+
   /* Fonts */
   --font-book: 'factoria', Arial, Helvetica, sans-serif;
   --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
 
   /* themes */
-  --color-background-crossfit: #9E0059;
+  --color-background-crossfit: #9e0059;
   --color-foreground-crossfit: #ffffff;
-  --color-background-powerlifting: #FF5400;
+  --color-background-powerlifting: #ff5400;
   --color-foreground-powerlifting: #ffffff;
-  --color-background-stronglifts: #FFBD00;
+  --color-background-stronglifts: #ffbd00;
   --color-foreground-stronglifts: #ffffff;
   --color-background-tabata: #1d4e89;
   --color-foreground-tabata: #ffffff;
@@ -55,6 +58,12 @@ h6,
   font-family: var(--font-bold);
   font-weight: 400;
   font-style: normal;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: underline;
 }
 
 #app-base {

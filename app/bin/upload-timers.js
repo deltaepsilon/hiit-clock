@@ -12,15 +12,17 @@ const schema = require('../functions/utilities/schema')(context);
 (async () => {
   const filePaths = await getYamlFiles('./data');
   const filesJson = await parseYamlFiles(filePaths);
-  const batch = schema.db.batch();
+  // const batch = schema.db.batch();
 
-  filesJson.forEach(({ id, ...json }) => {
-    const ref = schema.getTimerRef(id);
+  // filesJson.forEach(({ id, ...json }) => {
+  //   const ref = schema.getTimerRef(id);
 
-    batch.set(ref, json);
-  });
+  //   batch.set(ref, json);
+  // });
 
-  await batch.commit();
+  // await batch.commit();
+
+  await saveJson(filesJson);
 
   console.log(`wrote ${filesJson.length} files`);
 })();
@@ -32,11 +34,12 @@ async function getYamlFiles(pathToEvaluate, files = []) {
     async (result, name) => {
       let files = await result;
       const isFile = name.match(/yaml/);
+      const isDirectory = !name.match(/\./);
       const fullPath = path.join(pathToEvaluate, name);
 
       if (isFile) {
         files.push(fullPath);
-      } else {
+      } else if (isDirectory) {
         files = await getYamlFiles(fullPath, files);
       }
 
@@ -58,4 +61,29 @@ async function parseYamlFiles(files) {
       return json;
     })
   );
+}
+
+async function saveJson(filesJson) {
+  const filesJsonByTag = filesJson.reduce((result, file) => {
+    const tags = file.tags;
+
+    tags.forEach(properCaseTag => {
+      const tag = properCaseTag.toLowerCase();
+
+      if (!result[tag]) {
+        result[tag] = [];
+      }
+
+      result[tag].push(file);
+    });
+
+    return result;
+  }, {});
+
+  for (const tag in filesJsonByTag) {
+    const json = filesJsonByTag[tag];
+    const filepath = path.join(__dirname, '..', 'data', `${tag}.json`);
+
+    await promisify(fs.writeFile)(filepath, JSON.stringify(json), 'utf8');
+  }
 }

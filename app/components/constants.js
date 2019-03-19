@@ -18,4 +18,7 @@ export default {
     PROFILE: 'profile',
     SETTINGS: 'settings',
   },
+  COLORS: {
+    PRIMARY: '#011627',
+  },
 };

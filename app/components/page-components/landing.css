@@ -1,23 +1,23 @@
-#browse h1 {
+#landing h1 {
   font-size: 15vw;
   margin: 1rem 0 0;
 }
 
-#browse .cta {
+#landing .cta {
   justify-content: center;
   min-height: 25vh;
 }
 
-#browse h1,
-#browse h2 {
+#landing h1,
+#landing h2 {
   text-align: center;
 }
 
-#browse h2 {
+#landing h2 {
   font-size: 10vw;
 }
 
-#browse section {
+#landing section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,51 +25,51 @@
   max-width: calc(100vw - 4rem);
 }
 
-#browse p {
+#landing p {
   max-width: 500px;
 }
 
-#browse ul {
+#landing ul {
   list-style: none;
   padding: 0;
   width: 100%;
   max-width: 500px;
 }
 
-#browse li {
+#landing li {
   padding: 1rem 0;
 }
 
-#browse .mdc-button {
+#landing .mdc-button {
   height: 5vw;
   min-height: 2rem;
 
   width: 100%;
 }
 
-#browse .mdc-button__label {
+#landing .mdc-button__label {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-#browse .mdc-button.crossfit {
+#landing .mdc-button.crossfit {
   background: var(--color-background-crossfit);
   color: var(--color-foreground-crossfit);
 }
 
-#browse .mdc-button.powerlifting {
+#landing .mdc-button.powerlifting {
   background: var(--color-background-powerlifting);
   color: var(--color-foreground-powerlifting);
 }
 
-#browse .mdc-button.stronglifts {
+#landing .mdc-button.stronglifts {
   background: var(--color-background-stronglifts);
   color: var(--color-foreground-stronglifts);
 }
 
-#browse .mdc-button.tabata {
+#landing .mdc-button.tabata {
   background: var(--color-background-tabata);
   color: var(--color-foreground-tabata);
 }

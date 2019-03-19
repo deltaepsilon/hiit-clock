@@ -1,0 +1,9 @@
+.list {
+  background: var(--color-light-background);
+  width: 100%;
+}
+
+.list,
+.list .mdc-list-item__meta {
+  color: var(--color-light-background-text);
+}

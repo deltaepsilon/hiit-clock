@@ -8,13 +8,14 @@ import '@material/icon-button/dist/mdc.icon-button.css';
 
 const showDashboardLinkPaths = [constants.ROUTES.SETTINGS];
 
-export default props => {
-  const isVisible = showDashboardLinkPaths.includes(location.pathname);
+export default ({ visible, url }) => {
+  const isVisible = visible || showDashboardLinkPaths.includes(location.pathname);
   const style = isVisible ? {} : { visibility: 'hidden' };
+  const href = url || constants.ROUTES.DASHBOARD;
 
   return (
-    <div style={style}>
-      <Link href={constants.ROUTES.DASHBOARD}>
+    <div className="back-button" style={style}>
+      <Link href={href}>
         <IconButton icon={<ArrowBack />} aria-label="user icon" tag="button" />
       </Link>
     </div>
