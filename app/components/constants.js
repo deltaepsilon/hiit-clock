@@ -21,4 +21,9 @@ export default {
   COLORS: {
     PRIMARY: '#011627',
   },
+  ALGOLIA: {
+    INDICES: {
+      TIMERS: 'hiit-clock-prod-2019:timers',
+    },
+  },
 };

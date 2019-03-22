@@ -18,8 +18,8 @@ export default ({ searchLabel, items }) => {
     <div className="timers-list list">
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
-        {timers.map(timer => (
-          <Link key={timer.id} href={`/timer/${timer.id}`}>
+        {timers.map((timer, i) => (
+          <Link key={timer.id || timer.objectID} href={`/timer/${timer.id || timer.objectID}`}>
             <SimpleListItem
               text={timer.name}
               secondaryText={<TotalTime timer={timer} />}

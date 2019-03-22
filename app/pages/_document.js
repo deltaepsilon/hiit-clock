@@ -22,6 +22,7 @@ export default class CustomDocument extends Document {
           {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js" /> */}
           {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-functions.js" /> */}
           {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-storage.js" /> */}
+          <script src="/static/js/algoliasearchLite.min.js" />
         </Head>
         <body>
           <Main />

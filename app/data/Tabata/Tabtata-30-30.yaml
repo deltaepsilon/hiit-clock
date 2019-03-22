@@ -1,0 +1,125 @@
+name: Tabata 30/30
+tags:
+- .Default
+- Tabata
+periods:
+- name: Round 1
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 2
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 3
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 4
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 5
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 6
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 7
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 8
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 9
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 30
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 11
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 12
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 13
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 14
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 15
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 16
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 17
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 18
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 19
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest
+- name: Round 30
+  totalSeconds: 30
+  type: work
+- name: Rest
+  totalSeconds: 30
+  type: rest

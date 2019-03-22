@@ -12,19 +12,29 @@ const schema = require('../functions/utilities/schema')(context);
 (async () => {
   const filePaths = await getYamlFiles('./data');
   const filesJson = await parseYamlFiles(filePaths);
-  // const batch = schema.db.batch();
+  const batch = schema.db.batch();
+  const updated = Date.now();
 
-  // filesJson.forEach(({ id, ...json }) => {
-  //   const ref = schema.getTimerRef(id);
+  filesJson.forEach(({ id, ...json }) => {
+    const ref = schema.getTimerRef(id);
 
-  //   batch.set(ref, json);
-  // });
+    batch.set(ref, {
+      ...json,
+      updated,
+      index: 'timers',
+      algolia: {
+        name: json.name,
+        tags: json.tags,
+        totalSeconds: json.periods.reduce((result, { totalSeconds }) => totalSeconds + result, 0),
+      },
+    });
+  });
 
-  // await batch.commit();
+  await batch.commit();
 
   await saveJson(filesJson);
 
-  console.log(`wrote ${filesJson.length} files`);
+  console.info(`wrote ${filesJson.length} files`);
 })();
 
 async function getYamlFiles(pathToEvaluate, files = []) {

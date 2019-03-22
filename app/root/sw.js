@@ -4,7 +4,7 @@ const buildId = 'BUILD_ID';
 
 workbox.setConfig({ debug: false });
 
-console.log('installed with buildId:', buildId);
+console.info('installed with buildId:', buildId);
 
 workbox.routing.registerRoute(
   new RegExp(/.*\.js/),

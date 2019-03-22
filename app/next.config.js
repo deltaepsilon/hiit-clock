@@ -43,7 +43,7 @@ async function exportPathMap(defaultPathMap, { dev, dir, outDir, distDir, buildI
 
   const changes = await Promise.all(promises);
 
-  console.log('changes', changes);
+  console.info('changes', changes);
 
   return defaultPathMap;
 }
