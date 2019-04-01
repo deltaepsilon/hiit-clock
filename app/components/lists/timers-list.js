@@ -19,7 +19,7 @@ export default ({ searchLabel, items }) => {
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
         {timers.map((timer, i) => (
-          <Link key={timer.id || timer.objectID} href={`/timer/${timer.id || timer.objectID}`}>
+          <Link key={timer.id || timer.objectID} href={`/timer?id=${timer.id || timer.objectID}`}>
             <SimpleListItem
               text={timer.name}
               secondaryText={<TotalTime timer={timer} />}

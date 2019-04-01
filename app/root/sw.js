@@ -6,6 +6,12 @@ workbox.setConfig({ debug: false });
 
 console.info('installed with buildId:', buildId);
 
+workbox.googleAnalytics.initialize({
+  parameterOverrides: {
+    cd1: 'offline',
+  },
+});
+
 workbox.routing.registerRoute(
   new RegExp(/.*\.js/),
   new workbox.strategies.StaleWhileRevalidate({

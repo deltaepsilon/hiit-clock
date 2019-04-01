@@ -7,7 +7,7 @@ import '../page.css';
 
 export default props => {
   return (
-    <AppBase secure>
+    <AppBase>
       <div id="custom" className="page">
         <BackButton url="/" visible pinned />
         <h1>Custom Timers</h1>

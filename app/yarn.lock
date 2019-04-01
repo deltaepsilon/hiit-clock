@@ -1393,10 +1393,6 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
-"@quiver/firebase-mods@./quiver-firebase-mods-v1.0.2.tgz":
-  version "1.0.0"
-  resolved "./quiver-firebase-mods-v1.0.2.tgz#83efd7b978868417259bf18531f932582d85bb46"
-
 "@quiver/firebase-mods@./quiver-firebase-mods-v1.0.3.tgz":
   version "1.0.0"
   resolved "./quiver-firebase-mods-v1.0.3.tgz#14ad35ccf13d0f716f39f7d0e51d4cdaf082ae12"

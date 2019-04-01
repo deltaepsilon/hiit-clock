@@ -8,7 +8,7 @@ import '../page.css';
 
 export default props => {
   return (
-    <AppBase secure>
+    <AppBase>
       <div id="stronglifts" className="page">
         <BackButton url="/" visible pinned />
         <h1>Stronglifts</h1>

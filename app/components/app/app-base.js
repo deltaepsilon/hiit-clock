@@ -6,14 +6,16 @@ import Fonts from './fonts';
 import Meta from './meta';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
+import LocationProvider from '../contexts/history-context';
 import ProfileProvider from '../contexts/profile-context';
 import SettingsProvider from '../contexts/settings-context';
 import TopBar from '../top-bar/top-bar';
 
 import './app.css';
 
-export function AppBase({ children, secure }) {
+export function AppBase({ children, secure, topBar }) {
   const [loaded, setLoaded] = useState(getPersistentIsLoaded());
+  const shouldShowTopBar = secure || topBar
 
   useEffect(() => {
     function onLoad() {
@@ -38,17 +40,19 @@ export function AppBase({ children, secure }) {
       <Fonts />
       <Meta />
       <AuthenticationProvider loaded={loaded}>
-        <ProfileProvider>
-          <SettingsProvider>
-            <>
-              <div id="app-base">
-                {secure && <TopBar />}
-                <div id="page-content">{children}</div>
-              </div>
-              <Router secure={secure} />
-            </>
-          </SettingsProvider>
-        </ProfileProvider>
+        <LocationProvider>
+          <ProfileProvider>
+            <SettingsProvider>
+              <>
+                <div id="app-base">
+                  {shouldShowTopBar && <TopBar />}
+                  <div id="page-content">{children}</div>
+                </div>
+                <Router secure={secure} />
+              </>
+            </SettingsProvider>
+          </ProfileProvider>
+        </LocationProvider>
       </AuthenticationProvider>
     </>
   );

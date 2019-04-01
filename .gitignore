@@ -3,3 +3,4 @@ node_modules
 out
 service-account.json
 app/environments/*.json
+env.list
