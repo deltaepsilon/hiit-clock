@@ -30,8 +30,8 @@ export default ({ children }) => {
       if (hasChanged) {
         const update = urlHistory.concat(url);
 
-        setUrlHistory(url);
-        saveUrlHistory(url);
+        setUrlHistory(update);
+        saveUrlHistory(update);
       }
     }
 
