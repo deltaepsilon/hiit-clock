@@ -5,6 +5,10 @@ export default {
       .collection('profiles')
       .doc(uid),
   getTimersRef: () => db().collection('timers'),
+  getTimerRef: timerId =>
+    db()
+      .collection('timers')
+      .doc(timerId),
 };
 
 function db() {

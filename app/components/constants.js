@@ -11,7 +11,7 @@ export default {
   },
   TITLES: {
     '/': 'HiiT Clock',
-    '/Login': 'Login',
+    '/login/': 'Login',
     '/dashboard': 'HiiT Clock',
     '/settings': 'settings',
   },
@@ -19,6 +19,7 @@ export default {
     PROFILE: 'profile',
     SETTINGS: 'settings',
     URL_HISTORY: 'urlHistory',
+    TIMERS: 'timers',
   },
   COLORS: {
     PRIMARY: '#011627',
