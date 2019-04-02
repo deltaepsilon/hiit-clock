@@ -8,11 +8,6 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 import constants from '../constants';
 import effects from '../../effects';
 
-import '@material/icon-button/dist/mdc.icon-button.css';
-import '@material/button/dist/mdc.button.css';
-import '@material/menu/dist/mdc.menu.css';
-import '@material/menu-surface/dist/mdc.menu-surface.css';
-import '@material/list/dist/mdc.list.css';
 import './user-menu.css';
 
 export default props => {

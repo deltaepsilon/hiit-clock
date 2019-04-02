@@ -32,8 +32,6 @@ export default props => {
           <p>We've included some AMRAP timers for convenience 😉</p>
         </section>
 
-        <hr />
-
         <Browse items={items} />
       </div>
     </AppBase>

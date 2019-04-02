@@ -1,8 +1,7 @@
 import React from 'react';
-
 import TimersList from '../lists/timers-list';
 
-import '@material/button/dist/mdc.button.css';
+import './browse.css';
 
 export default ({ items }) => {
   return (

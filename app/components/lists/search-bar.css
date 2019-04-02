@@ -22,7 +22,7 @@
 .search-bar
   .mdc-text-field--outlined:not(.mdc-text-field--disabled)
   .mdc-notched-outline__trailing {
-  border-color: var(--color-light-background-text);
+  border-color: var(--color-light-background-text) !important;
 }
 
 .search-bar .mdc-icon-button {

@@ -7,7 +7,6 @@ import SearchBar from './search-bar';
 import constants from '../constants';
 import useSearch from '../hooks/use-search';
 
-import '@material/list/dist/mdc.list.css';
 import './lists.css';
 
 export default ({ searchLabel, items }) => {

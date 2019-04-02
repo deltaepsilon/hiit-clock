@@ -9,8 +9,8 @@ Front-end environments
 
 Firebase Functions environments
 
-1. Edit `app/functions/environments/functions-env.test.json`
-2. Edit `app/functions/environments/functions-env.test.json`
+1. Edit `app/functions/environments/functions-env.test.js`
+2. Edit `app/functions/environments/functions-env.test.js`
 
 ## Gitlab
 

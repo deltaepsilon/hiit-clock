@@ -2,12 +2,12 @@
   /* Theme */
   /* https://material.io/tools/color/#!/?view.left=0&view.right=1&primary.color=177f62&secondary.color=BDBDBD */
 
-  --mdc-theme-primary: #011627;
+  --mdc-theme-primary: #011627 !important;
   --mdc-theme-primary-light: #2a3c4f;
   --mdc-theme-primary-dark: #000000;
   --mdc-theme-primary-text: #ffffff;
 
-  --mdc-theme-secondary: #df2935;
+  --mdc-theme-secondary: #df2935 !important;
   --mdc-theme-secondary-light: #ff635f;
   --mdc-theme-secondary-dark: #a5000f;
   --mdc-theme-secondary-text: #ffffff;
@@ -32,6 +32,9 @@
   --color-foreground-stronglifts: #ffffff;
   --color-background-tabata: #1d4e89;
   --color-foreground-tabata: #ffffff;
+
+  /* Dimensions */
+  --dimensions-max-width: 500px;
 }
 
 body {
@@ -71,6 +74,10 @@ a:visited {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+}
+
+#page-content {
+  width: 100vw;
 }
 
 .grow {

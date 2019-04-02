@@ -3,6 +3,7 @@ import ServiceWorker from './service-worker';
 import Environment from './environment';
 import Firebase from './firebase';
 import Fonts from './fonts';
+import MDCStyles from './mdc-styles';
 import Meta from './meta';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
@@ -22,6 +23,7 @@ export function AppBase({ children, secure, topBar }) {
       <Environment />
       <Firebase />
       <Fonts />
+      <MDCStyles />
       <Meta />
       <LoadedProvider>
         <AuthenticationProvider>

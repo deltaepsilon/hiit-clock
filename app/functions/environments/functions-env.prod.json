@@ -1,6 +1,0 @@
-{
-  "environment": "production",
-  "firebase": {
-    "databaseURL": "https://quiver-hiit-clock.firebaseio.com"
-  }
-}

@@ -24,8 +24,6 @@ export default props => {
           </p>
         </section>
 
-        <hr />
-
         <Browse items={items} />
       </div>
     </AppBase>

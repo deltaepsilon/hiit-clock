@@ -5,14 +5,7 @@ import { SettingsContext } from '../contexts/settings-context';
 import effects from '../../effects';
 
 import { TextField } from '@rmwc/textfield';
-import '@material/textfield/dist/mdc.textfield.css';
-import '@material/floating-label/dist/mdc.floating-label.css';
-import '@material/notched-outline/dist/mdc.notched-outline.css';
-import '@material/line-ripple/dist/mdc.line-ripple.css';
-
 import { Switch } from '@rmwc/switch';
-import '@material/switch/dist/mdc.switch.css';
-import '@material/form-field/dist/mdc.form-field.css';
 
 import './settings.css';
 

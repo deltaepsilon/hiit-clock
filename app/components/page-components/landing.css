@@ -1,3 +1,10 @@
+#landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 #landing h1 {
   font-size: 15vw;
   margin: 1rem 0 0;
@@ -17,12 +24,17 @@
   font-size: 10vw;
 }
 
+#landing hr {
+  width: 100%;
+}
+
 #landing section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
-  max-width: calc(100vw - 4rem);
+  width: calc(100vw - 2rem);
+  max-width: var(--dimensions-max-width);
 }
 
 #landing p {
@@ -63,7 +75,7 @@
 
 @media (max-width: 500px) {
   #landing .mdc-button__label {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }
 

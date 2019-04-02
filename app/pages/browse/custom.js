@@ -18,8 +18,6 @@ export default props => {
           <p> Create your personal collection.</p>
         </section>
 
-        <hr />
-
         <Browse />
       </div>
     </AppBase>

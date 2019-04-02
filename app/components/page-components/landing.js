@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@rmwc/button';
 import NavigateNextIcon from '../svg/navigate-next';
 
-import '@material/button/dist/mdc.button.css';
 import './landing.css';
 
 export default props => {
