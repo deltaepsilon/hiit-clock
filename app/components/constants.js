@@ -30,7 +30,7 @@ export default {
     },
   },
   COLORS: {
-    WORK: ['#9e0059', '#ff5400', '#ffbd00', '#1d4e89', '#ddd1d9'],
+    WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
     REST: ['rgba(255, 255, 255, .2)'],
   },
   PERIOD_TYPES: {
