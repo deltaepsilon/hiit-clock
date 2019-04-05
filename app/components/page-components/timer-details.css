@@ -1,0 +1,17 @@
+#timer-details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#timer-details h1 {
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  z-index: -1;
+}
+
+#timer-details ul {
+  padding: 0;
+  list-style: none;
+}

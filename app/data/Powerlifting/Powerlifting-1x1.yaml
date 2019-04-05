@@ -12,7 +12,7 @@ periods:
 - name: Second Warmup
   totalSeconds: 60
   type: work
-- name: Prepare of Work Sets
+- name: Prepare for work sets
   totalSeconds: 180
   type: rest
 - name: 1RM

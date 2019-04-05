@@ -11,7 +11,7 @@ periods:
 - name: Second Warmup
   totalSeconds: 60
   type: work
-- name: Prepare of Work Sets
+- name: Prepare for work sets
   totalSeconds: 180
   type: rest
 - name: Work One
@@ -19,22 +19,22 @@ periods:
   type: work
 - name: Rest One
   totalSeconds: 180
-  type: work
+  type: rest
 - name: Work Two
   totalSeconds: 60
   type: work
 - name: Rest Two
   totalSeconds: 180
-  type: work
+  type: rest
 - name: Work Three
   totalSeconds: 60
   type: work
 - name: Rest Three
   totalSeconds: 180
-  type: work
+  type: rest
 - name: Work Four
   totalSeconds: 60
   type: work
 - name: Rest Four
   totalSeconds: 180
-  type: work
+  type: rest

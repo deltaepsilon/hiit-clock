@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getTimerCycles Powerlifting 5x5 should match snapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "name": "First Warmup",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Second Warmup",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Prepare for work sets",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work One",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest One",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Two",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Two",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Three",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Three",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Four",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Four",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Five",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Five",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+]
+`;
+
+exports[`getTimerCycles Tabata 20/40 should match snapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "name": "Round 1",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 2",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 3",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 4",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 5",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 6",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 7",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 8",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 9",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 40",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 11",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 12",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 13",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 14",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 15",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 16",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 17",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 18",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 19",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Round 20",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+]
+`;
