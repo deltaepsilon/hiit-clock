@@ -1,0 +1,8 @@
+#timer-actions {
+  --mdc-theme-secondary: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+}
+
+#timer-actions a {
+  text-decoration: none;
+}

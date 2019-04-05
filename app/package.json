@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@rmwc/button": "^5.1.8",
+    "@rmwc/fab": "^5.2.2",
     "@rmwc/icon-button": "^5.2.0",
     "@rmwc/list": "^5.2.1",
     "@rmwc/menu": "^5.2.0",

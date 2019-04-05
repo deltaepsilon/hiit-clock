@@ -29,4 +29,12 @@ export default {
       TIMERS: 'hiit-clock-prod-2019:timers',
     },
   },
+  COLORS: {
+    WORK: ['#9e0059', '#ff5400', '#ffbd00', '#1d4e89', '#ddd1d9'],
+    REST: ['rgba(255, 255, 255, .2)'],
+  },
+  PERIOD_TYPES: {
+    WORK: 'work',
+    REST: 'rest',
+  },
 };

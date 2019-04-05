@@ -2,7 +2,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox
 
 const buildId = 'BUILD_ID';
 
-workbox.setConfig({ debug: true });
+workbox.setConfig({ debug: false });
 
 console.info('installed with buildId:', buildId);
 

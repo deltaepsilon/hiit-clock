@@ -1,11 +1,10 @@
 import React from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
+import secondsToTime from '../../utilities/seconds-to-time';
 
-export default ({ timer }) => {
-  const totalSeconds = timer.totalSeconds || calculateTimerTotalSeconds(timer);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  const time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+export default ({ totalSeconds, periods }) => {
+  const seconds = totalSeconds || calculateTimerTotalSeconds({ periods });
+  const time = secondsToTime(seconds);
 
   return <span className="time">{time}</span>;
 };

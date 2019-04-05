@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import AppBase from '../components/app/app-base';
-import TimerDetails from '../components/page-components/timer-details';
-import parseSearch from '../utilities/parse-search';
+import AppBase from '../../components/app/app-base';
+import TimerPlay from '../../components/page-components/timer-play';
+import parseSearch from '../../utilities/parse-search';
 
 export default props => {
   const [timerId, setTimerId] = useState();
@@ -14,7 +14,7 @@ export default props => {
 
   return (
     <AppBase topBar>
-      <TimerDetails timerId={timerId} />
+      <TimerPlay timerId={timerId} />
     </AppBase>
   );
 };

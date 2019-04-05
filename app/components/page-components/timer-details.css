@@ -1,7 +1,12 @@
 #timer-details {
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
+  width: 100vw;
+  max-width: 30rem;
+
+  --background-color: rgba(0, 0, 0, 0.15);
 }
 
 #timer-details h1 {
@@ -11,7 +16,26 @@
   z-index: -1;
 }
 
-#timer-details ul {
-  padding: 0;
+#timer-details .timer-details-list {
+  display: flex;
+  justify-content: space-around;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin: 0;
+  background: var(--background-color);
+}
+
+#timer-details .timer-details-list li {
   list-style: none;
+}
+
+#timer-details .timer-details-list span:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+
+#timer-details p {
+  padding: 1rem;
+  width: calc(100% - 2rem);
+  margin: 0;
+  background: var(--background-color);
 }

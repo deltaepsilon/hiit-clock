@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addMetadataToCycles Tabata 20/40 should match snapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Round 1",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Round 2",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Round 3",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Round 4",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Round 5",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Round 6",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Round 7",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Round 8",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Round 9",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Round 40",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Round 11",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Round 12",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Round 13",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Round 14",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Round 15",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Round 16",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Round 17",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#9e0059",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Round 18",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ff5400",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Round 19",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#ffbd00",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Round 20",
+      "periodColor": "#9e0059",
+      "totalSeconds": 20,
+      "type": "work",
+    },
+    Object {
+      "cycleColor": "#1d4e89",
+      "name": "Rest",
+      "periodColor": "#3d3b3c",
+      "totalSeconds": 40,
+      "type": "rest",
+    },
+  ],
+]
+`;

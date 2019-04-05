@@ -1171,6 +1171,13 @@
   dependencies:
     tslib "^1.9.3"
 
+"@material/dom@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/dom/-/dom-1.1.0.tgz#3bd3d1a3415b4181118fecb182d93beda56a6f8c"
+  integrity sha512-+HWW38ZaM2UBPu4+7QCusLDSf4tFT31rsEXHkTkxYSg/QpDivfPx6YDz4OmYtafmhPR1d1YjqB3MYysUHdodyw==
+  dependencies:
+    tslib "^1.9.3"
+
 "@material/elevation@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/elevation/-/elevation-0.44.1.tgz#19efa293e195b00141711899e3c3fde6a3670454"
@@ -1188,6 +1195,29 @@
     "@material/animation" "^1.0.0"
     "@material/feature-targeting" "^0.44.1"
     "@material/theme" "^1.0.0"
+
+"@material/elevation@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/elevation/-/elevation-1.1.0.tgz#def23c360ae067b43c1632a331b9883b9f679cc5"
+  integrity sha512-m4eATJvDhWK1BT+yA1iHz5mhAk8cV9olC4mjVzm4PTAqhDH2yya4WzjN1HPVHE/a65ObyZ7V4qopxu9MRocm3A==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.1.0"
+
+"@material/fab@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/fab/-/fab-1.1.0.tgz#37d25f1c48283a19ac5ebb0cdc8a51fc972cb1e0"
+  integrity sha512-oCvo/4TFri+agTkGvEd5lREuwowInYw6OBbwNmGxpWQs4QGlMGHRS9/h8sfMYNZxs2TrwNUCwf/DK0WZEvniLQ==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/elevation" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^1.1.0"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^1.0.0"
+    "@material/theme" "^1.1.0"
+    "@material/typography" "^1.0.0"
 
 "@material/feature-targeting@^0.44.1":
   version "0.44.1"
@@ -1315,6 +1345,18 @@
     "@material/theme" "^1.0.0"
     tslib "^1.9.3"
 
+"@material/ripple@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/ripple/-/ripple-1.1.0.tgz#236016fb30c8366faf143297df2c38166d84ffbc"
+  integrity sha512-mkfDBZAmxjpRG7V9TrfOmLxt1g/wvGHCXtYPgvH7W8ozjf53edqxLOFENEdvHbie27y9nyixzXn0gzU0HnxSeA==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.1.0"
+    tslib "^1.9.3"
+
 "@material/rtl@^0.42.0":
   version "0.42.0"
   resolved "https://registry.npmjs.org/@material/rtl/-/rtl-0.42.0.tgz#1836e78186c2d8b996f6fbf97adab203535335bc"
@@ -1379,6 +1421,13 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
+"@material/theme@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/theme/-/theme-1.1.0.tgz#9c95dd804168c23c30589fcf09ecc5af5b3d1adc"
+  integrity sha512-YYUV9Rhbx4r/EMb/zoOYJUWjhXChNaLlH1rqt3vpNVyxRcxGqoVMGp5u1XALBCFiD9dACPKLIkKyRYa928nmPQ==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
 "@material/typography@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/typography/-/typography-0.44.1.tgz#a94f01172f9122180bc2ce0aa55658183a35590d"
@@ -1426,6 +1475,17 @@
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
 
+"@rmwc/base@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.2.2.tgz#389a22c634fe9d0336d300673fa78e2e9518c4bf"
+  integrity sha512-JLdk39+1WM+n/j51BCuLEEBB1g8GEQ3gw286lJnZxRLVxql1MYjLylvBYsEt1rL7vmKqcUCiZrjUqjDBFjyL6A==
+  dependencies:
+    "@rmwc/types" "^5.2.1"
+    classnames "^2.2.6"
+    focus-trap "^4.0.2"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
 "@rmwc/button@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/button/-/button-5.1.8.tgz#a42cb930e314e1c91556597986f66bf33acb4ee7"
@@ -1436,6 +1496,18 @@
     "@rmwc/icon" "^5.1.8"
     "@rmwc/provider" "^5.1.8"
     "@rmwc/ripple" "^5.1.8"
+
+"@rmwc/fab@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@rmwc/fab/-/fab-5.2.2.tgz#c5ae6b4bcfd6b777316224f53618da2ae29f2554"
+  integrity sha512-kxqMGuXPSOyCDqWXy1Igt4T17nl0FlaMigC/KR/6R6Ahio9PmniBYw4MXpnq6XycqHJRxLjlcpQKCLvflwi6OA==
+  dependencies:
+    "@material/fab" "^1.0.0"
+    "@rmwc/base" "^5.2.2"
+    "@rmwc/icon" "^5.2.2"
+    "@rmwc/provider" "^5.2.2"
+    "@rmwc/ripple" "^5.2.2"
+    "@rmwc/types" "^5.2.1"
 
 "@rmwc/floating-label@^5.2.0":
   version "5.2.0"
@@ -1490,6 +1562,15 @@
   dependencies:
     "@rmwc/base" "^5.2.1"
     "@rmwc/provider" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
+"@rmwc/icon@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.2.2.tgz#12b9317a3042852df23ce3708cf4ae5a2523dd3e"
+  integrity sha512-5eA7ZVg5mo6NPA0Zf3AFqwW2jk4aMzozOJ0wzrnU39VowvaQUx6djbHQ5+CVGfvEPP8XGqTq+QiYu88aofkDDA==
+  dependencies:
+    "@rmwc/base" "^5.2.2"
+    "@rmwc/provider" "^5.2.2"
     "@rmwc/types" "^5.2.1"
 
 "@rmwc/line-ripple@^5.2.0":
@@ -1568,6 +1649,14 @@
     "@rmwc/base" "^5.2.1"
     "@rmwc/types" "^5.2.1"
 
+"@rmwc/provider@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.2.2.tgz#bf43317131766730c09c70dbfca10488a8fc0be3"
+  integrity sha512-ODiDDGGWmFwdJhsBt08LZRc+SGaZb3kRmr8hp/YgbLCODTnE/6JOmKM/zDw9ZhIwIToYgbi/phBRXEyibkwotA==
+  dependencies:
+    "@rmwc/base" "^5.2.2"
+    "@rmwc/types" "^5.2.1"
+
 "@rmwc/ripple@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.1.8.tgz#3ad5271073e4b246399482d497210b27feb156f3"
@@ -1594,6 +1683,16 @@
     "@material/ripple" "^1.0.0"
     "@rmwc/base" "^5.2.1"
     "@rmwc/provider" "^5.2.1"
+    "@rmwc/types" "^5.2.1"
+
+"@rmwc/ripple@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.2.2.tgz#c5402db694e25287a197785580aa0aefade42e07"
+  integrity sha512-A6W6MG6DUawSmJUIomEOgtZI559R36kgAOm8aSPy8eJUevlpNwtiOP2MYdRlTkRihP4qVqgRyxk6bTBcz1FDlw==
+  dependencies:
+    "@material/ripple" "^1.0.0"
+    "@rmwc/base" "^5.2.2"
+    "@rmwc/provider" "^5.2.2"
     "@rmwc/types" "^5.2.1"
 
 "@rmwc/switch@^5.2.1":
