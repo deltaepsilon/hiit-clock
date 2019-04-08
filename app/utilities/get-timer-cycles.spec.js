@@ -7,9 +7,9 @@ describe('getTimerCycles', () => {
     let result;
 
     beforeEach(() => {
-      const periods = powerlifting.find(({ name }) => name == 'Powerlifting 5x5');
+      const timer = powerlifting.find(({ name }) => name == 'Powerlifting 5x5');
 
-      result = getTimerCycles(periods);
+      result = getTimerCycles(timer);
     });
 
     it('should have 7 cycles', () => {
@@ -25,9 +25,9 @@ describe('getTimerCycles', () => {
     let result;
 
     beforeEach(() => {
-      const periods = tabata.find(({ name }) => name == 'Tabata 20/40');
+      const timer = tabata.find(({ name }) => name == 'Tabata 20/40');
 
-      result = getTimerCycles(periods);
+      result = getTimerCycles(timer);
     });
 
     it('should have 20 cycles', () => {

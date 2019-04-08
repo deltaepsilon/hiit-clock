@@ -1,0 +1,54 @@
+#timer-play {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#timer-play #timer-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+#timer-play #timer-top-bar .time {
+  font-size: 2rem;
+}
+
+#timer-play #timer-bars {
+  background: blue;
+  height: 5rem;
+}
+
+#timer-play #timer-description-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+#timer-play #timer-description {
+  background: gold;
+  width: 50vw;
+}
+
+#timer-play #timer-list {
+  background: purple;
+  width: 50vw;
+}
+
+#timer-play #timer-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-gray-light);
+}
+
+#timer-play #timer-controls [disabled] {
+  visibility: hidden;
+}

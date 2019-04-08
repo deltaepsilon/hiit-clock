@@ -3,7 +3,8 @@ import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-se
 import secondsToTime from '../../utilities/seconds-to-time';
 
 export default ({ totalSeconds, periods }) => {
-  const seconds = totalSeconds || calculateTimerTotalSeconds({ periods });
+  const seconds =
+    typeof totalSeconds == 'undefined' ? calculateTimerTotalSeconds({ periods }) : totalSeconds;
   const time = secondsToTime(seconds);
 
   return <span className="time">{time}</span>;

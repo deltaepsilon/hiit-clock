@@ -20,6 +20,7 @@ export default {
     SETTINGS: 'settings',
     URL_HISTORY: 'urlHistory',
     TIMERS: 'timers',
+    TIMER_STATE: 'timer-state',
   },
   COLORS: {
     PRIMARY: '#011627',
@@ -32,9 +33,17 @@ export default {
   COLORS: {
     WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
     REST: ['rgba(255, 255, 255, .2)'],
+    HIGHLIGHT: '#df2935',
+    BUTTON_ON_WHITE: '#3d3b3c',
   },
   PERIOD_TYPES: {
     WORK: 'work',
     REST: 'rest',
   },
+  PLAY_STATES: {
+    PLAYING: 'playing',
+    PAUSED: 'paused',
+    STOPPED: 'stopped',
+  },
+  SECONDS_TO_SKIP: 10
 };
