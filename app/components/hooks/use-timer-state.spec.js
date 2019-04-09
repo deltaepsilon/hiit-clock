@@ -4,6 +4,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import useTimerState from './use-timer-state';
+import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import uuid from 'uuid/v4';
 const powerlifting = require('../../data/powerlifting.json');
 import constants from '../constants';
@@ -11,6 +12,7 @@ import constants from '../constants';
 describe('useTimerState', () => {
   let timerId;
   let timer;
+  let totalSeconds;
   let wrapper;
   let captureTimerState;
   let effects;
@@ -18,6 +20,7 @@ describe('useTimerState', () => {
   beforeEach(() => {
     timerId = uuid();
     timer = powerlifting.find(({ name }) => name == 'Powerlifting 5x5');
+    totalSeconds = calculateTimerTotalSeconds(timer);
     captureTimerState = jest.fn();
 
     act(() => {
@@ -34,7 +37,7 @@ describe('useTimerState', () => {
 
   it('should initialize with zero seconds', () => {
     expect(captureTimerState).toHaveBeenCalledWith({
-      totalSeconds: 1500,
+      totalSeconds,
       playState: constants.PLAY_STATES.STOPPED,
       secondsElapsed: 0,
     });
@@ -42,10 +45,10 @@ describe('useTimerState', () => {
 
   describe('elapsed time', () => {
     it('should NOT elapse time if stopped', () => {
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 0,
       });
@@ -56,10 +59,10 @@ describe('useTimerState', () => {
 
       act(() => effects.pause());
 
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.PAUSED,
         secondsElapsed: 0,
       });
@@ -69,10 +72,10 @@ describe('useTimerState', () => {
       act(() => effects.play());
 
       captureTimerState.mockClear();
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.PLAYING,
         secondsElapsed: 5,
       });
@@ -80,19 +83,19 @@ describe('useTimerState', () => {
 
     it('should NOT elapse time while paused', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       act(() => effects.pause());
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       act(() => effects.play());
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 10,
       });
@@ -102,17 +105,17 @@ describe('useTimerState', () => {
   describe('skipping', () => {
     it('should skip forward while playing', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(5);
+      advanceTimeToSeconds(5);
 
       act(() => effects.skipForward());
       act(() => effects.skipForward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 25,
       });
@@ -120,17 +123,17 @@ describe('useTimerState', () => {
 
     it('should skip backward while playing', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(100);
+      advanceTimeToSeconds(100);
 
       act(() => effects.skipBackward());
       act(() => effects.skipBackward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 80,
       });
@@ -140,16 +143,16 @@ describe('useTimerState', () => {
   describe('replay', () => {
     it('should reset to 0 seconds after replay', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(100);
+      advanceTimeToSeconds(100);
 
       act(() => effects.replay());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 0,
       });
@@ -159,16 +162,16 @@ describe('useTimerState', () => {
   describe('cycles', () => {
     it('should jump forward one period', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(100);
+      advanceTimeToSeconds(100);
 
       act(() => effects.forward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 120,
       });
@@ -176,17 +179,17 @@ describe('useTimerState', () => {
 
     it('should handle two quick jumps forward', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(1);
+      advanceTimeToSeconds(1);
 
       act(() => effects.forward());
       act(() => effects.forward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 120,
       });
@@ -194,16 +197,16 @@ describe('useTimerState', () => {
 
     it('should jump backward one period', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(100);
+      advanceTimeToSeconds(100);
 
       act(() => effects.backward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 60,
       });
@@ -211,19 +214,35 @@ describe('useTimerState', () => {
 
     it('should handle two quick jumps backward', () => {
       act(() => effects.play());
-      advanceTimeBySeconds(121);
+      advanceTimeToSeconds(121);
 
       act(() => effects.backward());
       act(() => effects.backward());
-      advanceTimeBySeconds(0);
+      advanceTimeToSeconds();
 
       captureTimerState.mockClear();
       act(() => effects.stop());
 
       expect(captureTimerState).toHaveBeenCalledWith({
-        totalSeconds: 1500,
+        totalSeconds,
         playState: constants.PLAY_STATES.STOPPED,
         secondsElapsed: 60,
+      });
+    });
+  });
+
+  describe('automatic playState changes', () => {
+    it('auto-stop one second after', () => {
+      act(() => effects.play());
+      advanceTimeToSeconds(totalSeconds - 1);
+      captureTimerState.mockClear();
+
+      advanceTimeToSeconds(totalSeconds);
+
+      expect(captureTimerState).toHaveBeenCalledWith({
+        totalSeconds,
+        playState: constants.PLAY_STATES.STOPPED,
+        secondsElapsed: 1500,
       });
     });
   });
@@ -239,7 +258,7 @@ function TimerStateWrapper({ timerId, timer, captureTimerState, setEffects }) {
   return null;
 }
 
-function advanceTimeBySeconds(seconds) {
+function advanceTimeToSeconds(seconds = 0) {
   const now = Date.now();
   const realDateNow = global.Date.now.bind(global.Date);
 

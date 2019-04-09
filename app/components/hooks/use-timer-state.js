@@ -45,8 +45,14 @@ export default (timerId, timer) => {
 
       localIntervalTracker = setInterval(() => {
         const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
+        const shouldStop = accumulatedSecondsElapsed >= totalSeconds;
 
-        setSecondsElapsed(accumulatedSecondsElapsed);
+        if (shouldStop) {
+          stop();
+          setSecondsElapsed(totalSeconds);
+        } else {
+          setSecondsElapsed(accumulatedSecondsElapsed);
+        }
       }, 1000 * 1);
 
       setIntervalTracker(localIntervalTracker);
@@ -72,6 +78,9 @@ export default (timerId, timer) => {
 
   function forward(e, adjustment = 0) {
     const stats = getCurrentPeriodStats(timer.periods, secondsElapsed + adjustment);
+
+    if (!stats) return;
+
     const willAdvance = stats.remainder > 0;
 
     if (!willAdvance) {
@@ -88,6 +97,9 @@ export default (timerId, timer) => {
 
   function backward(e, adjustment = 0) {
     const stats = getCurrentPeriodStats(timer.periods, secondsElapsed - adjustment);
+
+    if (!stats) return;
+
     const willReverse = stats.periodSecondsElapsed > 0;
 
     if (!willReverse) {

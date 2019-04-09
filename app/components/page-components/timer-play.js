@@ -4,6 +4,7 @@ import useTimer from '../hooks/use-timer';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import BackButton from '../top-bar/back-button';
 import TotalTime from '../timer/total-time';
+import TimerControls from '../timer/timer-controls';
 import useTimerState from '../hooks/use-timer-state';
 import {
   SkipPrevious,
@@ -36,6 +37,7 @@ export default ({ timerId }) => {
         effects={effects}
         playState={playState}
         isInFlight={secondsElapsed != 0}
+        isAtMax={secondsElapsed == totalSeconds}
         timerId={timerId}
       />
     </div>
@@ -62,60 +64,4 @@ function TimerDescription() {
 
 function TimerList() {
   return <div id="timer-list">TimerList</div>;
-}
-
-function TimerControls({ effects, playState, isInFlight, timerId }) {
-  const { start, stop, pause, forward, backward, skipForward, skipBackward } = effects;
-  const isPlaying = playState == constants.PLAY_STATES.PLAYING;
-  const isPaused = playState == constants.PLAY_STATES.PAUSED;
-  const isStopped = playState == constants.PLAY_STATES.STOPPED;
-  const largeButtonProps = {
-    width: 75,
-    height: 75,
-    fill: constants.COLORS.HIGHLIGHT,
-  };
-  const smallButtonProps = {
-    width: 50,
-    height: 50,
-    fill: constants.COLORS.BUTTON_ON_WHITE,
-  };
-
-  return (
-    <div id="timer-controls">
-      {isPlaying && (
-        <>
-          <a onClick={effects.backward}>
-            <SkipPrevious {...smallButtonProps} />
-          </a>
-          <a onClick={effects.skipBackward}>
-            <Replay10 {...smallButtonProps} />
-          </a>
-          <a onClick={effects.pause}>
-            <PauseCircleFilled {...largeButtonProps} />
-          </a>
-          <a onClick={effects.skipForward}>
-            <Forward10 {...smallButtonProps} />
-          </a>
-          <a onClick={effects.forward}>
-            <SkipNext {...smallButtonProps} />
-          </a>
-        </>
-      )}
-      {(isPaused || isStopped) && (
-        <>
-          <Link href={`/timer?id=${timerId}`}>
-            <span onClick={effects.stop} disabled={!isInFlight}>
-              <Stop {...smallButtonProps} />
-            </span>
-          </Link>
-          <a onClick={effects.play}>
-            <PlayCircleFilled {...largeButtonProps} />
-          </a>
-          <a onClick={effects.replay} disabled={!isInFlight}>
-            <Replay {...smallButtonProps} />
-          </a>
-        </>
-      )}
-    </div>
-  );
 }

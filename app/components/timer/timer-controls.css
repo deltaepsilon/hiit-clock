@@ -1,0 +1,11 @@
+#timer-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-gray-light);
+}
+
+#timer-controls [disabled] {
+  visibility: hidden;
+}
