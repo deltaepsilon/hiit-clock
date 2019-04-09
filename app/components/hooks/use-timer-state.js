@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import constants from '../constants';
+import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
 
 export default (timerId, timer) => {
   const [initialized, setInitialized] = useState(false);
@@ -69,12 +70,36 @@ export default (timerId, timer) => {
     setPlayState(constants.PLAY_STATES.PAUSED);
   }
 
-  function forward() {
-    console.log('forward');
+  function forward(e, adjustment = 0) {
+    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed + adjustment);
+    const willAdvance = stats.remainder > 0;
+
+    if (!willAdvance) {
+      forward(null, 1);
+    } else {
+      const updatedSecondsElapsed = Math.min(
+        totalSeconds,
+        secondsElapsed + stats.remainder + adjustment
+      );
+
+      updateSecondsElapsed(updatedSecondsElapsed);
+    }
   }
 
-  function backward() {
-    console.log('backward');
+  function backward(e, adjustment = 0) {
+    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed - adjustment);
+    const willReverse = stats.periodSecondsElapsed > 0;
+
+    if (!willReverse) {
+      backward(null, 1);
+    } else {
+      const updatedSecondsElapsed = Math.min(
+        totalSeconds,
+        secondsElapsed - stats.periodSecondsElapsed - adjustment
+      );
+
+      updateSecondsElapsed(updatedSecondsElapsed);
+    }
   }
 
   function skipForward() {
@@ -83,22 +108,24 @@ export default (timerId, timer) => {
       secondsElapsed + constants.SECONDS_TO_SKIP
     );
 
-    setSecondsElapsed(updatedSecondsElapsed);
-    setTimeStarted(Date.now());
-    bustCache();
+    updateSecondsElapsed(updatedSecondsElapsed);
   }
 
   function skipBackward() {
     const updatedSecondsElapsed = Math.max(0, secondsElapsed - constants.SECONDS_TO_SKIP);
 
-    setSecondsElapsed(updatedSecondsElapsed);
-    setTimeStarted(Date.now());
-    bustCache();
+    updateSecondsElapsed(updatedSecondsElapsed);
   }
 
   function replay() {
     bustCache();
     setSecondsElapsed(0);
+  }
+
+  function updateSecondsElapsed(updatedSecondsElapsed) {
+    setSecondsElapsed(updatedSecondsElapsed);
+    setTimeStarted(Date.now());
+    bustCache();
   }
 
   function bustCache() {

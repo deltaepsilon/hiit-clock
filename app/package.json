@@ -38,8 +38,8 @@
     "deploy": "firebase deploy",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:hosting": "yarn export && firebase deploy --only hosting",
-    "test": "jest && yarn test:functions",
-    "test:watch": "jest --watchAll",
+    "test": "jest  --runInBand && yarn test:functions",
+    "test:watch": "jest --watchAll --runInBand",
     "test:functions": "cd functions && yarn test",
     "mods:enable": "firebase --open-sesame mods",
     "mods:install": "firebase mods:install ./node_modules/@quiver/firebase-mods/algolia-sync"
