@@ -1,54 +1,51 @@
 stages:
+  - build:install
   - build:client
-  - build:functions
   - test
-  - release
   - deploy
 
 image: mhart/alpine-node:8
 
 variables:
-  NODE_ENV: development
+  NODE_ENV: production
 
 before_script:
   - cd app
 
-build-client:
-  stage: build:client
+build-install:
+  stage: build:install
   cache:
-    key: shared-cache
+    key: node-modules-cache
     paths:
       - app/node_modules/
       - app/functions/node_modules/
-    policy: pull-push
+    policy: push
   script:
     - yarn
-    - yarn export
+    - cd functions && yarn
   artifacts:
     paths:
       - app/out/
 
-build-functions:
-  stage: build:functions
+build-client:
+  stage: build:client
   cache:
-    key: shared-cache
+    key: node-modules-cache
     paths:
       - app/node_modules/
-      - app/functions/node_modules/
-    policy: pull-push
+    policy: pull
   script:
-    - cd functions
-    - yarn
+    - yarn export
   artifacts:
     paths:
-      - app/functions/
+      - app/out/
 
 test:
   stage: test
   variables:
     NODE_ENV: test
   cache:
-    key: shared-cache
+    key: node-modules-cache
     paths:
       - app/node_modules/
       - app/functions/node_modules/
@@ -60,7 +57,7 @@ test:
 deploy:
   stage: deploy
   cache:
-    key: shared-cache
+    key: node-modules-cache
     paths:
       - app/node_modules/
       - app/functions/node_modules/
