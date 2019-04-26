@@ -19,13 +19,13 @@ export default function TimerControls({ effects, playState, isInFlight, isAtMax,
   const isPaused = playState == constants.PLAY_STATES.PAUSED;
   const isStopped = playState == constants.PLAY_STATES.STOPPED;
   const largeButtonProps = {
-    width: 75,
-    height: 75,
+    width: 50,
+    height: 50,
     fill: constants.COLORS.HIGHLIGHT,
   };
   const smallButtonProps = {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
     fill: constants.COLORS.BUTTON_ON_WHITE,
   };
 

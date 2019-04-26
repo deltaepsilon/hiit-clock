@@ -13,16 +13,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0 1rem;
+}
+
+#timer-play h1 {
+  font-size: 1.5rem;
 }
 
 #timer-play #timer-top-bar .time {
   font-size: 2rem;
+  margin-top: 6px;
 }
 
 #timer-play #timer-bars {
   background: blue;
-  height: 5rem;
+  height: 25vh;
 }
 
 #timer-play #timer-description-container {
@@ -33,22 +38,22 @@
 
 #timer-play #timer-description {
   background: gold;
-  width: 50vw;
+  flex: 1;
+  height: calc(100% - 2rem);
+  padding: 1rem;
+  text-align: center;
+  overflow: auto;
+}
+
+#timer-play #timer-description p {
+  margin: 0 0 1rem;
+}
+
+#timer-play #timer-description img {
+  height: 25%;
 }
 
 #timer-play #timer-list {
   background: purple;
-  width: 50vw;
-}
-
-#timer-play #timer-controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1rem;
-  background: var(--color-gray-light);
-}
-
-#timer-play #timer-controls [disabled] {
-  visibility: hidden;
+  flex: 1;
 }

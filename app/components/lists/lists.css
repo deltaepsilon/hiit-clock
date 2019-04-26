@@ -7,3 +7,7 @@
 .list .mdc-list-item__meta {
   color: var(--color-light-background-text);
 }
+
+.list .mdc-list-item__secondary-text {
+  text-align: left;
+}

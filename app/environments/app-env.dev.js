@@ -11,5 +11,6 @@ module.exports = {
     projectId: 'quiver-hiit-clock',
     storageBucket: 'quiver-hiit-clock.appspot.com',
     messagingSenderId: '699614023089',
+    appId: '1:699614023089:web:439e292cf7bbdea0',
   },
 };

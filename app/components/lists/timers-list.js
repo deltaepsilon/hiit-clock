@@ -21,7 +21,7 @@ export default ({ searchLabel, items }) => {
           <Link key={timer.id || timer.objectID} href={`/timer?id=${timer.id || timer.objectID}`}>
             <SimpleListItem
               text={timer.name}
-              secondaryText={<TotalTime timer={timer} />}
+              secondaryText={<TotalTime periods={timer.periods} />}
               metaIcon={<NavigateNextIcon fill={constants.COLORS.PRIMARY} />}
             />
           </Link>

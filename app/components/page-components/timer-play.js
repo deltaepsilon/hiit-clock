@@ -1,22 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import useTimer from '../hooks/use-timer';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import BackButton from '../top-bar/back-button';
 import TotalTime from '../timer/total-time';
 import TimerControls from '../timer/timer-controls';
 import useTimerState from '../hooks/use-timer-state';
-import {
-  SkipPrevious,
-  SkipNext,
-  Replay10,
-  Replay,
-  Forward10,
-  PlayCircleFilled,
-  PauseCircleFilled,
-  Stop,
-} from '../svg';
-import constants from '../constants';
 
 import './timer-play.css';
 
@@ -30,7 +18,7 @@ export default ({ timerId }) => {
       <TimerTopBar timer={timer} timerId={timerId} totalSeconds={totalSeconds} />
       <TimerBars timer={timer} secondsElapsed={secondsElapsed} />
       <div id="timer-description-container">
-        <TimerDescription />
+        <TimerDescription timer={timer} />
         <TimerList />
       </div>
       <TimerControls
@@ -45,11 +33,12 @@ export default ({ timerId }) => {
 };
 
 function TimerTopBar({ timer, timerId, totalSeconds }) {
+  console.log('timer', timer);
   return (
     <div id="timer-top-bar">
       <BackButton visible url={`/timer?id=${timerId}`} />
       <h1>{timer.name}</h1>
-      <TotalTime totalSeconds={totalSeconds || 0} />
+      <TotalTime timer={{ totalSeconds }} />
     </div>
   );
 }
@@ -58,8 +47,15 @@ function TimerBars({ timer, secondsElapsed }) {
   return <div id="timer-bars">{secondsElapsed}</div>;
 }
 
-function TimerDescription() {
-  return <div id="timer-description">TimerDescription</div>;
+function TimerDescription({ timer }) {
+  return (
+    <div id="timer-description">
+      <p>
+        {timer.description}
+      </p>
+      <img src="https://www.fillmurray.com/200/300" alt={`${timer.name} image`} />
+    </div>
+  );
 }
 
 function TimerList() {
