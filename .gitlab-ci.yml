@@ -19,7 +19,7 @@ build-install:
     policy: push
   script:
     - yarn --production=false
-    - cd functions && yarn
+    - cd functions && yarn --production=false
 
 build-client:
   stage: build:client
