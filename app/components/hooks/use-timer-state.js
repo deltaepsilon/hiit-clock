@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import constants from '../constants';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
-import useTimer from './use-timer';
 
-export default (timerId, { onSecondsElapsed }) => {
-  const timer = useTimer(timerId);
+export default (timerId, timer, { onSecondsElapsed }) => {
   const [initialized, setInitialized] = useState(false);
   const [totalSeconds, setTotalSeconds] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
@@ -157,6 +155,7 @@ export default (timerId, { onSecondsElapsed }) => {
   }
 
   return {
+    secondsElapsed,
     totalSeconds,
     playState,
     effects: { play, stop, pause, forward, backward, skipForward, skipBackward, replay },

@@ -6,9 +6,6 @@ stages:
 
 image: mhart/alpine-node:8
 
-variables:
-  NODE_ENV: production
-
 before_script:
   - cd app
 
@@ -21,11 +18,8 @@ build-install:
       - app/functions/node_modules/
     policy: push
   script:
-    - yarn
+    - yarn --production=false
     - cd functions && yarn
-  artifacts:
-    paths:
-      - app/out/
 
 build-client:
   stage: build:client
@@ -42,8 +36,6 @@ build-client:
 
 test:
   stage: test
-  variables:
-    NODE_ENV: test
   cache:
     key: node-modules-cache
     paths:
@@ -65,5 +57,4 @@ deploy:
   only:
     - master
   script:
-    - echo $NODE_ENV
     - yarn deploy

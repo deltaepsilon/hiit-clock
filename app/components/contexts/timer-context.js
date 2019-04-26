@@ -11,7 +11,7 @@ export default ({ timerId, children }) => {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const timer = useTimer(timerId);
   const cycles = useMemo(() => getTimerCycles(timer), [timer]);
-  const { totalSeconds, playState, effects } = useTimerState(timerId, {
+  const { totalSeconds, playState, effects } = useTimerState(timerId, timer, {
     onSecondsElapsed: seconds => setSecondsElapsed(seconds),
   });
   const timerValue = { timerId, timer, cycles, totalSeconds, playState, effects };

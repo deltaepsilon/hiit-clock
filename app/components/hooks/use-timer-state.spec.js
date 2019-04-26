@@ -249,7 +249,9 @@ describe('useTimerState', () => {
 });
 
 function TimerStateWrapper({ timerId, timer, captureTimerState, setEffects }) {
-  const { totalSeconds, playState, secondsElapsed, effects } = useTimerState(timerId, timer);
+  const { secondsElapsed, totalSeconds, playState, effects } = useTimerState(timerId, timer, {
+    onSecondsElapsed: jest.fn(),
+  });
 
   setEffects(effects);
 
