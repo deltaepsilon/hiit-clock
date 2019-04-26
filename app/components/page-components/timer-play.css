@@ -9,51 +9,8 @@
   flex-direction: column;
 }
 
-#timer-play #timer-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-#timer-play h1 {
-  font-size: 1.5rem;
-}
-
-#timer-play #timer-top-bar .time {
-  font-size: 2rem;
-  margin-top: 6px;
-}
-
-#timer-play #timer-bars {
-  background: blue;
-  height: 25vh;
-}
-
 #timer-play #timer-description-container {
   display: flex;
   flex-wrap: wrap;
-  flex: 1;
-}
-
-#timer-play #timer-description {
-  background: gold;
-  flex: 1;
-  height: calc(100% - 2rem);
-  padding: 1rem;
-  text-align: center;
-  overflow: auto;
-}
-
-#timer-play #timer-description p {
-  margin: 0 0 1rem;
-}
-
-#timer-play #timer-description img {
-  height: 25%;
-}
-
-#timer-play #timer-list {
-  background: purple;
   flex: 1;
 }

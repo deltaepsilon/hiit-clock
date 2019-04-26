@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import constants from '../constants';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
+import useTimer from './use-timer';
 
-export default (timerId, timer) => {
+export default (timerId, { onSecondsElapsed }) => {
+  const timer = useTimer(timerId);
   const [initialized, setInitialized] = useState(false);
   const [totalSeconds, setTotalSeconds] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
@@ -11,6 +13,8 @@ export default (timerId, timer) => {
   const [timeStarted, setTimeStarted] = useState(null);
   const [intervalTracker, setIntervalTracker] = useState(null);
   const [cacheBust, setCacheBust] = useState(0);
+
+  useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
 
   useEffect(() => {
     const totalSeconds = calculateTimerTotalSeconds(timer);
@@ -155,7 +159,6 @@ export default (timerId, timer) => {
   return {
     totalSeconds,
     playState,
-    secondsElapsed,
     effects: { play, stop, pause, forward, backward, skipForward, skipBackward, replay },
   };
 };

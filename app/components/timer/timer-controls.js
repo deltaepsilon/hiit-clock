@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import {
   SkipPrevious,
@@ -11,10 +11,15 @@ import {
   Stop,
 } from '../svg';
 import constants from '../constants';
+import { SecondsContext, TimerContext } from '../contexts/timer-context';
 
 import './timer-controls.css';
 
-export default function TimerControls({ effects, playState, isInFlight, isAtMax, timerId }) {
+export default function TimerControls() {
+  const { timerId, totalSeconds, playState, effects } = useContext(TimerContext);
+  const { secondsElapsed } = useContext(SecondsContext);
+  const isInFlight = secondsElapsed != 0;
+  const isAtMax = secondsElapsed == totalSeconds;
   const isPlaying = playState == constants.PLAY_STATES.PLAYING;
   const isPaused = playState == constants.PLAY_STATES.PAUSED;
   const isStopped = playState == constants.PLAY_STATES.STOPPED;

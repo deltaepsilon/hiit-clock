@@ -8,7 +8,6 @@ export default function Firebase() {
       <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js" />
       <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js" />
       <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js" />
-      {/* <script src="https://fireperffw.firebaseapp.com/v003/firebase-performance-standalone.js" /> */}
 
       {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-database.js" /> */}
       {/* <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js" /> */}
