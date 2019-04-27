@@ -1,6 +1,6 @@
 import React from 'react';
 import TimerTopBar from '../timer/timer-top-bar';
-import TimerBars from '../timer/timer-bars';
+import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerDescription from '../timer/timer-description';
 import TimerList from '../timer/timer-list';
 import TimerControls from '../timer/timer-controls';
@@ -13,7 +13,7 @@ export default ({ timerId }) => {
     <TimerProvider timerId={timerId}>
       <div id="timer-play">
         <TimerTopBar />
-        <TimerBars />
+        <TimerProgressBars />
         <div id="timer-description-container">
           <TimerDescription />
           <TimerList />

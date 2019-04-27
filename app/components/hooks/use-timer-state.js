@@ -102,16 +102,14 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
     if (!stats) return;
 
-    const willReverse = stats.periodSecondsElapsed > 0;
-
+    const secondsToRemove = stats.periodSecondsElapsed - adjustment;
+    const willReverse = secondsToRemove > 0;
+    
     if (!willReverse) {
       backward(null, 1);
     } else {
-      const updatedSecondsElapsed = Math.min(
-        totalSeconds,
-        secondsElapsed - stats.periodSecondsElapsed - adjustment
-      );
-
+      const updatedSecondsElapsed = Math.min(totalSeconds, secondsElapsed - secondsToRemove);
+      
       updateSecondsElapsed(updatedSecondsElapsed);
     }
   }

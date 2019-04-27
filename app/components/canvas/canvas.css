@@ -1,0 +1,17 @@
+.canvas-wrapper {
+  position: relative;
+}
+
+.canvas-overlay {
+  display: flex;
+  position: absolute;
+  font-size: 4vw;
+  text-transform: uppercase;
+}
+
+.canvas-overlay > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

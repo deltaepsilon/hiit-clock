@@ -1,0 +1,10 @@
+#timer-bars {
+  height: 25vh;
+}
+
+#timer-bars > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}

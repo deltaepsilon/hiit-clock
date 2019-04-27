@@ -12,7 +12,7 @@ export default function TimerTopBar() {
     <div id="timer-top-bar">
       <BackButton visible url={`/timer?id=${timerId}`} />
       <h1>{timer.name}</h1>
-      <TotalTime timer={{ totalSeconds }} />
+      <TotalTime totalSeconds={ totalSeconds } />
     </div>
   );
 }

@@ -6,10 +6,10 @@
 }
 
 #timer-top-bar h1 {
-  font-size: 1.5rem;
+  font-size: 5vw;
 }
 
 #timer-top-bar .time {
-  font-size: 2rem;
+  font-size: 5vw;
   margin-top: 6px;
 }
