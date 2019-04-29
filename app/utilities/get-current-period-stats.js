@@ -16,6 +16,7 @@ export default (periods, secondsElapsed) => {
         index,
         period,
         periodSecondsElapsed: secondsElapsed - accumulatedSeconds,
+        periodTotalSeconds: period.totalSeconds,
         remainder: updatedSeconds - secondsElapsed,
         periods,
         secondsElapsed,

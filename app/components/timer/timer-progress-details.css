@@ -1,5 +1,15 @@
 #timer-list {
   flex: 1;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 0;
   height: calc(100% - 1rem);
+}
+
+#timer-list .seconds-row {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 1rem 0;
 }

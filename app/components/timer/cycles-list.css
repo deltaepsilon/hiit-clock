@@ -45,12 +45,7 @@
   padding-left: 1rem;
 }
 
-.cycles-list .period-list .period-list-item .separator {
-  flex: 1;
-}
-
 .cycles-list .period-list .period-list-item .time {
-  flex: 1;
   text-align: right;
   padding-right: 1rem;
 }

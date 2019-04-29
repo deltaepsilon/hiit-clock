@@ -4,6 +4,7 @@ import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import getCurrentCycleStats from '../../utilities/get-current-cycle-stats';
+import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
 import addMetadataToCycles from '../../utilities/add-metadata-to-cycles';
 
 export const TimerContext = React.createContext();
@@ -11,6 +12,7 @@ export const SecondsContext = React.createContext();
 
 export default ({ timerId, children }) => {
   const [cycleStats, setCycleStats] = useState({});
+  const [periodStats, setPeriodStats] = useState({});
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const timer = useTimer(timerId);
   const { totalSeconds, playState, effects } = useTimerState(timerId, timer, {
@@ -31,8 +33,10 @@ export default ({ timerId, children }) => {
       timer,
       secondsElapsed,
     });
+    const periodStats = getCurrentPeriodStats(timer.periods, secondsElapsed);
 
     cycleStats && setCycleStats(cycleStats);
+    periodStats && setPeriodStats(periodStats);
   }, [timer, secondsElapsed]);
 
   const timerValue = {
@@ -43,7 +47,7 @@ export default ({ timerId, children }) => {
     playState,
     effects,
   };
-  const secondsValue = { secondsElapsed, cycleStats };
+  const secondsValue = { secondsElapsed, cycleStats, periodStats };
 
   return (
     <TimerContext.Provider value={timerValue}>

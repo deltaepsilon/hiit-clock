@@ -29,7 +29,7 @@ export default ({ cycles, cycleIndexFilter = null }) => {
                       style={{ background: period.periodColor }}
                     >
                       <span className="period-name">{period.name}</span>
-                      <span className="separator" /> <PeriodTime period={period} />
+                      <PeriodTime period={period} />
                     </li>
                   );
                 })}

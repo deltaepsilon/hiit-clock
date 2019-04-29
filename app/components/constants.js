@@ -7,14 +7,14 @@ export default {
   COLORS: {
     PRIMARY: '#011627',
     WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
-    REST: ['rgba(0, 0, 0, .2)'],
+    REST: ['#4f4f4f'],
     HIGHLIGHT: '#df2935',
     BUTTON_ON_WHITE: '#3d3b3c',
     PROGRESS_BAR: 'rgba(0, 0, 0, 0.4)'
   },
   DIMENSIONS: {
     CYCLE_PROGRESS: {
-      INSET_X: 16,
+      INSET_X: 0,
       INSET_Y: 8,
       INSET_PROGRESS: 16,
     },

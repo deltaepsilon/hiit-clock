@@ -11,8 +11,9 @@
   user-select: none;
 }
 
-#timer-play #timer-description-container {
+#timer-play #timer-details-container {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   flex: 1;
 }
