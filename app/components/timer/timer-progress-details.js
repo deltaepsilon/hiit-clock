@@ -12,23 +12,14 @@ export default function TimerProgressDetails() {
   const { periodSecondsElapsed, periodTotalSeconds } = periodStats;
   const renderDetails = periodStats.period;
 
-  console.log('cycleStats', cycleStats);
-  console.log('periodStats', periodStats);
-
   return renderDetails ? (
     <div id="timer-list">
       <div className="seconds-row">
-        <div>
-          <span>
-            <TotalTime totalSeconds={periodSecondsElapsed} />
-          </span>
-          <div>Period</div>
+        <div id="period-time">
+          <TotalTime totalSeconds={periodSecondsElapsed} />
         </div>
-        <div>
-          <span>
-            <TotalTime totalSeconds={cycleSecondsElapsed} />
-          </span>
-          <div>Cycle</div>
+        <div id="time-details">
+          <TotalTime totalSeconds={cycleSecondsElapsed} />
         </div>
       </div>
       <div>

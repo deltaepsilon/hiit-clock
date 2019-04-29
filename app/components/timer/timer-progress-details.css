@@ -9,7 +9,16 @@
 #timer-list .seconds-row {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   text-align: center;
   padding: 1rem 0;
+}
+
+#timer-list #period-time {
+  font-size: 25vw;
+}
+
+#timer-list #time-details {
+  font-size: 10vw;
 }
