@@ -18,7 +18,7 @@ export default function renderCycleProgress(canvas, stats) {
 
     ctx.fillStyle = periodColor;
 
-    ctx.fillRect(leftX, insetY, rightX, height - insetY);
+    ctx.fillRect(leftX, insetY, rightX - leftX, height - insetY);
 
     leftX = rightX;
   }

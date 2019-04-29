@@ -8,8 +8,6 @@ export default function renderCycleProgress(canvas, { timer, totalSeconds, secon
   let i = periods.length;
   let leftX = 0;
 
-  console.table(periods);
-
   ctx.clearRect(0, 0, width, height);
 
   while (i--) {
@@ -20,7 +18,7 @@ export default function renderCycleProgress(canvas, { timer, totalSeconds, secon
 
     ctx.fillStyle = periodColor;
 
-    ctx.fillRect(leftX, insetY, rightX, height - insetY);
+    ctx.fillRect(leftX, insetY, rightX - leftX, height - insetY);
 
     leftX = rightX;
   }

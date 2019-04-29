@@ -44,7 +44,7 @@ export default ({ timerId, children }) => {
 function convertCyclesToPeriodsWithMetadata(cycles, { totalSeconds }) {
   const flatPeriods = cycles.reduce((periods, cycle) => periods.concat(cycle), []);
   const periodsWithMetadata = flatPeriods.map(period => {
-    const percentOfTotal = Math.round((100 * period.totalSeconds) / totalSeconds) / 100;
+    const percentOfTotal = Math.round((10000 * period.totalSeconds) / totalSeconds) / 10000;
 
     return { ...period, percentOfTotal };
   });
