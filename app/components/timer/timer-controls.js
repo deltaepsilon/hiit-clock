@@ -38,20 +38,21 @@ export default function TimerControls() {
     <div id="timer-controls">
       {isPlaying && (
         <>
-          <a onClick={effects.backward}>
-            <SkipPrevious {...smallButtonProps} />
-          </a>
           <a onClick={effects.skipBackward}>
             <Replay10 {...smallButtonProps} />
           </a>
+          <a onClick={effects.backward}>
+            <SkipPrevious {...smallButtonProps} />
+          </a>
+
           <a onClick={effects.pause}>
             <PauseCircleFilled {...largeButtonProps} />
           </a>
-          <a onClick={effects.skipForward}>
-            <Forward10 {...smallButtonProps} />
-          </a>
           <a onClick={effects.forward}>
             <SkipNext {...smallButtonProps} />
+          </a>
+          <a onClick={effects.skipForward}>
+            <Forward10 {...smallButtonProps} />
           </a>
         </>
       )}
@@ -62,8 +63,14 @@ export default function TimerControls() {
               <Stop {...smallButtonProps} />
             </span>
           </Link>
+          <a onClick={effects.backward}>
+            <SkipPrevious {...smallButtonProps} />
+          </a>
           <a onClick={effects.play} disabled={isAtMax}>
             <PlayCircleFilled {...largeButtonProps} />
+          </a>
+          <a onClick={effects.forward} disabled={isAtMax}>
+            <SkipNext {...smallButtonProps} />
           </a>
           <a onClick={effects.replay} disabled={!isInFlight}>
             <Replay {...smallButtonProps} />

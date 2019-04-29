@@ -1,4 +1,7 @@
 #timer-details {
+  position: absolute;
+  top: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +13,9 @@
 }
 
 #timer-details h1 {
-  position: absolute;
-  top: -5px;
-  width: 100%;
-  z-index: -1;
+  font-size: 6vw;
+  line-height: 5rem;
+  margin: 0 0 2rem;
 }
 
 #timer-details .timer-details-list {

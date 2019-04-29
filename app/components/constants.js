@@ -7,7 +7,7 @@ export default {
   COLORS: {
     PRIMARY: '#011627',
     WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
-    REST: ['rgba(255, 255, 255, .2)'],
+    REST: ['rgba(0, 0, 0, .2)'],
     HIGHLIGHT: '#df2935',
     BUTTON_ON_WHITE: '#3d3b3c',
     PROGRESS_BAR: 'rgba(0, 0, 0, 0.4)'

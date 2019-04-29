@@ -2,7 +2,7 @@ import React from 'react';
 import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerDescription from '../timer/timer-description';
-import TimerList from '../timer/timer-list';
+import TimerProgressDetails from '../timer/timer-progress-details';
 import TimerControls from '../timer/timer-controls';
 import TimerProvider from '../contexts/timer-context';
 
@@ -16,7 +16,7 @@ export default ({ timerId }) => {
         <TimerProgressBars />
         <div id="timer-description-container">
           <TimerDescription />
-          <TimerList />
+          <TimerProgressDetails />
         </div>
         <TimerControls />
       </div>
