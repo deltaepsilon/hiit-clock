@@ -15,12 +15,14 @@ describe('getCurrentPeriodStats', () => {
   });
 
   it('just past midway through first period', () => {
+    const period = periods[0];
     const result = getCurrentPeriodStats(periods, 31);
 
     expect(result).toEqual({
       index: 0,
-      period: periods[0],
+      period: period,
       periodSecondsElapsed: 31,
+      periodTotalSeconds: period.totalSeconds,
       remainder: 29,
       periods,
       secondsElapsed: 31,
@@ -28,12 +30,14 @@ describe('getCurrentPeriodStats', () => {
   });
 
   it('just past midway through first period', () => {
+    const period = periods[0];
     const result = getCurrentPeriodStats(periods, 31);
 
     expect(result).toEqual({
       index: 0,
-      period: periods[0],
+      period,
       periodSecondsElapsed: 31,
+      periodTotalSeconds: period.totalSeconds,
       remainder: 29,
       periods,
       secondsElapsed: 31,
@@ -50,6 +54,7 @@ describe('getCurrentPeriodStats', () => {
       index: lastPeriodIndex,
       period: lastPeriod,
       periodSecondsElapsed: 1,
+      periodTotalSeconds: lastPeriod.totalSeconds,
       remainder: lastPeriod.totalSeconds - 1,
       periods,
       secondsElapsed,
@@ -66,6 +71,7 @@ describe('getCurrentPeriodStats', () => {
       index: lastPeriodIndex,
       period: lastPeriod,
       periodSecondsElapsed: lastPeriod.totalSeconds - 1,
+      periodTotalSeconds: lastPeriod.totalSeconds,
       remainder: 1,
       periods,
       secondsElapsed,
@@ -82,6 +88,7 @@ describe('getCurrentPeriodStats', () => {
       index: lastPeriodIndex,
       period: lastPeriod,
       periodSecondsElapsed: lastPeriod.totalSeconds,
+      periodTotalSeconds: lastPeriod.totalSeconds,
       remainder: 0,
       periods,
       secondsElapsed,
