@@ -72,11 +72,10 @@ function getStringPeriod(period) {
 
 function consolidateDanglingRestPeriod(incomingCycles) {
   const cycles = [...incomingCycles];
-  const lastCycle = cycles[cycles.length - 1];
-  const penultimateCycle = cycles[cycles.length - 2];
-  const lastTwoCyclesAreSinglePeriod =
-    lastCycle.length == 1 && penultimateCycle && penultimateCycle.length == 1;
-  const lastPeriod = lastCycle[lastCycle.length - 1];
+  const lastCycle = cycles[cycles.length - 1] || [];
+  const penultimateCycle = cycles[cycles.length - 2] || [];
+  const lastPeriod = lastCycle[lastCycle.length - 1] || {};
+  const lastTwoCyclesAreSinglePeriod = lastCycle.length == 1 && penultimateCycle.length == 1;
   const lastPeriodIsRest = lastPeriod.type == constants.PERIOD_TYPES.REST;
 
   if (lastTwoCyclesAreSinglePeriod && lastPeriodIsRest) {
