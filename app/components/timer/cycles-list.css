@@ -30,11 +30,18 @@
 .cycles-list .period-list {
   flex: 1;
   padding: 0;
+
+  min-height: 4rem;
+  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .cycles-list .period-list .period-list-item {
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0.5rem;
   font-size: 14px;
 }

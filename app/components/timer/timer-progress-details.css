@@ -15,10 +15,30 @@
   padding: 1rem 0;
 }
 
-#timer-list #period-time {
+#timer-list .big-time {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   font-size: 25vw;
 }
 
+#timer-list .small-time,
+#timer-list aside {
+  font-size: 5vw;
+}
+
+#timer-list .small-time:before {
+  content: ' / ';
+}
+
+#timer-list aside {
+  display: inline;
+}
+
 #timer-list #time-details {
+  display: flex;
+  justify-content: space-around;
   font-size: 10vw;
 }
