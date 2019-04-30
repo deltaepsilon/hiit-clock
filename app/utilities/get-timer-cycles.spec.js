@@ -4,6 +4,7 @@ const tabata = require('../data/tabata.json');
 
 describe('getTimerCycles', () => {
   describe('Powerlifting 5x5', () => {
+    const expectedCycleCount = 7;
     let result;
 
     beforeEach(() => {
@@ -12,12 +13,27 @@ describe('getTimerCycles', () => {
       result = getTimerCycles(timer);
     });
 
-    it('should have 7 cycles', () => {
-      expect(result.length).toEqual(7);
+    it(`should have ${expectedCycleCount} cycles`, () => {
+      expect(result.length).toEqual(expectedCycleCount);
     });
 
     it('should match snapshot', () => {
       expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('Powerlifting 2x2', () => {
+    const expectedCycleCount = 4;
+    let result;
+
+    beforeEach(() => {
+      const timer = powerlifting.find(({ name }) => name == 'Powerlifting 2x2');
+
+      result = getTimerCycles(timer);
+    });
+
+    it(`should have ${expectedCycleCount} cycles`, () => {
+      expect(result.length).toEqual(expectedCycleCount);
     });
   });
 

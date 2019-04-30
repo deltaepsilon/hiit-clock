@@ -1,9 +1,12 @@
+import constants from '../components/constants';
+
 export default function findCycles({ periods }) {
-  let cycles = [];
+  const periodsLastIndex = periods.length - 1;
+  const cycles = [];
   let i = periods.length;
 
   while (i--) {
-    const startingIndex = periods.length - i - 1;
+    const startingIndex = periodsLastIndex - i;
     let j = periods.length;
     let smallestMatch;
 
@@ -37,7 +40,9 @@ export default function findCycles({ periods }) {
     }
   }
 
-  return cycles;
+  const cyclesWithoutDanglingRest = consolidateDanglingRestPeriod(cycles);
+
+  return cyclesWithoutDanglingRest;
 }
 
 function getMatchingPeriodsIfMatch(periods) {
@@ -63,4 +68,21 @@ function getPeriodsAreMatch(aPeriods, bPeriods) {
 
 function getStringPeriod(period) {
   return `${period.totalSeconds}|${period.type}`;
+}
+
+function consolidateDanglingRestPeriod(incomingCycles) {
+  const cycles = [...incomingCycles];
+  const lastCycle = cycles[cycles.length - 1];
+  const penultimateCycle = cycles[cycles.length - 2];
+  const lastTwoCyclesAreSinglePeriod =
+    lastCycle.length == 1 && penultimateCycle && penultimateCycle.length == 1;
+  const lastPeriod = lastCycle[lastCycle.length - 1];
+  const lastPeriodIsRest = lastPeriod.type == constants.PERIOD_TYPES.REST;
+
+  if (lastTwoCyclesAreSinglePeriod && lastPeriodIsRest) {
+    penultimateCycle.push(lastPeriod);
+    cycles.pop();
+  }
+
+  return cycles;
 }
