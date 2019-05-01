@@ -3,6 +3,8 @@ import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-se
 import constants from '../constants';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
 
+const UNMOUNT_COMPENSATION_SECONDS = 1;
+
 export default (timerId, timer, { onSecondsElapsed }) => {
   const [initialized, setInitialized] = useState(false);
   const [totalSeconds, setTotalSeconds] = useState(0);
@@ -14,56 +16,100 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
   useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
 
-  useEffect(() => {
-    const totalSeconds = calculateTimerTotalSeconds(timer);
+  useEffect(
+    () =>
+      function onUnmount() {
+        transactTimerState(timerState => {
+          const timer = timerState[timerId];
+          const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
-    setTotalSeconds(totalSeconds);
+          if (timerId && isPlaying) {
+            const now = Date.now();
+            const secondsSinceStart = millisecondsToSeconds(now - timer.timeStarted);
+            const secondsElapsed = secondsSinceStart + timer.secondsElapsed;
+            const timeStarted = now;
 
-    const timerState = getTimerState();
-    const { playState, secondsElapsed } = timerState[timerId] || {};
+            timerState[timerId] = { ...timer, secondsElapsed, timeStarted };
+          }
 
-    playState && setPlayState(playState);
-    secondsElapsed && setSecondsElapsed(secondsElapsed);
+          return timerState;
+        });
+      },
+    [timerId]
+  );
 
-    setInitialized(true);
-  }, [timer]);
+  useEffect(
+    function onTimerChanged() {
+      if (!initialized && timer.periods.length) {
+        const totalSeconds = calculateTimerTotalSeconds(timer);
 
-  useEffect(() => {
-    const shouldUpdate = !!timerId && initialized;
+        setTotalSeconds(totalSeconds);
 
-    shouldUpdate &&
-      transactTimerState(timerState => {
-        timerState[timerId] = { playState, secondsElapsed };
+        const timerState = getTimerState();
+        const { playState, secondsElapsed, timeStarted } = timerState[timerId] || {};
+        const isPlaying = playState == constants.PLAY_STATES.PLAYING;
 
-        return timerState;
-      });
-  }, [timerId, playState, secondsElapsed]);
+        playState && setPlayState(playState);
+        timeStarted && setTimeStarted(timeStarted);
+        secondsElapsed && setSecondsElapsed(secondsElapsed);
 
-  useEffect(() => {
-    let localIntervalTracker;
+        if (timeStarted && isPlaying) {
+          const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
+          const secondsSinceStart = millisecondsToSeconds(Date.now() - timeStarted);
 
-    if (playState == constants.PLAY_STATES.PLAYING) {
-      clearTimerInterval();
-
-      localIntervalTracker = setInterval(() => {
-        const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
-        const shouldStop = accumulatedSecondsElapsed >= totalSeconds;
-
-        if (shouldStop) {
-          stop();
-          setSecondsElapsed(totalSeconds);
-        } else {
-          setSecondsElapsed(accumulatedSecondsElapsed);
+          updateSecondsElapsed(accumulatedSecondsElapsed - secondsSinceStart);
         }
-      }, 1000 * 1);
 
-      setIntervalTracker(localIntervalTracker);
+        setInitialized(true);
+      }
+    },
+    [timer]
+  );
+
+  useEffect(
+    function saveTimerToLocalStorage() {
+      const shouldUpdate = !!timerId && initialized;
+
+      shouldUpdate &&
+        transactTimerState(timerState => {
+          timerState[timerId] = { playState, secondsElapsed, timeStarted };
+
+          return timerState;
+        });
+    },
+    [timerId, playState, secondsElapsed, initialized]
+  );
+
+  useEffect(
+    function handleInterval() {
+      let localIntervalTracker;
+
+      if (playState == constants.PLAY_STATES.PLAYING) {
+        clearTimerInterval();
+
+        localIntervalTracker = setInterval(handleNextTick, 1000 * 1);
+
+        setIntervalTracker(localIntervalTracker);
+      } else {
+        clearTimerInterval();
+      }
+
+      return () => clearInterval(localIntervalTracker);
+    },
+    [timer, playState, cacheBust]
+  );
+
+  function handleNextTick() {
+    const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
+    const shouldStop = accumulatedSecondsElapsed >= totalSeconds;
+
+    if (shouldStop) {
+      stop();
+      setSecondsElapsed(totalSeconds);
     } else {
-      clearTimerInterval();
+      setSecondsElapsed(accumulatedSecondsElapsed);
     }
-
-    return () => clearInterval(localIntervalTracker);
-  }, [timer, playState, cacheBust]);
+  }
 
   function play() {
     setTimeStarted(Date.now());
@@ -104,12 +150,12 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
     const secondsToRemove = stats.periodSecondsElapsed - adjustment;
     const willReverse = secondsToRemove > 0;
-    
+
     if (!willReverse) {
       backward(null, 1);
     } else {
       const updatedSecondsElapsed = Math.min(totalSeconds, secondsElapsed - secondsToRemove);
-      
+
       updateSecondsElapsed(updatedSecondsElapsed);
     }
   }
@@ -152,11 +198,22 @@ export default (timerId, timer, { onSecondsElapsed }) => {
     }
   }
 
+  const effects = {
+    play,
+    stop,
+    pause,
+    forward,
+    backward,
+    skipForward,
+    skipBackward,
+    replay,
+  };
+
   return {
     secondsElapsed,
     totalSeconds,
     playState,
-    effects: { play, stop, pause, forward, backward, skipForward, skipBackward, replay },
+    effects: instrumentEffects(effects),
   };
 };
 
@@ -185,4 +242,23 @@ function getTimerState() {
 
 function setTimerState(timerState) {
   localStorage.setItem(constants.LOCALSTORAGE.TIMER_STATE, JSON.stringify(timerState));
+}
+
+function instrumentEffects(unwrappedEffects) {
+  const effects = {};
+
+  for (const key in unwrappedEffects) {
+    const effect = unwrappedEffects[key];
+
+    effects[key] = wrapEffect(effect);
+  }
+
+  return effects;
+}
+
+function wrapEffect(func) {
+  return (...args) => {
+    // console.info({ func: func.name, args });
+    func(...args);
+  };
 }

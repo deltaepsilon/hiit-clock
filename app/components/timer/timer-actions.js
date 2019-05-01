@@ -1,5 +1,6 @@
 /* globals window */
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import debounce from '../../utilities/debounce';
 import { Fab } from '@rmwc/fab';
 import PlayCircleOutlineSvg from '../svg/play-circle-outline';
@@ -9,6 +10,7 @@ import './timer-actions.css';
 export default ({ timerId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
+  const href = `/timer/play?id=${timerId}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -22,10 +24,12 @@ export default ({ timerId }) => {
 
   return (
     <div id="timer-actions" fixed-actions={String(fixedActions)}>
-      <a href={`/timer/play?id=${timerId}`}>
-        <PlayFab />
-        {fixedActions && <PlayFab className="fixed-fab" />}
-      </a>
+      <Link href={href}>
+        <a href={href}>
+          <PlayFab />
+          {fixedActions && <PlayFab className="fixed-fab" />}
+        </a>
+      </Link>
     </div>
   );
 };
