@@ -24,10 +24,12 @@ export default (timerId, timer, { onSecondsElapsed }) => {
           const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
           if (timerId && isPlaying) {
-            const now = Date.now();
-            const secondsSinceStart = millisecondsToSeconds(now - timer.timeStarted);
-            const secondsElapsed = secondsSinceStart + timer.secondsElapsed;
-            const timeStarted = now;
+            const accumulatedSeconds = getAccumulatedSeconds(
+              timer.timeStarted,
+              timer.secondsElapsed
+            );
+            const secondsElapsed = accumulatedSeconds;
+            const timeStarted = Date.now();
 
             timerState[timerId] = { ...timer, secondsElapsed, timeStarted };
           }
@@ -51,13 +53,11 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
         playState && setPlayState(playState);
         timeStarted && setTimeStarted(timeStarted);
-        secondsElapsed && setSecondsElapsed(secondsElapsed);
 
         if (timeStarted && isPlaying) {
-          const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
-          const secondsSinceStart = millisecondsToSeconds(Date.now() - timeStarted);
-
-          updateSecondsElapsed(accumulatedSecondsElapsed - secondsSinceStart);
+          updateSecondsElapsed(secondsElapsed);
+        } else {
+          secondsElapsed && setSecondsElapsed(secondsElapsed);
         }
 
         setInitialized(true);
