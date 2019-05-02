@@ -7,14 +7,18 @@ const UNMOUNT_COMPENSATION_SECONDS = 1;
 
 export default (timerId, timer, { onSecondsElapsed }) => {
   const [initialized, setInitialized] = useState(false);
-  const [totalSeconds, setTotalSeconds] = useState(0);
+  const [totalMillis, setTotalMillis] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
-  const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [millisElapsed, setMillisElapsed] = useState(0);
   const [timeStarted, setTimeStarted] = useState(null);
   const [intervalTracker, setIntervalTracker] = useState(null);
   const [cacheBust, setCacheBust] = useState(0);
 
-  useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
+  useEffect(() => {
+    const secondsElapsed = millisecondsToSeconds(millisElapsed);
+
+    onSecondsElapsed(secondsElapsed);
+  }, [millisElapsed]);
 
   useEffect(
     () =>
@@ -24,14 +28,11 @@ export default (timerId, timer, { onSecondsElapsed }) => {
           const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
           if (timerId && isPlaying) {
-            const accumulatedSeconds = getAccumulatedSeconds(
-              timer.timeStarted,
-              timer.secondsElapsed
-            );
-            const secondsElapsed = accumulatedSeconds;
+            const accumulatedMillis = getAccumulatedMillis(timer.timeStarted, timer.millisElapsed);
+            const millisElapsed = accumulatedMillis;
             const timeStarted = Date.now();
 
-            timerState[timerId] = { ...timer, secondsElapsed, timeStarted };
+            timerState[timerId] = { ...timer, millisElapsed, timeStarted };
           }
 
           return timerState;
@@ -44,20 +45,21 @@ export default (timerId, timer, { onSecondsElapsed }) => {
     function onTimerChanged() {
       if (!initialized && timer.periods.length) {
         const totalSeconds = calculateTimerTotalSeconds(timer);
+        const totalMillis = secondsToMilliseconds(totalSeconds);
 
-        setTotalSeconds(totalSeconds);
+        setTotalMillis(totalMillis);
 
         const timerState = getTimerState();
-        const { playState, secondsElapsed, timeStarted } = timerState[timerId] || {};
+        const { playState, millisElapsed, timeStarted } = timerState[timerId] || {};
         const isPlaying = playState == constants.PLAY_STATES.PLAYING;
 
         playState && setPlayState(playState);
         timeStarted && setTimeStarted(timeStarted);
 
         if (timeStarted && isPlaying) {
-          updateSecondsElapsed(secondsElapsed);
+          updateMillisElapsed(millisElapsed);
         } else {
-          secondsElapsed && setSecondsElapsed(secondsElapsed);
+          millisElapsed && setMillisElapsed(millisElapsed);
         }
 
         setInitialized(true);
@@ -72,12 +74,12 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
       shouldUpdate &&
         transactTimerState(timerState => {
-          timerState[timerId] = { playState, secondsElapsed, timeStarted };
+          timerState[timerId] = { playState, millisElapsed, timeStarted };
 
           return timerState;
         });
     },
-    [timerId, playState, secondsElapsed, initialized]
+    [timerId, playState, millisElapsed, initialized]
   );
 
   useEffect(
@@ -100,14 +102,14 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   );
 
   function handleNextTick() {
-    const accumulatedSecondsElapsed = getAccumulatedSeconds(timeStarted, secondsElapsed);
-    const shouldStop = accumulatedSecondsElapsed >= totalSeconds;
+    const accumulatedMillisElapsed = getAccumulatedMillis(timeStarted, millisElapsed);
+    const shouldStop = accumulatedMillisElapsed >= totalMillis;
 
     if (shouldStop) {
       stop();
-      setSecondsElapsed(totalSeconds);
+      setMillisElapsed(totalMillis);
     } else {
-      setSecondsElapsed(accumulatedSecondsElapsed);
+      setMillisElapsed(accumulatedMillisElapsed);
     }
   }
 
@@ -124,8 +126,10 @@ export default (timerId, timer, { onSecondsElapsed }) => {
     setPlayState(constants.PLAY_STATES.PAUSED);
   }
 
-  function forward(e, adjustment = 0) {
-    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed + adjustment);
+  function forward(e, adjustmentSeconds = 0) {
+    const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
+    const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
+    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
 
     if (!stats) return;
 
@@ -134,54 +138,57 @@ export default (timerId, timer, { onSecondsElapsed }) => {
     if (!willAdvance) {
       forward(null, 1);
     } else {
-      const updatedSecondsElapsed = Math.min(
-        totalSeconds,
-        secondsElapsed + stats.remainder + adjustment
+      const remainderMillis = secondsToMilliseconds(stats.remainder);
+      const updatedMillisElapsed = Math.min(
+        totalMillis,
+        millisElapsed + remainderMillis + adjustmentMillis
       );
 
-      updateSecondsElapsed(updatedSecondsElapsed);
+      updateMillisElapsed(updatedMillisElapsed);
     }
   }
 
-  function backward(e, adjustment = 0) {
-    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed - adjustment);
+  function backward(e, adjustmentSeconds = 0) {
+    const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
+    const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
+    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
 
     if (!stats) return;
 
-    const secondsToRemove = stats.periodSecondsElapsed - adjustment;
-    const willReverse = secondsToRemove > 0;
+    const periodMillisElapsed = secondsToMilliseconds(stats.periodSecondsElapsed);
+    const millisToRemove = periodMillisElapsed - adjustmentMillis;
+    const willReverse = millisToRemove > 0;
 
     if (!willReverse) {
       backward(null, 1);
     } else {
-      const updatedSecondsElapsed = Math.min(totalSeconds, secondsElapsed - secondsToRemove);
+      const updatedMillisElapsed = Math.min(totalMillis, millisElapsed - millisToRemove);
 
-      updateSecondsElapsed(updatedSecondsElapsed);
+      updateMillisElapsed(updatedMillisElapsed);
     }
   }
 
   function skipForward() {
-    const updatedSecondsElapsed = Math.min(
-      totalSeconds,
-      secondsElapsed + constants.SECONDS_TO_SKIP
-    );
+    const millisToSkip = secondsToMilliseconds(constants.SECONDS_TO_SKIP);
+    const updatedMillisElapsed = Math.min(totalMillis, millisElapsed + millisToSkip);
 
-    updateSecondsElapsed(updatedSecondsElapsed);
+    updateMillisElapsed(updatedMillisElapsed);
   }
 
   function skipBackward() {
-    const updatedSecondsElapsed = Math.max(0, secondsElapsed - constants.SECONDS_TO_SKIP);
+    const millisToSkip = secondsToMilliseconds(constants.SECONDS_TO_SKIP);
+    const updatedMillisElapsed = Math.max(0, millisElapsed - millisToSkip);
 
-    updateSecondsElapsed(updatedSecondsElapsed);
+    updateMillisElapsed(updatedMillisElapsed);
   }
 
   function replay() {
     bustCache();
-    setSecondsElapsed(0);
+    setMillisElapsed(0);
   }
 
-  function updateSecondsElapsed(updatedSecondsElapsed) {
-    setSecondsElapsed(updatedSecondsElapsed);
+  function updateMillisElapsed(updatedMillisElapsed) {
+    setMillisElapsed(updatedMillisElapsed);
     setTimeStarted(Date.now());
     bustCache();
   }
@@ -210,22 +217,26 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   };
 
   return {
-    secondsElapsed,
-    totalSeconds,
+    secondsElapsed: millisecondsToSeconds(millisElapsed),
+    totalSeconds: millisecondsToSeconds(totalMillis),
     playState,
     effects: instrumentEffects(effects),
   };
 };
 
-function getAccumulatedSeconds(timeStarted, secondsElapsed) {
-  const secondsSinceStart = millisecondsToSeconds(Date.now() - timeStarted);
-  const accumulatedSecondsElapsed = secondsSinceStart + secondsElapsed;
+function getAccumulatedMillis(timeStarted, millisElapsed) {
+  const millisSinceStart = Date.now() - timeStarted;
+  const accumulatedMillisElapsed = millisSinceStart + millisElapsed;
 
-  return accumulatedSecondsElapsed;
+  return accumulatedMillisElapsed;
 }
 
 function millisecondsToSeconds(millis) {
   return Math.floor(millis / 1000);
+}
+
+function secondsToMilliseconds(seconds) {
+  return seconds * 1000;
 }
 
 function transactTimerState(transaction) {
