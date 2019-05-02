@@ -13,7 +13,6 @@ describe('useTimerState', () => {
   let timerId;
   let timer;
   let totalSeconds;
-  let wrapper;
   let captureTimerState;
   let effects;
 
@@ -24,7 +23,7 @@ describe('useTimerState', () => {
     captureTimerState = jest.fn();
 
     act(() => {
-      wrapper = mount(
+      mount(
         <TimerStateWrapper
           timerId={timerId}
           timer={timer}
@@ -33,6 +32,10 @@ describe('useTimerState', () => {
         />
       );
     });
+  });
+
+  afterEach(() => {
+    act(() => effects.stop());
   });
 
   it('should initialize with zero seconds', () => {
