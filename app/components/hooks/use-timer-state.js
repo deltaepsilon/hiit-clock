@@ -9,16 +9,15 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   const [initialized, setInitialized] = useState(false);
   const [totalMillis, setTotalMillis] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [millisElapsed, setMillisElapsed] = useState(0);
   const [timeStarted, setTimeStarted] = useState(null);
   const [intervalTracker, setIntervalTracker] = useState(null);
   const [cacheBust, setCacheBust] = useState(0);
 
-  useEffect(() => {
-    const secondsElapsed = millisecondsToSeconds(millisElapsed);
-
-    onSecondsElapsed(secondsElapsed);
-  }, [millisElapsed]);
+  useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
+  
+  useEffect(() => setSecondsElapsed(millisecondsToSeconds(millisElapsed)), [millisElapsed]);
 
   useEffect(
     () =>
@@ -31,8 +30,9 @@ export default (timerId, timer, { onSecondsElapsed }) => {
             const accumulatedMillis = getAccumulatedMillis(timer.timeStarted, timer.millisElapsed);
             const millisElapsed = accumulatedMillis;
             const timeStarted = Date.now();
+            const updatedTimerState = { ...timer, millisElapsed, timeStarted };
 
-            timerState[timerId] = { ...timer, millisElapsed, timeStarted };
+            timerState[timerId] = updatedTimerState;
           }
 
           return timerState;
@@ -58,6 +58,9 @@ export default (timerId, timer, { onSecondsElapsed }) => {
 
         if (timeStarted && isPlaying) {
           updateMillisElapsed(millisElapsed);
+          /**
+           * updateMillisElapsed sets timeStarted to now and sets millisElapsed
+           */
         } else {
           millisElapsed && setMillisElapsed(millisElapsed);
         }
@@ -89,7 +92,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
       if (playState == constants.PLAY_STATES.PLAYING) {
         clearTimerInterval();
 
-        localIntervalTracker = setInterval(handleNextTick, 1000 * 1);
+        localIntervalTracker = setInterval(handleNextTick, constants.TIMES.MILLIS_TO_POLL);
 
         setIntervalTracker(localIntervalTracker);
       } else {
@@ -169,14 +172,14 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   }
 
   function skipForward() {
-    const millisToSkip = secondsToMilliseconds(constants.SECONDS_TO_SKIP);
+    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
     const updatedMillisElapsed = Math.min(totalMillis, millisElapsed + millisToSkip);
 
     updateMillisElapsed(updatedMillisElapsed);
   }
 
   function skipBackward() {
-    const millisToSkip = secondsToMilliseconds(constants.SECONDS_TO_SKIP);
+    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
     const updatedMillisElapsed = Math.max(0, millisElapsed - millisToSkip);
 
     updateMillisElapsed(updatedMillisElapsed);
@@ -217,7 +220,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   };
 
   return {
-    secondsElapsed: millisecondsToSeconds(millisElapsed),
+    secondsElapsed,
     totalSeconds: millisecondsToSeconds(totalMillis),
     playState,
     effects: instrumentEffects(effects),

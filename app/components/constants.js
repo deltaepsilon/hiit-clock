@@ -10,7 +10,7 @@ export default {
     REST: ['#4f4f4f'],
     HIGHLIGHT: '#df2935',
     BUTTON_ON_WHITE: '#3d3b3c',
-    PROGRESS_BAR: 'rgba(0, 0, 0, 0.4)'
+    PROGRESS_BAR: 'rgba(0, 0, 0, 0.4)',
   },
   DIMENSIONS: {
     CYCLE_PROGRESS: {
@@ -45,7 +45,10 @@ export default {
     SETTINGS: '/settings',
     TIMER: '/timer',
   },
-  SECONDS_TO_SKIP: 10,
+  TIMES: {
+    SECONDS_TO_SKIP: 10,
+    MILLIS_TO_POLL: 100,
+  },
   TITLES: {
     '/': 'HiiT Clock',
     '/login/': 'Login',
