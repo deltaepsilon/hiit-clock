@@ -39,11 +39,22 @@ export default {
     STOPPED: 'stopped',
   },
   ROUTES: {
-    BROWSE: '/',
-    LOGIN: '/login',
-    DASHBOARD: '/dashboard',
-    SETTINGS: '/settings',
-    TIMER: '/timer',
+    LANDING: '/',
+    LOGIN: '/login/',
+    DASHBOARD: '/dashboard/',
+    SETTINGS: '/settings/',
+    TIMER: {
+      ROOT: '/timer/',
+      PLAY: '/play',
+      EDIT: '/edit',
+    },
+    BROWSE: {
+      CROSSFIT: '/browse/crossfit',
+      CUSTOM: '/browse/custom',
+      POWERLIFTING: '/browse/powerlifting',
+      STRONGLIFTS: '/browse/stronglifts',
+      TABATA: '/browse/tabata',
+    },
   },
   TIMES: {
     SECONDS_TO_SKIP: 10,
@@ -52,7 +63,7 @@ export default {
   TITLES: {
     '/': 'HiiT Clock',
     '/login/': 'Login',
-    '/dashboard': 'HiiT Clock',
-    '/settings': 'settings',
+    '/dashboard/': 'HiiT Clock',
+    '/settings/': 'settings',
   },
 };

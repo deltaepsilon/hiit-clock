@@ -34,7 +34,3 @@ export default ({ timerId }) => {
     </div>
   );
 };
-
-function filterPeriodsByType(timer, type) {
-  return timer.periods.filter(period => period.type == type);
-}

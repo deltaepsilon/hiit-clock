@@ -10,6 +10,22 @@
   margin: 1rem 0 0;
 }
 
+#landing .user-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+#landing .user-actions a {
+  text-decoration: none;
+  width: 100%;
+  min-width: 12rem;
+  max-width: 15rem;
+  margin: 1rem;
+}
+
 #landing .cta {
   justify-content: center;
   min-height: 25vh;
@@ -59,7 +75,7 @@
   width: 100%;
 }
 
-#landing .mdc-button__label {
+#landing .cta .mdc-button__label {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,13 +84,13 @@
 }
 
 @media (min-width: 1500px) {
-  #landing .mdc-button__label {
+  #landing .cta .mdc-button__label {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 500px) {
-  #landing .mdc-button__label {
+  #landing .cta .mdc-button__label {
     font-size: 0.75rem;
   }
 }

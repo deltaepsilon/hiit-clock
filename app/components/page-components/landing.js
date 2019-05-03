@@ -1,19 +1,65 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { Button } from '@rmwc/button';
+import { IconButton } from '@rmwc/icon-button';
 import NavigateNextIcon from '../svg/navigate-next';
+import { AuthenticationContext } from '../contexts/authentication-context';
+import { AddCircleOutline, Dashboard, PlayCircleOutline } from '../svg';
+import constants from '../constants';
 
 import './landing.css';
 
 export default props => {
+  const { currentUser } = useContext(AuthenticationContext);
+  const showCreate = true;
+  const showLogin = !currentUser || true;
+  const showDashboard = !!currentUser || true;
+  const loginButtonHref = !currentUser ? constants.ROUTES.LOGIN : constants.ROUTES.DASHBOARD;
+
   return (
     <div id="landing">
       <h1>HiiT Clock</h1>
+      <p>Create your own timer</p>
+      <div className="user-actions">
+        {showDashboard && (
+          <Link href={constants.ROUTES.DASHBOARD}>
+            <Button
+              icon={<Dashboard width={18} height={18} />}
+              label="Dashboard"
+              raised
+              tag="a"
+              href={constants.ROUTES.DASHBOARD}
+            />
+          </Link>
+        )}
+        {showCreate && (
+          <Link href={loginButtonHref}>
+            <Button
+              icon={<AddCircleOutline width={18} height={18} />}
+              label="Create A Timer"
+              raised
+              tag="a"
+              href={loginButtonHref}
+            />
+          </Link>
+        )}
+        {showLogin && (
+          <Link href={loginButtonHref}>
+            <Button
+              icon={<PlayCircleOutline width={18} height={18} />}
+              label="Dashboard"
+              raised
+              tag="a"
+              href={loginButtonHref}
+            />
+          </Link>
+        )}
+      </div>
       <section className="cta">
         <ul>
           <li>
-            <Link href="/browse/crossfit">
-              <Button raised className="crossfit">
+            <Link href={constants.ROUTES.BROWSE.CROSSFIT}>
+              <Button raised tag="a" href={constants.ROUTES.BROWSE.CROSSFIT} className="crossfit">
                 <span>🏋</span>
                 <span>Crossfit</span>
                 <span>
@@ -23,8 +69,13 @@ export default props => {
             </Link>
           </li>
           <li>
-            <Link href="/browse/powerlifting">
-              <Button raised className="powerlifting">
+            <Link href={constants.ROUTES.BROWSE.POWERLIFTING}>
+              <Button
+                raised
+                tag="a"
+                href={constants.ROUTES.BROWSE.POWERLIFTING}
+                className="powerlifting"
+              >
                 <span>⚡</span>
                 <span>Powerlifting</span>
                 <span>
@@ -34,8 +85,13 @@ export default props => {
             </Link>
           </li>
           <li>
-            <Link href="/browse/stronglifts">
-              <Button raised className="stronglifts">
+            <Link href={constants.ROUTES.BROWSE.STRONGLIFTS}>
+              <Button
+                raised
+                tag="a"
+                href={constants.ROUTES.BROWSE.STRONGLIFTS}
+                className="stronglifts"
+              >
                 <span>💪</span>
                 <span>Stronglifts</span>
                 <span>
@@ -45,8 +101,8 @@ export default props => {
             </Link>
           </li>
           <li>
-            <Link href="/browse/tabata">
-              <Button raised className="tabata">
+            <Link href={constants.ROUTES.BROWSE.TABATA}>
+              <Button raised tag="a" href={constants.ROUTES.BROWSE.TABATA} className="tabata">
                 <span>⏰</span>
                 <span>tabata</span>
                 <span>
@@ -56,8 +112,8 @@ export default props => {
             </Link>
           </li>
           <li>
-            <Link href="/browse/custom">
-              <Button raised>
+            <Link href={constants.ROUTES.BROWSE.CUSTOM}>
+              <Button raised tag="a" href={constants.ROUTES.BROWSE.CUSTOM} className="custom">
                 <span>✏️</span>
                 <span>Custom</span>
                 <span>
@@ -68,8 +124,8 @@ export default props => {
           </li>
         </ul>
       </section>
-      
-      <hr/>
+
+      <hr />
 
       <section>
         <h2>Optimized for Phones</h2>

@@ -20,7 +20,12 @@
   --color-light-background-text: var(--mdc-theme-primary);
 
   /* Fonts */
-  --font-book: 'factoria', Arial, Helvetica, sans-serif;
+  /* --font-book: 'mono45-headline', monospace; */
+  /* --font-book: 'ocr-a-std', monospace; */
+  /* --font-book: 'courier-prime', monospace; */
+  /* --font-book: 'ibm-plex-mono', monospace; */
+  /* --font-book: 'antartican-mono', monospace; */
+  --font-book: 't26-carbon', monospace;
   --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
 
   /* themes */
@@ -47,6 +52,7 @@ body {
 body,
 .text-book {
   font-family: var(--font-book);
+  /* font-weight: 400; */
   font-weight: 500;
   font-style: normal;
 }
@@ -99,9 +105,12 @@ a:visited {
   color: var(--mdc-theme-secondary-text) !important;
 }
 
+.mdc-button,
 .mdc-text-field__input,
 .mdc-text-field-helper-text,
 .mdc-floating-label,
-.mdc-form-field {
+.mdc-form-field,
+.mdc-list,
+.mdc-list-item__secondary-text {
   font-family: var(--font-book) !important;
 }

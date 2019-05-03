@@ -4,7 +4,7 @@ import addMetadataToCycles from '../../utilities/add-metadata-to-cycles';
 
 import './cycles-list.css';
 
-export default ({ cycles, cycleIndexFilter = null }) => {
+export default React.memo(({ cycles, cycleIndexFilter = null }) => {
   const cyclesWithMetadata = addMetadataToCycles(cycles);
 
   return (
@@ -40,4 +40,4 @@ export default ({ cycles, cycleIndexFilter = null }) => {
       })}
     </ul>
   );
-};
+});

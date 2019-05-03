@@ -2,6 +2,8 @@
   display: flex;
   width: calc(100vw - 2rem);
   padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 #top-bar h1 {

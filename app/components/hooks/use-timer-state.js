@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import constants from '../constants';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
@@ -16,7 +16,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   const [cacheBust, setCacheBust] = useState(0);
 
   useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
-  
+
   useEffect(() => setSecondsElapsed(millisecondsToSeconds(millisElapsed)), [millisElapsed]);
 
   useEffect(
@@ -219,12 +219,17 @@ export default (timerId, timer, { onSecondsElapsed }) => {
     replay,
   };
 
-  return {
-    secondsElapsed,
-    totalSeconds: millisecondsToSeconds(totalMillis),
-    playState,
-    effects: instrumentEffects(effects),
-  };
+  const result = useMemo(
+    () => ({
+      secondsElapsed,
+      totalSeconds: millisecondsToSeconds(totalMillis),
+      playState,
+      effects: instrumentEffects(effects),
+    }),
+    [secondsElapsed, totalMillis]
+  );
+
+  return result;
 };
 
 function getAccumulatedMillis(timeStarted, millisElapsed) {

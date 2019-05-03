@@ -27,54 +27,112 @@ export default function TimerProgressDetails() {
   }, [modeIndex]);
 
   const shouldRenderDetails = periodStats.period;
+  const detailsViewProps = {
+    cycleMode,
+    isPeriod,
+    isCycle,
+    isTime,
+    isDescription,
+    periodSecondsElapsed,
+    periodTotalSeconds,
+    cycleSecondsElapsed,
+    cycleTotalSeconds,
+    secondsElapsed,
+    totalSeconds,
+    cycles,
+    cycleStats,
+    timer,
+  };
 
-  return shouldRenderDetails ? (
+  return shouldRenderDetails ? <DetailsView {...detailsViewProps} /> : null;
+}
+
+const DetailsView = React.memo(
+  ({
+    cycleMode,
+    isPeriod,
+    isCycle,
+    isTime,
+    isDescription,
+    periodSecondsElapsed,
+    periodTotalSeconds,
+    cycleSecondsElapsed,
+    cycleTotalSeconds,
+    secondsElapsed,
+    totalSeconds,
+    cycles,
+    cycleStats,
+    timer,
+  }) => (
     <div id="timer-list">
       <div className="seconds-row" onClick={cycleMode}>
         {isPeriod && (
-          <>
-            <div className="big-time">
-              <TotalTime totalSeconds={periodSecondsElapsed} />
-            </div>
-            <div>
-              <aside>Period</aside>
-              <span className="small-time">
-                <TotalTime totalSeconds={periodTotalSeconds} />
-              </span>
-            </div>
-          </>
+          <PeriodView
+            periodSecondsElapsed={periodSecondsElapsed}
+            periodTotalSeconds={periodTotalSeconds}
+          />
         )}
         {isCycle && (
-          <>
-            <div className="big-time">
-              <TotalTime totalSeconds={cycleSecondsElapsed} />
-            </div>
-            <div>
-              <aside>Cycle</aside>
-              <span className="small-time">
-                <TotalTime totalSeconds={cycleTotalSeconds} />
-              </span>
-            </div>
-          </>
+          <CycleView
+            cycleSecondsElapsed={cycleSecondsElapsed}
+            cycleTotalSeconds={cycleTotalSeconds}
+          />
         )}
-        {isTime && (
-          <>
-            <div className="big-time">
-              <TotalTime totalSeconds={secondsElapsed} />
-            </div>
-            <div>
-              <aside>Total</aside>
-              <span className="small-time">
-                <TotalTime totalSeconds={totalSeconds} />
-              </span>
-            </div>
-          </>
-        )}
+        {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
         {isDescription && <p>{timer.description}</p>}
       </div>
       <div>
         <CyclesList cycles={cycles} cycleIndexFilter={cycleStats.index} />
       </div>
     </div>
-  ) : null;
+  ),
+  (prevProps, nextProps) => prevProps.secondsElapsed == nextProps.secondsElapsed
+);
+
+function PeriodView({ periodSecondsElapsed, periodTotalSeconds }) {
+  return (
+    <>
+      <div className="big-time">
+        <TotalTime totalSeconds={periodSecondsElapsed} />
+      </div>
+      <div>
+        <aside>Period</aside>
+        <span className="small-time">
+          <TotalTime totalSeconds={periodTotalSeconds} />
+        </span>
+      </div>
+    </>
+  );
+}
+
+function CycleView({ cycleSecondsElapsed, cycleTotalSeconds }) {
+  return (
+    <>
+      <div className="big-time">
+        <TotalTime totalSeconds={cycleSecondsElapsed} />
+      </div>
+      <div>
+        <aside>Cycle</aside>
+        <span className="small-time">
+          <TotalTime totalSeconds={cycleTotalSeconds} />
+        </span>
+      </div>
+    </>
+  );
+}
+
+function TimeView({ secondsElapsed, totalSeconds }) {
+  return (
+    <>
+      <div className="big-time">
+        <TotalTime totalSeconds={secondsElapsed} />
+      </div>
+      <div>
+        <aside>Total</aside>
+        <span className="small-time">
+          <TotalTime totalSeconds={totalSeconds} />
+        </span>
+      </div>
+    </>
+  );
 }

@@ -1,6 +1,8 @@
 import AccountCircle from './account-circle';
+import AddCircleOutline from './add-circle-outline';
 import ArrowBack from './arrow-back';
 import Close from './close';
+import Dashboard from './dashboard';
 import Forward10 from './forward-10';
 import HiitClock from './hiit-clock';
 import NavigateNext from './navigate-next';
@@ -15,8 +17,10 @@ import Stop from './stop';
 
 export {
   AccountCircle,
+  AddCircleOutline,
   ArrowBack,
   Close,
+  Dashboard,
   Forward10,
   HiitClock,
   NavigateNext,

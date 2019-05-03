@@ -23,16 +23,6 @@ export default function TimerControls() {
   const isPlaying = playState == constants.PLAY_STATES.PLAYING;
   const isPaused = playState == constants.PLAY_STATES.PAUSED;
   const isStopped = playState == constants.PLAY_STATES.STOPPED;
-  const largeButtonProps = {
-    width: 50,
-    height: 50,
-    fill: constants.COLORS.HIGHLIGHT,
-  };
-  const smallButtonProps = {
-    width: 30,
-    height: 30,
-    fill: constants.COLORS.BUTTON_ON_WHITE,
-  };
 
   return (
     <div id="timer-controls">
@@ -80,3 +70,14 @@ export default function TimerControls() {
     </div>
   );
 }
+
+const largeButtonProps = {
+  width: 50,
+  height: 50,
+  fill: constants.COLORS.HIGHLIGHT,
+};
+const smallButtonProps = {
+  width: 30,
+  height: 30,
+  fill: constants.COLORS.BUTTON_ON_WHITE,
+};

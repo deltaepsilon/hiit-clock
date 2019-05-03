@@ -39,15 +39,22 @@ export default ({ timerId, children }) => {
     periodStats && setPeriodStats(periodStats);
   }, [timer, secondsElapsed]);
 
-  const timerValue = {
-    timerId,
-    timer: { ...timer, periods },
-    cycles,
-    totalSeconds,
-    playState,
-    effects,
-  };
-  const secondsValue = { secondsElapsed, cycleStats, periodStats };
+  const timerValue = useMemo(
+    () => ({
+      timerId,
+      timer: { ...timer, periods },
+      cycles,
+      totalSeconds,
+      playState,
+      effects,
+    }),
+    [timerId, timer, cycles, periods, effects, playState, totalSeconds]
+  );
+  const secondsValue = useMemo(() => ({ secondsElapsed, cycleStats, periodStats }), [
+    periodStats,
+    cycleStats,
+    secondsElapsed,
+  ]);
 
   return (
     <TimerContext.Provider value={timerValue}>
