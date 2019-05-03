@@ -4,7 +4,7 @@ export default function renderCycleProgress(canvas, { timer, totalSeconds, secon
   const ctx = canvas.getContext('2d');
   const { width, height } = canvas;
   const { periods } = timer;
-  const percentComplete = secondsElapsed / totalSeconds;
+  const percentComplete = Math.round((10000 * secondsElapsed) / totalSeconds) / 10000;
   let i = periods.length;
   let leftX = 0;
 

@@ -20,12 +20,7 @@
   --color-light-background-text: var(--mdc-theme-primary);
 
   /* Fonts */
-  /* --font-book: 'mono45-headline', monospace; */
-  /* --font-book: 'ocr-a-std', monospace; */
-  /* --font-book: 'courier-prime', monospace; */
-  /* --font-book: 'ibm-plex-mono', monospace; */
-  /* --font-book: 'antartican-mono', monospace; */
-  --font-book: 't26-carbon', monospace;
+  --font-book: 'antartican-mono', monospace;
   --font-bold: 'prohibition', Arial, Helvetica, sans-serif;
 
   /* themes */

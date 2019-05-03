@@ -4,7 +4,7 @@ export default function renderCycleProgress(canvas, stats) {
   const ctx = canvas.getContext('2d');
   const { width, height } = canvas;
   const { cycle, cycleSecondsElapsed, cycleTotalSeconds } = stats;
-  const cyclePercentComplete = Math.round((100 * cycleSecondsElapsed) / cycleTotalSeconds) / 100;
+  const cyclePercentComplete = Math.round((1000 * cycleSecondsElapsed) / cycleTotalSeconds) / 1000;
   let i = cycle.length;
   let leftX = 0;
 
@@ -14,7 +14,7 @@ export default function renderCycleProgress(canvas, stats) {
     const period = cycle[cycle.length - 1 - i];
     const { periodColor, percentOfCycle } = period;
     const rightX = width * percentOfCycle + leftX;
-    const insetY = constants.DIMENSIONS.CYCLE_PROGRESS.INSET_PROGRESS
+    const insetY = constants.DIMENSIONS.CYCLE_PROGRESS.INSET_PROGRESS;
 
     ctx.fillStyle = periodColor;
 
@@ -25,10 +25,5 @@ export default function renderCycleProgress(canvas, stats) {
 
   ctx.fillStyle = constants.COLORS.PROGRESS_BAR;
 
-  ctx.fillRect(
-    0,
-    0,
-    width * cyclePercentComplete,
-    height
-  );
+  ctx.fillRect(0, 0, width * cyclePercentComplete, height);
 }
