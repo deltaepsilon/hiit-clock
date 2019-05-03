@@ -226,7 +226,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
       playState,
       effects: instrumentEffects(effects),
     }),
-    [secondsElapsed, totalMillis]
+    [secondsElapsed, totalMillis, playState]
   );
 
   return result;
