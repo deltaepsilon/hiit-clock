@@ -44,9 +44,10 @@ export default {
     DASHBOARD: '/dashboard/',
     SETTINGS: '/settings/',
     TIMER: {
-      ROOT: '/timer/',
-      PLAY: '/play',
-      EDIT: '/edit',
+      DETAIL: '/timer/',
+      PLAY: '/timer/play',
+      EDIT: '/timer/edit',
+      CREATE: '/timer/create',
     },
     BROWSE: {
       CROSSFIT: '/browse/crossfit',

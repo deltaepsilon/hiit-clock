@@ -9,6 +9,12 @@ import constants from '../constants';
 
 import './landing.css';
 
+const links = {
+  powerlifting: `${constants.ROUTES.TIMER.DETAIL}?id=powerlifting-5x5`,
+  tabata: `${constants.ROUTES.TIMER.DETAIL}?id=tabata-20-40`,
+  emom: `${constants.ROUTES.TIMER.DETAIL}?id=emom-for-10-rounds`,
+};
+
 export default props => {
   const { currentUser } = useContext(AuthenticationContext);
   const showCreate = true;
@@ -33,13 +39,13 @@ export default props => {
           </Link>
         )}
         {showCreate && (
-          <Link href={loginButtonHref}>
+          <Link href={constants.ROUTES.TIMER.CREATE}>
             <Button
               icon={<AddCircleOutline width={18} height={18} />}
               label="Create A Timer"
               raised
               tag="a"
-              href={loginButtonHref}
+              href={constants.ROUTES.TIMER.CREATE}
             />
           </Link>
         )}
@@ -47,7 +53,7 @@ export default props => {
           <Link href={loginButtonHref}>
             <Button
               icon={<PlayCircleOutline width={18} height={18} />}
-              label="Dashboard"
+              label="Login"
               raised
               tag="a"
               href={loginButtonHref}
@@ -55,6 +61,39 @@ export default props => {
           </Link>
         )}
       </div>
+      <section>
+        <h2>Popular Timers</h2>
+
+        <Link href={links.powerlifting}>
+          <Button
+            icon={<PlayCircleOutline width={18} height={18} />}
+            label="Powerlifting 5x5"
+            raised
+            tag="a"
+            href={links.powerlifting}
+          />
+        </Link>
+
+        <Link href={links.tabata}>
+          <Button
+            icon={<PlayCircleOutline width={18} height={18} />}
+            label="Tabata 20/40"
+            raised
+            tag="a"
+            href={links.tabata}
+          />
+        </Link>
+
+        <Link href={links.emom}>
+          <Button
+            icon={<PlayCircleOutline width={18} height={18} />}
+            label="10m EMOM"
+            raised
+            tag="a"
+            href={links.emom}
+          />
+        </Link>
+      </section>
       <section className="cta">
         <ul>
           <li>

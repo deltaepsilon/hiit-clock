@@ -19,7 +19,7 @@ export default function TimerTopBar() {
 
 const TimerTopBarView = React.memo(({ timerId, timerName, totalSeconds }) => (
   <div id="timer-top-bar">
-    <BackButton visible url={`${constants.ROUTES.TIMER.ROOT}?id=${timerId}`} />
+    <BackButton visible url={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}`} />
     <h1>{timerName}</h1>
     <TotalTime totalSeconds={totalSeconds} />
   </div>

@@ -4,13 +4,14 @@ import Link from 'next/link';
 import debounce from '../../utilities/debounce';
 import { Fab } from '@rmwc/fab';
 import PlayCircleOutlineSvg from '../svg/play-circle-outline';
+import constants from '../constants';
 
 import './timer-actions.css';
 
 export default ({ timerId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const href = `/timer/play?id=${timerId}`;
+  const href = `${constants.ROUTES.TIMER.PLAY}?id=${timerId}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
