@@ -8,6 +8,7 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 const showLinkPaths = [
   constants.ROUTES.SETTINGS,
   constants.ROUTES.TIMER.DETAIL,
+  constants.ROUTES.TIMER.CREATE,
   constants.ROUTES.TIMER.EDIT,
   constants.ROUTES.TIMER.EDIT + '/',
   constants.ROUTES.LOGIN,

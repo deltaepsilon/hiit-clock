@@ -66,5 +66,9 @@ export default {
     '/login/': 'Login',
     '/dashboard/': 'HiiT Clock',
     '/settings/': 'settings',
+    '/timer/create/': 'Create Timer',
+    '/timer/create': 'Create Timer',
+    '/timer/edit/': 'Edit Timer',
+    '/timer/edit': 'Edit Timer',
   },
 };

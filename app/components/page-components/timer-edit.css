@@ -1,0 +1,82 @@
+#timer-edit form {
+  max-width: 500px;
+  width: calc(100vw - 2rem);
+}
+
+#timer-edit .flex {
+  flex: 1;
+}
+
+#timer-edit .row {
+  padding: 0.5rem 0;
+}
+
+#timer-edit hr {
+  margin: 1rem 0;
+}
+
+#timer-edit .mdc-text-field--textarea {
+  padding-top: 1rem;
+}
+
+#timer-edit .mdc-text-field--textarea .mdc-floating-label {
+  top: 2rem;
+  left: 1rem;
+}
+
+#timer-edit .mdc-text-field {
+  background: var(--color-form-background);
+  width: 100%;
+}
+
+#timer-edit .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+#timer-edit .error {
+  visibility: hidden;
+  color: var(--color-form-error);
+  background: var(--color-form-background);
+  padding: 1rem;
+}
+
+#timer-edit .error[error] {
+  visibility: visible;
+}
+
+#timer-edit .period-wrapper {
+  display: flex;
+}
+
+#timer-edit .mdc-list-item {
+  display: flex;
+  color: var(--color-form-list-color);
+  padding: 0.5rem;
+}
+
+#timer-edit .time {
+  margin-right: 1rem;
+}
+
+#timer-edit .mdc-list-item[type='prepare'] {
+  background: var(--color-form-background-prepare);
+}
+
+#timer-edit .mdc-list-item[type='prepare'] .mdc-icon-button {
+  visibility: hidden;
+}
+
+#timer-edit .mdc-list-item[type='rest'] {
+  background: var(--color-form-background-rest);
+}
+
+#timer-edit .mdc-list-item[type='work'] {
+  background: var(--color-form-background-work);
+}
+
+#timer-edit .buttons .mdc-icon-button {
+  margin: 0 0.25rem;
+}
