@@ -10,7 +10,7 @@ export default ({ id, text = 'Upload', label, value, onChange }) => {
   const { currentUser } = useContext(AuthenticationContext);
   const [previewUrl, setPreviewUrl] = useState(value);
   const inputRef = useRef(null);
-  const triggerInput = useCallback(() => inputRef.current.click(), [inputRef]);
+  const triggerInput = useCallback(e => (e.preventDefault(), inputRef.current.click()), [inputRef]);
 
   return (
     <div className="image-upload-input">
@@ -19,8 +19,6 @@ export default ({ id, text = 'Upload', label, value, onChange }) => {
           {text}
         </Button>
       </label>
-
-      
 
       <input
         id={id}
@@ -40,6 +38,8 @@ export default ({ id, text = 'Upload', label, value, onChange }) => {
                   onClick={e => {
                     e.preventDefault();
                     onChange(null);
+                    setPreviewUrl(null);
+                    inputRef.current.value = '';
                   }}
                 />
               </>

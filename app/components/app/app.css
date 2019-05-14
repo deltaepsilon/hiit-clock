@@ -37,13 +37,18 @@
   --dimensions-max-width: 500px;
 
   /* Forms */
-  --color-form-background: #ffffff;
+  
+  --color-form-input-background: #ffffff;
   --color-form-error: var(--mdc-theme-secondary-dark);
-  --color-form-outline: var(--color-form-background);
+  --color-form-outline: var(--color-form-input-background);
   --color-form-list-color: #ffffff;
   --color-form-background-prepare: #ffbd00;
   --color-form-background-work: #ff5400;
   --color-form-background-rest: #3d3b3c;
+
+  /* Sheet */
+  --color-sheet-background: #ffffff;
+  --color-sheet-color: var(--mdc-theme-primary-light);
 }
 
 body {

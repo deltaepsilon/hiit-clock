@@ -1,3 +1,9 @@
+#timer-edit {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
 #timer-edit form {
   max-width: 500px;
   width: calc(100vw - 2rem);
@@ -12,7 +18,7 @@
 }
 
 #timer-edit hr {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 #timer-edit .mdc-text-field--textarea {
@@ -25,7 +31,7 @@
 }
 
 #timer-edit .mdc-text-field {
-  background: var(--color-form-background);
+  background: var(--color-form-input-background);
   width: 100%;
 }
 
@@ -39,8 +45,8 @@
 #timer-edit .error {
   visibility: hidden;
   color: var(--color-form-error);
-  background: var(--color-form-background);
-  padding: 1rem;
+  background: var(--color-form-input-background);
+  padding: 0.5rem;
 }
 
 #timer-edit .error[error] {
@@ -53,6 +59,7 @@
 
 #timer-edit .mdc-list-item {
   display: flex;
+  position: relative;
   color: var(--color-form-list-color);
   padding: 0.5rem;
 }
@@ -79,4 +86,28 @@
 
 #timer-edit .buttons .mdc-icon-button {
   margin: 0 0.25rem;
+}
+
+#timer-edit .row.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 1rem;
+}
+
+#timer-edit .period-wrapper .period-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.75);
+}
+
+#timer-edit .period-wrapper[is-active='false'] .period-controls {
+  display: none;
 }

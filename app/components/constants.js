@@ -22,14 +22,16 @@ export default {
   LOCALSTORAGE: {
     PROFILE: 'profile',
     SETTINGS: 'settings',
-    URL_HISTORY: 'urlHistory',
     TIMERS: 'timers',
+    TIMER_FORM: 'timer-form',
     TIMER_STATE: 'timer-state',
+    URL_HISTORY: 'url-history',
   },
   PATHS: {
     ACCOUNT_CIRCLE: '/static/images/material-design-icons/account-circle-512px.png',
   },
   PERIOD_TYPES: {
+    PREPARE: 'prepare',
     WORK: 'work',
     REST: 'rest',
   },
@@ -56,6 +58,10 @@ export default {
       STRONGLIFTS: '/browse/stronglifts',
       TABATA: '/browse/tabata',
     },
+  },
+  TEXT: {
+    REST: 'Rest',
+    WORK: 'Work',
   },
   TIMES: {
     SECONDS_TO_SKIP: 10,

@@ -1357,6 +1357,18 @@
     "@material/theme" "^1.1.0"
     tslib "^1.9.3"
 
+"@material/ripple@^2.0.0", "@material/ripple@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@material/ripple/-/ripple-2.1.1.tgz#850e44bafe9db962f400c7e067eb28c1cb11010b"
+  integrity sha512-/WIOBen3OLasJrr2ZXo9wpVJo6Z+1qFxnOvC61iXWqnDctq1fgTAQQbiMaRtsbfU68jDfhgLFJlwjgzvqAvFWQ==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.1.0"
+    tslib "^1.9.3"
+
 "@material/rtl@^0.42.0":
   version "0.42.0"
   resolved "https://registry.npmjs.org/@material/rtl/-/rtl-0.42.0.tgz#1836e78186c2d8b996f6fbf97adab203535335bc"
@@ -1428,6 +1440,19 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
+"@material/toolbar@^2.0.0":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@material/toolbar/-/toolbar-2.1.1.tgz#a4b39ee442da63d86ba02bf689a45c9795765ea0"
+  integrity sha512-8CY/AxCD/LVgLspEADCyqqpEHLrw3GWg/l3alb3T3bt4GW9yhZt0toSnQo9qAf7zooFxvUL0u4IAm/LMoJSyiQ==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/elevation" "^1.1.0"
+    "@material/ripple" "^2.1.1"
+    "@material/rtl" "^0.42.0"
+    "@material/theme" "^1.1.0"
+    "@material/typography" "^1.0.0"
+    tslib "^1.9.3"
+
 "@material/typography@^0.44.1":
   version "0.44.1"
   resolved "https://registry.npmjs.org/@material/typography/-/typography-0.44.1.tgz#a94f01172f9122180bc2ce0aa55658183a35590d"
@@ -1483,6 +1508,17 @@
     "@rmwc/types" "^5.2.1"
     classnames "^2.2.6"
     focus-trap "^4.0.2"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
+"@rmwc/base@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.5.1.tgz#143d5433bafd45f69defac4bdabfe83a1a7bc053"
+  integrity sha512-W6NzGx++wV+OQs9EzX7C8Cdfj7HlD2/7mHhDSsYgGViUpuB1VkjZIoJP1/MDyce+wPsppB5TB42bzYYxdyZHVw==
+  dependencies:
+    "@rmwc/types" "^5.5.1"
+    classnames "^2.2.6"
+    focus-trap "^5.0.0"
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
 
@@ -1573,6 +1609,15 @@
     "@rmwc/provider" "^5.2.2"
     "@rmwc/types" "^5.2.1"
 
+"@rmwc/icon@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.5.1.tgz#4579d35c7856ac15db545f0dc997a9087378b4d4"
+  integrity sha512-JZDz/DEDc8igOfppju6bpWA0ryO4e82F8E6FJFpZHyOOB0UVv3b+IZJrJhRK94MF64EGZT2I6xEPZaNJJDiITg==
+  dependencies:
+    "@rmwc/base" "^5.5.1"
+    "@rmwc/provider" "^5.5.1"
+    "@rmwc/types" "^5.5.1"
+
 "@rmwc/line-ripple@^5.2.0":
   version "5.2.0"
   resolved "https://registry.npmjs.org/@rmwc/line-ripple/-/line-ripple-5.2.0.tgz#2313152fe830db3e9ab5ace4344cdddb499f21bf"
@@ -1657,6 +1702,14 @@
     "@rmwc/base" "^5.2.2"
     "@rmwc/types" "^5.2.1"
 
+"@rmwc/provider@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.5.1.tgz#646dffa115ff94df86af48bb2e068f8105bff10c"
+  integrity sha512-m2aI2H6jmUbngSAhz2BLSi2Q0ooU+K7AflXAFDeuQ4jNHtR/LMx8G5dvoaiOVlI+TNrvbNPp6piJTpqL6zDFTA==
+  dependencies:
+    "@rmwc/base" "^5.5.1"
+    "@rmwc/types" "^5.5.1"
+
 "@rmwc/ripple@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.1.8.tgz#3ad5271073e4b246399482d497210b27feb156f3"
@@ -1695,6 +1748,16 @@
     "@rmwc/provider" "^5.2.2"
     "@rmwc/types" "^5.2.1"
 
+"@rmwc/ripple@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.5.1.tgz#8bef431c860b7134bf4555aa6bceada199504dad"
+  integrity sha512-CIoa8uXh1UkWFUQ0PaNHGSEAU3FnVc7/kLkBY2m53+GadBmeeJe2VZRjkp9wG621qWTXIw9UM0z8ByUN8qLWWA==
+  dependencies:
+    "@material/ripple" "^2.0.0"
+    "@rmwc/base" "^5.5.1"
+    "@rmwc/provider" "^5.5.1"
+    "@rmwc/types" "^5.5.1"
+
 "@rmwc/switch@^5.2.1":
   version "5.2.1"
   resolved "https://registry.npmjs.org/@rmwc/switch/-/switch-5.2.1.tgz#2a1a67e277b90a31b9150d3209419250ed907623"
@@ -1730,6 +1793,17 @@
     "@rmwc/formfield" "^5.2.1"
     "@rmwc/types" "^5.2.1"
 
+"@rmwc/toolbar@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/toolbar/-/toolbar-5.5.1.tgz#20355a65c545e03a558121b9c52b905b4751dc92"
+  integrity sha512-OetWwOivYdx1w3Zd+43DqvN3qVeNhS11LLPbAiQg4ygpzo/dcOjUIvL/16Gv/6qTpbpmnkvw0gSGz0Xh9rIpfA==
+  dependencies:
+    "@material/toolbar" "^2.0.0"
+    "@rmwc/base" "^5.5.1"
+    "@rmwc/icon" "^5.5.1"
+    "@rmwc/ripple" "^5.5.1"
+    "@rmwc/types" "^5.5.1"
+
 "@rmwc/types@^5.1.8":
   version "5.1.8"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.1.8.tgz#f559c793054a9ee6168850a24d075b5fb18715a9"
@@ -1744,6 +1818,11 @@
   version "5.2.1"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.2.1.tgz#5b9ab207cc40421b5085a07f3389423589c811f9"
   integrity sha512-mwQA66A9C5i7j6kBUyXAFObmB9ZWR0BLm+J3rx/thw1q7xPzYeVyLR6M5KdNrAy+zkruN6qxg1GLAQ+UExm+MA==
+
+"@rmwc/types@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.5.1.tgz#31928f842610f785006209a784ebf60e48f7bef0"
+  integrity sha512-+d0G9HSX/kq5gWooeQz1px1Hxp86A0JQPbFJhstkn3Jf3mU8Iku4RtFkzmtCzOjWCewhF0WKf8wrzxhXqrHNfA==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -4538,6 +4617,14 @@ focus-trap@^4.0.2:
   integrity sha512-HtLjfAK7Hp2qbBtLS6wEznID1mPT+48ZnP2nkHzgjpL4kroYHg0CdqJ5cTXk+UO5znAxF5fRUkhdyfgrhh8Lzw==
   dependencies:
     tabbable "^3.1.2"
+    xtend "^4.0.1"
+
+focus-trap@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/focus-trap/-/focus-trap-5.0.0.tgz#b0d535b4669714e29880d294d13c8c7bbee6a085"
+  integrity sha512-ECigB+4yoFBIpzQ0uO+ReM1yU4I4pVxuRSe2W24ElcWo4nJLRCb6amo2wLYEaPXgZ/mt0sSAW0ZNYkgiMrz4fQ==
+  dependencies:
+    tabbable "^4.0.0"
     xtend "^4.0.1"
 
 follow-redirects@^1.3.0:
@@ -9444,6 +9531,11 @@ tabbable@^3.1.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/tabbable/-/tabbable-3.1.2.tgz#f2d16cccd01f400e38635c7181adfe0ad965a4a2"
   integrity sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ==
+
+tabbable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/tabbable/-/tabbable-4.0.0.tgz#5bff1d1135df1482cf0f0206434f15eadbeb9261"
+  integrity sha512-H1XoH1URcBOa/rZZWxLxHCtOdVUEev+9vo5YdYhC9tCY4wnybX+VQrCYuy9ubkg69fCBxCONJOSLGfw0DWMffQ==
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"

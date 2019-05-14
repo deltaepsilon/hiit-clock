@@ -1,0 +1,83 @@
+#period-sheet {
+  position: fixed;
+  background: var(--color-sheet-background);
+  right: 0;
+  left: 0;
+  top: 100vh;
+  height: 100vh;
+  z-index: 1;
+
+  transition: top 600ms;
+}
+
+#period-sheet[is-showing='true'] {
+  top: 0;
+}
+
+#period-sheet[type='work'] .mdc-toolbar__row {
+  background: var(--color-form-background-work);
+}
+
+#period-sheet[type='rest'] .mdc-toolbar__row {
+  background: var(--color-form-background-rest);
+}
+
+#period-sheet .mdc-toolbar__row {
+  justify-content: space-between;
+}
+
+#period-sheet .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+#period-sheet[type='work'] .form-wrapper {
+  height: calc(100vh - 10rem);
+  padding-top: 5rem;
+}
+
+#period-sheet[type='rest'] .form-wrapper {
+  padding-top: 12px;
+}
+
+#period-sheet .form-wrapper form {
+  max-width: 500px;
+}
+
+#period-sheet .form-wrapper form > div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+#period-sheet .image-upload-preview {
+  border-color: var(--color-sheet-color);
+  color: var(--color-sheet-color);
+}
+
+#period-sheet .mdc-button--raised {
+  background-color: var(--color-sheet-color);
+}
+
+#period-sheet hr {
+  border-color: var(--color-sheet-color);
+}
+
+#period-sheet .mdc-button.work {
+  background: var(--color-form-background-work);
+}
+
+#period-sheet .mdc-button.rest {
+  background: var(--color-form-background-rest);
+}
+
+#period-sheet .type-selection {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+#period-sheet .type-selection .mdc-button {
+  width: calc(50% - 2rem);
+}
