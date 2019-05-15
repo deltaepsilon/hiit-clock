@@ -3,12 +3,9 @@ import Router from 'next/router';
 import TimerProvider, { TimerContext } from '../contexts/timer-context';
 import { TextField } from '@rmwc/textfield';
 import { Button } from '@rmwc/button';
-import { List, ListItem } from '@rmwc/list';
-import { IconButton } from '@rmwc/icon-button';
 import ImageUploadInput from '../form/image-upload-input';
-import TotalTime from '../timer/total-time';
 import PeriodSheet from '../form/period-sheet';
-import { AddCircleOutline, ArrowUpward, ArrowDownward, DeleteOutline, Edit } from '../svg';
+import PeriodsList from '../form/periods-list';
 import effects from '../../effects';
 import constants from '../constants';
 
@@ -49,6 +46,16 @@ function TimerForm() {
 
   useEffect(routeChangeStartEffect, []);
 
+  const periodsListProps = {
+    activePeriodId,
+    setActivePeriodId,
+    setActivePeriodIndex,
+    setIsAdd,
+    setShowPeriodSheet,
+    formValues,
+    setFormValues,
+  };
+
   return (
     <div id="timer-edit">
       <form onSubmit={getHandleSubmit({ formValues })}>
@@ -80,46 +87,7 @@ function TimerForm() {
 
         <hr />
 
-        <List>
-          <Period
-            index="-1"
-            type="prepare"
-            totalSeconds="10"
-            name="Prepare"
-            handleAdd={getHandleAdd({
-              index: -1,
-              setIsAdd,
-              setActivePeriodId,
-              setActivePeriodIndex,
-              setShowPeriodSheet,
-            })}
-          />
-          {formValues.periods.map((period, i) => {
-            console.log({ id: period.id, activePeriodId });
-            return (
-              <Period
-                key={i}
-                index={i}
-                isActive={activePeriodId == period.id}
-                type={period.type}
-                totalSeconds={period.totalSeconds}
-                name={period.name}
-                handleAdd={getHandleAdd({
-                  index: i,
-                  setIsAdd,
-                  setActivePeriodId,
-                  setActivePeriodIndex,
-                  setShowPeriodSheet,
-                })}
-                handleSelect={getHandleSelect({
-                  id: period.id,
-                  activePeriodId,
-                  setActivePeriodId,
-                })}
-              />
-            );
-          })}
-        </List>
+        <PeriodsList {...periodsListProps} />
 
         <div className="row buttons">
           <Button raised disabled={!!formError}>
@@ -143,54 +111,9 @@ function TimerForm() {
   );
 }
 
-function Period({ index, isActive = false, name, totalSeconds, type, handleAdd, handleSelect }) {
-  const isRest = type == constants.PERIOD_TYPES.REST;
-  const isDisabled = type == constants.PERIOD_TYPES.PREPARE;
-
-  return (
-    <div className="period-wrapper" key={index} is-active={String(isActive)}>
-      <ListItem type={type} className="flex" onClick={handleSelect} disabled={isDisabled}>
-        {/* <IconButton icon={<Edit />} /> */}
-        <span>{isRest ? constants.TEXT.REST : name}</span>
-        <span className="flex" />
-        <TotalTime totalSeconds={totalSeconds} />
-
-        <div className="period-controls">
-          <IconButton icon={<ArrowUpward />} />
-          <IconButton icon={<ArrowDownward />} />
-          <IconButton icon={<Edit />} />
-          <IconButton icon={<DeleteOutline />} />
-        </div>
-      </ListItem>
-      <div className="buttons">
-        <IconButton icon={<AddCircleOutline />} onClick={handleAdd} />
-      </div>
-    </div>
-  );
-}
-
-function getHandleAdd({
-  index,
-  setIsAdd,
-  setActivePeriodId,
-  setActivePeriodIndex,
-  setShowPeriodSheet,
-}) {
-  return e => {
-    e.preventDefault();
-
-    setIsAdd(true);
-    setActivePeriodId(null);
-    setActivePeriodIndex(index + 1);
-    setShowPeriodSheet(true);
-  };
-}
-
 function getHandleSubmit({ formValues }) {
   return e => {
     e.preventDefault();
-
-    console.log('formValues', formValues);
   };
 }
 
@@ -199,14 +122,6 @@ function getHandleChange({ key, formValues, setFormValues }) {
     const value = e.target ? e.target.value : e;
 
     setFormValues({ ...formValues, [key]: value });
-  };
-}
-
-function getHandleSelect({ id, activePeriodId, setActivePeriodId }) {
-  return () => {
-    const isSelected = activePeriodId == id;
-
-    setActivePeriodId(isSelected ? null : id);
   };
 }
 
@@ -244,7 +159,7 @@ function routeChangeStartEffect() {
   return () => Router.events.off('routeChangeStart', handleRouteChange);
 }
 
-function getPeriodSaveCallback({ formValues, isAdd, activePeriodIndex, setFormValues }) {
+function getPeriodSaveCallback({ activePeriodIndex, formValues, isAdd, setFormValues }) {
   return periodValues => {
     const periods = formValues.periods.slice(0);
 
@@ -255,8 +170,6 @@ function getPeriodSaveCallback({ formValues, isAdd, activePeriodIndex, setFormVa
     }
 
     const updatedFormValues = { ...formValues, periods };
-
-    console.log('updatedFormValues', updatedFormValues);
 
     setFormValues(updatedFormValues);
   };

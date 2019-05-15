@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Toolbar, ToolbarRow, ToolbarTitle } from '@rmwc/toolbar';
 import { TextField } from '@rmwc/textfield';
 import { Button } from '@rmwc/button';
@@ -10,22 +10,19 @@ import constants from '../constants';
 
 import './period-sheet.css';
 
+export const PERIOD_SHEET_ID = 'period-sheet';
 const DEFAULT_PERIOD = { totalSeconds: 5, name: '', file: null, type: constants.PERIOD_TYPES.WORK };
 
 export default ({ index, show = false, isCreate = false, period, save, close }) => {
-  const [periodValues, setPeriodValues] = useState(period || { id: uuid(), ...DEFAULT_PERIOD });
-  const isWork = useMemo(() => periodValues.type == constants.PERIOD_TYPES.WORK, [
-    periodValues.type,
-  ]);
-  const title = useMemo(() => {
-    const typeText = isWork ? constants.TEXT.WORK : constants.TEXT.REST;
-
-    return isCreate ? `New ${typeText} Period` : `Edit ${typeText} Period`;
-  }, [isCreate, isWork]);
+  const [periodValues, setPeriodValues] = useState(getStartingPeriod(period));
+  const isWork = useMemo(() => getIsWork(periodValues.type), [periodValues.type]);
+  const title = useMemo(() => getTitle({ isWork, isCreate }), [isCreate, isWork]);
   const isDisabled = useMemo(() => getIsDisabled(periodValues), [periodValues]);
 
+  useEffect(() => setPeriodValues(getStartingPeriod(period)), [show]);
+
   return (
-    <div id="period-sheet" is-showing={String(show)} type={periodValues.type}>
+    <div id={PERIOD_SHEET_ID} is-showing={String(show)} type={periodValues.type}>
       <Toolbar>
         <ToolbarRow>
           <ToolbarTitle>{title}</ToolbarTitle>
@@ -33,7 +30,8 @@ export default ({ index, show = false, isCreate = false, period, save, close }) 
         </ToolbarRow>
       </Toolbar>
       <div className="form-wrapper">
-        <form>
+        <form onSubmit={e => (e.preventDefault(), !isDisabled && save(periodValues), close())}>
+          <input type="submit" style={{ display: 'none' }} />
           <div className="row type-selection">
             <Button
               raised
@@ -79,11 +77,7 @@ export default ({ index, show = false, isCreate = false, period, save, close }) 
           <hr />
 
           <div className="buttons">
-            <Button
-              raised
-              onClick={e => (e.preventDefault(), save(periodValues), close())}
-              disabled={isDisabled}
-            >
+            <Button raised type="submit" disabled={isDisabled}>
               Save
             </Button>
             <Button onClick={e => (e.preventDefault(), close())}>Cancel</Button>
@@ -100,6 +94,20 @@ function getChangeHandler({ key, periodValues, setPeriodValues }) {
 
     setPeriodValues({ ...periodValues, [key]: value });
   };
+}
+
+function getStartingPeriod(period) {
+  return period || { id: uuid(), ...DEFAULT_PERIOD };
+}
+
+function getIsWork(type) {
+  return type == constants.PERIOD_TYPES.WORK;
+}
+
+function getTitle({ isWork, isCreate }) {
+  const typeText = isWork ? constants.TEXT.WORK : constants.TEXT.REST;
+
+  return isCreate ? `New ${typeText} Period` : `Edit ${typeText} Period`;
 }
 
 function getIsDisabled(periodValues) {

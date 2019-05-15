@@ -1,0 +1,26 @@
+.period-wrapper .period-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.9);
+  cursor: default;
+}
+
+.period-wrapper[is-active='false'] .period-controls {
+  display: none;
+}
+
+.period-wrapper[is-first='true'] .up {
+  visibility: hidden;
+}
+
+.period-wrapper[is-last='true'] .down {
+  visibility: hidden;
+}

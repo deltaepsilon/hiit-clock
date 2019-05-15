@@ -93,21 +93,3 @@
   flex-direction: row-reverse;
   margin-bottom: 1rem;
 }
-
-#timer-edit .period-wrapper .period-controls {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  background: rgba(0, 0, 0, 0.75);
-}
-
-#timer-edit .period-wrapper[is-active='false'] .period-controls {
-  display: none;
-}
