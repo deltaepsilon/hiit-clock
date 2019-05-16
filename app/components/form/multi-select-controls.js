@@ -12,7 +12,7 @@ export default ({ setFormValues, selectedIdsSet, setIsMultiSelect, setSelectedId
       <IconButton
         className="close"
         icon={<Close fill={constants.COLORS.PRIMARY_LIGHT} />}
-        onClick={e => (e.stopPropagation(), setSelectedIdsSet(new Set()))}
+        onClick={e => (e.stopPropagation(), setIsMultiSelect(false))}
       />
       <IconButton
         icon={<FileCopyOutline fill={constants.COLORS.PRIMARY_LIGHT} />}

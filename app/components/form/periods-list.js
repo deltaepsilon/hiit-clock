@@ -105,6 +105,23 @@ export default ({
 
         return <Period {...periodProps} />;
       })}
+
+      <div
+        id="check-all-wrapper"
+        can-multi-select={String(isMultiSelect && formValues.periods.length)}
+      >
+        <Checkbox
+          checked={formValues.periods.length == selectedIdsSet.size}
+          onChange={e => {
+            const checked = e.currentTarget.checked;
+            const selectedIdsSet = checked
+              ? new Set(formValues.periods.map(({ id }) => id))
+              : new Set();
+
+            setSelectedIdsSet(selectedIdsSet);
+          }}
+        />
+      </div>
     </List>
   );
 };

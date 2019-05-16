@@ -37,6 +37,16 @@
   margin-left: 1rem;
 }
 
-.period-wrapper .buttons .mdc-checkbox {
+.period-wrapper .buttons .mdc-checkbox,
+#check-all-wrapper .mdc-checkbox {
   margin: 0 0.5rem;
+}
+
+#check-all-wrapper {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+#check-all-wrapper[can-multi-select='false'] {
+  visibility: hidden;
 }

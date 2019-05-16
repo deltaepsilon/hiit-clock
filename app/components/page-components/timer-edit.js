@@ -122,7 +122,7 @@ function TimerForm() {
         </div>
       </form>
 
-      <MultiSelectControls {...multiSelectControlsProps} />
+      {isMultiSelect && <MultiSelectControls {...multiSelectControlsProps} />}
 
       <PeriodSheet
         index={activePeriodIndex}
