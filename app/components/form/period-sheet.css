@@ -31,7 +31,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
   height: 100vh;
 }
 

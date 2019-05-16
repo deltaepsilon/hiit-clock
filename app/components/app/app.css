@@ -48,7 +48,7 @@
   --color-form-list-color: #ffffff;
   --color-form-background-prepare: #ffbd00;
   --color-form-background-work: #ff5400;
-  --color-form-background-rest: #3d3b3c;
+  --color-form-background-rest: rgba(0, 0, 0, .1);
 
   /* Sheet */
   --color-sheet-background: #ffffff;
@@ -60,6 +60,7 @@ body {
   margin: 0;
   background: var(--color-gray-dark);
   font-display: swap;
+  overflow-x: hidden;
 }
 
 body,

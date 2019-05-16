@@ -37,6 +37,7 @@ export default ({
     <List id={PERIODS_LIST_ID}>
       <Period
         index="-1"
+        isFirst
         type="prepare"
         totalSeconds="10"
         name="Prepare"
@@ -50,7 +51,6 @@ export default ({
         })}
       />
       {formValues.periods.map((period, i, periods) => {
-        const isFirst = i == 0;
         const isLast = i == periods.length - 1;
         const { type, totalSeconds, name } = period;
         const isActive = activePeriodId == period.id;
@@ -60,7 +60,6 @@ export default ({
           index: i,
           isActive,
           isChecked,
-          isFirst,
           isLast,
           isMultiSelect,
           type,
@@ -130,8 +129,8 @@ function Period({
   index,
   isActive = false,
   isChecked,
-  isFirst,
-  isLast,
+  isFirst = false,
+  isLast = false,
   isMultiSelect,
   name,
   totalSeconds,

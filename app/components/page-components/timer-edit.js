@@ -52,6 +52,10 @@ function TimerForm() {
 
   useEffect(routeChangeStartEffect, []);
 
+  useEffect(() => (!isMultiSelect && setSelectedIdsSet(new Set()), undefined), [isMultiSelect]);
+
+  useEffect(() => getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }), []);
+
   const periodsListProps = {
     activePeriodId,
     formValues,
@@ -134,6 +138,21 @@ function TimerForm() {
       />
     </div>
   );
+}
+
+function getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }) {
+  function handleKeyUp(e) {
+    const { key } = e;
+
+    if (key == 'Escape') {
+      setShowPeriodSheet(false);
+      setIsMultiSelect(false);
+    }
+  }
+
+  window.addEventListener('keyup', handleKeyUp);
+
+  return () => window.removeEventListener('keyup', handleKeyUp);
 }
 
 function getHandleSubmit({ formValues }) {

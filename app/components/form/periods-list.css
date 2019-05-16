@@ -25,11 +25,11 @@
   visibility: hidden;
 }
 
-.period-wrapper:first-child > div {
+.period-wrapper[is-first='true'] > div {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.period-wrapper:last-child > div {
+.period-wrapper[is-last='true'] > div {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 

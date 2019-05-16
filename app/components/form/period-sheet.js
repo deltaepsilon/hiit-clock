@@ -20,7 +20,6 @@ export default ({ index, show = false, isCreate = false, period, save, close }) 
   const isDisabled = useMemo(() => getIsDisabled(periodValues), [periodValues]);
 
   useEffect(() => setPeriodValues(getStartingPeriod(period)), [show]);
-  useEffect(() => getKeyUpEffect({ close }), []);
 
   return (
     <div id={PERIOD_SHEET_ID} is-showing={String(show)} type={periodValues.type}>
@@ -88,20 +87,6 @@ export default ({ index, show = false, isCreate = false, period, save, close }) 
     </div>
   );
 };
-
-function getKeyUpEffect({ close }) {
-  function handleKeyUp(e) {
-    const { key } = e;
-
-    if (key == 'Escape') {
-      close();
-    }
-  }
-
-  window.addEventListener('keyup', handleKeyUp);
-
-  return () => window.removeEventListener('keyup', handleKeyUp);
-}
 
 function getChangeHandler({ key, periodValues, setPeriodValues }) {
   return e => {
