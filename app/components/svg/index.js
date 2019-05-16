@@ -7,8 +7,10 @@ import Close from './close';
 import Dashboard from './dashboard';
 import DeleteOutline from './delete-outline';
 import Edit from './edit';
+import FileCopyOutline from './file-copy-outline';
 import Forward10 from './forward-10';
 import HiitClock from './hiit-clock';
+import List from './list';
 import NavigateNext from './navigate-next';
 import PauseCircleFilled from './pause-circle-filled';
 import PlayCircleOutline from './play-circle-outline';
@@ -29,8 +31,10 @@ export {
   Dashboard,
   DeleteOutline,
   Edit,
+  FileCopyOutline,
   Forward10,
   HiitClock,
+  List,
   NavigateNext,
   PauseCircleFilled,
   PlayCircleOutline,

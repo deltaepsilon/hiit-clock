@@ -91,5 +91,5 @@
 #timer-edit .row.buttons {
   display: flex;
   flex-direction: row-reverse;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }

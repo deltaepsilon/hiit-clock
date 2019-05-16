@@ -15,6 +15,7 @@
   --color-gray-light: #ffffff;
   --color-gray-dark: #3d3b3c;
   --color-green: #27fb6b;
+  --color-warning: var(--mdc-theme-secondary-dark);
 
   --color-light-background: #ffffff;
   --color-light-background-text: var(--mdc-theme-primary);
@@ -36,8 +37,11 @@
   /* Dimensions */
   --dimensions-max-width: 500px;
 
+  /* Misc */
+  --border-radius: 4px;
+
   /* Forms */
-  
+
   --color-form-input-background: #ffffff;
   --color-form-error: var(--mdc-theme-secondary-dark);
   --color-form-outline: var(--color-form-input-background);
@@ -122,4 +126,12 @@ a:visited {
 .mdc-list,
 .mdc-list-item__secondary-text {
   font-family: var(--font-book) !important;
+}
+
+.mdc-checkbox__background {
+  border-color: var(--color-gray-light) !important;
+}
+
+.mdc-checkbox--selected .mdc-checkbox__background {
+  border-color: transparent !important;
 }

@@ -1,0 +1,13 @@
+#multi-select-controls {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-around;
+
+  background: var(--color-sheet-background);
+  color: var(--color-sheet-color);
+  padding: 0.5rem;
+}

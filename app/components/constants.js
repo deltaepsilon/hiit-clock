@@ -6,6 +6,8 @@ export default {
   },
   COLORS: {
     PRIMARY: '#011627',
+    PRIMARY_LIGHT: '#2a3c4f',
+    WARNING: '#a5000f',
     WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
     REST: ['#4f4f4f'],
     HIGHLIGHT: '#df2935',

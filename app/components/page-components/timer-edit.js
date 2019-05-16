@@ -6,8 +6,10 @@ import { Button } from '@rmwc/button';
 import ImageUploadInput from '../form/image-upload-input';
 import PeriodSheet from '../form/period-sheet';
 import PeriodsList from '../form/periods-list';
+import MultiSelectControls from '../form/multi-select-controls';
 import effects from '../../effects';
 import constants from '../constants';
+import { List } from '../svg';
 
 import './timer-edit.css';
 
@@ -19,6 +21,7 @@ const DEFAULT_TIMER = {
   tags: [],
   periods: [],
 };
+const BUTTON_ICON_PX = 16;
 
 export default ({ timerId }) => {
   return (
@@ -31,16 +34,19 @@ export default ({ timerId }) => {
 function TimerForm() {
   const { timerId, timer, cycles, totalSeconds } = useContext(TimerContext);
   const [isAdd, setIsAdd] = useState(true);
+  const [isMultiSelect, setIsMultiSelect] = useState(false);
   const [activePeriodId, setActivePeriodId] = useState(null);
   const [activePeriodIndex, setActivePeriodIndex] = useState(null);
+  const [selectedIdsSet, setSelectedIdsSet] = useState(new Set());
   const [showPeriodSheet, setShowPeriodSheet] = useState(false);
   const [formValues, setFormValues] = useState(getStartingFormValues());
   const formError = useMemo(() => getFormError(formValues), [formValues]);
   const isCreate = useMemo(() => !activePeriodId, [activePeriodId]);
   const handlePeriodSave = useCallback(
-    getPeriodSaveCallback({ activePeriodIndex, formValues, isAdd, setFormValues }),
-    [activePeriodId, activePeriodIndex, formValues, isAdd]
+    getPeriodSaveCallback({ activePeriodIndex, isAdd, setFormValues }),
+    [activePeriodId, activePeriodIndex, isAdd]
   );
+  const toggleMultiSelect = useCallback(() => setIsMultiSelect(x => !x));
 
   useEffect(() => saveFormValues(formValues), [formValues]);
 
@@ -48,12 +54,21 @@ function TimerForm() {
 
   const periodsListProps = {
     activePeriodId,
+    formValues,
+    isMultiSelect,
+    selectedIdsSet,
     setActivePeriodId,
     setActivePeriodIndex,
-    setIsAdd,
-    setShowPeriodSheet,
-    formValues,
     setFormValues,
+    setIsAdd,
+    setSelectedIdsSet,
+    setShowPeriodSheet,
+  };
+  const multiSelectControlsProps = {
+    setFormValues,
+    selectedIdsSet,
+    setIsMultiSelect,
+    setSelectedIdsSet,
   };
 
   return (
@@ -64,7 +79,7 @@ function TimerForm() {
             required
             label="Name"
             value={formValues.name}
-            onChange={getHandleChange({ key: 'name', formValues, setFormValues })}
+            onChange={getHandleChange({ key: 'name', setFormValues })}
           />
         </div>
         <div className="row">
@@ -72,7 +87,7 @@ function TimerForm() {
             textarea
             label="Description"
             value={formValues.description}
-            onChange={getHandleChange({ key: 'description', formValues, setFormValues })}
+            onChange={getHandleChange({ key: 'description', setFormValues })}
           />
         </div>
         <div className="row">
@@ -81,7 +96,7 @@ function TimerForm() {
             text="Upload Timer Image"
             label="Timer Image"
             value={formValues.imageUrl}
-            onChange={getHandleChange({ key: 'file', formValues, setFormValues })}
+            onChange={getHandleChange({ key: 'file', setFormValues })}
           />
         </div>
 
@@ -96,8 +111,18 @@ function TimerForm() {
           <div className="error" error={formError}>
             {formError}
           </div>
+          <Button
+            raised={isMultiSelect}
+            outlined={!isMultiSelect}
+            icon={<List height={BUTTON_ICON_PX} width={BUTTON_ICON_PX} />}
+            onClick={toggleMultiSelect}
+          >
+            Select
+          </Button>
         </div>
       </form>
+
+      <MultiSelectControls {...multiSelectControlsProps} />
 
       <PeriodSheet
         index={activePeriodIndex}
@@ -117,11 +142,13 @@ function getHandleSubmit({ formValues }) {
   };
 }
 
-function getHandleChange({ key, formValues, setFormValues }) {
+function getHandleChange({ key, setFormValues }) {
   return e => {
     const value = e.target ? e.target.value : e;
 
-    setFormValues({ ...formValues, [key]: value });
+    setFormValues(formValues => {
+      return { ...formValues, [key]: value };
+    });
   };
 }
 
@@ -159,19 +186,19 @@ function routeChangeStartEffect() {
   return () => Router.events.off('routeChangeStart', handleRouteChange);
 }
 
-function getPeriodSaveCallback({ activePeriodIndex, formValues, isAdd, setFormValues }) {
+function getPeriodSaveCallback({ activePeriodIndex, isAdd, setFormValues }) {
   return periodValues => {
-    const periods = formValues.periods.slice(0);
+    setFormValues(formValues => {
+      const periods = formValues.periods.slice(0);
 
-    if (isAdd) {
-      periods.splice(activePeriodIndex, 0, periodValues);
-    } else {
-      periods.splice(activePeriodIndex, 1, periodValues);
-    }
+      if (isAdd) {
+        periods.splice(activePeriodIndex, 0, periodValues);
+      } else {
+        periods.splice(activePeriodIndex, 1, periodValues);
+      }
 
-    const updatedFormValues = { ...formValues, periods };
-
-    setFormValues(updatedFormValues);
+      return { ...formValues, periods };
+    });
   };
 }
 

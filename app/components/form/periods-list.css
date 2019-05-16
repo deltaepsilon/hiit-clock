@@ -24,3 +24,19 @@
 .period-wrapper[is-last='true'] .down {
   visibility: hidden;
 }
+
+.period-wrapper:first-child > div {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.period-wrapper:last-child > div {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.period-wrapper .buttons {
+  margin-left: 1rem;
+}
+
+.period-wrapper .buttons .mdc-checkbox {
+  margin: 0 0.5rem;
+}

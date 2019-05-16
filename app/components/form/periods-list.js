@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { List, ListItem } from '@rmwc/list';
 import { IconButton } from '@rmwc/icon-button';
+import { Checkbox } from '@rmwc/checkbox';
 import TotalTime from '../timer/total-time';
 import { AddCircleOutline, ArrowUpward, ArrowDownward, DeleteOutline, Edit } from '../svg';
 import constants from '../constants';
@@ -12,9 +13,12 @@ const PERIODS_LIST_ID = 'periods-list';
 
 export default ({
   activePeriodId,
+  isMultiSelect,
+  selectedIdsSet,
   setActivePeriodId,
   setActivePeriodIndex,
   setIsAdd,
+  setSelectedIdsSet,
   setShowPeriodSheet,
   formValues,
   setFormValues,
@@ -49,12 +53,16 @@ export default ({
         const isFirst = i == 0;
         const isLast = i == periods.length - 1;
         const { type, totalSeconds, name } = period;
+        const isActive = activePeriodId == period.id;
+        const isChecked = selectedIdsSet.has(period.id);
         const periodProps = {
           key: i,
           index: i,
+          isActive,
+          isChecked,
           isFirst,
           isLast,
-          isActive: activePeriodId == period.id,
+          isMultiSelect,
           type,
           totalSeconds,
           name,
@@ -65,19 +73,20 @@ export default ({
             setIsAdd,
             setShowPeriodSheet,
           }),
+          handleCheckboxChange: getHandleCheckboxChange({
+            id: period.id,
+            setSelectedIdsSet,
+          }),
           handleSelect: getHandleSelect({
             id: period.id,
-            activePeriodId,
             setActivePeriodId,
           }),
           handleMoveUp: getHandleMoveUp({
             index: i,
-            formValues,
             setFormValues,
           }),
           handleMoveDown: getHandleMoveDown({
             index: i,
-            formValues,
             setFormValues,
           }),
           handleEdit: getHandleEdit({
@@ -90,7 +99,6 @@ export default ({
           }),
           handleDelete: getHandleDelete({
             index: i,
-            formValues,
             setFormValues,
           }),
         };
@@ -104,12 +112,15 @@ export default ({
 function Period({
   index,
   isActive = false,
+  isChecked,
   isFirst,
   isLast,
+  isMultiSelect,
   name,
   totalSeconds,
   type,
   handleAdd,
+  handleCheckboxChange,
   handleSelect,
   handleMoveUp,
   handleMoveDown,
@@ -142,7 +153,11 @@ function Period({
         </div>
       </ListItem>
       <div className="buttons">
-        <IconButton icon={<AddCircleOutline />} onClick={handleAdd} />
+        {isMultiSelect ? (
+          <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+        ) : (
+          <IconButton icon={<AddCircleOutline />} onClick={handleAdd} />
+        )}
       </div>
     </div>
   );
@@ -165,11 +180,29 @@ function getHandleAdd({
   };
 }
 
+function getHandleCheckboxChange({ id, setSelectedIdsSet }) {
+  return e => {
+    const checked = e.currentTarget.checked;
+
+    setSelectedIdsSet(selectedIdsSet => {
+      const set = new Set([...selectedIdsSet]);
+
+      checked ? set.add(id) : set.delete(id);
+
+      return set;
+    });
+
+    checked;
+  };
+}
+
 function getHandleSelect({ id, activePeriodId, setActivePeriodId }) {
   return () => {
-    const isSelected = activePeriodId == id;
+    setActivePeriodId(activePeriodId => {
+      const isSelected = activePeriodId == id;
 
-    setActivePeriodId(isSelected ? null : id);
+      return isSelected ? null : id;
+    });
   };
 }
 
@@ -180,21 +213,23 @@ function getDeselect({ setActivePeriodId, setActivePeriodIndex }) {
   };
 }
 
-function getHandleMoveDown({ index, formValues, setFormValues }) {
-  return getHandleMoveUp({ index: index + 1, formValues, setFormValues });
+function getHandleMoveDown({ index, setFormValues }) {
+  return getHandleMoveUp({ index: index + 1, setFormValues });
 }
 
-function getHandleMoveUp({ index, formValues, setFormValues }) {
+function getHandleMoveUp({ index, setFormValues }) {
   return e => {
     e.stopPropagation();
 
-    const periods = [...formValues.periods];
-    const period = periods[index];
+    setFormValues(formValues => {
+      const periods = [...formValues.periods];
+      const period = periods[index];
 
-    periods.splice(index, 1);
-    periods.splice(index - 1, 0, period);
+      periods.splice(index, 1);
+      periods.splice(index - 1, 0, period);
 
-    setFormValues({ ...formValues, periods });
+      return { ...formValues, periods };
+    });
   };
 }
 
@@ -219,11 +254,14 @@ function getHandleEdit({
 function getHandleDelete({ index, formValues, setFormValues }) {
   return e => {
     e.stopPropagation();
-    const periods = [...formValues.periods];
 
-    periods.splice(index, 1);
+    setFormValues(formValues => {
+      const periods = [...formValues.periods];
 
-    setFormValues({ ...formValues, periods });
+      periods.splice(index, 1);
+
+      return { ...formValues, periods };
+    });
   };
 }
 
