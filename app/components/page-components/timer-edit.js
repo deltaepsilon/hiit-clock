@@ -17,7 +17,6 @@ const DEFAULT_TIMER = {
   name: '',
   description: '',
   file: null,
-  tags: [],
   periods: [],
 };
 const BUTTON_ICON_PX = 16;
@@ -108,7 +107,7 @@ function TimerForm() {
         <PeriodsList {...periodsListProps} />
 
         <div className="row buttons">
-          <Button raised disabled={!!formError}>
+          <Button type="submit" raised disabled={!!formError}>
             Save
           </Button>
           <div className="error" error={formError}>
@@ -157,6 +156,8 @@ function getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }) {
 function getHandleSubmit({ formValues }) {
   return e => {
     e.preventDefault();
+
+    console.log('formValues', formValues);
   };
 }
 
