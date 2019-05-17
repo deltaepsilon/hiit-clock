@@ -5,4 +5,4 @@ tags:
 periods:
 - name: AMRAP
   totalSeconds: 600
-  type: stopwatch
+  type: work

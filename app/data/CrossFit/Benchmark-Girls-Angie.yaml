@@ -10,4 +10,4 @@ tags:
 periods:
 - name: For Time
   totalSeconds: 1800
-  type: stopwatch
+  type: work
