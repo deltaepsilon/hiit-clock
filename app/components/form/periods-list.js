@@ -52,7 +52,7 @@ export default ({
       />
       {formValues.periods.map((period, i, periods) => {
         const isLast = i == periods.length - 1;
-        const { type, totalSeconds, name } = period;
+        const { file, name, type, totalSeconds } = period;
         const isActive = activePeriodId == period.id;
         const isChecked = selectedIdsSet.has(period.id);
         const periodProps = {
@@ -62,9 +62,10 @@ export default ({
           isChecked,
           isLast,
           isMultiSelect,
+          file,
+          name,
           type,
           totalSeconds,
-          name,
           handleAdd: getHandleAdd({
             index: i,
             setActivePeriodId,
@@ -132,6 +133,7 @@ function Period({
   isFirst = false,
   isLast = false,
   isMultiSelect,
+  file,
   name,
   totalSeconds,
   type,
@@ -143,8 +145,10 @@ function Period({
   handleEdit,
   handleDelete,
 }) {
+  const dataUrl = file && file.dataUrl;
   const isRest = type == constants.PERIOD_TYPES.REST;
   const isDisabled = type == constants.PERIOD_TYPES.PREPARE;
+  const title = isRest ? constants.TEXT.REST : name;
 
   return (
     <div
@@ -155,11 +159,15 @@ function Period({
       is-last={String(isLast)}
     >
       <ListItem type={type} className="flex" onClick={handleSelect} disabled={isDisabled}>
-        <span>{isRest ? constants.TEXT.REST : name}</span>
+        <TotalTime totalSeconds={totalSeconds} />
+
+        <span className="title" title={title}>
+          {title}
+        </span>
 
         <span className="flex" />
 
-        <TotalTime totalSeconds={totalSeconds} />
+        {dataUrl && <img src={dataUrl} alt={`image for ${name}`} />}
 
         <div className="period-controls">
           <IconButton className="up" icon={<ArrowUpward />} onClick={handleMoveUp} />

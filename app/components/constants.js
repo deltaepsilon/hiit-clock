@@ -20,6 +20,10 @@ export default {
       INSET_Y: 8,
       INSET_PROGRESS: 16,
     },
+    PREVIEW_IMAGE: {
+      MAX_HEIGHT: 600,
+      MAX_WIDTH: 600,
+    },
   },
   LOCALSTORAGE: {
     PROFILE: 'profile',

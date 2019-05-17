@@ -33,8 +33,21 @@
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
+.period-wrapper .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .period-wrapper .buttons {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
+  margin-right: -0.25rem;
+}
+
+.period-wrapper img {
+  max-width: 75px;
+  max-height: 100%;
+  margin: 0 1rem;
 }
 
 .period-wrapper .buttons .mdc-checkbox,

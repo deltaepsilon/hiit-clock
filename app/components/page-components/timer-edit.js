@@ -16,7 +16,6 @@ import './timer-edit.css';
 const DEFAULT_TIMER = {
   name: '',
   description: '',
-  imageUrl: '',
   file: null,
   tags: [],
   periods: [],
@@ -99,7 +98,7 @@ function TimerForm() {
             id="timer-image"
             text="Upload Timer Image"
             label="Timer Image"
-            value={formValues.imageUrl}
+            file={formValues.file}
             onChange={getHandleChange({ key: 'file', setFormValues })}
           />
         </div>

@@ -1,16 +1,36 @@
-import React, { useCallback, useContext, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useContext, useState, useRef } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { Button } from '@rmwc/button';
 import { IconButton } from '@rmwc/icon-button';
 import { DeleteOutline } from '../svg';
+import Pica from 'pica';
+import md5 from 'md5';
+import constants from '../constants';
 
 import './image-upload-input.css';
 
-export default ({ id, text = 'Upload', label, value, onChange }) => {
+export default ({ id, text = 'Upload', file, onChange }) => {
   const { currentUser } = useContext(AuthenticationContext);
-  const [previewUrl, setPreviewUrl] = useState(value);
+  const [previewUrl, setPreviewUrl] = useState(file && file.dataUrl);
   const inputRef = useRef(null);
+  const imgRef = useRef(null);
+  const canvasRef = useRef(null);
   const triggerInput = useCallback(e => (e.preventDefault(), inputRef.current.click()), [inputRef]);
+
+  useEffect(() => {
+    (async () => {
+      const dataUrl = file && file.dataUrl;
+      const isDataUrl = dataUrl == previewUrl;
+
+      if (previewUrl && !isDataUrl) {
+        const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
+        const hash = md5(dataUrl);
+        const hashWithoutSlashes = hash.replace(/\//, '|');
+
+        onChange({ blob, dataUrl, dimensions, key: hashWithoutSlashes });
+      }
+    })();
+  }, [previewUrl]);
 
   return (
     <div className="image-upload-input">
@@ -32,7 +52,8 @@ export default ({ id, text = 'Upload', label, value, onChange }) => {
           <>
             {previewUrl ? (
               <>
-                <img src={previewUrl} alt="timer image preview" />
+                <img ref={imgRef} src={previewUrl} />
+                <canvas ref={canvasRef} />
                 <IconButton
                   icon={<DeleteOutline />}
                   onClick={e => {
@@ -55,7 +76,7 @@ export default ({ id, text = 'Upload', label, value, onChange }) => {
   );
 };
 
-function getFileChangeHandler({ setPreviewUrl, onChange }) {
+function getFileChangeHandler({ setPreviewUrl }) {
   return e => {
     const [file] = e.target.files;
     const reader = new FileReader();
@@ -65,7 +86,68 @@ function getFileChangeHandler({ setPreviewUrl, onChange }) {
     if (file) {
       reader.readAsDataURL(file);
     }
-
-    onChange(file);
   };
+}
+
+async function resizeImage(imgRef, canvasRef) {
+  const { width, height } = setCanvasDimensions(imgRef, canvasRef);
+  const pica = Pica();
+  const result = await pica.resize(imgRef.current, canvasRef.current, { quality: 3 });
+  const blob = await pica.toBlob(result, 'image/jpeg', 0.9);
+  const dataUrl = await getDataUrl(blob);
+
+  return { blob, dataUrl, dimensions: { width, height } };
+}
+
+function setCanvasDimensions(imgRef, canvasRef) {
+  const { width, height } = getNewDimensions(imgRef);
+
+  canvasRef.current.width = width;
+  canvasRef.current.height = height;
+
+  return { width, height };
+}
+
+function getNewDimensions(imgRef) {
+  const { width, height } = imgRef.current;
+  const aspectRatio = width / height;
+  const maxWidth = Math.min(width, constants.DIMENSIONS.PREVIEW_IMAGE.MAX_WIDTH);
+  const maxHeight = Math.min(height, constants.DIMENSIONS.PREVIEW_IMAGE.MAX_HEIGHT);
+  const heightIsGreater = maxHeight > maxWidth;
+  let adjustedWidth;
+  let adjustedHeight;
+
+  if (heightIsGreater) {
+    adjustedHeight = maxHeight;
+    adjustedWidth = Math.round(adjustedHeight * aspectRatio);
+  } else {
+    adjustedWidth = maxWidth;
+    adjustedHeight = Math.round(adjustedWidth / aspectRatio);
+  }
+
+  return { width: adjustedWidth, height: adjustedHeight };
+}
+
+async function getDataUrl(fileOrBlob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    try {
+      reader.addEventListener(
+        'load',
+        () => {
+          try {
+            resolve(reader.result);
+          } catch (error) {
+            reject(error);
+          }
+        },
+        false
+      );
+
+      reader.readAsDataURL(fileOrBlob);
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
