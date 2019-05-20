@@ -82,3 +82,22 @@
 #period-sheet .type-selection .mdc-button {
   width: calc(50% - 2rem);
 }
+
+/* Input Styles */
+#period-sheet .row {
+  padding: 0.5rem 0;
+}
+
+#period-sheet .mdc-text-field--textarea {
+  padding-top: 1rem;
+}
+
+#period-sheet .mdc-text-field--textarea .mdc-floating-label {
+  top: 2rem;
+  left: 1rem;
+}
+
+#period-sheet .mdc-text-field {
+  background: var(--color-form-input-background);
+  width: 100%;
+}

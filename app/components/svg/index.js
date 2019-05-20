@@ -1,5 +1,6 @@
 import AccountCircle from './account-circle';
 import AddCircleOutline from './add-circle-outline';
+import Add from './add';
 import ArrowBack from './arrow-back';
 import ArrowDownward from './arrow-downward';
 import ArrowUpward from './arrow-upward';
@@ -24,6 +25,7 @@ import Stop from './stop';
 export {
   AccountCircle,
   AddCircleOutline,
+  Add,
   ArrowBack,
   ArrowDownward,
   ArrowUpward,

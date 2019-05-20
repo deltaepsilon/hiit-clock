@@ -1,0 +1,18 @@
+/* Input Styles */
+#timer-metadata-inputs .row {
+  padding: 0.5rem 0;
+}
+
+#timer-metadata-inputs .mdc-text-field--textarea {
+  padding-top: 1rem;
+}
+
+#timer-metadata-inputs .mdc-text-field--textarea .mdc-floating-label {
+  top: 2rem;
+  left: 1rem;
+}
+
+#timer-metadata-inputs .mdc-text-field {
+  background: var(--color-form-input-background);
+  width: 100%;
+}

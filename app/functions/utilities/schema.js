@@ -3,7 +3,16 @@ module.exports = ({ admin, environment }) => {
 
   return {
     db,
-    getTimerRef: key => db.collection('timers').doc(key),
-    getTimersRef: () => db.collection('timers'),
+    getUserTimerRef: (userId, timerId) =>
+      db
+        .collection('users')
+        .doc(userId)
+        .collection('timers')
+        .doc(timerId),
+    getUserTimersRef: userId =>
+      db
+        .collection('users')
+        .doc(userId)
+        .collection('timers'),
   };
 };

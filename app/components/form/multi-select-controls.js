@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IconButton } from '@rmwc/icon-button';
+import { TimerFormContext } from '../contexts/timer-form-context';
 import { Close, DeleteOutline, FileCopyOutline } from '../svg';
 import uuid from 'uuid/v4';
 import constants from '../constants';
 
 import './multi-select-controls.css';
 
-export default ({ setFormValues, selectedIdsSet, setIsMultiSelect, setSelectedIdsSet }) => {
+export default () => {
+  const { setFormValues, selectedIdsSet, setIsMultiSelect, setSelectedIdsSet } = useContext(
+    TimerFormContext
+  );
+  
   return (
     <div id="multi-select-controls">
       <IconButton

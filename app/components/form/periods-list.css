@@ -1,3 +1,8 @@
+.list-item-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .period-wrapper .period-controls {
   position: absolute;
   top: 0;
@@ -9,27 +14,49 @@
   justify-content: space-around;
   align-items: center;
 
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   cursor: default;
+  opacity: 1;
+}
+/* 
+.period-wrapper[is-only='true'][is-active='false'] .title:before {
+  content: 'Click To Edit';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.75);
+} */
+
+.period-wrapper[is-active='false'] .period-controls:not(:focus-within) {
+  opacity: 0;
+  /* background: gold; */
 }
 
-.period-wrapper[is-active='false'] .period-controls {
-  display: none;
-}
-
-.period-wrapper[is-first='true'] .up {
+.period-wrapper .mdc-icon-button[is-hidden='true'] {
   visibility: hidden;
 }
 
-.period-wrapper[is-last='true'] .down {
-  visibility: hidden;
-}
-
-.period-wrapper[is-first='true'] > div {
+.period-wrapper[is-first='true'] .mdc-list-item {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.period-wrapper[is-last='true'] > div {
+.period-wrapper[is-last='true'] .mdc-list-item {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.period-wrapper[is-first='true'][is-last='true'] .mdc-list-item {
+  border-radius: var(--border-radius);
+}
+
+.period-wrapper[is-last='true'] .mdc-list-item {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
@@ -50,9 +77,12 @@
   margin: 0 1rem;
 }
 
-.period-wrapper .buttons .mdc-checkbox,
-#check-all-wrapper .mdc-checkbox {
+.period-wrapper .buttons .mdc-checkbox {
   margin: 0 0.5rem;
+}
+
+#check-all-wrapper .mdc-checkbox {
+  margin: 0 4px;
 }
 
 #check-all-wrapper {
@@ -62,4 +92,61 @@
 
 #check-all-wrapper[can-multi-select='false'] {
   visibility: hidden;
+}
+
+.period-wrapper .add-button-wrapper {
+  position: relative;
+}
+
+.period-wrapper .add-button-wrapper aside {
+  position: absolute;
+  top: 6px;
+  left: calc(-200% - 0.5rem);
+  background: var(--mdc-theme-secondary);
+  border-radius: var(--border-radius);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  margin-left: -100%;
+  white-space: nowrap;
+}
+
+.period-wrapper .add-button-wrapper aside {
+  animation: shake 5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  5%,
+  35%,
+  65%,
+  95% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  10%,
+  30%,
+  40%,
+  60%,
+  70%,
+  90% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  15%,
+  25%,
+  45%,
+  55%,
+  75%,
+  85% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  20%,
+  50%,
+  80% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

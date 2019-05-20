@@ -16,7 +16,7 @@ const schema = require('../functions/utilities/schema')(context);
   const updated = Date.now();
 
   filesJson.forEach(({ id, ...json }) => {
-    const ref = schema.getTimerRef(id);
+    const ref = schema.getUserTimerRef('admin-user', id);
 
     batch.set(ref, {
       ...json,

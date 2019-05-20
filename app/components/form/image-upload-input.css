@@ -43,6 +43,6 @@
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
 }

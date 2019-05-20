@@ -13,26 +13,8 @@
   flex: 1;
 }
 
-#timer-edit .row {
-  padding: 0.5rem 0;
-}
-
 #timer-edit hr {
   margin: 2rem 0;
-}
-
-#timer-edit .mdc-text-field--textarea {
-  padding-top: 1rem;
-}
-
-#timer-edit .mdc-text-field--textarea .mdc-floating-label {
-  top: 2rem;
-  left: 1rem;
-}
-
-#timer-edit .mdc-text-field {
-  background: var(--color-form-input-background);
-  width: 100%;
 }
 
 #timer-edit .buttons {

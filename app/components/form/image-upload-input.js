@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useContext, useState, useRef } from 'react';
+import Link from 'next/link';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { Button } from '@rmwc/button';
 import { IconButton } from '@rmwc/icon-button';
@@ -55,7 +56,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
                 <img ref={imgRef} src={previewUrl} />
                 <canvas ref={canvasRef} />
                 <IconButton
-                  icon={<DeleteOutline />}
+                  icon={<DeleteOutline fill={constants.COLORS.BUTTON_ON_WHITE} />}
                   onClick={e => {
                     e.preventDefault();
                     onChange(null);
@@ -69,7 +70,12 @@ export default ({ id, text = 'Upload', file, onChange }) => {
             )}
           </>
         ) : (
-          <div className="image-upload-error">Log in to upload</div>
+          <div className="image-upload-error">
+            <Link href={constants.ROUTES.LOGIN}>
+              <a href={constants.ROUTES.LOGIN}>Log in</a>
+            </Link>
+            <span> to upload</span>
+          </div>
         )}
       </div>
     </div>

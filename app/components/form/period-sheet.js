@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useCallback, useContext, useRef, useMemo, useState } from 'react';
 import { Toolbar, ToolbarRow, ToolbarTitle } from '@rmwc/toolbar';
 import { TextField } from '@rmwc/textfield';
 import { Button } from '@rmwc/button';
 import { IconButton } from '@rmwc/icon-button';
+import { TimerFormContext } from '../contexts/timer-form-context';
 import { Close } from '../svg';
 import ImageUploadInput from './image-upload-input';
 import uuid from 'uuid/v4';
@@ -13,13 +14,23 @@ import './period-sheet.css';
 export const PERIOD_SHEET_ID = 'period-sheet';
 const DEFAULT_PERIOD = { totalSeconds: 5, name: '', file: null, type: constants.PERIOD_TYPES.WORK };
 
-export default ({ index, show = false, isCreate = false, period, save, close }) => {
+export default () => {
+  const {
+    isCreate,
+    period,
+    handlePeriodSave: save,
+    showPeriodSheet: show,
+    setShowPeriodSheet,
+  } = useContext(TimerFormContext);
+  const close = useCallback(() => setShowPeriodSheet(false), [setShowPeriodSheet]);
   const [periodValues, setPeriodValues] = useState(getStartingPeriod(period));
+  const periodNameRef = useRef(null);
   const isWork = useMemo(() => getIsWork(periodValues.type), [periodValues.type]);
   const title = useMemo(() => getTitle({ isWork, isCreate }), [isCreate, isWork]);
   const isDisabled = useMemo(() => getIsDisabled(periodValues), [periodValues]);
 
   useEffect(() => setPeriodValues(getStartingPeriod(period)), [show]);
+  useEffect(() => (show && periodNameRef.current.input.ref.focus(), undefined), [show]);
 
   return (
     <div id={PERIOD_SHEET_ID} is-showing={String(show)} type={periodValues.type}>
@@ -51,6 +62,7 @@ export default ({ index, show = false, isCreate = false, period, save, close }) 
             </Button>
           </div>
           <TextField
+            ref={periodNameRef}
             required
             type="text"
             label="Period Name"
