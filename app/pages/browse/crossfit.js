@@ -3,6 +3,7 @@ import AppBase from '../../components/app/app-base';
 import Browse from '../../components/page-components/browse';
 import BackButton from '../../components/top-bar/back-button';
 import items from '../../data/crossfit.json';
+import constants from "../../components/constants";
 
 import '../page.css';
 
@@ -32,7 +33,7 @@ export default props => {
           <p>We've included some AMRAP timers for convenience 😉</p>
         </section>
 
-        <Browse items={items} />
+        <Browse userId={constants.SHARED_USER} items={items} />
       </div>
     </AppBase>
   );

@@ -28,7 +28,7 @@ export default ({ children }) => {
     [activePeriodId, activePeriodIndex, isAdd]
   );
   const toggleMultiSelect = useCallback(() => setIsMultiSelect(x => !x));
-  const period = useMemo(() => getActivePeriodById(formValues.periods, activePeriodId), [
+  const activePeriod = useMemo(() => getActivePeriodById(formValues.periods, activePeriodId), [
     formValues,
     activePeriodId,
   ]);
@@ -38,6 +38,7 @@ export default ({ children }) => {
   useEffect(() => saveFormValues(formValues), [formValues]);
 
   const value = {
+    activePeriod,
     activePeriodId,
     activePeriodIndex,
     formError,
@@ -46,7 +47,6 @@ export default ({ children }) => {
     isAdd,
     isCreate,
     isMultiSelect,
-    period,
     showPeriodSheet,
     selectedIdsSet,
     setActivePeriodId,
@@ -56,6 +56,7 @@ export default ({ children }) => {
     setIsMultiSelect,
     setSelectedIdsSet,
     setShowPeriodSheet,
+    timerId,
     toggleMultiSelect,
   };
 

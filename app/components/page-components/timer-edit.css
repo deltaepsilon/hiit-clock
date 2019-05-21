@@ -49,23 +49,6 @@
 #timer-edit .time {
   margin-right: 1rem;
 }
-
-#timer-edit .mdc-list-item[type='prepare'] {
-  background: var(--color-form-background-prepare);
-}
-
-#timer-edit .mdc-list-item[type='prepare'] .mdc-icon-button {
-  visibility: hidden;
-}
-
-#timer-edit .mdc-list-item[type='rest'] {
-  background: var(--color-form-background-rest);
-}
-
-#timer-edit .mdc-list-item[type='work'] {
-  background: var(--color-form-background-work);
-}
-
 #timer-edit .buttons .mdc-icon-button {
   margin: 0 0.25rem;
 }

@@ -13,14 +13,15 @@ export default ({ searchLabel, items }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const timers = useSearch(items, searchTerm);
 
+
   return (
     <div className="timers-list list">
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
         {timers.map((timer, i) => (
           <Link
-            key={timer.id || timer.objectID}
-            href={`${constants.ROUTES.TIMER.DETAIL}?id=${timer.id || timer.objectID}`}
+            key={timer.__id || timer.objectID}
+            href={`${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}`}
           >
             <SimpleListItem
               text={timer.name}

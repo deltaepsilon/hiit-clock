@@ -24,7 +24,7 @@ export default props => {
           </p>
         </section>
 
-        <Browse items={items} />
+        <Browse userId={constants.SHARED_USER} items={items} />
       </div>
     </AppBase>
   );

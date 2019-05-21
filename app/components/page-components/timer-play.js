@@ -7,9 +7,9 @@ import TimerProvider from '../contexts/timer-context';
 
 import './timer-play.css';
 
-export default ({ timerId }) => {
+export default ({ timerId, userId }) => {
   return (
-    <TimerProvider timerId={timerId}>
+    <TimerProvider timerId={timerId} userId={userId}>
       <div id="timer-play">
         <TimerTopBar />
         <TimerProgressBars />

@@ -32,7 +32,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #period-sheet[type='work'] .form-wrapper {
@@ -50,6 +50,19 @@
 
 #period-sheet .form-wrapper form > div:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+#period-sheet .row {
+  display: flex;
+  align-items: center;
+}
+
+#period-sheet .time {
+  /* color: var(--color-sheet-color); */
+  background: var(--color-gray-dark);
+  margin-left: 1rem;
+  padding: 16px;
+  border-radius: var(--border-radius);
 }
 
 #period-sheet .image-upload-preview {

@@ -1,5 +1,6 @@
 .list-item-wrapper {
   position: relative;
+  max-width: calc(100% - 61px);
   width: 100%;
 }
 
@@ -14,11 +15,11 @@
   justify-content: space-around;
   align-items: center;
 
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.75);
   cursor: default;
   opacity: 1;
 }
-/* 
+
 .period-wrapper[is-only='true'][is-active='false'] .title:before {
   content: 'Click To Edit';
   position: absolute;
@@ -33,11 +34,11 @@
   align-items: center;
 
   background: rgba(0, 0, 0, 0.75);
-} */
+}
 
 .period-wrapper[is-active='false'] .period-controls:not(:focus-within) {
   opacity: 0;
-  /* background: gold; */
+  z-index: -1;
 }
 
 .period-wrapper .mdc-icon-button[is-hidden='true'] {
@@ -45,19 +46,32 @@
 }
 
 .period-wrapper[is-first='true'] .mdc-list-item {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-top-left-radius: var(--border-radius);
 }
 
 .period-wrapper[is-last='true'] .mdc-list-item {
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 
 .period-wrapper[is-first='true'][is-last='true'] .mdc-list-item {
-  border-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 
-.period-wrapper[is-last='true'] .mdc-list-item {
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
+.period-wrapper .mdc-list-item[type='prepare'] {
+  background: var(--color-form-background-prepare);
+}
+
+.period-wrapper .mdc-list-item[type='prepare'] .mdc-icon-button {
+  visibility: hidden;
+}
+
+.period-wrapper .mdc-list-item[type='rest'] {
+  background: var(--color-form-background-rest);
+}
+
+.period-wrapper .mdc-list-item[type='work'] {
+  background: var(--color-form-background-work);
 }
 
 .period-wrapper .title {
@@ -67,8 +81,21 @@
 }
 
 .period-wrapper .buttons {
-  margin-left: 0.25rem;
-  margin-right: -0.25rem;
+  padding-left: 0.25rem;
+  border: var(--button-border-width) solid var(--button-border-color);
+  border-width: var(--button-border-width) var(--button-border-width) 0 0;
+}
+
+.period-wrapper[is-first='true'] .buttons {
+  border-top-right-radius: var(--border-radius);
+}
+
+.period-wrapper[is-last='true'] .buttons {
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.period-wrapper[is-last='true'] .buttons {
+  border-bottom-width: var(--button-border-width);
 }
 
 .period-wrapper img {

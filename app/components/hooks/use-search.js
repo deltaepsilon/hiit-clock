@@ -19,7 +19,7 @@ export default (items, searchTerm) => {
 
   useEffect(() => {
     items ? setFuse(new Fuse(items, fuseOptions)) : setFuse(null);
-  }, items);
+  }, [items]);
 
   useEffect(() => {
     const isBrowser = typeof window != 'undefined';

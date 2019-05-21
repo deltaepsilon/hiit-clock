@@ -65,6 +65,7 @@ export default {
       TABATA: '/browse/tabata',
     },
   },
+  SHARED_USER: 'shared-user',
   TEXT: {
     REST: 'Rest',
     WORK: 'Work',

@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useContext, useMemo, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Router from 'next/router';
-import TimerProvider, { TimerContext } from '../contexts/timer-context';
+import TimerProvider from '../contexts/timer-context';
 import TimerFormProvider, { TimerFormContext, DEFAULT_TIMER } from '../contexts/timer-form-context';
+import { AuthenticationContext } from '../contexts/authentication-context';
 import { Button } from '@rmwc/button';
 import TimerMetadataInputs from '../form/timer-metadata-inputs';
 import PeriodSheet from '../form/period-sheet';
@@ -9,6 +10,7 @@ import PeriodsList from '../form/periods-list';
 import MultiSelectControls from '../form/multi-select-controls';
 import effects from '../../effects';
 import { List } from '../svg';
+import constants from '../constants';
 
 import './timer-edit.css';
 
@@ -25,12 +27,14 @@ export default ({ timerId }) => {
 };
 
 function TimerForm() {
+  const { currentUser } = useContext(AuthenticationContext);
   const {
     formValues,
     formError,
     isMultiSelect,
     setShowPeriodSheet,
     setIsMultiSelect,
+    timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
 
@@ -40,7 +44,7 @@ function TimerForm() {
 
   return (
     <div id="timer-edit">
-      <form onSubmit={getHandleSubmit({ formValues })}>
+      <form onSubmit={getHandleSubmit({ currentUser, formValues, timerId })}>
         <TimerMetadataInputs />
 
         <hr />
@@ -87,14 +91,6 @@ function getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }) {
   return () => window.removeEventListener('keyup', handleKeyUp);
 }
 
-function getHandleSubmit({ formValues }) {
-  return e => {
-    e.preventDefault();
-
-    console.log('formValues', formValues);
-  };
-}
-
 function routeChangeStartEffect() {
   function handleRouteChange() {
     effects.saveTimerForm(DEFAULT_TIMER);
@@ -103,4 +99,25 @@ function routeChangeStartEffect() {
   Router.events.on('routeChangeStart', handleRouteChange);
 
   return () => Router.events.off('routeChangeStart', handleRouteChange);
+}
+
+function getHandleSubmit({ currentUser, formValues, timerId }) {
+  return async e => {
+    e.preventDefault();
+
+    const timer = getTimerFromFormValues(formValues);
+
+    await effects.saveTimer({ currentUser, timer, timerId });
+
+    Router.push(constants.ROUTES.DASHBOARD);
+  };
+}
+
+function getTimerFromFormValues(formValues) {
+  const periods = formValues.periods.map(period => ({
+    ...period,
+    totalSeconds: +period.totalSeconds,
+  }));
+
+  return { ...formValues, periods };
 }

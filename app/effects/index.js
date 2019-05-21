@@ -2,6 +2,7 @@
 import saveProfile from './save-profile';
 import saveSettings from './save-settings';
 import saveTimerForm from './save-timer-form';
+import saveTimer from './save-timer';
 import signInAnonymously from './sign-in-anonymously';
 import signInWithGoogle from './sign-in-with-google';
 import signOut from './sign-out';
@@ -10,6 +11,7 @@ export default {
   saveProfile: wrapEffect(saveProfile),
   saveSettings: wrapEffect(saveSettings),
   saveTimerForm: wrapEffect(saveTimerForm),
+  saveTimer: wrapEffect(saveTimer),
   signInAnonymously: wrapEffect(signInAnonymously),
   signInWithGoogle: wrapEffect(signInWithGoogle),
   signOut: wrapEffect(signOut),

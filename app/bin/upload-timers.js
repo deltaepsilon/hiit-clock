@@ -15,8 +15,8 @@ const schema = require('../functions/utilities/schema')(context);
   const batch = schema.db.batch();
   const updated = Date.now();
 
-  filesJson.forEach(({ id, ...json }) => {
-    const ref = schema.getUserTimerRef('admin-user', id);
+  filesJson.forEach(({ __id, ...json }) => {
+    const ref = schema.getUserTimerRef('shared-user', __id);
 
     batch.set(ref, {
       ...json,
@@ -64,9 +64,9 @@ async function parseYamlFiles(files) {
     files.map(async file => {
       const text = await promisify(fs.readFile)(file, 'utf8');
       const json = yaml.parse(text);
-      const id = file.match(/\/([^/]*)\.yaml/)[1];
+      const __id = file.match(/\/([^/]*)\.yaml/)[1];
 
-      json.id = id.toLowerCase();
+      json.__id = __id.toLowerCase();
 
       return json;
     })

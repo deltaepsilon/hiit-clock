@@ -1,6 +1,7 @@
 .list {
   background: var(--color-light-background);
   width: 100%;
+  overflow: hidden;
 }
 
 .list,

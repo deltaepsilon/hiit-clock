@@ -5,6 +5,7 @@ import { Button } from '@rmwc/button';
 import { IconButton } from '@rmwc/icon-button';
 import { TimerFormContext } from '../contexts/timer-form-context';
 import { Close } from '../svg';
+import TotalTime from '../timer/total-time';
 import ImageUploadInput from './image-upload-input';
 import uuid from 'uuid/v4';
 import constants from '../constants';
@@ -17,7 +18,7 @@ const DEFAULT_PERIOD = { totalSeconds: 5, name: '', file: null, type: constants.
 export default () => {
   const {
     isCreate,
-    period,
+    activePeriod: period,
     handlePeriodSave: save,
     showPeriodSheet: show,
     setShowPeriodSheet,
@@ -31,6 +32,7 @@ export default () => {
 
   useEffect(() => setPeriodValues(getStartingPeriod(period)), [show]);
   useEffect(() => (show && periodNameRef.current.input.ref.focus(), undefined), [show]);
+  useEffect(() => (window.document.body.setAttribute('no-scroll', show), undefined), [show]);
 
   return (
     <div id={PERIOD_SHEET_ID} is-showing={String(show)} type={periodValues.type}>
@@ -71,14 +73,17 @@ export default () => {
             disabled={!isWork}
             onChange={getChangeHandler({ key: 'name', periodValues, setPeriodValues })}
           />
-          <TextField
-            type="number"
-            label="Period Seconds"
-            placeholder="30"
-            min="5"
-            value={periodValues.totalSeconds}
-            onChange={getChangeHandler({ key: 'totalSeconds', periodValues, setPeriodValues })}
-          />
+          <div className="row">
+            <TextField
+              type="number"
+              label="Period Seconds"
+              placeholder="30"
+              min="5"
+              value={periodValues.totalSeconds}
+              onChange={getChangeHandler({ key: 'totalSeconds', periodValues, setPeriodValues })}
+            />
+            <TotalTime totalSeconds={periodValues.totalSeconds} />
+          </div>
           {isWork && (
             <ImageUploadInput
               value={periodValues.file}

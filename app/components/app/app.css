@@ -47,12 +47,16 @@
   --color-form-outline: var(--color-form-input-background);
   --color-form-list-color: #ffffff;
   --color-form-background-prepare: #ffbd00;
-  --color-form-background-work: #ff5400;
-  --color-form-background-rest: rgba(0, 0, 0, .1);
+  --color-form-background-work: #1d4e89;
+  --color-form-background-rest: rgba(0, 0, 0, 0.1);
 
   /* Sheet */
   --color-sheet-background: #ffffff;
   --color-sheet-color: var(--mdc-theme-primary-light);
+
+  /* Period List */
+  --button-border-width: 0.5px;
+  --button-border-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -61,6 +65,10 @@ body {
   background: var(--color-gray-dark);
   font-display: swap;
   overflow-x: hidden;
+}
+
+body[no-scroll='true'] {
+  overflow-y: hidden;
 }
 
 body,
@@ -117,6 +125,10 @@ a:visited {
 .mdc-button.accent {
   background-color: var(--mdc-theme-secondary) !important;
   color: var(--mdc-theme-secondary-text) !important;
+}
+
+.mdc-text-field--focused .mdc-floating-label {
+  color: var(--mdc-theme-primary-light) !important;
 }
 
 .mdc-button,

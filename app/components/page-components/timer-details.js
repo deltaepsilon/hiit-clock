@@ -4,11 +4,12 @@ import TotalTime from '../timer/total-time';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import CyclesList from '../timer/cycles-list';
 import TimerActions from '../timer/timer-actions';
+import { AuthenticationContext } from '../contexts/authentication-context';
 
 import './timer-details.css';
 
-export default ({ timerId }) => {
-  const timer = useTimer(timerId);
+export default ({ timerId, userId }) => {
+  const timer = useTimer({ timerId, userId });
   const cycles = getTimerCycles(timer);
 
   return (
