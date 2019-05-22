@@ -1,7 +1,4 @@
 #timer-details {
-  position: absolute;
-  top: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +8,20 @@
   padding-bottom: 5rem;
 
   --background-color: rgba(0, 0, 0, 0.15);
+  --mdc-theme-secondary: rgba(0, 0, 0, 0.9);
 }
 
 #timer-details h1 {
-  font-size: 6vw;
+  font-size: 10vw;
   line-height: 5rem;
   margin: 0 0 2rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 720px) {
+  #timer-details h1 {
+    font-size: 5rem;
+  }
 }
 
 #timer-details .timer-details-list {
@@ -41,4 +46,10 @@
   width: calc(100% - 2rem);
   margin: 0;
   background: var(--background-color);
+}
+
+#timer-details .mdc-fab.edit {
+  position: relative;
+  top: 28px;
+  right: -30%;
 }

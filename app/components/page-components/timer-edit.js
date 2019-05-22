@@ -8,6 +8,7 @@ import TimerMetadataInputs from '../form/timer-metadata-inputs';
 import PeriodSheet from '../form/period-sheet';
 import PeriodsList from '../form/periods-list';
 import MultiSelectControls from '../form/multi-select-controls';
+import ConfirmButton from '../form/confirm-button';
 import effects from '../../effects';
 import { List } from '../svg';
 import constants from '../constants';
@@ -16,9 +17,9 @@ import './timer-edit.css';
 
 const BUTTON_ICON_PX = 16;
 
-export default ({ timerId }) => {
+export default ({ timerId, userId }) => {
   return (
-    <TimerProvider timerId={timerId}>
+    <TimerProvider timerId={timerId} userId={userId}>
       <TimerFormProvider>
         <TimerForm />
       </TimerFormProvider>
@@ -31,6 +32,7 @@ function TimerForm() {
   const {
     formValues,
     formError,
+    isAdd,
     isMultiSelect,
     setShowPeriodSheet,
     setIsMultiSelect,
@@ -55,17 +57,32 @@ function TimerForm() {
           <Button type="submit" raised disabled={!!formError}>
             Save
           </Button>
-          <div className="error" error={formError}>
-            {formError}
-          </div>
           <Button
             raised={isMultiSelect}
             outlined={!isMultiSelect}
             icon={<List height={BUTTON_ICON_PX} width={BUTTON_ICON_PX} />}
-            onClick={toggleMultiSelect}
+            onClick={e => (e.preventDefault(), toggleMultiSelect())}
           >
             Toggle
           </Button>
+          {isAdd ? (
+            <ConfirmButton
+              onClick={getHandleDelete({ currentUser, timerId })}
+              confirmText="Confirm"
+            >
+              Cancel
+            </ConfirmButton>
+          ) : (
+            <ConfirmButton
+              onClick={getHandleDelete({ currentUser, timerId })}
+              confirmText="Confirm"
+            >
+              Delete
+            </ConfirmButton>
+          )}
+          <div className="error" error={formError}>
+            {formError}
+          </div>
         </div>
       </form>
 
@@ -108,6 +125,16 @@ function getHandleSubmit({ currentUser, formValues, timerId }) {
     const timer = getTimerFromFormValues(formValues);
 
     await effects.saveTimer({ currentUser, timer, timerId });
+
+    Router.push(constants.ROUTES.DASHBOARD);
+  };
+}
+
+function getHandleDelete({ currentUser, timerId }) {
+  return async e => {
+    e.preventDefault();
+
+    await effects.deleteTimer({ currentUser, timerId });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };

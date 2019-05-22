@@ -86,7 +86,7 @@ export default () => {
           </div>
           {isWork && (
             <ImageUploadInput
-              value={periodValues.file}
+              file={periodValues.file}
               onChange={getChangeHandler({ key: 'file', periodValues, setPeriodValues })}
             />
           )}

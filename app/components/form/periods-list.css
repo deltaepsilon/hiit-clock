@@ -20,7 +20,7 @@
   opacity: 1;
 }
 
-.period-wrapper[is-only='true'][is-active='false'] .title:before {
+.period-wrapper[is-only='true'][is-active='false']:not(:focus-within) .title:before {
   content: 'Click To Edit';
   position: absolute;
   z-index: 1;
@@ -34,6 +34,7 @@
   align-items: center;
 
   background: rgba(0, 0, 0, 0.75);
+  pointer-events: none;
 }
 
 .period-wrapper[is-active='false'] .period-controls:not(:focus-within) {
@@ -109,7 +110,7 @@
 }
 
 #check-all-wrapper .mdc-checkbox {
-  margin: 0 4px;
+  margin: 0 9px;
 }
 
 #check-all-wrapper {

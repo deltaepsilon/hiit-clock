@@ -42,7 +42,7 @@ export default () => {
 
 function getHandleChange({ key, setFormValues }) {
   return e => {
-    const value = e.target ? e.target.value : e;
+    const value = e && e.target ? e.target.value : e;
 
     setFormValues(formValues => {
       return { ...formValues, [key]: value };

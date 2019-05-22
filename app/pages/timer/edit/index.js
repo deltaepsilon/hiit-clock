@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import AppBase from '../../components/app/app-base';
-import TimerPlay from '../../components/page-components/timer-play';
+import TimerEdit from '../../components/page-components/timer-edit';
 import parseSearch from '../../utilities/parse-search';
-import constants from '../../components/constants';
 
 export default props => {
   const [timerId, setTimerId] = useState();
-  const [userId, setUserId] = useState(constants.SHARED_USER);
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     const { id, userId } = parseSearch(location.search);
 
     setTimerId(id);
-    setUserId(userId || constants.SHARED_USER);
+    setUserId(userId);
   }, [location.search]);
 
   return (
-    <AppBase>
-      <TimerPlay timerId={timerId} userId={userId} />
+    <AppBase topBar>
+      <TimerEdit timerId={timerId} userId={userId} />
     </AppBase>
   );
 };

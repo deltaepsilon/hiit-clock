@@ -29,6 +29,8 @@
   color: var(--color-form-error);
   background: var(--color-form-input-background);
   padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #timer-edit .error[error] {
@@ -57,4 +59,9 @@
   display: flex;
   flex-direction: row-reverse;
   margin-bottom: 5rem;
+}
+
+#timer-edit .row.buttons .mdc-button {
+  min-width: 7rem;
+  margin-bottom: 1rem;
 }

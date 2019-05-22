@@ -25,8 +25,6 @@ function subscribe({ userId, timerId, setTimer }) {
 
   setTimer({ ...defaultTimer, ...localTimer });
 
-  console.log('timerRef', timerRef);
-
   return timerRef.onSnapshot(doc => {
     const dbTimer = doc.data();
 

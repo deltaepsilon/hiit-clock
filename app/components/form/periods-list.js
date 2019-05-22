@@ -45,7 +45,7 @@ export default () => {
     } else {
       const editButton = wrapperRef.current.querySelector(`[period-id="${activePeriodId}"] .edit`);
 
-      editButton.focus();
+      editButton && editButton.focus();
     }
   }, [showPeriodSheet]);
 

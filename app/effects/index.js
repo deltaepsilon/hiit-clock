@@ -1,4 +1,5 @@
 /* globals window */
+import deleteTimer from "./delete-timer";
 import saveProfile from './save-profile';
 import saveSettings from './save-settings';
 import saveTimerForm from './save-timer-form';
@@ -8,6 +9,7 @@ import signInWithGoogle from './sign-in-with-google';
 import signOut from './sign-out';
 
 export default {
+  deleteTimer: wrapEffect(deleteTimer),
   saveProfile: wrapEffect(saveProfile),
   saveSettings: wrapEffect(saveSettings),
   saveTimerForm: wrapEffect(saveTimerForm),

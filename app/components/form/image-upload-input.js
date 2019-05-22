@@ -22,16 +22,20 @@ export default ({ id, text = 'Upload', file, onChange }) => {
     (async () => {
       const dataUrl = file && file.dataUrl;
       const isDataUrl = dataUrl == previewUrl;
+      const isUpload = previewUrl && !isDataUrl;
+      const isExistingFile = dataUrl && !previewUrl;
 
-      if (previewUrl && !isDataUrl) {
+      if (isUpload) {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
         const hash = md5(dataUrl);
         const hashWithoutSlashes = hash.replace(/\//, '|');
 
         onChange({ blob, dataUrl, dimensions, key: hashWithoutSlashes });
+      } else if (isExistingFile) {
+        setPreviewUrl(dataUrl);
       }
     })();
-  }, [previewUrl]);
+  }, [previewUrl, file]);
 
   return (
     <div className="image-upload-input">

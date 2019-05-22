@@ -13,7 +13,7 @@ export const DEFAULT_TIMER = {
 export const TimerFormContext = React.createContext();
 
 export default ({ children }) => {
-  const { timerId, timer, cycles, totalSeconds } = useContext(TimerContext);
+  const { timerId, timer } = useContext(TimerContext);
   const [isAdd, setIsAdd] = useState(true);
   const [isMultiSelect, setIsMultiSelect] = useState(false);
   const [activePeriodId, setActivePeriodId] = useState(null);
@@ -36,6 +36,11 @@ export default ({ children }) => {
   useEffect(() => (!isMultiSelect && setSelectedIdsSet(new Set()), undefined), [isMultiSelect]);
 
   useEffect(() => saveFormValues(formValues), [formValues]);
+
+  useEffect(() => (timerId && mapTimerToFormValues({ timer, setFormValues }), undefined), [
+    timerId,
+    timer,
+  ]);
 
   const value = {
     activePeriod,
@@ -105,4 +110,8 @@ function getPeriodSaveCallback({ activePeriodIndex, isAdd, setFormValues }) {
 
 function getActivePeriodById(periods, id) {
   return periods.find(period => period.id == id);
+}
+
+function mapTimerToFormValues({ timer, setFormValues }) {
+  setFormValues(timer);
 }

@@ -1,0 +1,4 @@
+.confirm-button[is-confirming='true'] {
+  background-color: var(--mdc-theme-secondary) !important;
+  color: var(--mdc-theme-secondary-text) !important;
+}
