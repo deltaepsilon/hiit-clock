@@ -1,9 +1,11 @@
 import React, { useEffect, useContext } from 'react';
 import Router from 'next/router';
-import TimerProvider from '../contexts/timer-context';
+import TimerProvider, { TimerContext } from '../contexts/timer-context';
 import TimerFormProvider, { TimerFormContext, DEFAULT_TIMER } from '../contexts/timer-form-context';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { Button } from '@rmwc/button';
+import BackButton from '../top-bar/back-button';
+import Title from '../top-bar/title';
 import TimerMetadataInputs from '../form/timer-metadata-inputs';
 import PeriodSheet from '../form/period-sheet';
 import PeriodsList from '../form/periods-list';
@@ -29,6 +31,7 @@ export default ({ timerId, userId }) => {
 
 function TimerForm() {
   const { currentUser } = useContext(AuthenticationContext);
+  const { userId } = useContext(TimerContext);
   const {
     formValues,
     formError,
@@ -45,51 +48,57 @@ function TimerForm() {
   useEffect(() => getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }), []);
 
   return (
-    <div id="timer-edit">
-      <form onSubmit={getHandleSubmit({ currentUser, formValues, timerId })}>
-        <TimerMetadataInputs />
+    <>
+      <BackButton href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`} />
 
-        <hr />
+      <Title>{isAdd ? `Edit ${formValues.name}` : 'Create Timer'}</Title>
 
-        <PeriodsList />
+      <div id="timer-edit">
+        <form onSubmit={getHandleSubmit({ currentUser, formValues, timerId })}>
+          <TimerMetadataInputs />
 
-        <div className="row buttons">
-          <Button type="submit" raised disabled={!!formError}>
-            Save
-          </Button>
-          <Button
-            raised={isMultiSelect}
-            outlined={!isMultiSelect}
-            icon={<List height={BUTTON_ICON_PX} width={BUTTON_ICON_PX} />}
-            onClick={e => (e.preventDefault(), toggleMultiSelect())}
-          >
-            Toggle
-          </Button>
-          {isAdd ? (
-            <ConfirmButton
-              onClick={getHandleDelete({ currentUser, timerId })}
-              confirmText="Confirm"
+          <hr />
+
+          <PeriodsList />
+
+          <div className="row buttons">
+            <Button type="submit" raised disabled={!!formError}>
+              Save
+            </Button>
+            <Button
+              raised={isMultiSelect}
+              outlined={!isMultiSelect}
+              icon={<List height={BUTTON_ICON_PX} width={BUTTON_ICON_PX} />}
+              onClick={e => (e.preventDefault(), toggleMultiSelect())}
             >
-              Cancel
-            </ConfirmButton>
-          ) : (
-            <ConfirmButton
-              onClick={getHandleDelete({ currentUser, timerId })}
-              confirmText="Confirm"
-            >
-              Delete
-            </ConfirmButton>
-          )}
-          <div className="error" error={formError}>
-            {formError}
+              Toggle
+            </Button>
+            {isAdd ? (
+              <ConfirmButton
+                onClick={getHandleDelete({ currentUser, timerId })}
+                confirmText="Confirm"
+              >
+                Cancel
+              </ConfirmButton>
+            ) : (
+              <ConfirmButton
+                onClick={getHandleDelete({ currentUser, timerId })}
+                confirmText="Confirm"
+              >
+                Delete
+              </ConfirmButton>
+            )}
+            <div className="error" error={formError}>
+              {formError}
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
 
-      {isMultiSelect && <MultiSelectControls />}
+        {isMultiSelect && <MultiSelectControls />}
 
-      <PeriodSheet />
-    </div>
+        <PeriodSheet />
+      </div>
+    </>
   );
 }
 

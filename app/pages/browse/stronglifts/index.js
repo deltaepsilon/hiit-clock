@@ -1,17 +1,20 @@
 import React from 'react';
-import AppBase from '../../components/app/app-base';
-import Browse from '../../components/page-components/browse';
-import BackButton from '../../components/top-bar/back-button';
-import items from '../../data/stronglifts.json';
+import AppBase from '../../../components/app/app-base';
+import Browse from '../../../components/page-components/browse';
+import BackButton from '../../../components/top-bar/back-button';
+import Title from '../../../components/top-bar/title';
+import items from '../../../data/stronglifts.json';
+import constants from '../../../components/constants';
 
-import '../page.css';
+import '../../page.css';
 
 export default props => {
   return (
     <AppBase>
       <div id="stronglifts" className="page">
-        <BackButton url="/" visible pinned />
-        <h1>Stronglifts</h1>
+        <BackButton href={constants.ROUTES.LANDING} />
+
+        <Title large>Stronglifts</Title>
 
         <section>
           <h2>A Companion App</h2>

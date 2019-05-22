@@ -5,19 +5,21 @@ import { Add } from '../svg';
 import TimersList from '../lists/timers-list';
 import useTimers from '../hooks/use-timers';
 import constants from '../constants';
+import Title from '../top-bar/title';
+import Logo from '../top-bar/logo';
 
 import './dashboard.css';
 
 export default () => {
   const timers = useTimers();
 
-  console.table(timers);
   return (
     <div id="dashboard">
-      <h1>Dashboard</h1>
+      <Title>Dashboard</Title>
+      <Logo href="/" />
 
       <TimersList items={timers} />
-      
+
       <Link href={constants.ROUTES.TIMER.CREATE}>
         <a href={constants.ROUTES.TIMER.CREATE}>
           <Fab icon={<Add />} />

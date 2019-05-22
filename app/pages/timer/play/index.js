@@ -16,7 +16,7 @@ export default props => {
   }, [location.search]);
 
   return (
-    <AppBase>
+    <AppBase hideUserMenu>
       <TimerPlay timerId={timerId} userId={userId} />
     </AppBase>
   );

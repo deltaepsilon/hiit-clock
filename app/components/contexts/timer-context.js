@@ -48,8 +48,9 @@ export default ({ userId, timerId, children }) => {
       totalSeconds,
       playState,
       effects,
+      userId,
     }),
-    [timerId, timer, cycles, periods, effects, playState, totalSeconds]
+    [timerId, timer, cycles, periods, effects, playState, totalSeconds, userId]
   );
   const secondsValue = useMemo(() => ({ secondsElapsed, cycleStats, periodStats }), [
     periodStats,

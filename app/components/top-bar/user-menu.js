@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'next/router';
 import { IconButton } from '@rmwc/icon-button';
 import { Button } from '@rmwc/button';
@@ -8,9 +9,13 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 import constants from '../constants';
 import effects from '../../effects';
 
-import './user-menu.css';
+export default React.memo(() => {
+  const el = window.document.querySelector('#user-menu');
 
-export default props => {
+  return ReactDOM.createPortal(<UserMenu />, el);
+});
+
+function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useContext(AuthenticationContext);
   const photoURL = !currentUser ? '' : currentUser.photoURL || constants.PATHS.ACCOUNT_CIRCLE;
@@ -33,7 +38,7 @@ export default props => {
   ].filter(({ hidden }) => !hidden);
 
   return (
-    <div id="user-menu">
+    <>
       <MenuSurfaceAnchor>
         <Menu
           open={isOpen}
@@ -54,8 +59,6 @@ export default props => {
           onClick={() => setIsOpen(true)}
         />
       </MenuSurfaceAnchor>
-    </div>
+    </>
   );
-};
-
-function get(params) {}
+}

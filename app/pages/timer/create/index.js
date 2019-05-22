@@ -4,7 +4,7 @@ import TimerEdit from '../../../components/page-components/timer-edit';
 
 export default props => {
   return (
-    <AppBase topBar>
+    <AppBase>
       <TimerEdit />
     </AppBase>
   );

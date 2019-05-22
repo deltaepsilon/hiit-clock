@@ -25,7 +25,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
       const isUpload = previewUrl && !isDataUrl;
       const isExistingFile = dataUrl && !previewUrl;
 
-      if (isUpload) {
+      if (isUpload && imgRef.current) {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
         const hash = md5(dataUrl);
         const hashWithoutSlashes = hash.replace(/\//, '|');

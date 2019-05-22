@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import AppBase from '../../components/app/app-base';
-import TimerEdit from '../../components/page-components/timer-edit';
-import parseSearch from '../../utilities/parse-search';
+import AppBase from '../../../components/app/app-base';
+import TimerEdit from '../../../components/page-components/timer-edit';
+import parseSearch from '../../../utilities/parse-search';
 
-export default props => {
+export default () => {
   const [timerId, setTimerId] = useState();
   const [userId, setUserId] = useState();
 
@@ -15,7 +15,7 @@ export default props => {
   }, [location.search]);
 
   return (
-    <AppBase topBar>
+    <AppBase>
       <TimerEdit timerId={timerId} userId={userId} />
     </AppBase>
   );

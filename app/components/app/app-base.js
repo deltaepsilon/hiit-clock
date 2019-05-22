@@ -10,13 +10,12 @@ import AuthenticationProvider from '../contexts/authentication-context';
 import LoadedProvider, { LoadedContext } from '../contexts/loaded-context';
 import ProfileProvider from '../contexts/profile-context';
 import SettingsProvider from '../contexts/settings-context';
-import TopBar from '../top-bar/top-bar';
+import UserMenu from '../top-bar/user-menu';
 
 import './app.css';
+import '../top-bar/top-bar.css';
 
-export function AppBase({ children, secure, topBar }) {
-  const shouldShowTopBar = secure || topBar;
-
+export function AppBase({ children, secure, hideUserMenu }) {
   return (
     <>
       <ServiceWorker />
@@ -32,9 +31,9 @@ export function AppBase({ children, secure, topBar }) {
               <RenderIfLoaded>
                 <>
                   <div id="app-base">
-                    {shouldShowTopBar && <TopBar />}
                     <div id="page-content">{children}</div>
                   </div>
+                  {!hideUserMenu && <UserMenu />}
                   <Router secure={secure} />
                 </>
               </RenderIfLoaded>

@@ -37,9 +37,3 @@
   width: calc(100vw - 2rem);
   max-width: var(--dimensions-max-width);
 }
-
-.page .back-button {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}

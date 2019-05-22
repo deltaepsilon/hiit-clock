@@ -1,18 +1,20 @@
 import React from 'react';
-import AppBase from '../../components/app/app-base';
-import Browse from '../../components/page-components/browse';
-import BackButton from '../../components/top-bar/back-button';
-import items from '../../data/crossfit.json';
-import constants from "../../components/constants";
+import AppBase from '../../../components/app/app-base';
+import Browse from '../../../components/page-components/browse';
+import BackButton from '../../../components/top-bar/back-button';
+import Title from '../../../components/top-bar/title';
+import items from '../../../data/crossfit.json';
+import constants from '../../../components/constants';
 
-import '../page.css';
+import '../../page.css';
 
 export default props => {
   return (
     <AppBase>
       <div id="crossfit" className="page">
-        <BackButton url="/" visible pinned />
-        <h1>Crossfit</h1>
+        <BackButton href={constants.ROUTES.LANDING} />
+
+        <Title large>Crossfit</Title>
 
         <section>
           <h2>The Girls</h2>

@@ -26,6 +26,14 @@ export default class CustomDocument extends Document {
           <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.1/algoliasearchLite.min.js" />
         </Head>
         <body>
+          <div id="top-bar">
+            <div id="logo" />
+            <div id="back-button" />
+            <div id="title" />
+            <div className="grow" />
+            <div id="user-menu" />
+            <div id="timer-data" />
+          </div>
           <Main />
           <NextScript />
           <noscript>

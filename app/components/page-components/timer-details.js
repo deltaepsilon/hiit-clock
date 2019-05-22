@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Fab } from '@rmwc/fab';
 import { Edit } from '../svg';
 import useTimer from '../hooks/use-timer';
+import BackButton from '../top-bar/back-button';
+import Title from '../top-bar/title';
 import TotalTime from '../timer/total-time';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import CyclesList from '../timer/cycles-list';
@@ -17,29 +19,33 @@ export default ({ timerId, userId }) => {
   const editHref = `${constants.ROUTES.TIMER.EDIT}?id=${timerId}&userId=${userId}`;
 
   return (
-    <div id="timer-details">
-      <h1>{timer.name}</h1>
+    <>
+      <BackButton href={constants.ROUTES.DASHBOARD} />
 
-      <ul className="timer-details-list">
-        <li>
-          <TotalTime periods={timer.periods} />
-          <span>Total</span>
-        </li>
-        <li>
-          <span>{cycles.length}</span>
-          <span>Cycles</span>
-        </li>
-      </ul>
+      <div id="timer-details">
+        <Title>{timer.name}</Title>
 
-      <p>{timer.description}</p>
+        <ul className="timer-details-list">
+          <li>
+            <TotalTime periods={timer.periods} />
+            <span>Total</span>
+          </li>
+          <li>
+            <span>{cycles.length}</span>
+            <span>Cycles</span>
+          </li>
+        </ul>
 
-      <TimerActions timerId={timerId} />
+        <p>{timer.description}</p>
 
-      <Link href={editHref}>
-        <Fab className="edit" tag="a" href={editHref} icon={<Edit />} />
-      </Link>
+        <TimerActions timerId={timerId} />
 
-      <CyclesList cycles={cycles} />
-    </div>
+        <Link href={editHref}>
+          <Fab className="edit" tag="a" href={editHref} icon={<Edit />} />
+        </Link>
+
+        <CyclesList cycles={cycles} />
+      </div>
+    </>
   );
 };

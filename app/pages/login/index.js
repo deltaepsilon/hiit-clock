@@ -4,7 +4,7 @@ import Login from '../../components/page-components/login';
 
 export default props => {
   return (
-    <AppBase topBar>
+    <AppBase>
       <Login />
     </AppBase>
   );
