@@ -47,7 +47,6 @@
   line-height: 9vw;
 }
 
-
 @media (max-height: 480px) {
   #top-bar {
     padding: 0.25rem;
@@ -68,6 +67,11 @@
     font-size: 2rem;
     line-height: 2.5rem;
   }
+}
+
+#logo {
+  display: flex;
+  align-items: center;
 }
 
 #logo a.text {

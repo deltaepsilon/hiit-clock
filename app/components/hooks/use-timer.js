@@ -5,7 +5,6 @@ import schema from '../schema';
 
 const defaultTimer = {
   periods: [],
-  tags: [],
   name: '',
 };
 
@@ -23,10 +22,19 @@ function subscribe({ userId, timerId, setTimer }) {
   const localTimer = localTimers[timerId];
   const timerRef = schema.getUserTimerRef(userId, timerId);
 
+  /**
+   * TODO: Make sure the timer overwrites the local
+   *
+   * It looks like the userId param is missing in the url
+   */
+  console.log({ userId, timerId, localTimer, localTimers });
+
   setTimer({ ...defaultTimer, ...localTimer });
 
   return timerRef.onSnapshot(doc => {
     const dbTimer = doc.data();
+
+    console.log('dbTimer', dbTimer);
 
     if (dbTimer) {
       const updatedLocalTimers = {

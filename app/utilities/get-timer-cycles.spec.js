@@ -35,7 +35,6 @@ describe('getTimerCycles', () => {
     });
 
     it(`should have ${expectedCycleCount} cycles`, () => {
-      console.log('result', result);
       expect(result.length).toEqual(expectedCycleCount);
     });
 

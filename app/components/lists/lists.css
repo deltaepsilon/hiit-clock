@@ -12,3 +12,8 @@
 .list .mdc-list-item__secondary-text {
   text-align: left;
 }
+
+.timers-list {
+  width: 100%;
+  max-width: var(--dimensions-max-width);
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Router from 'next/router';
 import TimerProvider, { TimerContext } from '../contexts/timer-context';
 import TimerFormProvider, { TimerFormContext, DEFAULT_TIMER } from '../contexts/timer-form-context';
@@ -30,6 +30,7 @@ export default ({ timerId, userId }) => {
 };
 
 function TimerForm() {
+  const [isSaving, setIsSaving] = useState(false);
   const { currentUser } = useContext(AuthenticationContext);
   const { userId } = useContext(TimerContext);
   const {
@@ -54,7 +55,17 @@ function TimerForm() {
       <Title>{isAdd ? `Edit ${formValues.name}` : 'Create Timer'}</Title>
 
       <div id="timer-edit">
-        <form onSubmit={getHandleSubmit({ currentUser, formValues, timerId })}>
+        <form
+          onSubmit={async e => {
+            const handleSubmit = getHandleSubmit({ currentUser, formValues, timerId });
+
+            setIsSaving(true);
+
+            await handleSubmit(e);
+
+            setIsSaving(false);
+          }}
+        >
           <TimerMetadataInputs />
 
           <hr />
@@ -62,8 +73,8 @@ function TimerForm() {
           <PeriodsList />
 
           <div className="row buttons">
-            <Button type="submit" raised disabled={!!formError}>
-              Save
+            <Button type="submit" raised disabled={!!formError || isSaving}>
+              {isSaving ? 'Saving...' : 'Save'}
             </Button>
             <Button
               raised={isMultiSelect}

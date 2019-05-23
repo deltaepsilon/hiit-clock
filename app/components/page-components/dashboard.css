@@ -1,3 +1,9 @@
+#dashboard {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 #dashboard .mdc-fab {
   position: fixed;
   bottom: 2rem;
