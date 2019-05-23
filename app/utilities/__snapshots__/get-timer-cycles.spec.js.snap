@@ -84,6 +84,78 @@ Array [
 ]
 `;
 
+exports[`getTimerCycles Powerlifting 5x5 without ending rest period should match snapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "name": "First Warmup",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Second Warmup",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Prepare for work sets",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work One",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest One",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Two",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Two",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Three",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Three",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "name": "Work Four",
+      "totalSeconds": 60,
+      "type": "work",
+    },
+    Object {
+      "name": "Rest Four",
+      "totalSeconds": 180,
+      "type": "rest",
+    },
+  ],
+]
+`;
+
 exports[`getTimerCycles Tabata 20/40 should match snapshot 1`] = `
 Array [
   Array [

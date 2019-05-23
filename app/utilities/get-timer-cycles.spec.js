@@ -22,6 +22,28 @@ describe('getTimerCycles', () => {
     });
   });
 
+  describe('Powerlifting 5x5 without ending rest period', () => {
+    const expectedCycleCount = 7;
+    let result;
+
+    beforeEach(() => {
+      const timer = powerlifting.find(({ name }) => name == 'Powerlifting 5x5');
+
+      timer.periods.pop();
+
+      result = getTimerCycles(timer);
+    });
+
+    it(`should have ${expectedCycleCount} cycles`, () => {
+      console.log('result', result);
+      expect(result.length).toEqual(expectedCycleCount);
+    });
+
+    it('should match snapshot', () => {
+      expect(result).toMatchSnapshot();
+    });
+  });
+
   describe('Powerlifting 2x2', () => {
     const expectedCycleCount = 4;
     let result;
