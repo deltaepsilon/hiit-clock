@@ -18,7 +18,7 @@ export default {
     CYCLE_PROGRESS: {
       INSET_X: 0,
       INSET_Y: 8,
-      INSET_PROGRESS: 16,
+      INSET_PROGRESS: 5,
     },
     PREVIEW_IMAGE: {
       MAX_HEIGHT: 600,

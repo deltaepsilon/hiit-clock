@@ -7,6 +7,16 @@
   z-index: 1;
 }
 
+@media (max-height: 480px) {
+  #top-bar {
+    padding: 0.25rem;
+  }
+
+  #title h1 {
+    top: 0.25rem !important;
+  }
+}
+
 #back-button {
   top: 1rem;
   left: 1rem;

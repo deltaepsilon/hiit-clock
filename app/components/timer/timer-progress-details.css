@@ -42,3 +42,13 @@
   justify-content: space-around;
   font-size: 10vw;
 }
+
+@media (max-height: 480px) {
+  #timer-list .big-time {
+    font-size: 10vw;
+  }
+
+  #timer-list #cycles-list {
+    display: none;
+  }
+}

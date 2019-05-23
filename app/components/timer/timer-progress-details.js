@@ -81,7 +81,7 @@ const DetailsView = React.memo(
         {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
         {isDescription && <p>{timer.description}</p>}
       </div>
-      <div>
+      <div id="cycles-list">
         <CyclesList cycles={cycles} cycleIndexFilter={cycleStats.index} />
       </div>
     </div>
