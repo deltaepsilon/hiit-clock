@@ -88,6 +88,7 @@ function TimerForm() {
                 Delete
               </ConfirmButton>
             )}
+
             <div className="error" error={formError}>
               {formError}
             </div>

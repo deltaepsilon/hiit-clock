@@ -30,7 +30,6 @@ export default class CustomDocument extends Document {
             <div id="logo" />
             <div id="back-button" />
             <div id="title" />
-            <div className="grow" />
             <div id="user-menu" />
             <div id="timer-data" />
           </div>
