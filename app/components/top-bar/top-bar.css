@@ -1,6 +1,6 @@
 #top-bar {
   display: flex;
-  width: calc(100vw - 3rem);
+  width: calc(100vw - 2rem);
   height: 3rem;
   padding: 1rem;
   position: relative;
@@ -10,6 +10,12 @@
 #back-button {
   top: 1rem;
   left: 1rem;
+}
+
+#top-bar #title,
+#top-bar #timer-data {
+  display: flex;
+  align-items: center;
 }
 
 #top-bar h1 {
@@ -31,6 +37,11 @@
 }
 
 @media (max-width: 480px) {
+  #top-bar h1 {
+    font-size: 1rem;
+    position: initial;
+  }
+
   #top-bar h1.large {
     font-size: 2rem;
     line-height: 2.5rem;
@@ -71,19 +82,17 @@
 }
 
 #timer-data .time {
-  font-size: 4vw;
-  line-height: 3vw;
+  font-size: 6vw;
 }
 
-@media (min-width: 2000px) {
+@media (max-width: 480px) {
   #timer-data .time {
-    font-size: 3vw;
+    font-size: 2rem;
   }
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 1800px) {
   #timer-data .time {
-    font-size: 5vw;
-    line-height: 3vw;
+    font-size: 5rem;
   }
 }
