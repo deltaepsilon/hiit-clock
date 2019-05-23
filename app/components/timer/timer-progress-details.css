@@ -15,6 +15,10 @@
   padding: 1rem 0;
 }
 
+#timer-list .seconds-row p {
+  font-size: 5vw;
+}
+
 #timer-list .big-time {
   flex: 1;
   display: flex;
@@ -43,9 +47,18 @@
   font-size: 10vw;
 }
 
-@media (max-height: 480px) {
+@media (orientation: landscape) {
   #timer-list .big-time {
-    font-size: 10vw;
+    font-size: 30vh;
+  }
+
+  #timer-list .small-time,
+  #timer-list aside {
+    font-size: 5vh;
+  }
+
+  #timer-list .seconds-row p {
+    font-size: 5vh;
   }
 
   #timer-list #cycles-list {

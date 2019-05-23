@@ -29,13 +29,6 @@
 }
 
 #top-bar h1 {
-  position: absolute;
-  top: 1rem;
-  right: 4rem;
-  left: 4rem;
-
-  text-align: center;
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -48,7 +41,7 @@
 
 @media (max-width: 480px) {
   #top-bar h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     position: initial;
   }
 

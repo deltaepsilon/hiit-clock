@@ -15,7 +15,7 @@ export default function TimerProgressDetails() {
 
   const [modeIndex, setModeIndex] = useState(0);
   const cycleMode = useCallback(() => setModeIndex(i => ++i % MODES.length));
-  const { isPeriod, isCycle, isTime, isDescription } = useMemo(() => {
+  const { isPeriod, isCycle, isTime, isDescription, mode } = useMemo(() => {
     const mode = MODES[modeIndex];
 
     return {
@@ -23,6 +23,7 @@ export default function TimerProgressDetails() {
       isCycle: mode == MODES[1],
       isTime: mode == MODES[2],
       isDescription: mode == MODES[3],
+      mode,
     };
   }, [modeIndex]);
 
@@ -37,6 +38,7 @@ export default function TimerProgressDetails() {
     periodTotalSeconds,
     cycleSecondsElapsed,
     cycleTotalSeconds,
+    mode,
     secondsElapsed,
     totalSeconds,
     cycles,
@@ -58,6 +60,7 @@ const DetailsView = React.memo(
     periodTotalSeconds,
     cycleSecondsElapsed,
     cycleTotalSeconds,
+    mode,
     secondsElapsed,
     totalSeconds,
     cycles,
@@ -86,7 +89,12 @@ const DetailsView = React.memo(
       </div>
     </div>
   ),
-  (prevProps, nextProps) => prevProps.secondsElapsed == nextProps.secondsElapsed
+  (prevProps, nextProps) => {
+    const secondsEqual = prevProps.secondsElapsed == nextProps.secondsElapsed;
+    const modeEqual = prevProps.mode == nextProps.mode;
+
+    return secondsEqual && modeEqual;
+  }
 );
 
 function PeriodView({ periodSecondsElapsed, periodTotalSeconds }) {

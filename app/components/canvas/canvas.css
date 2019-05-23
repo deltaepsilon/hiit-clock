@@ -15,3 +15,9 @@
   align-items: center;
   text-align: center;
 }
+
+@media (orientation: landscape) {
+  .canvas-overlay {
+    font-size: 5vh;
+  }
+}
