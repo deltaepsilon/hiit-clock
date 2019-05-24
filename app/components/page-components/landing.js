@@ -10,9 +10,11 @@ import constants from '../constants';
 import './landing.css';
 
 const links = {
-  powerlifting: `${constants.ROUTES.TIMER.DETAIL}?id=powerlifting-5x5`,
-  tabata: `${constants.ROUTES.TIMER.DETAIL}?id=tabata-20-40`,
-  emom: `${constants.ROUTES.TIMER.DETAIL}?id=emom-for-10-rounds`,
+  powerlifting: `${constants.ROUTES.TIMER.DETAIL}?id=powerlifting-5x5&userId=${
+    constants.SHARED_USER
+  }`,
+  tabata: `${constants.ROUTES.TIMER.DETAIL}?id=tabata-20-40&userId=${constants.SHARED_USER}`,
+  emom: `${constants.ROUTES.TIMER.DETAIL}?id=emom-for-10-rounds&userId=${constants.SHARED_USER}`,
 };
 
 export default props => {

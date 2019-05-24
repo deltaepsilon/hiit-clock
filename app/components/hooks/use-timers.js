@@ -1,5 +1,5 @@
 /* globals window */
-import { useState, useEffect, useContext } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import constants from '../constants';
 import schema from '../schema';
@@ -7,12 +7,13 @@ import schema from '../schema';
 export default function useTimers() {
   const { currentUser } = useContext(AuthenticationContext);
   const [timers, setTimers] = useState({});
+  const __uid = useMemo(() => currentUser && currentUser.uid, [currentUser]);
 
   useEffect(() => subscribe(currentUser, setTimers), [currentUser]);
 
   return Object.keys(timers)
     .reduce((result, __id) => {
-      result.push({ __id, ...timers[__id] });
+      result.push({ __id, __uid, ...timers[__id] });
 
       return result;
     }, [])

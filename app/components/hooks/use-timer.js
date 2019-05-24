@@ -22,13 +22,6 @@ function subscribe({ userId, timerId, setTimer }) {
   const localTimer = localTimers[timerId];
   const timerRef = schema.getUserTimerRef(userId, timerId);
 
-  /**
-   * TODO: Make sure the timer overwrites the local
-   *
-   * It looks like the userId param is missing in the url
-   */
-  console.log({ userId, timerId, localTimer, localTimers });
-
   setTimer({ ...defaultTimer, ...localTimer });
 
   return timerRef.onSnapshot(doc => {
@@ -39,7 +32,7 @@ function subscribe({ userId, timerId, setTimer }) {
     if (dbTimer) {
       const updatedLocalTimers = {
         ...localTimers,
-        [timerId]: { ...dbTimer, algolia: undefined, index: undefined },
+        [timerId]: { __uid: userId, ...dbTimer, algolia: undefined, index: undefined },
       };
       const updatedLocalTimersString = JSON.stringify(updatedLocalTimers);
 

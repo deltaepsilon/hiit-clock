@@ -17,3 +17,7 @@
   width: 100%;
   max-width: var(--dimensions-max-width);
 }
+
+.timers-list a {
+  text-decoration: none;
+}

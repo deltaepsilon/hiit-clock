@@ -13,23 +13,25 @@ export default ({ searchLabel, items }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const timers = useSearch(items, searchTerm);
 
-
   return (
     <div className="timers-list list">
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
-        {timers.map((timer, i) => (
-          <Link
-            key={timer.__id || timer.objectID}
-            href={`${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}`}
-          >
-            <SimpleListItem
-              text={timer.name}
-              secondaryText={<TotalTime periods={timer.periods} />}
-              metaIcon={<NavigateNextIcon fill={constants.COLORS.PRIMARY} />}
-            />
-          </Link>
-        ))}
+        {timers.map((timer, i) => {
+          const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id ||
+            timer.objectID}&userId=${timer.__uid}`;
+          return (
+            <Link key={timer.__id || timer.objectID} href={href}>
+              <a href={href}>
+                <SimpleListItem
+                  text={timer.name}
+                  secondaryText={<TotalTime periods={timer.periods} />}
+                  metaIcon={<NavigateNextIcon fill={constants.COLORS.PRIMARY} />}
+                />
+              </a>
+            </Link>
+          );
+        })}
       </List>
     </div>
   );

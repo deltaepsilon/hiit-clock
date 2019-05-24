@@ -8,6 +8,7 @@ const context =
     ? require('../functions/utilities/prod-context')
     : require('../functions/utilities/test-context');
 const schema = require('../functions/utilities/schema')(context);
+const uid = 'shared-user';
 
 (async () => {
   const filePaths = await getYamlFiles('./data');
@@ -16,13 +17,14 @@ const schema = require('../functions/utilities/schema')(context);
   const updated = Date.now();
 
   filesJson.forEach(({ __id, ...json }) => {
-    const ref = schema.getUserTimerRef('shared-user', __id);
+    const ref = schema.getUserTimerRef(uid, __id);
 
     batch.set(ref, {
       ...json,
       updated,
       index: 'timers',
       algolia: {
+        uid,
         name: json.name,
         tags: json.tags,
         totalSeconds: json.periods.reduce((result, { totalSeconds }) => totalSeconds + result, 0),
@@ -67,6 +69,7 @@ async function parseYamlFiles(files) {
       const __id = file.match(/\/([^/]*)\.yaml/)[1];
 
       json.__id = __id.toLowerCase();
+      json.__uid = uid;
 
       return json;
     })
