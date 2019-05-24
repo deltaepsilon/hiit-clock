@@ -1,5 +1,6 @@
 /* globals window */
 import React, { useEffect, useMemo, useState } from 'react';
+import uuid from 'uuid/v4';
 import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
 import getTimerCycles from '../../utilities/get-timer-cycles';
@@ -11,7 +12,7 @@ import constants from '../constants';
 export const TimerContext = React.createContext();
 export const SecondsContext = React.createContext();
 
-export default ({ userId, timerId, children }) => {
+export default ({ children, isOwned, timerId, userId }) => {
   const [cycleStats, setCycleStats] = useState({});
   const [periodStats, setPeriodStats] = useState({});
   const [secondsElapsed, setSecondsElapsed] = useState(0);
@@ -25,8 +26,9 @@ export default ({ userId, timerId, children }) => {
     const periodsWithMetadata = convertCyclesToPeriodsWithMetadata(cyclesWithMetadata, {
       totalSeconds,
     });
+    const periodsWithIds = isOwned ? periodsWithMetadata : addPeriodIds(periodsWithMetadata);
 
-    return [cyclesWithMetadata, periodsWithMetadata];
+    return [cyclesWithMetadata, periodsWithIds];
   }, [timer, totalSeconds]);
 
   useEffect(() => {
@@ -42,15 +44,16 @@ export default ({ userId, timerId, children }) => {
 
   const timerValue = useMemo(
     () => ({
+      cycles,
+      effects,
+      isOwned,
+      playState,
       timerId,
       timer: { ...timer, periods },
-      cycles,
       totalSeconds,
-      playState,
-      effects,
       userId,
     }),
-    [timerId, timer, cycles, periods, effects, playState, totalSeconds, userId]
+    [cycles, effects, isOwned, periods, playState, timer, timerId, totalSeconds, userId]
   );
   const secondsValue = useMemo(() => ({ secondsElapsed, cycleStats, periodStats }), [
     periodStats,
@@ -74,4 +77,8 @@ function convertCyclesToPeriodsWithMetadata(cycles, { totalSeconds }) {
   });
 
   return periodsWithMetadata;
+}
+
+function addPeriodIds(periods) {
+  return periods.map(period => ({ ...period, id: uuid() }));
 }

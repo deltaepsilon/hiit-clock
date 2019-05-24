@@ -19,7 +19,7 @@ export default ({ searchLabel, items }) => {
       <List className="list" twoLine>
         {timers.map((timer, i) => {
           const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id ||
-            timer.objectID}&userId=${timer.__uid}`;
+            timer.objectID}&userId=${timer.uid}`;
           return (
             <Link key={timer.__id || timer.objectID} href={href}>
               <a href={href}>

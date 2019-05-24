@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { Fab } from '@rmwc/fab';
-import { Edit } from '../svg';
+import { AuthenticationContext } from '../contexts/authentication-context';
+import { Edit, FileCopyOutline } from '../svg';
 import useTimer from '../hooks/use-timer';
 import BackButton from '../top-bar/back-button';
 import Title from '../top-bar/title';
@@ -14,9 +15,14 @@ import constants from '../constants';
 import './timer-details.css';
 
 export default ({ timerId, userId }) => {
+  const { currentUser } = useContext(AuthenticationContext);
   const timer = useTimer({ timerId, userId });
   const cycles = getTimerCycles(timer);
-  const editHref = `${constants.ROUTES.TIMER.EDIT}?id=${timerId}&userId=${userId}`;
+  const isOwned = currentUser && currentUser.uid == userId;
+  const fabHref = `${
+    constants.ROUTES.TIMER.EDIT
+  }?id=${timerId}&userId=${userId}&isOwned=${isOwned}`;
+  const fabIcon = isOwned ? <Edit /> : <FileCopyOutline />;
 
   return (
     <>
@@ -40,8 +46,8 @@ export default ({ timerId, userId }) => {
 
         <TimerActions timerId={timerId} />
 
-        <Link href={editHref}>
-          <Fab className="edit" tag="a" href={editHref} icon={<Edit />} />
+        <Link href={fabHref}>
+          <Fab className="edit" tag="a" href={fabHref} icon={fabIcon} />
         </Link>
 
         <CyclesList cycles={cycles} />

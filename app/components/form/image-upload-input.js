@@ -11,19 +11,23 @@ import constants from '../constants';
 import './image-upload-input.css';
 
 export default ({ id, text = 'Upload', file, onChange }) => {
+  const fileDataUrl = file && file.dataUrl;
+  const fileDownloadURL = file && file.downloadURL;
   const { currentUser } = useContext(AuthenticationContext);
-  const [previewUrl, setPreviewUrl] = useState(file && file.dataUrl);
+  const [previewUrl, setPreviewUrl] = useState(fileDataUrl);
   const inputRef = useRef(null);
   const imgRef = useRef(null);
   const canvasRef = useRef(null);
-  const triggerInput = useCallback(e => (e.preventDefault(), inputRef.current.click()), [inputRef]);
+  const triggerInput = useCallback(
+    e => (e.preventDefault(), e.stopPropagation(), inputRef.current.click()),
+    [inputRef]
+  );
 
   useEffect(() => {
     (async () => {
-      const dataUrl = file && file.dataUrl;
-      const isDataUrl = dataUrl == previewUrl;
+      const isDataUrl = fileDataUrl == previewUrl;
       const isUpload = previewUrl && !isDataUrl;
-      const isExistingFile = dataUrl && !previewUrl;
+      const needsPreviewUrlUpdate = !previewUrl && (fileDataUrl || fileDownloadURL);
 
       if (isUpload && imgRef.current) {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
@@ -31,11 +35,11 @@ export default ({ id, text = 'Upload', file, onChange }) => {
         const hashWithoutSlashes = hash.replace(/\//, '|');
 
         onChange({ blob, dataUrl, dimensions, key: hashWithoutSlashes });
-      } else if (isExistingFile) {
-        setPreviewUrl(dataUrl);
+      } else if (needsPreviewUrlUpdate) {
+        setPreviewUrl(fileDataUrl || fileDownloadURL);
       }
     })();
-  }, [previewUrl, file]);
+  }, [previewUrl, fileDataUrl, fileDownloadURL]);
 
   return (
     <div className="image-upload-input">

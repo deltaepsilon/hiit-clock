@@ -19,9 +19,9 @@ import './timer-edit.css';
 
 const BUTTON_ICON_PX = 16;
 
-export default ({ timerId, userId }) => {
+export default ({ timerId, userId, isOwned }) => {
   return (
-    <TimerProvider timerId={timerId} userId={userId}>
+    <TimerProvider timerId={timerId} userId={userId} isOwned={isOwned}>
       <TimerFormProvider>
         <TimerForm />
       </TimerFormProvider>
@@ -32,7 +32,7 @@ export default ({ timerId, userId }) => {
 function TimerForm() {
   const [isSaving, setIsSaving] = useState(false);
   const { currentUser } = useContext(AuthenticationContext);
-  const { userId } = useContext(TimerContext);
+  const { isOwned, userId } = useContext(TimerContext);
   const {
     formValues,
     formError,
@@ -43,6 +43,7 @@ function TimerForm() {
     timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
+  const uid = currentUser && currentUser.uid;
 
   useEffect(routeChangeStartEffect, []);
 
@@ -57,7 +58,12 @@ function TimerForm() {
       <div id="timer-edit">
         <form
           onSubmit={async e => {
-            const handleSubmit = getHandleSubmit({ currentUser, formValues, timerId });
+            const handleSubmit = getHandleSubmit({
+              uid,
+              formValues,
+              isOwned,
+              timerId,
+            });
 
             setIsSaving(true);
 
@@ -84,21 +90,12 @@ function TimerForm() {
             >
               Toggle
             </Button>
-            {isAdd ? (
-              <ConfirmButton
-                onClick={getHandleDelete({ currentUser, timerId })}
-                confirmText="Confirm"
-              >
-                Cancel
-              </ConfirmButton>
-            ) : (
-              <ConfirmButton
-                onClick={getHandleDelete({ currentUser, timerId })}
-                confirmText="Confirm"
-              >
-                Delete
-              </ConfirmButton>
-            )}
+            <ConfirmButton
+              onClick={getHandleDelete({ isOwned, timerId, uid })}
+              confirmText="Confirm"
+            >
+              Delete
+            </ConfirmButton>
 
             <div className="error" error={formError}>
               {formError}
@@ -139,23 +136,23 @@ function routeChangeStartEffect() {
   return () => Router.events.off('routeChangeStart', handleRouteChange);
 }
 
-function getHandleSubmit({ currentUser, formValues, timerId }) {
+function getHandleSubmit({ formValues, isOwned, timerId, uid }) {
   return async e => {
     e.preventDefault();
 
     const timer = getTimerFromFormValues(formValues);
 
-    await effects.saveTimer({ currentUser, timer, timerId });
+    await effects.saveTimer({ isOwned, timer, timerId, uid });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };
 }
 
-function getHandleDelete({ currentUser, timerId }) {
+function getHandleDelete({ isOwned, timerId, uid }) {
   return async e => {
     e.preventDefault();
 
-    await effects.deleteTimer({ currentUser, timerId });
+    await effects.deleteTimer({ isOwned, timerId, uid });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };

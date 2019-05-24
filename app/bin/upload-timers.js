@@ -69,7 +69,7 @@ async function parseYamlFiles(files) {
       const __id = file.match(/\/([^/]*)\.yaml/)[1];
 
       json.__id = __id.toLowerCase();
-      json.__uid = uid;
+      json.uid = uid;
 
       return json;
     })

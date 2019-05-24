@@ -75,6 +75,10 @@ function getFormError(formValues) {
     error = '"Name" is required';
   }
 
+  if (!formValues.periods.length) {
+    error = 'At least one period is required';
+  }
+
   return error;
 }
 

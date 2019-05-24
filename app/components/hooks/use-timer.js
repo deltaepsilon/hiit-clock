@@ -27,12 +27,10 @@ function subscribe({ userId, timerId, setTimer }) {
   return timerRef.onSnapshot(doc => {
     const dbTimer = doc.data();
 
-    console.log('dbTimer', dbTimer);
-
     if (dbTimer) {
       const updatedLocalTimers = {
         ...localTimers,
-        [timerId]: { __uid: userId, ...dbTimer, algolia: undefined, index: undefined },
+        [timerId]: { ...dbTimer, algolia: undefined, index: undefined, uid: userId },
       };
       const updatedLocalTimersString = JSON.stringify(updatedLocalTimers);
 

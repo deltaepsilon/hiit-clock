@@ -18,10 +18,11 @@ export default {
     return timerId ? timersCollectionRef.doc(timerId) : timersCollectionRef.doc();
   },
   getTimersGroupRef: () => db().collectionGroup('timers'),
-  getUserStorageRef: userId =>
+  getUserTimerStorageRef: (timerId, userId) =>
     storage()
       .ref('users')
-      .child(userId),
+      .child(userId)
+      .child(timerId),
 };
 
 function db() {
