@@ -9,7 +9,11 @@ export default function useTimers() {
   const [timers, setTimers] = useState({});
   const uid = useMemo(() => currentUser && currentUser.uid, [currentUser]);
 
-  useEffect(() => subscribe(currentUser, setTimers), [currentUser]);
+  useEffect(() => {
+    if (currentUser) {
+      return subscribe(currentUser, setTimers);
+    }
+  }, [currentUser]);
 
   return Object.keys(timers)
     .reduce((result, __id) => {

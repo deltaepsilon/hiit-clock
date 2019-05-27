@@ -2,12 +2,13 @@
 import schema from '../components/schema';
 import constants from '../components/constants';
 
-export default async function deleteTimer({ isOwned, timerId, uid }) {
+export default async function deleteTimer({ currentUser, isOwned, timerId }) {
+  const { isAnonymous, uid } = currentUser;
   const userTimerRef = schema.getUserTimerRef(uid || 'guest', timerId);
 
   removeFromLocalStorage({ timerId: userTimerRef.id });
 
-  isOwned && (await userTimerRef.delete());
+  isOwned && !isAnonymous && (await userTimerRef.delete());
 }
 
 function removeFromLocalStorage({ timerId }) {

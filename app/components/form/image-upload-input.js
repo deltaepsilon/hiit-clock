@@ -67,7 +67,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
           onChange={getFileChangeHandler({ setIsLoading, setPreviewUrl })}
         />
         <div className="image-upload-preview">
-          {!!currentUser ? (
+          {!!currentUser && !currentUser.isAnonymous ? (
             <>
               {previewUrl ? (
                 <>
@@ -90,7 +90,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
           ) : (
             <div className="image-upload-error">
               <Link href={constants.ROUTES.LOGIN}>
-                <a href={constants.ROUTES.LOGIN}>Log in</a>
+                <a href={constants.ROUTES.LOGIN}>Log in with Google</a>
               </Link>
               <span> to upload</span>
             </div>

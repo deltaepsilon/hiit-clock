@@ -43,7 +43,6 @@ function TimerForm() {
     timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
-  const uid = currentUser && currentUser.uid;
 
   useEffect(routeChangeStartEffect, []);
 
@@ -59,7 +58,7 @@ function TimerForm() {
         <form
           onSubmit={async e => {
             const handleSubmit = getHandleSubmit({
-              uid,
+              currentUser,
               formValues,
               isOwned,
               timerId,
@@ -91,7 +90,7 @@ function TimerForm() {
               Toggle
             </Button>
             <ConfirmButton
-              onClick={getHandleDelete({ isOwned, timerId, uid })}
+              onClick={getHandleDelete({ isOwned, timerId, currentUser })}
               confirmText="Confirm"
             >
               Delete
@@ -136,23 +135,23 @@ function routeChangeStartEffect() {
   return () => Router.events.off('routeChangeStart', handleRouteChange);
 }
 
-function getHandleSubmit({ formValues, isOwned, timerId, uid }) {
+function getHandleSubmit({ formValues, isOwned, timerId, currentUser }) {
   return async e => {
     e.preventDefault();
 
     const timer = getTimerFromFormValues(formValues);
 
-    await effects.saveTimer({ isOwned, timer, timerId, uid });
+    await effects.saveTimer({ isOwned, timer, timerId, currentUser });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };
 }
 
-function getHandleDelete({ isOwned, timerId, uid }) {
+function getHandleDelete({ isOwned, timerId, currentUser }) {
   return async e => {
     e.preventDefault();
 
-    await effects.deleteTimer({ isOwned, timerId, uid });
+    await effects.deleteTimer({ isOwned, timerId, currentUser });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };

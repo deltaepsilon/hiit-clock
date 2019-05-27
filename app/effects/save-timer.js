@@ -4,12 +4,13 @@ import constants from '../components/constants';
 import dataUrlToBlob from '../utilities/data-url-to-blob';
 import recursivelyOmitEmptyValues from '../utilities/recursively-omit-empty-values';
 
-export default async function saveTimer({ isOwned, timer, timerId, uid }) {
+export default async function saveTimer({ currentUser, isOwned, timer, timerId }) {
+  const { isAnonymous, uid } = currentUser;
   const userTimerRef = schema.getUserTimerRef(uid || 'guest', timerId);
 
   saveToLocalStorage({ timerId: userTimerRef.id, timer, uid });
 
-  if (uid) {
+  if (uid && !isAnonymous) {
     const timerWithImages = await saveImages({ isOwned, timer, timerId: userTimerRef.id, uid });
 
     await saveToDb({ isOwned, timer: timerWithImages, timerId: userTimerRef.id, uid });
@@ -35,6 +36,8 @@ async function saveImages({ isOwned, timer, timerId, uid }) {
 
   /**
    * TODO: Duplicate images if the image is not owned by the user
+   *
+   * TODO: Delete files with a Cloud Function if the record is ever deleted.
    */
 }
 
