@@ -3,6 +3,9 @@ export default {
     INDICES: {
       TIMERS: 'hiit-clock-prod-2019:timers',
     },
+    DB_INDICES: {
+      timers: 'timers',
+    },
   },
   COLORS: {
     PRIMARY: '#011627',

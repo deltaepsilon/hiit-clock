@@ -104,6 +104,20 @@ function getPersonalTimer({ timer, uid }) {
     type: period.type,
     file: period.file,
   }));
+  const search = timer.isSearchable
+    ? {
+        algolia: {
+          name: timer.name,
+          description: timer.description,
+          totalSeconds: timer.totalSeconds,
+          uid,
+        },
+        index: constants.ALGOLIA.DB_INDICES.TIMERS,
+      }
+    : {
+        algolia: undefined,
+        index: undefined,
+      };
 
-  return { ...timer, periods, uid, algolia: undefined, index: undefined };
+  return { ...timer, ...search, periods, uid };
 }

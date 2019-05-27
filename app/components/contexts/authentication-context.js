@@ -1,5 +1,5 @@
 /* globals window */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { LoadedContext } from './loaded-context';
 
 export const AuthenticationContext = React.createContext();
@@ -7,13 +7,20 @@ export const AuthenticationContext = React.createContext();
 export default ({ children }) => {
   const loaded = useContext(LoadedContext);
   const [currentUser, setCurrentUser] = useState();
+  const updateCurrentUser = useCallback(() => {
+    const currentUser = window.firebase.auth().currentUser;
 
-  useEffect(() => (loaded ? window.firebase.auth().onAuthStateChanged(setCurrentUser) : () => {}), [
-    loaded,
-  ]);
+    setCurrentUser({ ...currentUser });
+  });
+
+  useEffect(() => {
+    if (loaded) {
+      return window.firebase.auth().onAuthStateChanged(setCurrentUser);
+    }
+  }, [loaded]);
 
   return (
-    <AuthenticationContext.Provider value={{ currentUser }}>
+    <AuthenticationContext.Provider value={{ currentUser, updateCurrentUser }}>
       {children}
     </AuthenticationContext.Provider>
   );

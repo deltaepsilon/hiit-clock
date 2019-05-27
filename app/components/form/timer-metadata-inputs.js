@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Switch } from '@rmwc/switch';
 import { TextField } from '@rmwc/textfield';
 import ImageUploadInput from '../form/image-upload-input';
 import { TimerFormContext } from '../contexts/timer-form-context';
@@ -35,6 +36,18 @@ export default () => {
           file={formValues.file}
           onChange={getHandleChange({ key: 'file', setFormValues })}
         />
+      </div>
+      <div className="row">
+        <Switch
+          checked={!!formValues.isSearchable}
+          onChange={e => {
+            const checked = e.target.checked;
+
+            getHandleChange({ key: 'isSearchable', setFormValues })(checked);
+          }}
+        >
+          Publicly Searchable
+        </Switch>
       </div>
     </div>
   );

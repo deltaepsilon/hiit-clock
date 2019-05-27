@@ -13,7 +13,7 @@ import { Button } from '@rmwc/button';
 import './settings.css';
 
 export default () => {
-  const { currentUser } = useContext(AuthenticationContext);
+  const { currentUser, updateCurrentUser } = useContext(AuthenticationContext);
   const profile = useContext(ProfileContext);
   const settings = useContext(SettingsContext);
   const [username, setUsername] = useState(profile.username);
@@ -31,11 +31,18 @@ export default () => {
           <div>
             <Button
               raised
-              onClick={e => (e.preventDefault(), e.stopPropagation(), effects.linkToGoogle())}
+              onClick={async e => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                await effects.linkToGoogle();
+
+                updateCurrentUser();
+              }}
             >
               Log In With Google
             </Button>
-            
+
             <p>Link your guest session to a Google account to save timers across devices.</p>
           </div>
         ) : (

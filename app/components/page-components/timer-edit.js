@@ -37,6 +37,7 @@ function TimerForm() {
     formValues,
     formError,
     isAdd,
+    isDirty,
     isMultiSelect,
     setShowPeriodSheet,
     setIsMultiSelect,
@@ -78,7 +79,7 @@ function TimerForm() {
           <PeriodsList />
 
           <div className="row buttons">
-            <Button type="submit" raised disabled={!!formError || isSaving}>
+            <Button type="submit" raised disabled={!!formError || isSaving || !isDirty}>
               {isSaving ? 'Saving...' : 'Save'}
             </Button>
             <Button
@@ -162,6 +163,6 @@ function getTimerFromFormValues(formValues) {
     ...period,
     totalSeconds: +period.totalSeconds,
   }));
-  
+
   return { ...formValues, periods };
 }

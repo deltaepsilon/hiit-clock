@@ -4,10 +4,11 @@ import effects from '../../effects';
 import constants from '../constants';
 
 export const DEFAULT_TIMER = {
-  name: '',
   description: '',
   file: null,
+  isSearchable: false,
   periods: [],
+  name: '',
 };
 
 export const TimerFormContext = React.createContext();
@@ -15,6 +16,7 @@ export const TimerFormContext = React.createContext();
 export default ({ children }) => {
   const { timerId, timer } = useContext(TimerContext);
   const [isAdd, setIsAdd] = useState(true);
+  const [isDirty, setIsDirty] = useState(false);
   const [isMultiSelect, setIsMultiSelect] = useState(false);
   const [activePeriodId, setActivePeriodId] = useState(null);
   const [activePeriodIndex, setActivePeriodIndex] = useState(null);
@@ -42,6 +44,8 @@ export default ({ children }) => {
     timer,
   ]);
 
+  useEffect(() => checkIsDirty({ formValues, setIsDirty, timer }), [formValues, timer]);
+
   const value = {
     activePeriod,
     activePeriodId,
@@ -51,6 +55,7 @@ export default ({ children }) => {
     handlePeriodSave,
     isAdd,
     isCreate,
+    isDirty,
     isMultiSelect,
     showPeriodSheet,
     selectedIdsSet,
@@ -129,4 +134,20 @@ function getActivePeriodById(periods, id) {
 
 function mapTimerToFormValues({ timer, setFormValues }) {
   setFormValues(timer);
+}
+
+function checkIsDirty({ formValues, setIsDirty, timer }) {
+  const isNameChanged = formValues.name != timer.name;
+  const isDescriptionChanged = formValues.description != timer.description;
+  const isSearchableChanged = formValues.isSearchable != timer.isSearchable;
+  const isFileChanged = formValues.file && formValues.file.dataUrl;
+  const isPeriodsChanged = JSON.stringify(formValues.periods) != JSON.stringify(timer.periods);
+  const isDirty =
+    isNameChanged ||
+    isDescriptionChanged ||
+    isSearchableChanged ||
+    isFileChanged ||
+    isPeriodsChanged;
+
+  setIsDirty(isDirty);
 }

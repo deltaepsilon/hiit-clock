@@ -16,3 +16,11 @@
   background: var(--color-form-input-background);
   width: 100%;
 }
+
+#timer-metadata-inputs .mdc-switch {
+  margin-left: 1rem;
+}
+
+#timer-metadata-inputs .mdc-switch + label {
+  color: var(--mdc-theme-primary-text);
+}
