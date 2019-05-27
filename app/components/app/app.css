@@ -111,6 +111,10 @@ a:visited {
   align-items: center;
 }
 
+p {
+  max-width: calc(100vw - 2rem);
+}
+
 .grow {
   flex-grow: 1;
 }

@@ -13,12 +13,17 @@ export default props => {
   return (
     <div style={buttonWrapperStyle}>
       <Button raised className="accent" onClick={effects.signInWithGoogle}>
-        Login
+        Login with Google
       </Button>
       <div style={{ height: '3rem' }} />
       <Button raised onClick={effects.signInAnonymously}>
         Guest Mode
       </Button>
+
+      <p>
+        Guests cannot upload images
+        <br /> or share their timers.
+      </p>
     </div>
   );
 };

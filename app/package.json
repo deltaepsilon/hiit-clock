@@ -11,6 +11,7 @@
     "@rmwc/linear-progress": "^5.5.2",
     "@rmwc/list": "^5.5.1",
     "@rmwc/menu": "^5.5.1",
+    "@rmwc/snackbar": "^5.5.2",
     "@rmwc/switch": "^5.5.1",
     "@rmwc/textfield": "^5.5.1",
     "@rmwc/toolbar": "^5.5.1",

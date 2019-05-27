@@ -1378,7 +1378,7 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@^2.0.0":
+"@material/button@^2.0.0", "@material/button@^2.1.1":
   version "2.1.1"
   resolved "https://registry.npmjs.org/@material/button/-/button-2.1.1.tgz#e2bc631bad8480dd0b46fbbaaaa7d6712bf0d86d"
   integrity sha512-fVhwrVSMwaUsLgPec0yYfJHwf70q3p2yk0qq5EnbFl36AcapUihV5QydEnlJBHmrwB3nvpMooL7hYNzRiqlcYg==
@@ -1465,7 +1465,7 @@
     "@material/typography" "^1.0.0"
     tslib "^1.9.3"
 
-"@material/icon-button@^2.0.0":
+"@material/icon-button@^2.0.0", "@material/icon-button@^2.1.1":
   version "2.1.1"
   resolved "https://registry.npmjs.org/@material/icon-button/-/icon-button-2.1.1.tgz#574842abc808da774e77c097dfca2d7e74ec23f5"
   integrity sha512-WUp06uqG458bWCp66hyutNvwiuptbE7vuOtVukG/DmxoGWLDXSRStcUzOXYYElZsmIR14SPOTD4694CaaqHz9w==
@@ -1575,6 +1575,23 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
+"@material/snackbar@^2.0.0":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@material/snackbar/-/snackbar-2.1.1.tgz#13a0bab265ae2d45cde415b11d384e04b717b683"
+  integrity sha512-Ef7+FYaQ+s3E/DgQqVsU9Oe+hhU7fMiOZqKg3pLCqQSpTwrElJkgyVE0GDzu99rPfgfNfabBLRiouROjfMf7Cw==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/button" "^2.1.1"
+    "@material/dom" "^1.1.0"
+    "@material/icon-button" "^2.1.1"
+    "@material/ripple" "^2.1.1"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^1.1.1"
+    "@material/theme" "^1.1.0"
+    "@material/typography" "^1.0.0"
+    tslib "^1.9.3"
+
 "@material/switch@^2.0.0":
   version "2.1.1"
   resolved "https://registry.npmjs.org/@material/switch/-/switch-2.1.1.tgz#3b8d0d866414021c75b0e33760a14fe194a23cdf"
@@ -1669,6 +1686,18 @@
     "@rmwc/ripple" "^5.5.1"
     "@rmwc/types" "^5.5.1"
 
+"@rmwc/button@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/button/-/button-5.5.2.tgz#8f1ea1343e0e44ca3116221ea0d0c42d9656f3e9"
+  integrity sha512-toAaeSENqgiKMdDYW9LtjZ0JFVlbWaPSsGgZ4wMsjpD9Sf7yPV+VuAuX1WG+5YGLH1t5JzvfxKKuDSAceEBmfA==
+  dependencies:
+    "@material/button" "^2.0.0"
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/icon" "^5.5.2"
+    "@rmwc/provider" "^5.5.2"
+    "@rmwc/ripple" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
+
 "@rmwc/checkbox@^5.5.1":
   version "5.5.1"
   resolved "https://registry.npmjs.org/@rmwc/checkbox/-/checkbox-5.5.1.tgz#9d779c19ce815d07c1d43428907d4142b57f1013"
@@ -1723,6 +1752,17 @@
     "@rmwc/ripple" "^5.5.1"
     "@rmwc/types" "^5.5.1"
 
+"@rmwc/icon-button@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/icon-button/-/icon-button-5.5.2.tgz#af54b52bca1381f1c62605a14dfaa524638e7a87"
+  integrity sha512-P3Fz0T0juit9cZuRTuQ0mFBNY3tMDwWHg37yxUMlkJ084y/CpSmFh7jsq9Gr1jBq8wiXTpw74tutMFk3XwIO5w==
+  dependencies:
+    "@material/icon-button" "^2.0.0"
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/icon" "^5.5.2"
+    "@rmwc/ripple" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
+
 "@rmwc/icon@^5.5.1":
   version "5.5.1"
   resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.5.1.tgz#4579d35c7856ac15db545f0dc997a9087378b4d4"
@@ -1731,6 +1771,15 @@
     "@rmwc/base" "^5.5.1"
     "@rmwc/provider" "^5.5.1"
     "@rmwc/types" "^5.5.1"
+
+"@rmwc/icon@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/icon/-/icon-5.5.2.tgz#54b06a7c8378a45fba3b2a2325b3451daae315c3"
+  integrity sha512-Ltnf4BvtjkjogHDIr3d3VKqYBro8zWFLUCLonN1Ng4shFBFqw4P2xdSzf5IHPFI+l844X60iWhV0jxgClBFBTw==
+  dependencies:
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/provider" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
 
 "@rmwc/line-ripple@^5.5.1":
   version "5.5.1"
@@ -1790,6 +1839,14 @@
     "@rmwc/base" "^5.5.1"
     "@rmwc/types" "^5.5.1"
 
+"@rmwc/provider@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/provider/-/provider-5.5.2.tgz#f9a6ae861fb8ebcbec20611f77f62365387f56ad"
+  integrity sha512-QKTXyCpd3hzVaxjqnwFW8wmULnEHCRDuzg8ik5Pva5HdowKX/18550W2tPFdn2eRiJD15ERdCW1IG8JXoKOnVQ==
+  dependencies:
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
+
 "@rmwc/ripple@^5.5.1":
   version "5.5.1"
   resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.5.1.tgz#8bef431c860b7134bf4555aa6bceada199504dad"
@@ -1799,6 +1856,28 @@
     "@rmwc/base" "^5.5.1"
     "@rmwc/provider" "^5.5.1"
     "@rmwc/types" "^5.5.1"
+
+"@rmwc/ripple@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/ripple/-/ripple-5.5.2.tgz#d978fb56ac847fdd3a65b4f8e67b318db27cea78"
+  integrity sha512-js/gUMZ3saFMlxfck97avH8rs4xL9sQ3YYeyVfF0Sfk/OOae3QlxyXy0TfEdtuzJkbirE21kSnU9ePvABn4heg==
+  dependencies:
+    "@material/ripple" "^2.0.0"
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/provider" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
+
+"@rmwc/snackbar@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/snackbar/-/snackbar-5.5.2.tgz#195fe98a4415afa765ac126422f29222ee0ee7f1"
+  integrity sha512-XGZqIDRkAmnWv10rtJZ2TzPP3b9TyEap4W84BVp9+BdtAMzK8p8pjdMnbWEenFHnNpIaPKe+/6+s/TpWdwU+iQ==
+  dependencies:
+    "@material/snackbar" "^2.0.0"
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/button" "^5.5.2"
+    "@rmwc/icon" "^5.5.2"
+    "@rmwc/icon-button" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
 
 "@rmwc/switch@^5.5.1":
   version "5.5.1"

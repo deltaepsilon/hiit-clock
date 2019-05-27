@@ -8,6 +8,7 @@ import { DeleteOutline } from '../svg';
 import Pica from 'pica';
 import md5 from 'md5';
 import constants from '../constants';
+import effects from '../../effects';
 
 import './image-upload-input.css';
 
@@ -89,8 +90,8 @@ export default ({ id, text = 'Upload', file, onChange }) => {
             </>
           ) : (
             <div className="image-upload-error">
-              <Link href={constants.ROUTES.LOGIN}>
-                <a href={constants.ROUTES.LOGIN}>Log in with Google</a>
+              <Link href={constants.ROUTES.SETTINGS}>
+                <a href={constants.ROUTES.SETTINGS}>Log in with Google</a>
               </Link>
               <span> to upload</span>
             </div>
