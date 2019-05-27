@@ -1486,6 +1486,16 @@
     "@material/theme" "^1.1.0"
     tslib "^1.9.3"
 
+"@material/linear-progress@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@material/linear-progress/-/linear-progress-1.1.0.tgz#559921d4274fce0131fdf146698582d292855d6a"
+  integrity sha512-MIK0cD/o1rTLREtAfTK3v60h7A0/wAu8/3v9dPTMlAPe+Y5gOarAizYWM3r/bp88sGO4gU8nPK0X9/daD28pNw==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/theme" "^1.1.0"
+    tslib "^1.9.3"
+
 "@material/list@^2.0.0", "@material/list@^2.1.1":
   version "2.1.1"
   resolved "https://registry.npmjs.org/@material/list/-/list-2.1.1.tgz#fac8fc886d72c33ffb0f91abbc2483570cda4674"
@@ -1636,6 +1646,17 @@
     hyperform "^0.9.9"
     mutation-observer "^1.0.3"
 
+"@rmwc/base@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/base/-/base-5.5.2.tgz#995e40bbda7c1e53e32cde3f89de1790849f8ba1"
+  integrity sha512-B1ZN2BvBSDnjArTf/P0QDtAcJiX3zBwX24E/al7rbVMsvoUmnbe7CbRIJ/NKmTpWKz7aPBGg/+m9DvojLdQysw==
+  dependencies:
+    "@rmwc/types" "^5.5.2"
+    classnames "^2.2.6"
+    focus-trap "^5.0.0"
+    hyperform "^0.9.9"
+    mutation-observer "^1.0.3"
+
 "@rmwc/button@^5.5.1":
   version "5.5.1"
   resolved "https://registry.npmjs.org/@rmwc/button/-/button-5.5.1.tgz#0146e9bc3fd604d346eebf24d541e54f660354a6"
@@ -1719,6 +1740,15 @@
     "@material/line-ripple" "^1.1.0"
     "@rmwc/base" "^5.5.1"
     "@rmwc/types" "^5.5.1"
+
+"@rmwc/linear-progress@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/linear-progress/-/linear-progress-5.5.2.tgz#3e52424f947294a1f813f1a3deed8c98473ece3d"
+  integrity sha512-+YZ29VT1XGI2v31/SBktzl5ErFWNNDo3n+zQgW88RIB+lPmFmUDEZaE0BGZ3YBqwpapK+rP6ngmmhKhkIgjgwA==
+  dependencies:
+    "@material/linear-progress" "1.1.0"
+    "@rmwc/base" "^5.5.2"
+    "@rmwc/types" "^5.5.2"
 
 "@rmwc/list@^5.5.1":
   version "5.5.1"
@@ -1820,6 +1850,11 @@
   version "5.5.1"
   resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.5.1.tgz#31928f842610f785006209a784ebf60e48f7bef0"
   integrity sha512-+d0G9HSX/kq5gWooeQz1px1Hxp86A0JQPbFJhstkn3Jf3mU8Iku4RtFkzmtCzOjWCewhF0WKf8wrzxhXqrHNfA==
+
+"@rmwc/types@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@rmwc/types/-/types-5.5.2.tgz#dbcf65b2ce91dcb2bb54ad51954d2d9c060fbea6"
+  integrity sha512-CLzbNnHg/EXs5NlZ7p3VEHSWArOTCF15DCEn61NpHQbJrOR327IYIfGFnsNTBu9+5tZMHCmG0vOM8M0vaA4LYA==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"

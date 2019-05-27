@@ -55,7 +55,7 @@ export default () => {
         <Period periodId="prepare" />
 
         {formValues.periods.map((period, i) => (
-          <Period key={period.id} index={i} periodId={period.id} />
+          <Period key={`${period.id}-${i}`} index={i} periodId={period.id} />
         ))}
 
         <div
@@ -101,14 +101,14 @@ function Period({ index, periodId }) {
     isRest: type == constants.PERIOD_TYPES.REST,
   };
   const periodWrapperRef = useRef(null);
-  const dataUrl = file && file.dataUrl;
+  const src = file && (file.dataUrl || file.downloadURL);
   const title = flags.isRest ? constants.TEXT.REST : name;
 
   return (
     <div
       className="period-wrapper"
       ref={periodWrapperRef}
-      key={id}
+      key={`${id}-${index}`}
       period-id={periodId}
       is-active={String(flags.isActive)}
       is-first={String(flags.isFirst)}
@@ -125,7 +125,7 @@ function Period({ index, periodId }) {
 
           <span className="flex" />
 
-          {dataUrl && <img src={dataUrl} alt={`image for ${name}`} />}
+          {src && <img src={src} alt={`image for ${name}`} />}
         </ListItem>
         {!isPrepare && (
           <div

@@ -163,6 +163,6 @@ function getTimerFromFormValues(formValues) {
     ...period,
     totalSeconds: +period.totalSeconds,
   }));
-
+  
   return { ...formValues, periods };
 }

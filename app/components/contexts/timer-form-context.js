@@ -107,9 +107,20 @@ function getPeriodSaveCallback({ activePeriodIndex, isAdd, setFormValues }) {
         periods.splice(activePeriodIndex, 1, periodValues);
       }
 
-      return { ...formValues, periods };
+      const cleanedPeriods = cleanPeriods(periods);
+
+      return { ...formValues, periods: cleanedPeriods };
     });
   };
+}
+
+function cleanPeriods(periods) {
+  return periods.map(period => {
+    const isRest = period.type == constants.PERIOD_TYPES.REST;
+    const file = isRest ? {} : period.file;
+
+    return { ...period, file };
+  });
 }
 
 function getActivePeriodById(periods, id) {

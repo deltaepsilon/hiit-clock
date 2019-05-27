@@ -1,9 +1,32 @@
 .image-upload-input {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   user-select: none;
+}
+
+.image-upload-input[is-loading='true'] {
+  pointer-events: none;
+}
+
+.image-upload-input .mdc-linear-progress {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.image-upload-input[is-loading='true']:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 1;
 }
 
 @media (max-width: 450px) {

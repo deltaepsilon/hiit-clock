@@ -8,6 +8,7 @@
     "@rmwc/checkbox": "^5.5.1",
     "@rmwc/fab": "^5.5.1",
     "@rmwc/icon-button": "^5.5.1",
+    "@rmwc/linear-progress": "^5.5.2",
     "@rmwc/list": "^5.5.1",
     "@rmwc/menu": "^5.5.1",
     "@rmwc/switch": "^5.5.1",

@@ -20,8 +20,10 @@ export default ({ searchLabel, items }) => {
         {timers.map((timer, i) => {
           const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id ||
             timer.objectID}&userId=${timer.uid}`;
+          const key = `${timer.__id || timer.objectID}-${i}`;
+
           return (
-            <Link key={timer.__id || timer.objectID} href={href}>
+            <Link key={key} href={href}>
               <a href={href}>
                 <SimpleListItem
                   text={timer.name}
