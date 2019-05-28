@@ -21,3 +21,22 @@
 .timers-list a {
   text-decoration: none;
 }
+
+.timers-list .interstitial {
+  display: flex;
+  align-items: center;
+  color: var(--mdc-theme-primary);
+  height: 1rem;
+  padding: 1rem;
+}
+
+.timers-list .interstitial span {
+  flex: 1;
+  margin-top: -5px;
+  text-align: center;
+  margin-left: -24px;
+}
+
+.timers-list[has-local='true'][has-search='true'] .interstitial {
+  border-top: 1rem solid var(--color-gray-dark);
+}

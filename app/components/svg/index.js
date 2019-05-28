@@ -18,6 +18,7 @@ import PlayCircleOutline from './play-circle-outline';
 import PlayCircleFilled from './play-circle-filled';
 import Replay10 from './replay-10';
 import Replay from './replay';
+import Search from './search';
 import SkipNext from './skip-next';
 import SkipPrevious from './skip-previous';
 import Stop from './stop';
@@ -43,6 +44,7 @@ export {
   PlayCircleFilled,
   Replay10,
   Replay,
+  Search,
   SkipNext,
   SkipPrevious,
   Stop,

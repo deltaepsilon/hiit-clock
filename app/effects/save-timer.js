@@ -3,6 +3,7 @@ import schema from '../components/schema';
 import constants from '../components/constants';
 import dataUrlToBlob from '../utilities/data-url-to-blob';
 import recursivelyOmitEmptyValues from '../utilities/recursively-omit-empty-values';
+import calculateTimerTotalSeconds from '../utilities/calculate-timer-total-seconds';
 
 export default async function saveTimer({ currentUser, isOwned, timer, timerId }) {
   const { isAnonymous, uid } = currentUser;
@@ -13,7 +14,7 @@ export default async function saveTimer({ currentUser, isOwned, timer, timerId }
   if (uid && !isAnonymous) {
     const timerWithImages = await saveImages({ isOwned, timer, timerId: userTimerRef.id, uid });
 
-    await saveToDb({ isOwned, timer: timerWithImages, timerId: userTimerRef.id, uid });
+    await saveToDb({ currentUser, isOwned, timer: timerWithImages, timerId: userTimerRef.id });
   }
 }
 
@@ -88,15 +89,17 @@ function getFileFromMap(item, itemsMap) {
   return (item.file && itemsMap[item.file.key]) || item.file;
 }
 
-async function saveToDb({ isOwned, timer, timerId, uid }) {
+async function saveToDb({ currentUser, isOwned, timer, timerId }) {
+  const { uid } = currentUser;
   const userTimerRef = schema.getUserTimerRef(uid, timerId);
-  const personalTimer = getPersonalTimer({ timer, uid });
+  const personalTimer = getPersonalTimer({ currentUser, timer });
   const cleanedTimer = recursivelyOmitEmptyValues(personalTimer);
 
   return userTimerRef.set(cleanedTimer);
 }
 
-function getPersonalTimer({ timer, uid }) {
+function getPersonalTimer({ currentUser, timer }) {
+  const { email, uid } = currentUser;
   const periods = timer.periods.map(period => ({
     id: period.id,
     name: period.name,
@@ -104,12 +107,14 @@ function getPersonalTimer({ timer, uid }) {
     type: period.type,
     file: period.file,
   }));
+  const totalSeconds = calculateTimerTotalSeconds({ periods });
   const search = timer.isSearchable
     ? {
         algolia: {
           name: timer.name,
           description: timer.description,
-          totalSeconds: timer.totalSeconds,
+          totalSeconds,
+          email,
           uid,
         },
         index: constants.ALGOLIA.DB_INDICES.TIMERS,

@@ -33,7 +33,7 @@ export default (items, searchTerm) => {
   }, [window, window.environment]);
 
   useEffect(() => {
-    if (isSearchingAlgolia && index) {
+    if (index) {
       index.search({ query: searchTerm }, (err, content) => {
         if (err) {
           console.info('algolia timers search error', err);
@@ -48,5 +48,9 @@ export default (items, searchTerm) => {
     return searchTerm ? fuse.search(searchTerm) : items;
   }
 
-  return fuse ? getFuseResult() : searchResults;
+  const local = getFuseResult();
+  const localIds = new Set(local.map(({ __id }) => __id));
+  const search = searchResults.filter(({ objectID }) => !localIds.has(objectID));
+
+  return { local, search };
 };
