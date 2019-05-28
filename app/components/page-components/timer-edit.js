@@ -44,6 +44,7 @@ function TimerForm() {
     timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
+  const savedDisabled = isOwned && (!!formError || isSaving || !isDirty);
 
   useEffect(routeChangeStartEffect, []);
 
@@ -79,7 +80,7 @@ function TimerForm() {
           <PeriodsList />
 
           <div className="row buttons">
-            <Button type="submit" raised disabled={!!formError || isSaving || !isDirty}>
+            <Button type="submit" raised disabled={savedDisabled}>
               {isSaving ? 'Saving...' : 'Save'}
             </Button>
             <Button

@@ -20,7 +20,7 @@ export default ({ searchLabel, items }) => {
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
         {local.map((timer, index) => (
-          <TimerRow timer={timer} index={index} />
+          <TimerRow timer={timer} key={timer.__id} />
         ))}
         {search.length ? (
           <div className="interstitial">
@@ -29,21 +29,20 @@ export default ({ searchLabel, items }) => {
           </div>
         ) : null}
         {search.map((timer, index) => (
-          <TimerRow timer={timer} index={index} />
+          <TimerRow timer={timer} key={timer.objectID} />
         ))}
       </List>
     </div>
   );
 };
 
-function TimerRow({ timer, index }) {
+function TimerRow({ timer }) {
   const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}&userId=${
     timer.uid
   }`;
-  const key = `${timer.__id || timer.objectID}-${index}`;
 
   return (
-    <Link key={key} href={href}>
+    <Link href={href}>
       <a href={href}>
         <SimpleListItem
           text={timer.name}
