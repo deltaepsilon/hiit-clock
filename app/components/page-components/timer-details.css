@@ -48,6 +48,10 @@
   background: var(--background-color);
 }
 
+#timer-details img {
+  padding: 1rem;
+}
+
 #timer-details .mdc-fab.edit {
   position: relative;
   top: 28px;

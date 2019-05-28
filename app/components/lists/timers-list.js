@@ -6,7 +6,6 @@ import TotalTime from '../timer/total-time';
 import SearchBar from './search-bar';
 import useSearch from '../hooks/use-search';
 import constants from '../constants';
-import { Search } from '../svg';
 import './lists.css';
 
 export default ({ searchLabel, items }) => {
@@ -24,7 +23,6 @@ export default ({ searchLabel, items }) => {
         ))}
         {search.length ? (
           <div className="interstitial">
-            {/* <Search fill={constants.COLORS.PRIMARY} /> */}
             <span className="text-bold">Search Results</span>
           </div>
         ) : null}

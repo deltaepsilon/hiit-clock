@@ -23,6 +23,9 @@ export default ({ timerId, userId }) => {
     constants.ROUTES.TIMER.EDIT
   }?id=${timerId}&userId=${userId}&isOwned=${isOwned}`;
   const fabIcon = isOwned ? <Edit /> : <FileCopyOutline />;
+  const imageSrc = timer.file && timer.file.downloadURL;
+
+  console.log('timer', timer);
 
   return (
     <>
@@ -43,6 +46,8 @@ export default ({ timerId, userId }) => {
         </ul>
 
         <p>{timer.description}</p>
+
+        {imageSrc && <img src={imageSrc} alt={`${timer.name} descriptive image`} />}
 
         <TimerActions timerId={timerId} />
 
