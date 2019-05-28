@@ -25,8 +25,6 @@ export default ({ timerId, userId }) => {
   const fabIcon = isOwned ? <Edit /> : <FileCopyOutline />;
   const imageSrc = timer.file && timer.file.downloadURL;
 
-  console.log('timer', timer);
-
   return (
     <>
       <BackButton href={constants.ROUTES.DASHBOARD} />

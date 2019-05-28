@@ -27,16 +27,19 @@ export default ({ id, text = 'Upload', file, onChange }) => {
   );
 
   useEffect(() => {
+    const updatedPreviewUrl = fileDataUrl || fileDownloadURL;
+    const needsPreviewUrlUpdate = previewUrl != updatedPreviewUrl;
+
+    needsPreviewUrlUpdate && setPreviewUrl(updatedPreviewUrl);
+  }, [previewUrl, fileDataUrl, fileDownloadURL]);
+
+  useEffect(() => {
     (async () => {
       const isUpload = previewUrl != fileDownloadURL;
-      const needsPreviewUrlUpdate = previewUrl != (fileDataUrl || fileDownloadURL);
-
-      if (needsPreviewUrlUpdate) {
-        setPreviewUrl(fileDataUrl || fileDownloadURL);
-      }
 
       if (isUpload && imgRef.current) {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
+        
         if (dataUrl) {
           const hash = md5(dataUrl);
           const hashWithoutSlashes = hash.replace(/\//, '|');
@@ -47,7 +50,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
         setIsLoading(false);
       }
     })();
-  }, [previewUrl, fileDataUrl, fileDownloadURL]);
+  }, [previewUrl, fileDownloadURL]);
 
   return (
     <>
@@ -72,7 +75,8 @@ export default ({ id, text = 'Upload', file, onChange }) => {
             <>
               {previewUrl ? (
                 <>
-                  <img ref={imgRef} src={previewUrl} />
+                  <img className="full-size" ref={imgRef} src={previewUrl} />
+                  <img className="constrained-size" src={previewUrl} />
                   <canvas ref={canvasRef} />
                   <IconButton
                     icon={<DeleteOutline fill={constants.COLORS.BUTTON_ON_WHITE} />}
