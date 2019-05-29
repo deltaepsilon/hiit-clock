@@ -44,7 +44,7 @@ function TimerRow({ timer }) {
       <a href={href}>
         <SimpleListItem
           text={timer.name}
-          secondaryText={<TotalTime periods={timer.periods} />}
+          secondaryText={<TotalTime periods={timer.periods} totalSeconds={timer.totalSeconds} />}
           metaIcon={<NavigateNextIcon fill={constants.COLORS.PRIMARY} />}
         />
       </a>
