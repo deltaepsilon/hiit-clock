@@ -18,6 +18,12 @@ export default async function dataUrlToBlob(dataUrl) {
         }
       };
 
+      img.onerror = function(error) {
+        console.error(img);
+        reject('Image load error');
+      };
+
+      img.setAttribute('crossorigin', 'anonymous');
       img.src = dataUrl;
     } catch (error) {
       reject(error);

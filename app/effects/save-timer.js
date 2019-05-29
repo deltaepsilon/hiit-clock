@@ -28,24 +28,33 @@ function saveToLocalStorage({ timerId, timer, uid }) {
 }
 
 async function saveImages({ isOwned, timer, timerId, uid }) {
-  const filesToUpload = getUniqueFilesWithDataUrl({ timer });
-  const uploadPromises = filesToUpload.map(async file => saveDataUrl({ file, timerId, uid }));
+  const filesToUpload = getUniqueFilesToUpload({ isOwned, timer });
+  const uploadPromises = filesToUpload.map(async file => {
+    let result = file;
+
+    try {
+      result = await saveFile({ file, timerId, uid });
+    } catch (error) {
+      console.error(error);
+    }
+
+    return result;
+  });
+
   const files = await Promise.all(uploadPromises);
   const timerWithFiles = attachFilesToTimer({ timer, files });
 
   return timerWithFiles;
 
   /**
-   * TODO: Duplicate images if the image is not owned by the user
-   *
    * TODO: Delete files with a Cloud Function if the record is ever deleted.
    */
 }
 
-async function saveDataUrl({ file, timerId, uid }) {
+async function saveFile({ file, timerId, uid }) {
   const userStorageRef = schema.getUserTimerStorageRef(uid, timerId);
   const imageRef = userStorageRef.child(file.key);
-  const blob = await dataUrlToBlob(file.dataUrl);
+  const blob = await dataUrlToBlob(file.dataUrl || file.downloadURL);
   const snapshot = await imageRef.put(blob);
   const downloadURL = await snapshot.ref.getDownloadURL();
   const storagePath = snapshot.ref.toString();
@@ -54,19 +63,39 @@ async function saveDataUrl({ file, timerId, uid }) {
   return { downloadURL, storagePath, totalBytes, metadata, key: file.key };
 }
 
-function getUniqueFilesWithDataUrl({ timer }) {
+function getUniqueFilesToUpload({ isOwned, timer }) {
   const timerFile = timer.file || {};
   const periodFiles = timer.periods.map(period => period.file).filter(file => !!file && !!file.key);
-  const filesToUpload = [timerFile, ...periodFiles];
-  const fileKeysWithDataUrl = filesToUpload
-    .filter(file => file && file.dataUrl)
-    .map(({ key }) => key);
-  const fileKeysSet = new Set(fileKeysWithDataUrl);
-  const result = [...fileKeysSet].map(key =>
-    filesToUpload.find(file => file.dataUrl && file.key == key)
-  );
+  const files = [timerFile, ...periodFiles];
+  const fileKeysToUpload = getFileKeysToUpload({ files, isOwned });
+  const fileKeys = Array.from(new Set(fileKeysToUpload));
+  const result = findFilesToUpload({ fileKeys, files, isOwned });
 
   return result;
+}
+
+function getFileKeysToUpload({ files, isOwned }) {
+  return files
+    .filter(file => {
+      const hasFile = !!file;
+      const hasDataUrl = hasFile && file.dataUrl;
+      const hasUnownedDownloadUrl = hasFile && !isOwned && file.downloadURL;
+
+      return hasDataUrl || hasUnownedDownloadUrl;
+    })
+    .map(({ key }) => key);
+}
+
+function findFilesToUpload({ fileKeys, files, isOwned }) {
+  return fileKeys.map(key =>
+    files.find(file => {
+      const isMatchingFile = file.key == key;
+      const isUpload = !!file.dataUrl;
+      const isUnownedDownloadUrl = !isOwned && !!file.downloadURL;
+
+      return isMatchingFile && (isUpload || isUnownedDownloadUrl);
+    })
+  );
 }
 
 function attachFilesToTimer({ timer, files }) {
@@ -123,6 +152,7 @@ function getPersonalTimer({ currentUser, timer }) {
         algolia: undefined,
         index: undefined,
       };
+  const result = { ...timer, ...search, periods, uid };
 
-  return { ...timer, ...search, periods, uid };
+  return result;
 }

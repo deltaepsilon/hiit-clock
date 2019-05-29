@@ -1,0 +1,37 @@
+[
+  {
+    "origin": ["https://quiver-hiit-clock.web.app"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["https://quiver-hiit-clock.firebaseapp.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["https://next.hiitclock.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["https://www.hiitclock.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["https://hiitclock.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["http://localhost:3000"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
+    "origin": ["http://localhost"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

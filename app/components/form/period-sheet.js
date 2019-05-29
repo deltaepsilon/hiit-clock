@@ -87,7 +87,12 @@ export default () => {
           {isWork && (
             <ImageUploadInput
               file={periodValues.file}
-              onChange={getChangeHandler({ key: 'file', periodValues, setPeriodValues })}
+              onChange={getChangeHandler({
+                key: 'file',
+                periodValues,
+                setPeriodValues,
+                defaultValue: {},
+              })}
             />
           )}
 
@@ -105,11 +110,12 @@ export default () => {
   );
 };
 
-function getChangeHandler({ key, periodValues, setPeriodValues }) {
+function getChangeHandler({ key, periodValues, setPeriodValues, defaultValue = null }) {
   return e => {
-    const value = e && e.target ? e.target.value : e || null;
+    const value = e && e.target ? e.target.value : e || defaultValue;
+    const updatedPeriodValues = { ...periodValues, [key]: value };
 
-    setPeriodValues({ ...periodValues, [key]: value });
+    setPeriodValues(updatedPeriodValues);
   };
 }
 

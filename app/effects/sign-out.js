@@ -1,4 +1,8 @@
 /* global window */
+import constants from '../components/constants';
+
 export default async function signOut() {
-  return firebase.auth().signOut();
+  firebase.auth().signOut();
+
+  location = constants.ROUTES.LANDING;
 }

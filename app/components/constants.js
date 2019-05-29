@@ -4,7 +4,7 @@ export default {
       TIMERS: 'hiit-clock-prod-2019:timers',
     },
     DB_INDICES: {
-      timers: 'timers',
+      TIMERS: 'timers',
     },
   },
   COLORS: {

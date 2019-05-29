@@ -122,7 +122,7 @@ function getPeriodSaveCallback({ activePeriodIndex, isAdd, setFormValues }) {
 function cleanPeriods(periods) {
   return periods.map(period => {
     const isRest = period.type == constants.PERIOD_TYPES.REST;
-    const file = isRest ? {} : period.file;
+    const file = isRest ? {} : period.file || {};
 
     return { ...period, file };
   });
@@ -140,7 +140,8 @@ function checkIsDirty({ formValues, setIsDirty, timer }) {
   const isNameChanged = formValues.name != timer.name;
   const isDescriptionChanged = formValues.description != timer.description;
   const isSearchableChanged = formValues.isSearchable != timer.isSearchable;
-  const isFileChanged = formValues.file && formValues.file.dataUrl;
+  const isFileChanged =
+    (formValues.file && formValues.file.dataUrl) || !!formValues.file != !!timer.file;
   const isPeriodsChanged = JSON.stringify(formValues.periods) != JSON.stringify(timer.periods);
   const isDirty =
     isNameChanged ||

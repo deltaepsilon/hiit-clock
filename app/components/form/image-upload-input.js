@@ -39,7 +39,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
 
       if (isUpload && imgRef.current) {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
-        
+
         if (dataUrl) {
           const hash = md5(dataUrl);
           const hashWithoutSlashes = hash.replace(/\//, '|');

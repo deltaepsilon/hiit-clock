@@ -28,12 +28,14 @@ export default () => {
   const deselect = useCallback(getDeselect({ setActivePeriodId, setActivePeriodIndex }));
 
   useEffect(() => {
-    const checkElementWithin = getCheckElementWithin({ deselect });
+    if (!showPeriodSheet) {
+      const checkElementWithin = getCheckElementWithin({ deselect });
 
-    window.addEventListener('click', checkElementWithin);
+      window.addEventListener('click', checkElementWithin);
 
-    return () => window.removeEventListener('click', checkElementWithin);
-  }, []);
+      return () => window.removeEventListener('click', checkElementWithin);
+    }
+  }, [showPeriodSheet]);
 
   useEffect(() => {
     if (showPeriodSheet) {
