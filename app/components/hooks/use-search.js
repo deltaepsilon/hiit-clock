@@ -45,7 +45,9 @@ export default (items, searchTerm) => {
   }, [isSearchingAlgolia, index, searchTerm]);
 
   function getFuseResult() {
-    return searchTerm ? fuse.search(searchTerm) : items;
+    const result = searchTerm ? fuse.search(searchTerm) : items;
+
+    return result.sort((a, b) => (a.lastAccessed < b.lastAccessed ? 1 : -1));
   }
 
   const local = getFuseResult();

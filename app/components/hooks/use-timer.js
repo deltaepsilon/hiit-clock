@@ -30,7 +30,13 @@ function subscribe({ userId, timerId, setTimer }) {
     if (dbTimer) {
       const updatedLocalTimers = {
         ...localTimers,
-        [timerId]: { ...dbTimer, algolia: undefined, index: undefined, uid: userId },
+        [timerId]: {
+          ...dbTimer,
+          algolia: undefined,
+          index: undefined,
+          uid: userId,
+          lastAccessed: Date.now(),
+        },
       };
       const updatedLocalTimersString = JSON.stringify(updatedLocalTimers);
 

@@ -16,6 +16,7 @@ import UserMenu from '../top-bar/user-menu';
 
 import './app.css';
 import '../top-bar/top-bar.css';
+import '../modals/modal.css';
 
 export function AppBase({ children, secure, hideUserMenu }) {
   return (

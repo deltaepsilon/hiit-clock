@@ -26,10 +26,8 @@ export default function useTimers() {
 
 function subscribe(currentUser = {}, setTimers) {
   const { uid } = currentUser;
-  const localTimersString = localStorage.getItem(constants.LOCALSTORAGE.TIMERS) || '{}';
-  const localTimers = JSON.parse(localTimersString);
 
-  setTimers(localTimers);
+  setLocalTimers(setTimers);
 
   if (uid) {
     const userTimersRef = schema.getUserTimersRef(uid);
@@ -44,4 +42,11 @@ function subscribe(currentUser = {}, setTimers) {
       setTimers(existingTimers => ({ ...existingTimers, ...dbTimers }));
     });
   }
+}
+
+function setLocalTimers(setTimers) {
+  const localTimersString = localStorage.getItem(constants.LOCALSTORAGE.TIMERS) || '{}';
+  const localTimers = JSON.parse(localTimersString);
+
+  setTimers(localTimers);
 }

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { List, SimpleListItem } from '@rmwc/list';
-import NavigateNextIcon from '../svg/navigate-next';
+import { NavigateNext, People, Person } from '../svg';
+import LongPress from '../long-press/long-press';
 import TotalTime from '../timer/total-time';
+import TimerModal from '../modals/timer-modal';
 import SearchBar from './search-bar';
 import useSearch from '../hooks/use-search';
 import constants from '../constants';
@@ -18,36 +20,54 @@ export default ({ searchLabel, items }) => {
     <div className="timers-list list" has-local={String(hasLocal)} has-search={String(hasSearch)}>
       <SearchBar label={searchLabel} onChange={setSearchTerm} />
       <List className="list" twoLine>
-        {local.map((timer, index) => (
+        {local.map(timer => (
           <TimerRow timer={timer} key={timer.__id} />
         ))}
         {search.length ? (
           <div className="interstitial">
-            <span className="text-bold">Search Results</span>
+            <span className="text-bold">Search</span>
           </div>
         ) : null}
-        {search.map((timer, index) => (
-          <TimerRow timer={timer} key={timer.objectID} />
+        {search.map(timer => (
+          <TimerRow timer={timer} key={timer.objectID} isSearch />
         ))}
       </List>
     </div>
   );
 };
 
-function TimerRow({ timer }) {
+function TimerRow({ timer, isSearch }) {
+  const [showModal, setShowModal] = useState(false);
   const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}&userId=${
     timer.uid
   }`;
+  const isShared = timer.uid == constants.SHARED_USER;
+  let graphic = undefined;
+
+  if (isSearch) {
+  } else if (isShared) {
+    graphic = <People fill={constants.COLORS.PRIMARY_LIGHT} />;
+  } else {
+    graphic = <Person fill={constants.COLORS.PRIMARY_LIGHT} />;
+  }
 
   return (
-    <Link href={href}>
-      <a href={href}>
-        <SimpleListItem
-          text={timer.name}
-          secondaryText={<TotalTime periods={timer.periods} totalSeconds={timer.totalSeconds} />}
-          metaIcon={<NavigateNextIcon fill={constants.COLORS.PRIMARY} />}
-        />
-      </a>
-    </Link>
+    <>
+      {showModal && <TimerModal timerId={timer.__id} onClose={() => setShowModal(false)} />}
+      <Link href={href}>
+        <a href={href}>
+          <LongPress onPress={isSearch ? null : () => setShowModal(true)}>
+            <SimpleListItem
+              text={timer.name}
+              secondaryText={
+                <TotalTime periods={timer.periods} totalSeconds={timer.totalSeconds} />
+              }
+              graphic={graphic}
+              metaIcon={<NavigateNext fill={constants.COLORS.PRIMARY} />}
+            />
+          </LongPress>
+        </a>
+      </Link>
+    </>
   );
 }

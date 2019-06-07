@@ -1,6 +1,7 @@
 /* globals window */
 import deleteTimer from './delete-timer';
 import linkToGoogle from './link-to-google';
+import localStorage from './local-storage';
 import saveProfile from './save-profile';
 import saveSettings from './save-settings';
 import saveTimerForm from './save-timer-form';
@@ -11,6 +12,7 @@ import signOut from './sign-out';
 
 export default {
   deleteTimer: wrapEffect(deleteTimer),
+  localStorage,
   linkToGoogle: wrapEffect(linkToGoogle),
   saveProfile: wrapEffect(saveProfile),
   saveSettings: wrapEffect(saveSettings),
@@ -38,7 +40,7 @@ function wrapEffect(effect) {
     } catch (error) {
       console.info(`${name} effect failed!`);
       console.error(error);
-      
+
       if (typeof window.handleEffectError == 'function') {
         window.handleEffectError(error);
       }

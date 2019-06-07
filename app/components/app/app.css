@@ -131,6 +131,11 @@ p {
   color: var(--mdc-theme-secondary-text) !important;
 }
 
+.mdc-button--outlined:not(:disabled).light {
+  border-color: var(--color-gray-light) !important;
+  color: var(--mdc-theme-secondary-text) !important;
+}
+
 .mdc-text-field--focused .mdc-floating-label {
   color: var(--mdc-theme-primary-light) !important;
 }

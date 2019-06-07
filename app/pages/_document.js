@@ -33,6 +33,7 @@ export default class CustomDocument extends Document {
             <div id="user-menu" />
             <div id="timer-data" />
           </div>
+          <div id="modal" />
           <Main />
           <NextScript />
           <noscript>

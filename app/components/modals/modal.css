@@ -1,0 +1,54 @@
+#modal > * {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  background: rgba(0, 0, 0, 0.97);
+}
+#modal section {
+  display: flex;
+  flex-direction: column;
+
+  height: 750px;
+  width: 500px;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+
+#modal .header {
+  position: relative;
+}
+
+#modal h2 {
+  margin: 0.5rem;
+}
+
+#modal .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#modal .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+#modal .body > * {
+  margin-bottom: 1rem;
+}
+
+#modal .mdc-button {
+  min-width: 10rem;
+}

@@ -14,6 +14,8 @@ import HiitClock from './hiit-clock';
 import List from './list';
 import NavigateNext from './navigate-next';
 import PauseCircleFilled from './pause-circle-filled';
+import People from './people';
+import Person from './person';
 import PlayCircleOutline from './play-circle-outline';
 import PlayCircleFilled from './play-circle-filled';
 import Replay10 from './replay-10';
@@ -40,6 +42,8 @@ export {
   List,
   NavigateNext,
   PauseCircleFilled,
+  People,
+  Person,
   PlayCircleOutline,
   PlayCircleFilled,
   Replay10,

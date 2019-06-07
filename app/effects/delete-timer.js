@@ -1,6 +1,7 @@
 /* global window */
 import schema from '../components/schema';
 import constants from '../components/constants';
+import effects from '../effects';
 
 export default async function deleteTimer({ currentUser, isOwned, timerId }) {
   const { isAnonymous, uid } = currentUser;
@@ -12,10 +13,11 @@ export default async function deleteTimer({ currentUser, isOwned, timerId }) {
 }
 
 function removeFromLocalStorage({ timerId }) {
-  const localTimersString = localStorage.getItem(constants.LOCALSTORAGE.TIMERS) || '{}';
+  console.log('effects.localStorage', effects.localStorage);
+  const localTimersString = effects.localStorage.getItem(constants.LOCALSTORAGE.TIMERS) || '{}';
   const localTimers = JSON.parse(localTimersString);
 
   delete localTimers[timerId];
 
-  localStorage.setItem(constants.LOCALSTORAGE.TIMERS, JSON.stringify(localTimers));
+  effects.localStorage.setItem(constants.LOCALSTORAGE.TIMERS, JSON.stringify(localTimers));
 }
