@@ -8,12 +8,11 @@
   "private": true,
   "scripts": {
     "build": "docker-compose build",
-    "deploy:interactive": "docker-compose run --rm deploy sh",
-    "deploy": "docker-compose run --rm deploy yarn deploy",
-    "ci:build": "docker build -t registry.gitlab.com/deltaepsilon/hiit-clock .",
-    "ci:push": "docker push registry.gitlab.com/deltaepsilon/hiit-clock",
-    "start": "docker-compose run --rm --service-ports dev bash -ci \"yarn start\"",
-    "dev": "docker-compose build dev && docker-compose run --service-ports --rm dev zsh",
+    "dev": "docker-compose build workspace && docker-compose run --service-ports --rm workspace zsh",
+    "ci:login": "npx firebase login:ci --no-localhost",
+    "ci:build": "docker build --tag=hiit-clock .",
+    "ci:interactive": "docker run -it --rm hiit-clock sh",
+    "ci:latest": "docker run -it --rm gcr.io/fir-consulting-2019/hiit-clock:latest sh",
     "windows:watch": "powershell ./bin/watch.ps1"
   }
 }

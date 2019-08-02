@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import AppBase from '../../components/app/app-base';
-import TimerDetails from '../../components/page-components/timer-details';
-import parseSearch from '../../utilities/parse-search';
-import constants from '../../components/constants';
+import AppBase from '../components/app/app-base';
+import TimerDetails from '../components/page-components/timer-details';
+import parseSearch from '../utilities/parse-search';
+import constants from '../components/constants';
 
 export default props => {
   const [timerId, setTimerId] = useState();
