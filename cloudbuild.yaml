@@ -3,6 +3,7 @@ steps:
     args: ['build', '-t', 'us.gcr.io/$PROJECT_ID/hiit-clock:latest', '.']
   - name: 'us.gcr.io/$PROJECT_ID/hiit-clock:latest'
     dir: '/app'
-    args: ['yarn', 'ci:deploy', '--token', '$_FIREBASE_TOKEN']
+    args: ['echo', '$_FIREBASE_TOKEN']
+    # args: ['yarn', 'ci:deploy', '--token', '$_FIREBASE_TOKEN']
 images: ['us.gcr.io/$PROJECT_ID/hiit-clock:latest']
 timeout: 3600s
