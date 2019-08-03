@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import ServiceWorker from './service-worker';
 import Environment from './environment';
 import ErrorHandler from './error-handler';
-import Firebase from './firebase';
 import Fonts from './fonts';
 import MDCStyles from './mdc-styles';
 import Meta from './meta';
@@ -23,7 +22,6 @@ export function AppBase({ children, secure, hideUserMenu }) {
     <>
       <ServiceWorker />
       <Environment />
-      <Firebase />
       <Fonts />
       <MDCStyles />
       <Meta />

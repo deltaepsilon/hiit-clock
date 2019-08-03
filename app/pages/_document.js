@@ -9,8 +9,8 @@ export default class CustomDocument extends Document {
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <link rel="icon" href="/static/images/favicon.ico" />
-          <link rel="manifest" href="/static/manifest.json" />
+          <link rel="icon" href="/images/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
           <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" />
           <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" />
           <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" />
@@ -19,6 +19,7 @@ export default class CustomDocument extends Document {
           {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js" /> */}
           {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-messaging.js" /> */}
           {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" /> */}
+          <script src="/__/firebase/init.js" defer />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.1/algoliasearchLite.min.js" />
         </Head>
         <body>

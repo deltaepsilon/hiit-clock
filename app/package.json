@@ -38,12 +38,12 @@
     "yaml": "^1.6.0"
   },
   "scripts": {
-    "dev": "yarn start",
+    "dev": "next",
     "ci:build": "yarn build && yarn export",
     "ci:deploy": "yarn deploy",
     "build": "next build",
     "export": "next export",
-    "start": "node server.js",
+    "start": "next start",
     "serve:static": "yarn export && npx http-server out",
     "deploy": "firebase deploy",
     "deploy:functions": "firebase deploy --only functions",

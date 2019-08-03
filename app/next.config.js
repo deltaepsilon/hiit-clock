@@ -50,6 +50,7 @@ async function exportPathMap(defaultPathMap, { dev, dir, outDir, distDir, buildI
 
 module.exports = withCss(
   withSourceMaps({
+    experimental: { publicDirectory: true },
     exportPathMap,
     onDemandEntries: {
       websocketPort: 41000,
