@@ -64,3 +64,5 @@ yarn-error.lock
 
 # dotenv environment variables file
 .env
+
+*.log

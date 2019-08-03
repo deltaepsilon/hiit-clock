@@ -79,12 +79,10 @@ export default {
   },
   TITLES: {
     '/': 'HiiT Clock',
-    '/login/': 'Login',
-    '/dashboard/': 'HiiT Clock',
-    '/settings/': 'settings',
-    '/timer/create/': 'Create Timer',
+    '/login': 'Login',
+    '/dashboard': 'HiiT Clock',
+    '/settings': 'settings',
     '/timer/create': 'Create Timer',
-    '/timer/edit/': 'Edit Timer',
     '/timer/edit': 'Edit Timer',
   },
 };

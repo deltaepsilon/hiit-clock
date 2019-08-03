@@ -1,6 +1,2 @@
 {
-  "files.exclude": {
-    "**/.next": true,
-    "**/out": true
-  }
 }

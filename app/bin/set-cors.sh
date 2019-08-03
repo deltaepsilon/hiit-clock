@@ -1,1 +1,0 @@
-gsutil cors set /app/bin/cors.json gs://quiver-hiit-clock.appspot.com

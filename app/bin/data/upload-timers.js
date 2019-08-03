@@ -5,9 +5,9 @@ const path = require('path');
 
 const context =
   process.env.NODE_ENV == 'production'
-    ? require('../functions/utilities/prod-context')
-    : require('../functions/utilities/test-context');
-const schema = require('../functions/utilities/schema')(context);
+    ? require('../../functions/utilities/prod-context')
+    : require('../../functions/utilities/test-context');
+const schema = require('../../functions/utilities/schema')(context);
 const uid = 'shared-user';
 
 (async () => {
