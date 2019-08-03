@@ -17,8 +17,9 @@ const { variables, files } = Object.keys(secrets).reduce(
 
 files.forEach(([key, value]) => {
   const filePath = path.resolve(pathPrefix, key);
+  const utf8Encoded = Buffer.from(value, 'base64').toString('utf8');
 
-  fs.writeFileSync(filePath, JSON.stringify(value), 'base64');
+  fs.writeFileSync(filePath, utf8Encoded, 'utf8');
 
   console.log('wrote', filePath);
 });
