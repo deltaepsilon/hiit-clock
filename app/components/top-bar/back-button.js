@@ -13,7 +13,9 @@ export default React.memo(({ href }) => {
 function BackButton({ href }) {
   return (
     <Link href={href}>
-      <IconButton icon={<ArrowBack />} tag="a" href={href} />
+      <a>
+        <IconButton icon={<ArrowBack />} href={href} />
+      </a>
     </Link>
   );
 }

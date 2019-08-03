@@ -12,7 +12,7 @@
     "ci:login": "npx firebase login:ci --no-localhost",
     "ci:build": "docker build --tag=hiit-clock .",
     "ci:interactive": "docker run -it --rm hiit-clock sh",
-    "ci:latest": "docker run -it --rm gcr.io/fir-consulting-2019/hiit-clock:latest sh",
+    "ci:latest": "docker run -it --rm us.gcr.io/quiver-hiit-clock/hiit-clock:latest sh",
     "windows:watch": "powershell ./bin/watch.ps1"
   }
 }

@@ -21,13 +21,16 @@ app.prepare().then(() => {
     } else if (pathname == '/sitemap.txt') {
       createReadStream('./root/sitemap.txt').pipe(res);
     } else if (pathname == '/__/firebase/init.js') {
-      const initJs = `
+      const initJs = `(function() {
         if (typeof firebase === 'undefined') {
           throw new Error(
             'hosting/init-error: Firebase SDK not detected. You must include it before /__/firebase/init.js'
             );
-        }
-        firebase.initializeApp(${JSON.stringify(environment.firebase)});
+          }
+          const appExists = !!firebase.apps.length
+          
+          !appExists && firebase.initializeApp(${JSON.stringify(environment.firebase)});
+        })()
       `;
 
       res.writeHeader(200, { 'Content-Type': 'text/html' });

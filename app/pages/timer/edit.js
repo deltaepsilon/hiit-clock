@@ -7,15 +7,18 @@ export default () => {
   const [timerId, setTimerId] = useState();
   const [userId, setUserId] = useState();
   const [isOwned, setIsOwned] = useState(false);
+  const search = typeof location != 'undefined' && location.search;
 
   useEffect(() => {
-    const { id, userId, isOwned: isOwnedString } = parseSearch(location.search);
-    const isOwned = isOwnedString == 'true';
+    if (search) {
+      const { id, userId, isOwned: isOwnedString } = parseSearch(search);
+      const isOwned = isOwnedString == 'true';
 
-    setTimerId(id);
-    setUserId(userId);
-    setIsOwned(isOwned);
-  }, [location.search]);
+      setTimerId(id);
+      setUserId(userId);
+      setIsOwned(isOwned);
+    }
+  }, [search]);
 
   return (
     <AppBase>

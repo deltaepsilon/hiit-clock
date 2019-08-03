@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 export const LoadedContext = React.createContext();
 
 export default ({ children }) => {
-  const documentReady = window.document.readyState == 'complete';
+  const documentReady = typeof window != 'undefined' && window.document.readyState == 'complete';
   const [loaded, setLoaded] = useState(documentReady);
 
   useEffect(() => {

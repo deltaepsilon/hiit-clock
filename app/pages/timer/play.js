@@ -7,13 +7,16 @@ import constants from '../../components/constants';
 export default props => {
   const [timerId, setTimerId] = useState();
   const [userId, setUserId] = useState(constants.SHARED_USER);
+  const search = typeof location != 'undefined' && location.search;
 
   useEffect(() => {
-    const { id, userId } = parseSearch(location.search);
+    if (search) {
+      const { id, userId } = parseSearch(search);
 
-    setTimerId(id);
-    setUserId(userId || constants.SHARED_USER);
-  }, [location.search]);
+      setTimerId(id);
+      setUserId(userId || constants.SHARED_USER);
+    }
+  }, [search]);
 
   return (
     <AppBase hideUserMenu>
