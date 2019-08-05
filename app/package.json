@@ -29,10 +29,11 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@quiver/firebase-mods": "file:/firebase-mods/quiver-firebase-mods-v1.1.0.tgz",
     "babel-jest": "^24.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "firebase-tools": "^7.2.2",
+    "firebase-tools": "https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-6.11.0-eap11.tgz",
     "jest": "^24.8.0",
     "uuid": "^3.3.2",
     "yaml": "^1.6.0"
@@ -53,6 +54,8 @@
     "test:watch": "jest --watchAll --runInBand",
     "test:functions": "cd functions && yarn test",
     "mods:enable": "firebase --open-sesame mods",
-    "mods:install": "firebase mods:install ./node_modules/@quiver/firebase-mods/algolia-sync"
+    "mods:list": "firebase mods:list",
+    "mods:install": "firebase mods:install ./node_modules/@quiver/firebase-mods/algolia-sync --env ./vault/algolia-sync.env",
+    "mods:uninstall": "firebase mods:uninstall"
   }
 }
