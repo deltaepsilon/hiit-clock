@@ -10,20 +10,19 @@
   margin: 1rem 0 0;
 }
 
-#landing .user-actions {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
-  flex-wrap: wrap;
+#landing .mdc-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
 }
 
-#landing .user-actions a {
-  text-decoration: none;
+#landing .user-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  min-width: 12rem;
-  max-width: 15rem;
-  margin: 1rem;
+  padding: 1rem;
 }
 
 #landing .cta {
@@ -53,64 +52,27 @@
   max-width: var(--dimensions-max-width);
 }
 
-#landing p {
+#landing p,
+#landing ul,
+#landing .user-actions {
   max-width: 500px;
 }
 
-#landing ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-  max-width: 500px;
-}
-
-#landing li {
-  padding: 1rem 0;
-}
-
-#landing .mdc-button {
-  height: 5vw;
-  min-height: 2rem;
-
+#landing .user-actions a {
   width: 100%;
 }
 
-#landing .cta .mdc-button__label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#landing .mdc-list {
+  color: var(--mdc-theme-primary-text);
   width: 100%;
-  font-size: 2vw;
 }
 
-@media (min-width: 1500px) {
-  #landing .cta .mdc-button__label {
-    font-size: 2rem;
-  }
+#landing .mdc-list-item__graphic {
+  color: var(--mdc-theme-primary-text);
+  font-style: initial;
+  font-size: 1.5rem;
 }
 
-@media (max-width: 500px) {
-  #landing .cta .mdc-button__label {
-    font-size: 0.75rem;
-  }
-}
-
-#landing .mdc-button.crossfit {
-  background: var(--color-background-crossfit);
-  color: var(--color-foreground-crossfit);
-}
-
-#landing .mdc-button.powerlifting {
-  background: var(--color-background-powerlifting);
-  color: var(--color-foreground-powerlifting);
-}
-
-#landing .mdc-button.stronglifts {
-  background: var(--color-background-stronglifts);
-  color: var(--color-foreground-stronglifts);
-}
-
-#landing .mdc-button.tabata {
-  background: var(--color-background-tabata);
-  color: var(--color-foreground-tabata);
+#landing .mdc-list a {
+  text-decoration: none;
 }

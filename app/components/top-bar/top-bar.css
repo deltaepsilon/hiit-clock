@@ -12,6 +12,9 @@
 
 #back-button,
 #logo {
+  display: flex;
+  align-items: center;
+
   grid-area: left;
   justify-items: start;
 }
