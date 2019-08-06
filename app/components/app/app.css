@@ -157,3 +157,7 @@ p {
 .mdc-checkbox--selected .mdc-checkbox__background {
   border-color: transparent !important;
 }
+
+.mdc-switch + label {
+  margin-left: 0.5rem;
+}
