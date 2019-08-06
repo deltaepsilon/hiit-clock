@@ -1,9 +1,17 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import uuid from 'uuid/v4';
 import { List, ListItem } from '@rmwc/list';
 import { IconButton } from '@rmwc/icon-button';
 import { Checkbox } from '@rmwc/checkbox';
 import { TimerFormContext } from '../contexts/timer-form-context';
-import { AddCircleOutline, ArrowUpward, ArrowDownward, DeleteOutline, Edit } from '../svg';
+import {
+  AddCircleOutline,
+  ArrowUpward,
+  ArrowDownward,
+  FileCopyOutline,
+  DeleteOutline,
+  Edit,
+} from '../svg';
 import TotalTime from '../timer/total-time';
 import constants from '../constants';
 import { PERIOD_SHEET_ID } from './period-sheet';
@@ -153,6 +161,11 @@ function Period({ index, periodId }) {
               onClick={handlers.handleEdit}
             />
             <IconButton
+              className="copy"
+              icon={<FileCopyOutline fill={constants.COLORS.PRIMARY} />}
+              onClick={handlers.handleCopy}
+            />
+            <IconButton
               icon={<DeleteOutline fill={constants.COLORS.PRIMARY} />}
               onClick={handlers.handleDelete}
             />
@@ -218,6 +231,10 @@ function getPeriodDetails(periodId, index, timerFormContextValues) {
       isActive,
       periodId,
       setActivePeriodId,
+      setFormValues,
+    }),
+    handleCopy: getHandleCopy({
+      index,
       setFormValues,
     }),
     handleEdit: getHandleEdit({
@@ -341,6 +358,22 @@ function getHandleMoveUp({ index, periodId, setActivePeriodId, setFormValues }) 
       periods.splice(index - 1, 0, period);
 
       setActivePeriodId(periodId);
+
+      return { ...formValues, periods };
+    });
+  };
+}
+
+function getHandleCopy({ index, setFormValues }) {
+  return e => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    setFormValues(formValues => {
+      const periods = formValues.periods.slice(0);
+      const period = { ...periods[index], id: uuid() };
+
+      periods.splice(index, 0, period);
 
       return { ...formValues, periods };
     });
