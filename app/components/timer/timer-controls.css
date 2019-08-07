@@ -1,16 +1,25 @@
 #timer-controls {
-  /* position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+
   padding: 0.5rem 1rem 0rem;
   background: var(--color-gray-light);
 }
 
 #timer-controls [disabled] {
   visibility: hidden;
+}
+
+@media (orientation: portrait) {
+  #timer-controls {
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media (orientation: landscape) {
+  #timer-controls {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

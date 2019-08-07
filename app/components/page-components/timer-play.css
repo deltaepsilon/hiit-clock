@@ -2,9 +2,6 @@
   width: 100vw;
   height: calc(100vh - 5rem);
 
-  display: flex;
-  flex-direction: column;
-
   user-select: none;
 }
 
@@ -18,5 +15,24 @@
 @media (max-height: 480px) {
   #timer-play {
     height: calc(100vh - 3.5rem);
+  }
+}
+
+@media (orientation: portrait) {
+  #timer-play {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (orientation: landscape) {
+  #timer-play {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  #timer-play #timer-details-container {
+    width: 50vw;
   }
 }

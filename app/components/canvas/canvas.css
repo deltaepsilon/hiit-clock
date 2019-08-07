@@ -4,8 +4,10 @@
 
 .canvas-overlay {
   display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
-  font-size: 4vw;
   text-transform: uppercase;
 }
 
@@ -16,8 +18,17 @@
   text-align: center;
 }
 
+@media (orientation: portrait) {
+  .canvas-overlay {
+    font-size: 4vw;
+  }
+}
+
 @media (orientation: landscape) {
   .canvas-overlay {
+    flex-direction: column;
+
     font-size: 5vh;
+    transform: rotate(-90deg);
   }
 }

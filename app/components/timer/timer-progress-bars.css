@@ -1,10 +1,23 @@
-#timer-bars {
-  height: 20vh;
-}
-
 #timer-bars > div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50%;
+}
+
+@media (orientation: portrait) {
+  #timer-bars {
+    height: 20vh;
+  }
+}
+
+@media (orientation: landscape) {
+  #timer-bars {
+    width: 20vh;
+    height: 100%;
+  }
+
+  #timer-bars > div {
+    transform: rotate(90deg);
+  }
 }

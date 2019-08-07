@@ -15,13 +15,13 @@ export default {
     REST: ['#4f4f4f'],
     HIGHLIGHT: '#df2935',
     BUTTON_ON_WHITE: '#3d3b3c',
-    PROGRESS_BAR: 'rgba(0, 0, 0, 0.4)',
+    PROGRESS_BAR: 'rgba(0, 0, 0, 0.75)',
   },
   DIMENSIONS: {
     CYCLE_PROGRESS: {
       INSET_X: 0,
       INSET_Y: 8,
-      INSET_PROGRESS: 5,
+      INSET_PROGRESS: 25,
     },
     PREVIEW_IMAGE: {
       MAX_HEIGHT: 600,

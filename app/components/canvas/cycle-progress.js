@@ -31,7 +31,13 @@ export default ({ timer, cycles, secondsElapsed, cycleStats }) => {
         {cycleStats.cycle &&
           cycleStats.cycle.map((period, i) => {
             return (
-              <div key={i} style={{ width: `${period.percentOfCycle * 100}%` }}>
+              <div
+                key={i}
+                style={{
+                  width: `${period.percentOfCycle * 100}%`,
+                  height: `${period.percentOfCycle * 100}%`,
+                }}
+              >
                 <TotalTime totalSeconds={period.totalSeconds} />
               </div>
             );

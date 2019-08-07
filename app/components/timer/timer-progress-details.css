@@ -15,22 +15,11 @@
   padding: 1rem 0;
 }
 
-#timer-list .seconds-row p {
-  font-size: 5vw;
-}
-
 #timer-list .big-time {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  font-size: 25vw;
-}
-
-#timer-list .small-time,
-#timer-list aside {
-  font-size: 5vw;
 }
 
 #timer-list .small-time:before {
@@ -47,9 +36,24 @@
   font-size: 10vw;
 }
 
+@media (orientation: portrait) {
+  #timer-list .big-time {
+    font-size: 25vw;
+  }
+
+  #timer-list .small-time,
+  #timer-list aside {
+    font-size: 5vw;
+  }
+
+  #timer-list .seconds-row p {
+    font-size: 5vw;
+  }
+}
+
 @media (orientation: landscape) {
   #timer-list .big-time {
-    font-size: 30vh;
+    font-size: 22vw;
   }
 
   #timer-list .small-time,
