@@ -18,5 +18,5 @@ const readdir = util.promisify(fs.readdir);
     to: buildId,
   });
 
-  console.log({ buildId, changes });
+  console.info({ buildId, changes });
 })();

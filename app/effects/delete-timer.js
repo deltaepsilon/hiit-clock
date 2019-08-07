@@ -13,7 +13,6 @@ export default async function deleteTimer({ currentUser, isOwned, timerId }) {
 }
 
 function removeFromLocalStorage({ timerId }) {
-  console.log('effects.localStorage', effects.localStorage);
   const localTimersString = effects.localStorage.getItem(constants.LOCALSTORAGE.TIMERS) || '{}';
   const localTimers = JSON.parse(localTimersString);
 
