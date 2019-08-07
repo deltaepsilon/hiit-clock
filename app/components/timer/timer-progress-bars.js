@@ -5,7 +5,7 @@ import { SecondsContext, TimerContext } from '../contexts/timer-context';
 
 import './timer-progress-bars.css';
 
-export default function TimerBars() {
+export default function TimerProgressBars() {
   const { timer, cycles } = useContext(TimerContext);
   const { secondsElapsed, cycleStats } = useContext(SecondsContext);
 

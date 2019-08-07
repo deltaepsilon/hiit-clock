@@ -3,6 +3,7 @@ import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerProgressDetails from '../timer/timer-progress-details';
 import TimerControls from '../timer/timer-controls';
+import TimerSound from '../timer/timer-sound';
 import TimerProvider from '../contexts/timer-context';
 
 import './timer-play.css';
@@ -17,6 +18,7 @@ export default ({ timerId, userId }) => {
           <TimerProgressDetails />
         </div>
         <TimerControls />
+        <TimerSound />
       </div>
     </TimerProvider>
   );
