@@ -156,6 +156,161 @@ Array [
 ]
 `;
 
+exports[`getTimerCycles Side Splits should match snapshot 1`] = `
+Array [
+  Array [
+    Object {
+      "file": Object {},
+      "id": "dd7d2b60-19aa-44fb-8d94-704c2b45b312",
+      "name": "Standing forward bend",
+      "totalSeconds": 30,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "ea98d94b-c658-4ad5-a015-34036aeb7942",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "2f349a8b-ae92-46e0-b66d-296a1b0d7917",
+      "name": "Left-side Sprinter",
+      "totalSeconds": 120,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "386bed23-7eae-4620-a75d-4ea8d5e8d920",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "4c333391-f8b9-4c99-92f0-4cb3c7eb07f6",
+      "name": "Right-side Sprinter",
+      "totalSeconds": 120,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "5302c557-ea43-4f69-bb09-05e60e84a4e8",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "b46301fc-a852-473a-8700-ece91a46b2d4",
+      "name": "Pike",
+      "totalSeconds": 120,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "bcb29269-8ce6-4ec8-92b7-17846c9c3be2",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "d2e45658-cd12-4010-8efc-5f68bc7311ce",
+      "name": "Left-side Hamstring",
+      "totalSeconds": 30,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "da6273c7-0769-48c4-9a52-15ee2b405983",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "b8b2e4a3-add5-4101-90ff-de3ec8bdac0a",
+      "name": "Right-side Hamstring",
+      "totalSeconds": 30,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "dcaa0f18-104f-42e6-891d-3882cd93c2bc",
+      "totalSeconds": 15,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "7707f3f3-5ff4-4a20-9edf-b1a5307664d6",
+      "name": "Right-side Elevated Side Split",
+      "totalSeconds": 120,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "a972fed9-5937-467a-a126-502ad9a1bc73",
+      "totalSeconds": 45,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "5869bdf0-9733-4f78-8b80-32835965e425",
+      "name": "Left-side Elevated Side Split",
+      "totalSeconds": 120,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "28c8bb30-d658-452a-a3a3-1885f0266561",
+      "totalSeconds": 45,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "cd65483c-c7db-42b2-81ab-092062672fa4",
+      "name": "Left-side Floor Split",
+      "totalSeconds": 180,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "55e5d256-4c47-4554-b276-cb2750f9df39",
+      "totalSeconds": 60,
+      "type": "rest",
+    },
+  ],
+  Array [
+    Object {
+      "file": Object {},
+      "id": "00d69379-e3fe-47fb-b71e-2a3b915d8495",
+      "name": "Right-side Floor Split",
+      "totalSeconds": 180,
+      "type": "work",
+    },
+    Object {
+      "file": Object {},
+      "id": "8ba2719d-f918-4cb2-be5d-1ed13f465c78",
+      "totalSeconds": 60,
+      "type": "rest",
+    },
+  ],
+]
+`;
+
 exports[`getTimerCycles Tabata 20/40 should match snapshot 1`] = `
 Array [
   Array [

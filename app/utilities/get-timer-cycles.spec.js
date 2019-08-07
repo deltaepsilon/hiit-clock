@@ -1,6 +1,8 @@
 import getTimerCycles from './get-timer-cycles';
+
 const powerlifting = require('../data/powerlifting.json');
 const tabata = require('../data/tabata.json');
+const sideSplitsPeriods = require('../data/side-splits.json');
 
 describe('getTimerCycles', () => {
   describe('Powerlifting 5x5', () => {
@@ -69,6 +71,22 @@ describe('getTimerCycles', () => {
 
     it('should have 20 cycles', () => {
       expect(result.length).toEqual(20);
+    });
+
+    it('should match snapshot', () => {
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('Side Splits', () => {
+    let result;
+
+    beforeEach(() => {
+      result = getTimerCycles({ periods: sideSplitsPeriods });
+    });
+
+    it('should have 10 cycles', () => {
+      expect(result.length).toEqual(10);
     });
 
     it('should match snapshot', () => {

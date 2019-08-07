@@ -9,20 +9,25 @@ export default function findCycles({ periods }) {
     const startingIndex = periodsLastIndex - i;
     let j = periods.length;
     let smallestMatch;
+    let workRestMatch;
 
     while (j--) {
       const endingIndex = j + 1;
       const arrayLength = endingIndex - startingIndex;
       const isEven = !(arrayLength % 2);
+      const periodsToMatch = periods.slice(startingIndex, endingIndex);
 
-      if (arrayLength < 4) break;
+      if (arrayLength < 4) {
+        break;
+      }
 
       if (isEven) {
-        const periodsToMatch = periods.slice(startingIndex, endingIndex);
         const [firstHalf, secondHalf] = getMatchingPeriodsIfMatch(periodsToMatch);
 
         if (firstHalf) {
           smallestMatch = [firstHalf, secondHalf];
+        } else if (arrayLength == 4) {
+          workRestMatch = getWorkRestMatch(periodsToMatch);
         }
       }
     }
@@ -35,6 +40,10 @@ export default function findCycles({ periods }) {
       cycles.push(secondHalf);
 
       i = Math.max(0, i - combinedLengths + 1);
+    } else if (workRestMatch) {
+      cycles.push(workRestMatch);
+
+      i = Math.max(0, i - workRestMatch.length + 1);
     } else {
       cycles.push([periods[startingIndex]]);
     }
@@ -49,6 +58,14 @@ function getMatchingPeriodsIfMatch(periods) {
   const [firstHalf, secondHalf] = splitPeriodsInHalf(periods);
 
   return firstHalf && getPeriodsAreMatch(firstHalf, secondHalf) ? [firstHalf, secondHalf] : [];
+}
+
+function getWorkRestMatch(periods) {
+  const [firstPeriod, secondPeriod] = periods;
+  const firstIsWork = firstPeriod.type == constants.PERIOD_TYPES.WORK;
+  const secondIsRest = secondPeriod.type == constants.PERIOD_TYPES.REST;
+
+  return firstIsWork && secondIsRest && [firstPeriod, secondPeriod];
 }
 
 function splitPeriodsInHalf(periods) {
