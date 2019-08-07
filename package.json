@@ -9,6 +9,7 @@
   "scripts": {
     "build": "docker-compose build",
     "dev": "docker-compose build workspace && docker-compose run --service-ports --rm workspace zsh",
+    "connect": "docker exec -it hiit-clock_workspace_1 zsh",
     "ci:login": "npx firebase login:ci --no-localhost",
     "ci:build": "docker build --tag=hiit-clock .",
     "ci:interactive": "docker run -it --rm hiit-clock sh",
