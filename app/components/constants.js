@@ -77,6 +77,7 @@ export default {
     SECONDS_TO_SKIP: 10,
     MILLIS_TO_POLL: 100,
     REMAINDER_SECONDS_TO_ALERT: 1,
+    FLASH_SECONDS: 3,
   },
   TITLES: {
     '/': 'HiiT Clock',
