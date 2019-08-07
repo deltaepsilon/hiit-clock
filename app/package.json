@@ -35,10 +35,13 @@
     "firebase-tools": "https://storage.googleapis.com/firebase-preview-drop/node/firebase-tools/firebase-tools-6.11.0-eap11.tgz",
     "jest": "^24.8.0",
     "uuid": "^3.3.2",
-    "yaml": "^1.6.0"
+    "webpack": "^4.39.1",
+    "yaml": "^1.6.0",
+    "yarn-deduplicate": "^1.1.1"
   },
   "scripts": {
     "dev": "next",
+    "deduplicate": "yarn-deduplicate yarn.lock",
     "ci:build": "yarn build && yarn export",
     "ci:deploy": "yarn deploy",
     "build": "next build",
