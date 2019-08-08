@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import { List, SimpleListItem } from '@rmwc/list';
+import { AuthenticationContext } from '../contexts/authentication-context';
 import { NavigateNext, People, Person } from '../svg';
 import LongPress from '../long-press/long-press';
 import TotalTime from '../timer/total-time';
@@ -37,6 +38,7 @@ export default ({ searchLabel, items }) => {
 };
 
 function TimerRow({ timer, isSearch }) {
+  const { currentUser } = useContext(AuthenticationContext);
   const [showModal, setShowModal] = useState(false);
   const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}&userId=${
     timer.uid
@@ -56,7 +58,7 @@ function TimerRow({ timer, isSearch }) {
       {showModal && <TimerModal timerId={timer.__id} onClose={() => setShowModal(false)} />}
       <Link href={href}>
         <a href={href}>
-          <LongPress onPress={isSearch ? null : () => setShowModal(true)}>
+          <LongPress onPress={isSearch ? null : () => !!currentUser && setShowModal(true)}>
             <SimpleListItem
               text={timer.name}
               secondaryText={

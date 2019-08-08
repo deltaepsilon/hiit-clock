@@ -1,34 +1,41 @@
 import React, { useContext, useState } from 'react';
 import ReactDOM from 'react-dom';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { IconButton } from '@rmwc/icon-button';
-import { Button } from '@rmwc/button';
-import { Menu, MenuItem, MenuSurface, MenuSurfaceAnchor } from '@rmwc/menu';
+import { Headset } from '../svg';
+import { Menu, MenuItem, MenuSurfaceAnchor } from '@rmwc/menu';
 import { ListDivider } from '@rmwc/list';
 import { AuthenticationContext } from '../contexts/authentication-context';
+import { SettingsContext } from '../contexts/settings-context';
+import useSound from '../hooks/use-sound';
 import constants from '../constants';
 import effects from '../../effects';
 
 export default React.memo(() => {
-  const el = window.document.querySelector('#user-menu');
+  const router = useRouter();
 
-  return ReactDOM.createPortal(<UserMenu />, el);
+  const el = window.document.querySelector('#user-menu');
+  const isTimerDetailPage = router.pathname == constants.ROUTES.TIMER.DETAIL;
+  const menu = isTimerDetailPage ? <MicroMenu /> : <UserMenu />;
+
+  return ReactDOM.createPortal(menu, el);
 });
 
 function UserMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const { currentUser } = useContext(AuthenticationContext);
-  const photoURL = !currentUser ? '' : currentUser.photoURL || constants.PATHS.ACCOUNT_CIRCLE;
+  const [isOpen, setIsOpen] = useState(false);
+  const photoURL = (currentUser && currentUser.photoURL) || constants.PATHS.ACCOUNT_CIRCLE;
 
   const menuItems = [
     {
       html: <MenuItem key="dashboard">Dashboard</MenuItem>,
-      action: () => Router.push(constants.ROUTES.DASHBOARD),
+      action: () => router.push(constants.ROUTES.DASHBOARD),
       hidden: location.pathname == constants.ROUTES.DASHBOARD,
     },
     {
       html: <MenuItem key="settings">Settings</MenuItem>,
-      action: () => Router.push(constants.ROUTES.SETTINGS),
+      action: () => router.push(constants.ROUTES.SETTINGS),
       hidden: location.pathname == constants.ROUTES.SETTINGS,
     },
     {
@@ -61,4 +68,31 @@ function UserMenu() {
       </MenuSurfaceAnchor>
     </>
   );
+}
+
+function MicroMenu() {
+  const router = useRouter();
+  const { playChime } = useSound();
+  const { soundAlertsEnabled, flashAlertsEnabled } = useContext(SettingsContext);
+  const bothEnabled = soundAlertsEnabled && flashAlertsEnabled;
+  const fill = bothEnabled ? constants.COLORS.ENABLED_LIGHT : constants.COLORS.DISABLED_LIGHT;
+  const isTimerDetailPage = router.pathname == constants.ROUTES.TIMER.DETAIL;
+
+  return isTimerDetailPage ? (
+    <IconButton
+      icon={<Headset fill={fill} />}
+      aria-label="audio toggle"
+      tag="button"
+      onClick={() => {
+        const enableAlerts = !bothEnabled;
+
+        enableAlerts && playChime();
+
+        effects.saveSettings({
+          flashAlertsEnabled: enableAlerts,
+          soundAlertsEnabled: enableAlerts,
+        });
+      }}
+    />
+  ) : null;
 }

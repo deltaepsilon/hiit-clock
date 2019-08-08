@@ -10,6 +10,7 @@ import DeleteOutline from './delete-outline';
 import Edit from './edit';
 import FileCopyOutline from './file-copy-outline';
 import Forward10 from './forward-10';
+import Headset from './headset';
 import HiitClock from './hiit-clock';
 import List from './list';
 import NavigateNext from './navigate-next';
@@ -38,6 +39,7 @@ export {
   Edit,
   FileCopyOutline,
   Forward10,
+  Headset,
   HiitClock,
   List,
   NavigateNext,

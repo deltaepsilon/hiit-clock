@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useRef } from 'react';
-import useSettings from '../hooks/use-settings';
+import { useContext, useEffect } from 'react';
 import { SecondsContext } from '../contexts/timer-context';
+import useSettings from '../hooks/use-settings';
+import useSound from '../hooks/use-sound';
 import constants from '../constants';
 
-export default ({ filename = 'double-chime.mp3' }) => {
+export default () => {
   const { periodStats } = useContext(SecondsContext);
   const { soundAlertsEnabled } = useSettings();
-  const audioRef = useRef(null);
+  const { playChime } = useSound();
 
   useEffect(() => {
     if (soundAlertsEnabled) {
@@ -14,14 +15,10 @@ export default ({ filename = 'double-chime.mp3' }) => {
       const isTheRightSecond = remainder == constants.TIMES.REMAINDER_SECONDS_TO_ALERT;
 
       if (isTheRightSecond) {
-        const audioEl = audioRef.current;
-
-        (async () => {
-          await audioEl.play();
-        })();
+        playChime();
       }
     }
-  }, [audioRef, periodStats, soundAlertsEnabled]);
+  }, [playChime, periodStats, soundAlertsEnabled]);
 
-  return soundAlertsEnabled ? <audio ref={audioRef} src={`/sounds/${filename}`} /> : null;
+  return null;
 };

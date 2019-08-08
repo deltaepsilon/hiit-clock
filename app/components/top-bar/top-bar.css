@@ -10,11 +10,16 @@
   z-index: 1;
 }
 
+#user-menu,
 #back-button,
-#logo {
+#logo,
+#timer-data {
   display: flex;
   align-items: center;
+}
 
+#back-button,
+#logo {
   grid-area: left;
   justify-items: start;
 }
