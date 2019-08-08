@@ -39,7 +39,7 @@ export default {
     URL_HISTORY: 'url-history',
   },
   PATHS: {
-    ACCOUNT_CIRCLE: '/static/images/material-design-icons/account-circle-512px.png',
+    ACCOUNT_CIRCLE: '/images/material-design-icons/account-circle-512px.png',
   },
   PERIOD_TYPES: {
     PREPARE: 'prepare',
@@ -89,4 +89,8 @@ export default {
     '/timer/create': 'Create Timer',
     '/timer/edit': 'Edit Timer',
   },
+  TOUCH_EVENTS: {
+    LONG_PRESS_MILLIS: 300,
+    SWIPE_THRESHOLD_PX: 100
+  }
 };

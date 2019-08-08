@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Link from 'next/link';
 import { List, SimpleListItem } from '@rmwc/list';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { NavigateNext, People, Person } from '../svg';
-import LongPress from '../long-press/long-press';
+import TouchEvents from '../touch-events/touch-events';
 import TotalTime from '../timer/total-time';
 import TimerModal from '../modals/timer-modal';
 import SearchBar from './search-bar';
@@ -40,6 +40,11 @@ export default ({ searchLabel, items }) => {
 function TimerRow({ timer, isSearch }) {
   const { currentUser } = useContext(AuthenticationContext);
   const [showModal, setShowModal] = useState(false);
+  const handleSwipe = useCallback(() => !isSearch && !!currentUser && setShowModal(true), [
+    isSearch,
+    currentUser,
+    setShowModal,
+  ]);
   const href = `${constants.ROUTES.TIMER.DETAIL}?id=${timer.__id || timer.objectID}&userId=${
     timer.uid
   }`;
@@ -58,7 +63,7 @@ function TimerRow({ timer, isSearch }) {
       {showModal && <TimerModal timerId={timer.__id} onClose={() => setShowModal(false)} />}
       <Link href={href}>
         <a href={href}>
-          <LongPress onPress={isSearch ? null : () => !!currentUser && setShowModal(true)}>
+          <TouchEvents onRightSwipe={handleSwipe} onLeftSwipe={handleSwipe}>
             <SimpleListItem
               text={timer.name}
               secondaryText={
@@ -67,7 +72,7 @@ function TimerRow({ timer, isSearch }) {
               graphic={graphic}
               metaIcon={<NavigateNext fill={constants.COLORS.PRIMARY} />}
             />
-          </LongPress>
+          </TouchEvents>
         </a>
       </Link>
     </>
