@@ -4,19 +4,18 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 import { Button } from '@rmwc/button';
 import { IconButton } from '@rmwc/icon-button';
 import { LinearProgress } from '@rmwc/linear-progress';
-import { DeleteOutline } from '../svg';
+import { DeleteOutline, RotateRight } from '../svg';
 import Pica from 'pica';
 import md5 from 'md5';
 import constants from '../constants';
-import effects from '../../effects';
 
 import './image-upload-input.css';
 
 export default ({ id, text = 'Upload', file, onChange }) => {
-  const fileDataUrl = file && file.dataUrl;
-  const fileDownloadURL = file && file.downloadURL;
+  const initialFileUrl = file && (file.dataUrl || file.downloadURL);
   const { currentUser } = useContext(AuthenticationContext);
-  const [previewUrl, setPreviewUrl] = useState(fileDataUrl || fileDownloadURL);
+  const [fileUrl, setFileUrl] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
   const imgRef = useRef(null);
@@ -25,19 +24,9 @@ export default ({ id, text = 'Upload', file, onChange }) => {
     e => (e.preventDefault(), e.stopPropagation(), inputRef.current.click()),
     [inputRef]
   );
-
-  useEffect(() => {
-    const updatedPreviewUrl = fileDataUrl || fileDownloadURL;
-    const needsPreviewUrlUpdate = previewUrl != updatedPreviewUrl;
-
-    needsPreviewUrlUpdate && setPreviewUrl(updatedPreviewUrl);
-  }, [previewUrl, fileDataUrl, fileDownloadURL]);
-
-  useEffect(() => {
-    (async () => {
-      const isUpload = previewUrl != fileDownloadURL;
-
-      if (isUpload && imgRef.current) {
+  const handleImageLoad = useCallback(() => {
+    if (isLoading) {
+      (async () => {
         const { blob, dataUrl, dimensions } = await resizeImage(imgRef, canvasRef);
 
         if (dataUrl) {
@@ -48,9 +37,20 @@ export default ({ id, text = 'Upload', file, onChange }) => {
         }
 
         setIsLoading(false);
-      }
-    })();
-  }, [previewUrl, fileDownloadURL]);
+      })();
+    }
+  }, [isLoading, canvasRef, imgRef, onChange, setIsLoading]);
+
+  useEffect(() => {
+    setFileUrl(initialFileUrl);
+    setPreviewUrl(initialFileUrl);
+  }, [initialFileUrl]);
+
+  useEffect(() => {
+    const needsUpdate = fileUrl != previewUrl;
+
+    needsUpdate && setPreviewUrl(fileUrl);
+  }, [previewUrl, fileUrl]);
 
   return (
     <>
@@ -75,14 +75,31 @@ export default ({ id, text = 'Upload', file, onChange }) => {
             <>
               {previewUrl ? (
                 <>
-                  <img className="full-size" ref={imgRef} src={previewUrl} />
-                  <img className="constrained-size" src={previewUrl} />
+                  <img
+                    className="full-size"
+                    ref={imgRef}
+                    src={previewUrl}
+                    crossOrigin="anonymous"
+                    onLoad={handleImageLoad}
+                  />
+                  <img className="constrained-size" src={previewUrl} crossOrigin="anonymous" />
                   <canvas ref={canvasRef} />
                   <IconButton
+                    className="rotate-button"
+                    icon={<RotateRight fill={constants.COLORS.BUTTON_ON_WHITE} />}
+                    onClick={async e => {
+                      e.preventDefault();
+
+                      await rotateImage({ imgRef, setFileUrl, setIsLoading });
+                    }}
+                  />
+                  <IconButton
+                    className="delete-button"
                     icon={<DeleteOutline fill={constants.COLORS.BUTTON_ON_WHITE} />}
                     onClick={e => {
                       e.preventDefault();
                       onChange(null);
+                      setFileUrl(null);
                       setPreviewUrl(null);
                       inputRef.current.value = '';
                     }}
@@ -121,6 +138,31 @@ function getFileChangeHandler({ setIsLoading, setPreviewUrl }) {
   };
 }
 
+async function rotateImage({ imgRef, setFileUrl, setIsLoading }) {
+  const image = imgRef.current;
+  const { width, height } = getNewDimensions(imgRef);
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = height;
+  canvas.height = width;
+
+  ctx.translate(height, 0);
+  ctx.rotate(90 * (Math.PI / 180));
+  ctx.drawImage(image, 0, 0);
+  ctx.fill();
+
+  setIsLoading(true);
+
+  const pica = Pica();
+  const blob = await pica.toBlob(canvas, 'image/jpeg');
+  const dataUrl = await getDataUrl(blob);
+
+  document.body.appendChild(canvas);
+
+  setFileUrl(dataUrl);
+}
+
 async function resizeImage(imgRef, canvasRef) {
   const { width, height } = setCanvasDimensions(imgRef, canvasRef);
   let result = {};
@@ -130,6 +172,8 @@ async function resizeImage(imgRef, canvasRef) {
     const resized = await pica.resize(imgRef.current, canvasRef.current, { quality: 3 });
     const blob = await pica.toBlob(resized, 'image/jpeg', 0.9);
     const dataUrl = await getDataUrl(blob);
+
+    document.body.appendChild(resized);
 
     result = { blob, dataUrl, dimensions: { width, height } };
   }

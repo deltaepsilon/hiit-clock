@@ -58,7 +58,9 @@ function getHandleChange({ key, setFormValues }) {
     const value = e && e.target ? e.target.value : e;
 
     setFormValues(formValues => {
-      return { ...formValues, [key]: value };
+      const result = { ...formValues, [key]: value };
+
+      return result;
     });
   };
 }

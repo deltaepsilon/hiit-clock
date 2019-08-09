@@ -21,6 +21,7 @@ import PlayCircleOutline from './play-circle-outline';
 import PlayCircleFilled from './play-circle-filled';
 import Replay10 from './replay-10';
 import Replay from './replay';
+import RotateRight from './rotate-right';
 import Search from './search';
 import SkipNext from './skip-next';
 import SkipPrevious from './skip-previous';
@@ -50,6 +51,7 @@ export {
   PlayCircleFilled,
   Replay10,
   Replay,
+  RotateRight,
   Search,
   SkipNext,
   SkipPrevious,
