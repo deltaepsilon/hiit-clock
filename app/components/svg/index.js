@@ -23,6 +23,7 @@ import Replay10 from './replay-10';
 import Replay from './replay';
 import RotateRight from './rotate-right';
 import Search from './search';
+import Share from './share';
 import SkipNext from './skip-next';
 import SkipPrevious from './skip-previous';
 import Stop from './stop';
@@ -53,6 +54,7 @@ export {
   Replay,
   RotateRight,
   Search,
+  Share,
   SkipNext,
   SkipPrevious,
   Stop,

@@ -1,7 +1,14 @@
 #timer-actions {
+  position: relative;
   padding: 2rem;
+  width: 100%;
 }
 
 #timer-actions a {
   text-decoration: none;
+}
+
+#timer-actions .share-button {
+  position: absolute;
+  right: 19%;
 }

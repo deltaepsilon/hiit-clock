@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import debounce from '../../utilities/debounce';
 import { Fab } from '@rmwc/fab';
-import PlayCircleOutlineSvg from '../svg/play-circle-outline';
+import { IconButton } from '@rmwc/icon-button';
+import { PlayCircleOutline, Share } from '../svg';
 import constants from '../constants';
 
 import './timer-actions.css';
 
-export default ({ timerId }) => {
+export default ({ timerId, userId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
   const href = `${constants.ROUTES.TIMER.PLAY}?id=${timerId}`;
@@ -31,10 +32,17 @@ export default ({ timerId }) => {
           {fixedActions && <PlayFab className="fixed-fab" />}
         </a>
       </Link>
+      <ShareButton timerId={timerId} userId={userId} />
     </div>
   );
 };
 
 function PlayFab({ className }) {
-  return <Fab className={className} icon={<PlayCircleOutlineSvg />} label="Start" />;
+  return <Fab className={className} icon={<PlayCircleOutline />} label="Start" />;
+}
+
+function ShareButton({ timerId, userId }) {
+  const href = `/timer/chromecast?id=${timerId}&userId=${userId}`;
+
+  return userId ? <IconButton className="share-button" icon={<Share />} /> : null;
 }
