@@ -31,8 +31,4 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
-
-  #timer-play #timer-details-container {
-    width: 50vw;
-  }
 }

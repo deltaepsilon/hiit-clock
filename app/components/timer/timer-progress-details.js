@@ -1,49 +1,57 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useContext, useMemo, useState } from 'react';
 import CyclesList from './cycles-list';
 import { SecondsContext, TimerContext } from '../contexts/timer-context';
 import TotalTime from './total-time';
 
 import './timer-progress-details.css';
 
-const MODES = ['PERIOD', 'CYCLE', 'TIME', 'DESCRIPTION'];
+const MODES = ['COUNTDOWN', 'PERIOD', 'CYCLE', 'TIME', 'DESCRIPTION', 'IMAGE'];
 
 export default function TimerProgressDetails() {
   const { cycles, timer, totalSeconds } = useContext(TimerContext);
   const { secondsElapsed, cycleStats, periodStats } = useContext(SecondsContext);
   const { cycleSecondsElapsed, cycleTotalSeconds } = cycleStats;
-  const { periodSecondsElapsed, periodTotalSeconds } = periodStats;
-
+  const { period, periodSecondsElapsed, periodTotalSeconds } = periodStats;
   const [modeIndex, setModeIndex] = useState(0);
   const cycleMode = useCallback(() => setModeIndex(i => ++i % MODES.length));
-  const { isPeriod, isCycle, isTime, isDescription, mode } = useMemo(() => {
+  const { isCountdown, isPeriod, isCycle, isTime, isDescription, isImage, mode } = useMemo(() => {
     const mode = MODES[modeIndex];
 
     return {
-      isPeriod: mode == MODES[0],
-      isCycle: mode == MODES[1],
-      isTime: mode == MODES[2],
-      isDescription: mode == MODES[3],
+      isCountdown: mode == MODES[0],
+      isPeriod: mode == MODES[1],
+      isCycle: mode == MODES[2],
+      isTime: mode == MODES[3],
+      isDescription: mode == MODES[4],
+      isImage: mode == MODES[5],
       mode,
     };
   }, [modeIndex]);
 
+  useEffect(() => {
+    isImage && !period.file.downloadURL && cycleMode();
+  }, [isImage, period, cycleMode]);
+
   const shouldRenderDetails = periodStats.period;
   const detailsViewProps = {
     cycleMode,
+    isCountdown,
     isPeriod,
     isCycle,
     isTime,
     isDescription,
+    isImage,
+    period,
     periodSecondsElapsed,
     periodTotalSeconds,
     cycleSecondsElapsed,
     cycleTotalSeconds,
-    mode,
     secondsElapsed,
     totalSeconds,
     cycles,
     cycleStats,
     timer,
+    mode,
   };
 
   return shouldRenderDetails ? <DetailsView {...detailsViewProps} /> : null;
@@ -52,23 +60,33 @@ export default function TimerProgressDetails() {
 const DetailsView = React.memo(
   ({
     cycleMode,
+    isCountdown,
     isPeriod,
     isCycle,
     isTime,
     isDescription,
+    isImage,
+    period,
     periodSecondsElapsed,
     periodTotalSeconds,
     cycleSecondsElapsed,
     cycleTotalSeconds,
-    mode,
     secondsElapsed,
     totalSeconds,
     cycles,
     cycleStats,
     timer,
+    mode,
   }) => (
     <div id="timer-list">
       <div className="seconds-row" onClick={cycleMode}>
+        {isCountdown && (
+          <CountdownView
+            period={period}
+            periodSecondsElapsed={periodSecondsElapsed}
+            periodTotalSeconds={periodTotalSeconds}
+          />
+        )}
         {isPeriod && (
           <PeriodView
             periodSecondsElapsed={periodSecondsElapsed}
@@ -83,6 +101,9 @@ const DetailsView = React.memo(
         )}
         {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
         {isDescription && <p>{timer.description}</p>}
+        {isImage && period.file.downloadURL && (
+          <img src={period.file.downloadURL} alt="period image" />
+        )}
       </div>
       <div id="cycles-list">
         <CyclesList cycles={cycles} cycleIndexFilter={cycleStats.index} />
@@ -92,10 +113,25 @@ const DetailsView = React.memo(
   (prevProps, nextProps) => {
     const secondsEqual = prevProps.secondsElapsed == nextProps.secondsElapsed;
     const modeEqual = prevProps.mode == nextProps.mode;
+    const periodEqual = prevProps.period == nextProps.period;
 
-    return secondsEqual && modeEqual;
+    return secondsEqual && modeEqual && periodEqual;
   }
 );
+
+function CountdownView({ period, periodSecondsElapsed, periodTotalSeconds }) {
+  const secondsRemaining = periodTotalSeconds - periodSecondsElapsed;
+  const name = period.type == 'work' ? period.name : 'Rest';
+
+  return (
+    <>
+      <div className="big-time">
+        <TotalTime totalSeconds={secondsRemaining} />
+      </div>
+      <div className="big-name">{name}</div>
+    </>
+  );
+}
 
 function PeriodView({ periodSecondsElapsed, periodTotalSeconds }) {
   return (

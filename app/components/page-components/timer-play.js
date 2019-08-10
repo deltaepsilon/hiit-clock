@@ -14,8 +14,8 @@ export default ({ timerId, userId }) => {
     <TimerProvider timerId={timerId} userId={userId}>
       <div id="timer-play">
         <TimerTopBar />
-        <TimerProgressBars />
         <div id="timer-details-container">
+          <TimerProgressBars />
           <TimerProgressDetails />
         </div>
         <TimerControls />

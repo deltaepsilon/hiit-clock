@@ -15,8 +15,12 @@
   padding: 1rem 0;
 }
 
+#timer-list .seconds-row img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 #timer-list .big-time {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,9 +40,19 @@
   font-size: 10vw;
 }
 
+#timer-list .big-name {
+  overflow: hidden;
+  max-width: 100vw;
+  text-overflow: ellipsis;
+}
+
 @media (orientation: portrait) {
   #timer-list .big-time {
     font-size: 25vw;
+  }
+
+  #timer-list .big-name {
+    font-size: 15vw;
   }
 
   #timer-list .small-time,
@@ -54,6 +68,10 @@
 @media (orientation: landscape) {
   #timer-list .big-time {
     font-size: 22vw;
+  }
+
+  #timer-list .big-name {
+    font-size: 5vw;
   }
 
   #timer-list .small-time,

@@ -14,7 +14,7 @@ const canvasOverlayStyles = {
   left: `${constants.DIMENSIONS.CYCLE_PROGRESS.INSET_X}px`,
 };
 
-export default ({ timer, cycles, secondsElapsed, cycleStats }) => {
+export default ({ cycleStats }) => {
   const wrapperRef = useRef(null);
   const canvasRef = useRef(null);
   const { height, width } = useElementDimensions(wrapperRef.current);
@@ -35,10 +35,9 @@ export default ({ timer, cycles, secondsElapsed, cycleStats }) => {
                 key={i}
                 style={{
                   width: `${period.percentOfCycle * 100}%`,
-                  height: `${period.percentOfCycle * 100}%`,
                 }}
               >
-                <TotalTime totalSeconds={period.totalSeconds} />
+                <TotalTime totalSeconds={period.totalSeconds} minimal />
               </div>
             );
           })}

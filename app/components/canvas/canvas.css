@@ -26,9 +26,6 @@
 
 @media (orientation: landscape) {
   .canvas-overlay {
-    flex-direction: column;
-
     font-size: 5vh;
-    transform: rotate(-90deg);
   }
 }
