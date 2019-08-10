@@ -66,6 +66,7 @@ body {
   background: var(--color-gray-dark);
   font-display: swap;
   overflow-x: hidden;
+  touch-action: manipulation;
 }
 
 body[no-scroll='true'] {
