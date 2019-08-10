@@ -21,7 +21,7 @@ export default {
     rtdb()
       .ref('user-owned-public')
       .child(userId)
-      .child('timer-state'),
+      .child('current-timer'),
   getTimersGroupRef: () => db().collectionGroup('timers'),
   getUserTimerStorageRef: (userId, timerId) =>
     storage()

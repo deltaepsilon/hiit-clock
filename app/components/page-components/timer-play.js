@@ -1,4 +1,5 @@
 import React from 'react';
+import useTimer from '../hooks/use-timer';
 import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerProgressDetails from '../timer/timer-progress-details';
@@ -10,8 +11,10 @@ import TimerProvider from '../contexts/timer-context';
 import './timer-play.css';
 
 export default ({ timerId, userId }) => {
+  const timer = useTimer({ timerId, userId });
+
   return (
-    <TimerProvider timerId={timerId} userId={userId}>
+    <TimerProvider timer={timer} timerId={timerId} userId={userId}>
       <div id="timer-play">
         <TimerTopBar />
         <div id="timer-details-container">

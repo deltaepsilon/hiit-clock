@@ -8,8 +8,8 @@ import constants from '../constants';
 
 const debouncedSaveTimerState = debounceAsync(externalEffects.saveTimerState, 1000);
 
-export default (timerId, timer, { onSecondsElapsed, userId }) => {
-  const { currentUser } = useContext(AuthenticationContext);
+export default (timerId, timer, { onSecondsElapsed }) => {
+  const { currentUser } = useContext(AuthenticationContext) || {};
   const [initialized, setInitialized] = useState(false);
   const [totalMillis, setTotalMillis] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
@@ -23,10 +23,17 @@ export default (timerId, timer, { onSecondsElapsed, userId }) => {
 
   useEffect(() => setSecondsElapsed(millisecondsToSeconds(millisElapsed)), [millisElapsed]);
 
+  useEffect(() => {
+    const state = getTimerState();
+    const uid = currentUser && currentUser.uid;
+
+    uid && debouncedSaveTimerState({ state, timer, userId: uid });
+  }, [currentUser, timer]);
+
   useEffect(
     () =>
       function onUnmount() {
-        transactTimerState({ currentUser }, timerState => {
+        transactTimerState({ currentUser, timerId }, timerState => {
           const timer = timerState[timerId];
           const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
@@ -42,7 +49,7 @@ export default (timerId, timer, { onSecondsElapsed, userId }) => {
           return timerState;
         });
       },
-    [timerId]
+    [timerId, currentUser, timerId]
   );
 
   useEffect(
@@ -80,13 +87,13 @@ export default (timerId, timer, { onSecondsElapsed, userId }) => {
       const shouldUpdate = !!timerId && initialized;
 
       shouldUpdate &&
-        transactTimerState({ currentUser }, timerState => {
+        transactTimerState({ currentUser, timerId }, timerState => {
           timerState[timerId] = { playState, millisElapsed, timeStarted };
 
           return timerState;
         });
     },
-    [timerId, playState, millisElapsed, initialized]
+    [currentUser, timerId, playState, millisElapsed, initialized]
   );
 
   useEffect(
@@ -251,13 +258,14 @@ function secondsToMilliseconds(seconds) {
   return seconds * 1000;
 }
 
-function transactTimerState({ currentUser }, transaction) {
+function transactTimerState({ currentUser, timerId }, transaction) {
   const timerState = getTimerState();
   const updatedTimerState = transaction(timerState);
   const uid = currentUser && currentUser.uid;
+  const state = updatedTimerState[timerId];
 
   setTimerState(updatedTimerState);
-  uid && debouncedSaveTimerState({ userId: uid, timerState: updatedTimerState });
+  uid && debouncedSaveTimerState({ state, userId: uid });
 }
 
 function getTimerState() {
