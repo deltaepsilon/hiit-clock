@@ -17,6 +17,11 @@ export default {
 
     return timerId ? timersCollectionRef.doc(timerId) : timersCollectionRef.doc();
   },
+  getTimerStateRef: userId =>
+    rtdb()
+      .ref('user-owned-public')
+      .child(userId)
+      .child('timer-state'),
   getTimersGroupRef: () => db().collectionGroup('timers'),
   getUserTimerStorageRef: (userId, timerId) =>
     storage()
@@ -27,6 +32,10 @@ export default {
 
 function db() {
   return window.firebase.firestore();
+}
+
+function rtdb() {
+  return window.firebase.database();
 }
 
 function storage() {

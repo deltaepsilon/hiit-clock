@@ -1,11 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { AuthenticationContext } from '../contexts/authentication-context';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
-import constants from '../constants';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
+import debounceAsync from '../../utilities/debounce-async';
+import externalEffects from '../../effects';
+import constants from '../constants';
 
-const UNMOUNT_COMPENSATION_SECONDS = 1;
+const debouncedSaveTimerState = debounceAsync(externalEffects.saveTimerState, 1000);
 
-export default (timerId, timer, { onSecondsElapsed }) => {
+export default (timerId, timer, { onSecondsElapsed, userId }) => {
+  const { currentUser } = useContext(AuthenticationContext);
   const [initialized, setInitialized] = useState(false);
   const [totalMillis, setTotalMillis] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
@@ -22,7 +26,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
   useEffect(
     () =>
       function onUnmount() {
-        transactTimerState(timerState => {
+        transactTimerState({ currentUser }, timerState => {
           const timer = timerState[timerId];
           const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
@@ -76,7 +80,7 @@ export default (timerId, timer, { onSecondsElapsed }) => {
       const shouldUpdate = !!timerId && initialized;
 
       shouldUpdate &&
-        transactTimerState(timerState => {
+        transactTimerState({ currentUser }, timerState => {
           timerState[timerId] = { playState, millisElapsed, timeStarted };
 
           return timerState;
@@ -247,12 +251,13 @@ function secondsToMilliseconds(seconds) {
   return seconds * 1000;
 }
 
-function transactTimerState(transaction) {
+function transactTimerState({ currentUser }, transaction) {
   const timerState = getTimerState();
-
   const updatedTimerState = transaction(timerState);
+  const uid = currentUser && currentUser.uid;
 
   setTimerState(updatedTimerState);
+  uid && debouncedSaveTimerState({ userId: uid, timerState: updatedTimerState });
 }
 
 function getTimerState() {

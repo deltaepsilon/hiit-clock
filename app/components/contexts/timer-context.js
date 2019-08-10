@@ -7,7 +7,6 @@ import getTimerCycles from '../../utilities/get-timer-cycles';
 import getCurrentCycleStats from '../../utilities/get-current-cycle-stats';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
 import addMetadataToCycles from '../../utilities/add-metadata-to-cycles';
-import constants from '../constants';
 
 export const TimerContext = React.createContext();
 export const SecondsContext = React.createContext();
@@ -19,6 +18,7 @@ export default ({ children, isOwned, timerId, userId }) => {
   const timer = useTimer({ timerId, userId });
   const { totalSeconds, playState, effects } = useTimerState(timerId, timer, {
     onSecondsElapsed: seconds => setSecondsElapsed(seconds),
+    userId,
   });
   const [cycles, periods] = useMemo(() => {
     const cycles = getTimerCycles(timer);

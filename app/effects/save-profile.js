@@ -1,10 +1,10 @@
 /* global window */
-import debounceAsync from '../utilities/debounce-async';
+import debounceAsyncComplete from '../utilities/debounce-async-complete';
 import schema from '../components/schema';
 
 const debounceMillis = 1 * 1000;
 
-export default debounceAsync(async function saveProfile(uid, profile) {
+export default debounceAsyncComplete(async function saveProfile(uid, profile) {
   const profileRef = schema.getProfileRef(uid);
 
   await profileRef.set(profile, { merge: true });
