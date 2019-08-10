@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import ServiceWorker from './service-worker';
 import Environment from './environment';
-import ErrorHandler from './error-handler';
+import ErrorHandler from './alerts-handler';
 import Fonts from './fonts';
 import MDCStyles from './mdc-styles';
 import Meta from './meta';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
-import ErrorsProvider from '../contexts/errors-context';
+import AlertsProvider from '../contexts/alerts-context';
 import LoadedProvider, { LoadedContext } from '../contexts/loaded-context';
 import ProfileProvider from '../contexts/profile-context';
 import SettingsProvider from '../contexts/settings-context';
@@ -27,7 +27,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
       <Meta />
       <LoadedProvider>
         <AuthenticationProvider>
-          <ErrorsProvider>
+          <AlertsProvider>
             <ProfileProvider>
               <SettingsProvider>
                 <RenderIfLoaded>
@@ -42,7 +42,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
                 </RenderIfLoaded>
               </SettingsProvider>
             </ProfileProvider>
-          </ErrorsProvider>
+          </AlertsProvider>
         </AuthenticationProvider>
       </LoadedProvider>
     </>

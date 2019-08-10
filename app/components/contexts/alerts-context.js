@@ -1,8 +1,8 @@
 /* globals window */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { createSnackbarQueue } from '@rmwc/snackbar';
 
-export const ErrorsContext = React.createContext();
+export const AlertsContext = React.createContext();
 
 const queue = createSnackbarQueue();
 
@@ -11,10 +11,16 @@ export default ({ children }) => {
     error =>
       queue.notify({
         body: error.toString(),
+        actions: [
+          {
+            title: 'Dismiss',
+          },
+        ],
       }),
     []
   );
-  const value = { queue, handleError };
+
+  const value = { queue, handleError, alert: handleError };
 
   useEffect(() => {
     window.handleEffectError = handleError;
@@ -22,7 +28,7 @@ export default ({ children }) => {
 
   return (
     <ErrorBoundary handleError={handleError}>
-      <ErrorsContext.Provider value={value}>{children}</ErrorsContext.Provider>
+      <AlertsContext.Provider value={value}>{children}</AlertsContext.Provider>
     </ErrorBoundary>
   );
 };
