@@ -8,7 +8,11 @@ import constants from '../constants';
 
 const debouncedSaveTimerState = debounceAsync(externalEffects.saveTimerState, 1000);
 
-export default (timerId, timer, { onSecondsElapsed }) => {
+const DEFAULT_OPTIONS = {
+  onSecondsElapsed: () => {},
+};
+
+export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   const { currentUser } = useContext(AuthenticationContext) || {};
   const [initialized, setInitialized] = useState(false);
   const [totalMillis, setTotalMillis] = useState(0);

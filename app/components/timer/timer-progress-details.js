@@ -29,7 +29,7 @@ export default function TimerProgressDetails() {
   }, [modeIndex]);
 
   useEffect(() => {
-    isImage && !period.file.downloadURL && cycleMode();
+    isImage && (!period.file || !period.file.downloadURL) && cycleMode();
   }, [isImage, period, cycleMode]);
 
   const shouldRenderDetails = periodStats.period;
@@ -101,7 +101,7 @@ const DetailsView = React.memo(
         )}
         {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
         {isDescription && <p>{timer.description}</p>}
-        {isImage && period.file.downloadURL && (
+        {isImage && period.file && period.file.downloadURL && (
           <img src={period.file.downloadURL} alt="period image" />
         )}
       </div>

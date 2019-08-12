@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import Router from 'next/router';
 import useTimer from '../hooks/use-timer';
+import useTimerState from '../hooks/use-timer-state';
 import TimerProvider, { TimerContext } from '../contexts/timer-context';
 import TimerFormProvider, { TimerFormContext, DEFAULT_TIMER } from '../contexts/timer-form-context';
 import { AuthenticationContext } from '../contexts/authentication-context';
@@ -22,9 +23,16 @@ const BUTTON_ICON_PX = 16;
 
 export default ({ timerId, userId, isOwned }) => {
   const timer = useTimer({ timerId, userId });
+  const timerState = useTimerState(timerId, timer);
 
   return (
-    <TimerProvider timer={timer} timerId={timerId} userId={userId} isOwned={isOwned}>
+    <TimerProvider
+      isOwned={isOwned}
+      timer={timer}
+      timerId={timerId}
+      timerState={timerState}
+      userId={userId}
+    >
       <TimerFormProvider>
         <TimerForm />
       </TimerFormProvider>
