@@ -10,10 +10,10 @@ import constants from '../constants';
 
 import './timer-actions.css';
 
-export default ({ uid }) => {
+export default ({ timerId, uid }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const href = uid ? `${location.origin}/timer/chromecast?uid=${uid}` : '';
+  const playHref = `${location.origin}/timer/play?id=${timerId}&uid=${uid}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -27,13 +27,13 @@ export default ({ uid }) => {
 
   return (
     <div id="timer-actions" fixed-actions={String(fixedActions)}>
-      <Link href={href}>
-        <a href={href}>
+      <Link href={playHref}>
+        <a href={playHref}>
           <PlayFab />
           {fixedActions && <PlayFab className="fixed-fab" />}
         </a>
       </Link>
-      <ShareButton href={href} />
+      <ShareButton uid={uid} />
     </div>
   );
 };
@@ -42,9 +42,11 @@ function PlayFab({ className }) {
   return <Fab className={className} icon={<PlayCircleOutline />} label="Start" />;
 }
 
-function ShareButton({ href }) {
-  return href ? (
-    <ShareUrl title="HiiT Clock Timer" href={href}>
+function ShareButton({ uid }) {
+  const shareHref = uid ? `${location.origin}/timer/chromecast?uid=${uid}` : '';
+
+  return shareHref ? (
+    <ShareUrl title="HiiT Clock Timer" href={shareHref}>
       <IconButton className="share-button" icon={<Share />} />
     </ShareUrl>
   ) : null;
