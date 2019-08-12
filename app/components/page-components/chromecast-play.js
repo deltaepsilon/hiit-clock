@@ -10,19 +10,16 @@ import TimerProvider from '../contexts/timer-context';
 
 import './timer-play.css';
 
-export default ({ timerId, userId }) => {
+export default ({ uid }) => {
   const { timer, secondsElapsed, timerState } = useRtdbTimer({
-    timerId,
-    userId,
+    uid,
   });
 
   return (
     <TimerProvider
       secondsElapsed={secondsElapsed}
       timer={timer}
-      timerId={timerId}
       timerState={timerState}
-      userId={userId}
     >
       <div id="timer-play">
         <div id="timer-details-container">

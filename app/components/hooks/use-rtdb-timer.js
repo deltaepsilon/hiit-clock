@@ -16,10 +16,10 @@ const DEFAULT_TIMER = {
   periods: [],
 };
 
-export default function useRtdbTimer({ timerId, userId }) {
+export default function useRtdbTimer({ uid }) {
   const [timer, setTimer] = useState(DEFAULT_TIMER);
   const [state, setState] = useState(DEFAULT_STATE);
-  const ref = useMemo(() => schema.getTimerStateRef(userId), [userId]);
+  const ref = useMemo(() => schema.getTimerStateRef(uid), [uid]);
   const totalSeconds = useMemo(() => calculateTimerTotalSeconds(timer || DEFAULT_TIMER), [timer]);
   const { playState, secondsElapsed } = useMemo(() => {
     const { millisElapsed, playState } = state || DEFAULT_STATE;
@@ -50,7 +50,7 @@ export default function useRtdbTimer({ timerId, userId }) {
     return () => stateRef.off('value', handler);
   }, [ref]);
 
-  return { secondsElapsed, timer, timerState };
+  return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };
 }
 
 function millisecondsToSeconds(millis) {

@@ -5,22 +5,20 @@ import parseSearch from '../../utilities/parse-search';
 import constants from '../../components/constants';
 
 export default () => {
-  const [timerId, setTimerId] = useState();
-  const [userId, setUserId] = useState(constants.SHARED_USER);
+  const [uid, setUid] = useState(constants.SHARED_USER);
   const search = typeof location != 'undefined' && location.search;
 
   useEffect(() => {
     if (search) {
-      const { id, userId } = parseSearch(search);
+      const { uid } = parseSearch(search);
 
-      setTimerId(id);
-      setUserId(userId || constants.SHARED_USER);
+      setUid(uid || constants.SHARED_USER);
     }
   }, [search]);
 
   return (
     <ChromecastBase>
-      <ChromecastPlay timerId={timerId} userId={userId} />
+      <ChromecastPlay uid={uid} />
     </ChromecastBase>
   );
 };

@@ -10,10 +10,10 @@ import constants from '../constants';
 
 import './timer-actions.css';
 
-export default ({ timerId, userId }) => {
+export default ({ uid }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const href = `${constants.ROUTES.TIMER.PLAY}?id=${timerId}`;
+  const href = uid ? `${location.origin}/timer/chromecast?uid=${uid}` : '';
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -33,7 +33,7 @@ export default ({ timerId, userId }) => {
           {fixedActions && <PlayFab className="fixed-fab" />}
         </a>
       </Link>
-      <ShareButton timerId={timerId} userId={userId} />
+      <ShareButton href={href} />
     </div>
   );
 };
@@ -42,10 +42,8 @@ function PlayFab({ className }) {
   return <Fab className={className} icon={<PlayCircleOutline />} label="Start" />;
 }
 
-function ShareButton({ timerId, userId }) {
-  const href = `${location.origin}/timer/chromecast?id=${timerId}&userId=${userId}`;
-
-  return userId ? (
+function ShareButton({ href }) {
+  return href ? (
     <ShareUrl title="HiiT Clock Timer" href={href}>
       <IconButton className="share-button" icon={<Share />} />
     </ShareUrl>
