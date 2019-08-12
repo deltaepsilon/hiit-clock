@@ -1,11 +1,11 @@
 /* globals window */
 import deleteTimer from './delete-timer';
+import getSaveTimerState from './get-save-timer-state';
 import linkToGoogle from './link-to-google';
 import localStorage from './local-storage';
 import saveProfile from './save-profile';
 import saveSettings from './save-settings';
 import saveTimerForm from './save-timer-form';
-import saveTimerState from './save-timer-state';
 import saveTimer from './save-timer';
 import signInAnonymously from './sign-in-anonymously';
 import signInWithGoogle from './sign-in-with-google';
@@ -13,12 +13,12 @@ import signOut from './sign-out';
 
 export default {
   deleteTimer: wrapEffect(deleteTimer),
+  getSaveTimerState,
   localStorage,
   linkToGoogle: wrapEffect(linkToGoogle),
   saveProfile: wrapEffect(saveProfile),
   saveSettings: wrapEffect(saveSettings),
   saveTimerForm: wrapEffect(saveTimerForm),
-  saveTimerState: wrapEffect(saveTimerState),
   saveTimer: wrapEffect(saveTimer),
   signInAnonymously: wrapEffect(signInAnonymously),
   signInWithGoogle: wrapEffect(signInWithGoogle),

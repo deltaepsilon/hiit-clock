@@ -2,17 +2,16 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
-import debounceAsync from '../../utilities/debounce-async';
 import externalEffects from '../../effects';
 import constants from '../constants';
-
-const debouncedSaveTimerState = debounceAsync(externalEffects.saveTimerState, 1000);
 
 const DEFAULT_OPTIONS = {
   onSecondsElapsed: () => {},
 };
+const NOOP = () => {};
 
 export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
+  const [saveTimerState, setSaveTimerState] = useState(NOOP);
   const { currentUser } = useContext(AuthenticationContext) || {};
   const [initialized, setInitialized] = useState(false);
   const [totalMillis, setTotalMillis] = useState(0);
@@ -28,16 +27,24 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   useEffect(() => setSecondsElapsed(millisecondsToSeconds(millisElapsed)), [millisElapsed]);
 
   useEffect(() => {
-    const state = getTimerState();
     const uid = currentUser && currentUser.uid;
+    const saveTimerState = uid ? externalEffects.getSaveTimerState({ uid }) : NOOP;
 
-    uid && debouncedSaveTimerState({ state, timer, userId: uid });
-  }, [currentUser, timer]);
+    setSaveTimerState(() => saveTimerState);
+
+    saveTimerState({ timer });
+  }, [currentUser, timer, timerId]);
+
+  useEffect(() => {
+    const state = { millisElapsed, playState, timeStarted };
+
+    saveTimerState && saveTimerState({ state });
+  }, [millisElapsed, playState, saveTimerState, timeStarted]);
 
   useEffect(
     () =>
       function onUnmount() {
-        transactTimerState({ currentUser, timerId }, timerState => {
+        transactTimerState(timerState => {
           const timer = timerState[timerId];
           const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
 
@@ -53,7 +60,7 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
           return timerState;
         });
       },
-    [timerId, currentUser, timerId]
+    [timerId, timerId]
   );
 
   useEffect(
@@ -91,13 +98,13 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
       const shouldUpdate = !!timerId && initialized;
 
       shouldUpdate &&
-        transactTimerState({ currentUser, timerId }, timerState => {
+        transactTimerState(timerState => {
           timerState[timerId] = { playState, millisElapsed, timeStarted };
 
           return timerState;
         });
     },
-    [currentUser, timerId, playState, millisElapsed, initialized]
+    [initialized, millisElapsed, playState, timerId]
   );
 
   useEffect(
@@ -262,14 +269,11 @@ function secondsToMilliseconds(seconds) {
   return seconds * 1000;
 }
 
-function transactTimerState({ currentUser, timerId }, transaction) {
-  const timerState = getTimerState();
-  const updatedTimerState = transaction(timerState);
-  const uid = currentUser && currentUser.uid;
-  const state = updatedTimerState[timerId];
+function transactTimerState(transaction) {
+  const prevTimersState = getTimerState();
+  const nextTimersState = transaction(prevTimersState);
 
-  setTimerState(updatedTimerState);
-  uid && debouncedSaveTimerState({ state, userId: uid });
+  setTimerState(nextTimersState);
 }
 
 function getTimerState() {

@@ -1,8 +1,9 @@
 /* globals window */
 import { useEffect, useMemo, useState } from 'react';
-import constants from '../constants';
-import schema from '../schema';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
+import schema from '../schema';
+import constants from '../constants';
+import { interval } from 'rxjs';
 
 const DEFAULT_STATE = {
   millisElapsed: 0,
@@ -17,17 +18,26 @@ const DEFAULT_TIMER = {
 };
 
 export default function useRtdbTimer({ uid }) {
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [timer, setTimer] = useState(DEFAULT_TIMER);
   const [state, setState] = useState(DEFAULT_STATE);
   const ref = useMemo(() => schema.getTimerStateRef(uid), [uid]);
   const totalSeconds = useMemo(() => calculateTimerTotalSeconds(timer || DEFAULT_TIMER), [timer]);
-  const { playState, secondsElapsed } = useMemo(() => {
-    const { millisElapsed, playState } = state || DEFAULT_STATE;
-    const secondsElapsed = millisecondsToSeconds(millisElapsed);
+  const timerState = { playState: state.playState || DEFAULT_STATE, totalSeconds };
 
-    return { playState, secondsElapsed };
+  useEffect(() => {
+    const { millisElapsed, playState, timeStarted } = state || DEFAULT_STATE;
+    const intervalTracker = setInterval(() => {
+      const isPlaying = playState == constants.PLAY_STATES.PLAYING;
+      const millisSinceStart = isPlaying ? Date.now() - timeStarted : 0;
+      const millisAccumulated = millisSinceStart + millisElapsed;
+      const secondsElapsed = millisecondsToSeconds(millisAccumulated);
+
+      setSecondsElapsed(secondsElapsed);
+    }, constants.TIMES.MILLIS_TO_POLL);
+
+    return () => clearInterval(intervalTracker);
   }, [state]);
-  const timerState = { playState, totalSeconds };
 
   useEffect(() => {
     (async () => {
