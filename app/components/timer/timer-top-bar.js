@@ -5,6 +5,7 @@ import TimerData from '../top-bar/timer-data';
 import TotalTime from '../timer/total-time';
 import constants from '../constants';
 import { TimerContext } from '../contexts/timer-context';
+import ChromecastButton from "../chromecast/chromecast-button";
 
 export default function TimerTopBar() {
   const { timerId, timer, totalSeconds, userId } = useContext(TimerContext);
@@ -25,7 +26,8 @@ const TimerTopBarView = React.memo(({ timerId, timerName, totalSeconds, userId }
     <Title>{timerName}</Title>
 
     <TimerData>
-      <TotalTime totalSeconds={totalSeconds} />
+      {/* <TotalTime totalSeconds={totalSeconds} /> */}
+      <ChromecastButton />
     </TimerData>
   </>
 ));

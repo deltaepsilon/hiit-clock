@@ -24,6 +24,17 @@ export default class CustomDocument extends Document {
           {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" /> */}
           <script src="/__/firebase/init.js" defer />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.1/algoliasearchLite.min.js" />
+          <script src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" />
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.__onGCastApiAvailable = function(isAvailable) {
+                  window.castAvailable = isAvailable;
+                };
+              `,
+            }}
+          />
         </Head>
         <body>
           <div id="top-bar">

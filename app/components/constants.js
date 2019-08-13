@@ -7,6 +7,12 @@ export default {
       TIMERS: 'timers',
     },
   },
+  CHROMECAST: {
+    APPLICATIONS: {
+      localhost: '9B25106F',
+      'next.hiitclock.com': 'CDBF9AE6',
+    },
+  },
   COLORS: {
     PRIMARY: '#011627',
     PRIMARY_LIGHT: '#2a3c4f',
@@ -57,10 +63,12 @@ export default {
     DASHBOARD: '/dashboard',
     SETTINGS: '/settings',
     TIMER: {
-      DETAIL: '/timer',
-      PLAY: '/timer/play',
-      EDIT: '/timer/edit',
+      CHROMECAST: '/timer/chromecast',
       CREATE: '/timer/create',
+      DETAIL: '/timer',
+      EDIT: '/timer/edit',
+      PLAY: '/timer/play',
+      SHARED: '/timer/shared',
     },
     BROWSE: {
       CROSSFIT: '/browse/crossfit',
@@ -91,6 +99,6 @@ export default {
   },
   TOUCH_EVENTS: {
     LONG_PRESS_MILLIS: 300,
-    SWIPE_THRESHOLD_PX: 100
-  }
+    SWIPE_THRESHOLD_PX: 100,
+  },
 };

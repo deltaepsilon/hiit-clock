@@ -43,7 +43,7 @@ function PlayFab({ className }) {
 }
 
 function ShareButton({ uid }) {
-  const shareHref = uid ? `${location.origin}/timer/chromecast?uid=${uid}` : '';
+  const shareHref = uid ? `${location.origin}${constants.ROUTES.TIMER.SHARED}?uid=${uid}` : '';
 
   return shareHref ? (
     <ShareUrl title="HiiT Clock Timer" href={shareHref}>
