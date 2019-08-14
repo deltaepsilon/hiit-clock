@@ -19,11 +19,16 @@ export default () => {
     } catch (error) {
       console.error(error);
     }
-    instance.addCustomMessageListener(constants.CHROMECAST.NAMESPACE, ({ data }) => {
-      setUid(data.uid);
-    });
 
-    instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, { sendNoods: true }, console.info);
+    function customMessageHandler({ data }) {
+      setUid(data.uid);
+    }
+    instance.addCustomMessageListener(constants.CHROMECAST.NAMESPACE, customMessageHandler);
+
+    instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, { uid }, console.info);
+
+    return () =>
+      instance.removeCustomMessageListener(constants.CHROMECAST.NAMESPACE, customMessageHandler);
   }, [setUid]);
 
   return <ChromecastBase>{uid && <ChromecastPlay uid={uid} />}</ChromecastBase>;
