@@ -14,11 +14,7 @@ export default ({ uid }) => {
   });
 
   return (
-    <TimerProvider
-      secondsElapsed={secondsElapsed}
-      timer={timer}
-      timerState={timerState}
-    >
+    <TimerProvider secondsElapsed={secondsElapsed} timer={timer} timerState={timerState}>
       <div id="timer-play">
         <div id="timer-details-container">
           <TimerProgressBars />

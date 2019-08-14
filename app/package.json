@@ -47,7 +47,7 @@
     "build": "next build",
     "export": "rm -rf out && next export && node bin/replace-build-id.js",
     "start": "next start",
-    "serve:static": "yarn ci:build && npx http-server out",
+    "serve:static": "yarn ci:build && npx http-server out -p 3000",
     "deploy": "firebase deploy",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:hosting": "firebase deploy --only hosting",

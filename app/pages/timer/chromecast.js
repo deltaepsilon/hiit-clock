@@ -5,20 +5,26 @@ import parseSearch from '../../utilities/parse-search';
 import constants from '../../components/constants';
 
 export default () => {
-  const [uid, setUid] = useState(constants.SHARED_USER);
-  const search = typeof location != 'undefined' && location.search;
+  const [uid, setUid] = useState(null);
 
   useEffect(() => {
-    if (search) {
-      const { uid } = parseSearch(search);
+    const instance = cast.framework.CastReceiverContext.getInstance();
 
-      setUid(uid || constants.SHARED_USER);
+    try {
+      instance.start({
+        customNamespaces: {
+          [constants.CHROMECAST.NAMESPACE]: cast.framework.system.MessageType.JSON,
+        },
+      });
+    } catch (error) {
+      console.error(error);
     }
-  }, [search]);
+    instance.addCustomMessageListener(constants.CHROMECAST.NAMESPACE, ({ data }) => {
+      setUid(data.uid);
+    });
 
-  return (
-    <ChromecastBase>
-      <ChromecastPlay uid={uid} />
-    </ChromecastBase>
-  );
+    instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, { sendNoods: true }, console.info);
+  }, [setUid]);
+
+  return <ChromecastBase>{uid && <ChromecastPlay uid={uid} />}</ChromecastBase>;
 };

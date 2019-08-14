@@ -9,9 +9,11 @@ export default {
   },
   CHROMECAST: {
     APPLICATIONS: {
-      localhost: '9B25106F',
+      localhost: 'A6AF8FB4',
+      'local.chrisesplin.com': 'A6AF8FB4',
       'next.hiitclock.com': 'CDBF9AE6',
     },
+    NAMESPACE: 'urn:x-cast:com.hiitclock.namespace',
   },
   COLORS: {
     PRIMARY: '#011627',

@@ -21,8 +21,8 @@ files.forEach(([key, value]) => {
 
   fs.writeFileSync(filePath, utf8Encoded, 'utf8');
 
-  console.log('wrote', filePath);
+  console.info('wrote', filePath);
 });
 
 fs.writeFileSync(variablesPath, JSON.stringify(variables), 'utf8');
-console.log('wrote', variablesPath);
+console.info('wrote', variablesPath);

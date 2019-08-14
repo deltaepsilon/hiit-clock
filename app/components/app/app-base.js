@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import CastSender from './cast-sender';
 import ServiceWorker from './service-worker';
 import Environment from './environment';
 import ErrorHandler from './alerts-handler';
@@ -38,6 +39,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
                     {!hideUserMenu && <UserMenu />}
                     <Router secure={secure} />
                     <ErrorHandler />
+                    <CastSender />
                   </>
                 </RenderIfLoaded>
               </SettingsProvider>

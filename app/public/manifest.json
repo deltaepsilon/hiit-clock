@@ -39,8 +39,8 @@
     }
   ],
   "start_url": "/dashboard?source=pwa",
-  "background_color": "#011627",
+  "background_color": "#2a3c4f",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#011627"
+  "theme_color": "#2a3c4f"
 }
