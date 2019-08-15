@@ -2,6 +2,8 @@ import constants from '../components/constants';
 import calculateTimerTotalSeconds from './calculate-timer-total-seconds';
 
 export default cycles => {
+  let index = 0;
+
   return cycles.reduce((result, cycle, cycleIndex) => {
     const cycleColor = getColor(constants.COLORS.WORK, cycleIndex);
     const totalSeconds = getCycleTotalSeconds(cycle);
@@ -9,7 +11,13 @@ export default cycles => {
       const colors = period.type == 'rest' ? constants.COLORS.REST : constants.COLORS.WORK;
       const periodColor = getColor(colors, cycleIndex + periodIndex);
       const percentOfCycle = Math.round((100 * period.totalSeconds) / totalSeconds) / 100;
-      const periodWithMetadata = { ...period, cycleColor, periodColor, percentOfCycle };
+      const periodWithMetadata = {
+        ...period,
+        cycleColor,
+        periodColor,
+        percentOfCycle,
+        periodIndex: index++,
+      };
 
       return [...result, periodWithMetadata];
     }, []);

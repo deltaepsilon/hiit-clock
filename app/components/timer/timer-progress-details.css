@@ -13,6 +13,7 @@
   justify-content: space-around;
   text-align: center;
   padding: 1rem 0;
+  max-height: calc(100% - 6rem);
 }
 
 #timer-list .seconds-row img {
@@ -24,6 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 }
 
 #timer-list .small-time:before {
@@ -41,9 +43,9 @@
 }
 
 #timer-list .big-name {
-  overflow: hidden;
-  max-width: 100vw;
   text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0 1rem;
 }
 
 @media (orientation: portrait) {
@@ -52,7 +54,7 @@
   }
 
   #timer-list .big-name {
-    font-size: 15vw;
+    font-size: 7vw;
   }
 
   #timer-list .small-time,
@@ -72,6 +74,7 @@
 
   #timer-list .big-name {
     font-size: 5vw;
+    width: calc(100% - 4rem);
   }
 
   #timer-list .small-time,
@@ -84,6 +87,6 @@
   }
 
   #timer-list #cycles-list {
-    display: none;
+    /* display: none; */
   }
 }

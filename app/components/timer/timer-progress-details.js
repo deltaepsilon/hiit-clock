@@ -41,9 +41,7 @@ export default function TimerProgressDetails() {
     isTime,
     isDescription,
     isImage,
-    period,
-    periodSecondsElapsed,
-    periodTotalSeconds,
+    periodStats,
     cycleSecondsElapsed,
     cycleTotalSeconds,
     secondsElapsed,
@@ -66,9 +64,7 @@ const DetailsView = React.memo(
     isTime,
     isDescription,
     isImage,
-    period,
-    periodSecondsElapsed,
-    periodTotalSeconds,
+    periodStats,
     cycleSecondsElapsed,
     cycleTotalSeconds,
     secondsElapsed,
@@ -77,39 +73,47 @@ const DetailsView = React.memo(
     cycleStats,
     timer,
     mode,
-  }) => (
-    <div id="timer-list">
-      <div className="seconds-row" onClick={cycleMode}>
-        {isCountdown && (
-          <CountdownView
-            period={period}
-            periodSecondsElapsed={periodSecondsElapsed}
-            periodTotalSeconds={periodTotalSeconds}
+  }) => {
+    const { index: periodIndex, period, periodSecondsElapsed, periodTotalSeconds } = periodStats;
+
+    return (
+      <div id="timer-list">
+        <div className="seconds-row" onClick={cycleMode}>
+          {isCountdown && (
+            <CountdownView
+              period={period}
+              periodSecondsElapsed={periodSecondsElapsed}
+              periodTotalSeconds={periodTotalSeconds}
+            />
+          )}
+          {isPeriod && (
+            <PeriodView
+              periodSecondsElapsed={periodSecondsElapsed}
+              periodTotalSeconds={periodTotalSeconds}
+            />
+          )}
+          {isCycle && (
+            <CycleView
+              cycleSecondsElapsed={cycleSecondsElapsed}
+              cycleTotalSeconds={cycleTotalSeconds}
+            />
+          )}
+          {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
+          {isDescription && <p>{timer.description}</p>}
+          {isImage && period.file && period.file.downloadURL && (
+            <img src={period.file.downloadURL} alt="period image" />
+          )}
+        </div>
+        <div id="cycles-list">
+          <CyclesList
+            cycles={cycles}
+            cycleIndexFilter={index => [cycleStats.index, cycleStats.index + 1].includes(index)}
+            periodFilter={period => period.periodIndex >= periodIndex}
           />
-        )}
-        {isPeriod && (
-          <PeriodView
-            periodSecondsElapsed={periodSecondsElapsed}
-            periodTotalSeconds={periodTotalSeconds}
-          />
-        )}
-        {isCycle && (
-          <CycleView
-            cycleSecondsElapsed={cycleSecondsElapsed}
-            cycleTotalSeconds={cycleTotalSeconds}
-          />
-        )}
-        {isTime && <TimeView secondsElapsed={secondsElapsed} totalSeconds={totalSeconds} />}
-        {isDescription && <p>{timer.description}</p>}
-        {isImage && period.file && period.file.downloadURL && (
-          <img src={period.file.downloadURL} alt="period image" />
-        )}
+        </div>
       </div>
-      <div id="cycles-list">
-        <CyclesList cycles={cycles} cycleIndexFilter={cycleStats.index} />
-      </div>
-    </div>
-  ),
+    );
+  },
   (prevProps, nextProps) => {
     const secondsEqual = prevProps.secondsElapsed == nextProps.secondsElapsed;
     const modeEqual = prevProps.mode == nextProps.mode;
