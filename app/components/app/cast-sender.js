@@ -12,7 +12,7 @@ export default function CastSender() {
   const [castAvailable] = useState(window.castAvailable);
   const { currentUser } = useContext(AuthenticationContext);
   const sendCurrentUser = useCallback(() => {
-    if (currentUser) {
+    if (castAvailable && currentUser) {
       const session = cast.framework.CastContext.getInstance().getCurrentSession();
 
       session &&
@@ -23,7 +23,7 @@ export default function CastSender() {
           console.error
         );
     }
-  }, [currentUser]);
+  }, [castAvailable, currentUser]);
   const handleSessionStateChanged = useCallback(
     event => {
       const session = instance ? instance.getCurrentSession() : null;
