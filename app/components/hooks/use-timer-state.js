@@ -184,9 +184,7 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
     const millisToRemove = periodMillisElapsed - adjustmentMillis;
     const willReverse = millisToRemove > 0;
 
-    if (!willReverse) {
-      backward(null, 1);
-    } else {
+    if (willReverse) {
       const updatedMillisElapsed = Math.min(totalMillis, millisElapsed - millisToRemove);
 
       updateMillisElapsed(updatedMillisElapsed);

@@ -9,11 +9,13 @@ export default function CastSender() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [instance, setInstance] = useState(null);
   const [session, setSession] = useState(null);
-  const [castAvailable] = useState(window.castAvailable);
   const { currentUser } = useContext(AuthenticationContext);
   const sendCurrentUser = useCallback(() => {
-    if (castAvailable && currentUser) {
-      const session = cast.framework.CastContext.getInstance().getCurrentSession();
+    if (currentUser) {
+      const session =
+        typeof window != 'undefined' &&
+        window.cast &&
+        window.cast.framework.CastContext.getInstance().getCurrentSession();
 
       session &&
         session.sendMessage(
@@ -23,7 +25,7 @@ export default function CastSender() {
           console.error
         );
     }
-  }, [castAvailable, currentUser]);
+  }, [currentUser]);
   const handleSessionStateChanged = useCallback(
     event => {
       const session = instance ? instance.getCurrentSession() : null;
@@ -97,7 +99,7 @@ export default function CastSender() {
         );
       };
     }
-  }, [castAvailable, currentUser, isLoaded]);
+  }, [currentUser, isLoaded]);
 
   useEffect(() => {
     if (session) {
