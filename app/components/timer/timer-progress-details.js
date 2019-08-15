@@ -11,7 +11,7 @@ export default function TimerProgressDetails() {
   const { cycles, timer, totalSeconds } = useContext(TimerContext);
   const { secondsElapsed, cycleStats, periodStats } = useContext(SecondsContext);
   const { cycleSecondsElapsed, cycleTotalSeconds } = cycleStats;
-  const { period, periodSecondsElapsed, periodTotalSeconds } = periodStats;
+  const { period } = periodStats;
   const [modeIndex, setModeIndex] = useState(0);
   const cycleMode = useCallback(() => setModeIndex(i => ++i % MODES.length));
   const { isCountdown, isPeriod, isCycle, isTime, isDescription, isImage, mode } = useMemo(() => {
@@ -115,7 +115,9 @@ const DetailsView = React.memo(
     );
   },
   (prevProps, nextProps) => {
-    const secondsEqual = prevProps.secondsElapsed == nextProps.secondsElapsed;
+    const secondsEqual =
+      prevProps.secondsElapsed == nextProps.secondsElapsed &&
+      prevProps.cycleSecondsElapsed == nextProps.cycleSecondsElapsed;
     const modeEqual = prevProps.mode == nextProps.mode;
     const periodEqual = prevProps.period == nextProps.period;
 
