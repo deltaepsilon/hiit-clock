@@ -10,8 +10,6 @@ export default () => {
     }
   }, [audioEl]);
 
-  window.playChime = playChime;
-
   useEffect(() => {
     const audioEl = document.getElementById('chime');
 

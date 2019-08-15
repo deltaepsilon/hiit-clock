@@ -35,9 +35,24 @@ function db() {
 }
 
 function rtdb() {
-  return window.firebase.database();
+  const isBrowser = typeof window != 'undefined';
+
+  return isBrowser ? window.firebase.database() : mockRtdb();
 }
 
 function storage() {
   return window.firebase.storage();
+}
+
+function mockRtdb() {
+  const snapshot = {
+    val: () => ({}),
+  };
+
+  return {
+    ref: () => mockRtdb(),
+    child: () => mockRtdb(),
+    once: async () => snapshot,
+    on: () => {},
+  };
 }

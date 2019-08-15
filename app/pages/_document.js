@@ -28,11 +28,13 @@ export default class CustomDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                window.__onGCastApiAvailable = function(isAvailable) {
-                  if (isAvailable) {
-                    window.initializeCastApi();
-                  }
-                };
+                if (typeof window != 'undefined') {
+                  window.__onGCastApiAvailable = function(isAvailable) {
+                    if (isAvailable) {
+                      window.initializeCastApi();
+                    }
+                  };
+                }
               `,
             }}
           />
