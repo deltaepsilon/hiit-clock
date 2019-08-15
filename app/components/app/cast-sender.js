@@ -102,7 +102,7 @@ export default function CastSender() {
   useEffect(() => {
     if (session) {
       function messageHandler(e) {
-        console.info('e message', e);
+        sendCurrentUser();
       }
 
       session.addMessageListener(constants.CHROMECAST.NAMESPACE, messageHandler);
