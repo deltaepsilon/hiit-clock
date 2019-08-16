@@ -13,7 +13,8 @@ import './timer-actions.css';
 export default ({ timerId, userId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const href = `${location.origin}/timer/play?id=${timerId}&userId=${userId}`;
+  const playHref = `${location.origin}/timer/play?id=${timerId}&userId=${userId}`;
+  const detailHref = `${location.origin}/timer?id=${timerId}&userId=${userId}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -27,13 +28,13 @@ export default ({ timerId, userId }) => {
 
   return (
     <div id="timer-actions" fixed-actions={String(fixedActions)}>
-      <Link href={href}>
-        <a href={href}>
+      <Link href={playHref}>
+        <a href={playHref}>
           <PlayFab />
           {fixedActions && <PlayFab className="fixed-fab" />}
         </a>
       </Link>
-      <ShareButton href={href} />
+      <ShareButton href={detailHref} />
     </div>
   );
 };
