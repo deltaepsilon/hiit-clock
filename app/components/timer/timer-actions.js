@@ -13,8 +13,12 @@ import './timer-actions.css';
 export default ({ timerId, userId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const playHref = `${location.origin}/timer/play?id=${timerId}&userId=${userId}`;
-  const detailHref = `${location.origin}/timer?id=${timerId}&userId=${userId}`;
+  const playHref = `${location.origin}${
+    constants.ROUTES.TIMER.PLAY
+  }?id=${timerId}&userId=${userId}`;
+  const detailHref = `${location.origin}${
+    constants.ROUTES.TIMER.DETAIL
+  }?id=${timerId}&userId=${userId}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
