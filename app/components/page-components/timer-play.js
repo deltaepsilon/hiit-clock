@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
 import useWakeLock from '../hooks/use-wake-lock';
+import MediaSession from '../timer/media-session';
 import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerProgressDetails from '../timer/timer-progress-details';
@@ -38,7 +39,8 @@ export default function TimerPlay({ timerId, userId }) {
         <TimerControls />
         <TimerSound />
         <TimerFlash />
+        <MediaSession />
       </div>
     </TimerProvider>
   );
-};
+}
