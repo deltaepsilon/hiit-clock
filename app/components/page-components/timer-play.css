@@ -13,6 +13,10 @@
   max-height: 100%;
 }
 
+#timer-play .cycles-list .cycle-list-item:not(:last-child) {
+  margin-bottom: 0px;
+}
+
 @media (max-height: 480px) {
   #timer-play {
     height: calc(100vh - 3.5rem);

@@ -1,7 +1,3 @@
-.chromecast-base .cycles-list .cycle-list-item:not(:last-child) {
-  margin-bottom: 0px;
-}
-
 .chromecast-base .cycles-list .period-list .period-list-item {
   padding-right: 1rem;
 }

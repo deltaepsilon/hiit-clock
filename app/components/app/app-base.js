@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import CastSender from './cast-sender';
-import ServiceWorker from '../hooks/use-service-worker';
 import Environment from './environment';
 import ErrorHandler from './alerts-handler';
 import Fonts from './fonts';
