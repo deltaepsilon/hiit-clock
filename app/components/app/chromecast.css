@@ -1,2 +1,15 @@
-.chromecast-base {
+.chromecast-base .cycles-list .cycle-list-item:not(:last-child) {
+  margin-bottom: 0px;
+}
+
+.chromecast-base .cycles-list .period-list .period-list-item {
+  padding-right: 1rem;
+}
+
+@media (orientation: landscape) {
+  #timer-play {
+    height: 100vh !important;
+    position: absolute;
+    top: 0;
+  }
 }
