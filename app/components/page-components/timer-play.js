@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
+import useWakeLock from '../hooks/use-wake-lock';
 import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
 import TimerProgressDetails from '../timer/timer-progress-details';
@@ -11,12 +12,14 @@ import TimerProvider from '../contexts/timer-context';
 
 import './timer-play.css';
 
-export default ({ timerId, userId }) => {
+export default function TimerPlay({ timerId, userId }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const timer = useTimer({ timerId, userId });
   const timerState = useTimerState(timerId, timer, {
     onSecondsElapsed: seconds => setSecondsElapsed(seconds),
   });
+
+  useWakeLock('screen');
 
   return (
     <TimerProvider

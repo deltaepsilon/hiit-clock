@@ -4,7 +4,7 @@ import TimerPlay from '../../components/page-components/timer-play';
 import parseSearch from '../../utilities/parse-search';
 import constants from '../../components/constants';
 
-export default props => {
+export default () => {
   const [timerId, setTimerId] = useState();
   const [userId, setUserId] = useState(constants.SHARED_USER);
   const search = typeof location != 'undefined' && location.search;
