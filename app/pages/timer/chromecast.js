@@ -35,7 +35,11 @@ export default () => {
 
   useEffect(() => {
     if (!uid && instance) {
-      instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, undefined, {});
+      const interval = setInterval(() => {
+        instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, undefined, {});
+      }, 1000);
+
+      return () => clearInterval(interval);
     }
   }, [instance, uid]);
 

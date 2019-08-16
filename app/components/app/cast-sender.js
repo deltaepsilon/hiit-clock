@@ -10,12 +10,19 @@ export default function CastSender() {
   const [instance, setInstance] = useState(null);
   const [session, setSession] = useState(null);
   const { currentUser } = useContext(AuthenticationContext);
+  const getSession = useCallback(() => {
+    const session =
+      typeof window != 'undefined' &&
+      window.cast &&
+      window.cast.framework.CastContext.getInstance().getCurrentSession();
+
+    setSession(session);
+
+    return session;
+  }, []);
   const sendCurrentUser = useCallback(() => {
     if (currentUser) {
-      const session =
-        typeof window != 'undefined' &&
-        window.cast &&
-        window.cast.framework.CastContext.getInstance().getCurrentSession();
+      const session = getSession();
 
       session &&
         session.sendMessage(
@@ -28,9 +35,7 @@ export default function CastSender() {
   }, [currentUser]);
   const handleSessionStateChanged = useCallback(
     event => {
-      const session = instance ? instance.getCurrentSession() : null;
-
-      setSession(session);
+      console.info(event.sessionState);
 
       switch (event.sessionState) {
         case cast.framework.SessionState.SESSION_STARTED:
@@ -47,6 +52,8 @@ export default function CastSender() {
   );
   const handleCastStateChanged = useCallback(
     event => {
+      console.info(event.castState);
+
       switch (event.castState) {
         case cast.framework.CastState.CONNECTED:
           sendCurrentUser();
@@ -75,7 +82,6 @@ export default function CastSender() {
       const instance = cast.framework.CastContext.getInstance();
 
       setInstance(instance);
-      setSession(instance.getCurrentSession());
 
       instance.addEventListener(
         cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
