@@ -14,14 +14,15 @@ export default class CustomDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
           <link rel="icon" href="/images/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" />
-          <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" />
-          <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" />
-          <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" />
-          <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-auth.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-storage.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-database.js" />
+          <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-performance.js" />
           {/* <script src="https://fireperffw.firebaseapp.com/v003/firebase-performance-standalone.js" /> */}
-          {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-messaging.js" /> */}
-          {/* <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" /> */}
+          {/* <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-messaging.js" /> */}
+          {/* <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-functions.js" /> */}
           <script src="/__/firebase/init.js" defer />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.1/algoliasearchLite.min.js" />
 

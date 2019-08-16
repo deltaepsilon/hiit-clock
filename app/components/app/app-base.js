@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import CastSender from './cast-sender';
-import ServiceWorker from './service-worker';
+import ServiceWorker from '../hooks/use-service-worker';
 import Environment from './environment';
 import ErrorHandler from './alerts-handler';
 import Fonts from './fonts';
@@ -13,15 +13,19 @@ import LoadedProvider, { LoadedContext } from '../contexts/loaded-context';
 import ProfileProvider from '../contexts/profile-context';
 import SettingsProvider from '../contexts/settings-context';
 import UserMenu from '../top-bar/user-menu';
+import useFirebasePerformance from '../hooks/use-firebase-performance';
+import useServiceWorker from '../hooks/use-service-worker';
 
 import './app.css';
 import '../top-bar/top-bar.css';
 import '../modals/modal.css';
 
 export function AppBase({ children, secure, hideUserMenu }) {
+  useFirebasePerformance();
+  useServiceWorker();
+
   return (
     <>
-      <ServiceWorker />
       <Environment />
       <Fonts />
       <MDCStyles />
