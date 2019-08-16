@@ -10,10 +10,10 @@ import constants from '../constants';
 
 import './timer-actions.css';
 
-export default ({ timerId, uid }) => {
+export default ({ timerId, userId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const playHref = `${location.origin}/timer/play?id=${timerId}&uid=${uid}`;
+  const href = `${location.origin}/timer/play?id=${timerId}&userId=${userId}`;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -27,13 +27,13 @@ export default ({ timerId, uid }) => {
 
   return (
     <div id="timer-actions" fixed-actions={String(fixedActions)}>
-      <Link href={playHref}>
-        <a href={playHref}>
+      <Link href={href}>
+        <a href={href}>
           <PlayFab />
           {fixedActions && <PlayFab className="fixed-fab" />}
         </a>
       </Link>
-      <ShareButton uid={uid} />
+      <ShareButton href={href} />
     </div>
   );
 };
@@ -42,11 +42,9 @@ function PlayFab({ className }) {
   return <Fab className={className} icon={<PlayCircleOutline />} label="Start" />;
 }
 
-function ShareButton({ uid }) {
-  const shareHref = uid ? `${location.origin}${constants.ROUTES.TIMER.SHARED}?uid=${uid}` : '';
-
-  return shareHref ? (
-    <ShareUrl title="HiiT Clock Timer" href={shareHref}>
+function ShareButton({ href }) {
+  return href ? (
+    <ShareUrl title="HiiT Clock Timer" href={href}>
       <IconButton className="share-button" icon={<Share />} />
     </ShareUrl>
   ) : null;

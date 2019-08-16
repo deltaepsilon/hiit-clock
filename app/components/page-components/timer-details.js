@@ -47,7 +47,7 @@ export default ({ timerId, userId }) => {
 
         {imageSrc && <img src={imageSrc} alt={`${timer.name} descriptive image`} />}
 
-        <TimerActions timerId={timerId} uid={currentUser && currentUser.uid} />
+        <TimerActions timerId={timerId} userId={userId} />
 
         <Link href={fabHref}>
           <Fab className="edit" tag="a" href={fabHref} icon={fabIcon} />
