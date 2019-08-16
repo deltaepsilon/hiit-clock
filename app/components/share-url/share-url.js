@@ -10,7 +10,7 @@ export default function shareUrl({ children, title, href }) {
       if (navigator.share) {
         e.preventDefault();
 
-        await navigator.share({ title, text: href, url: href });
+        await navigator.share({ url: href });
       } else {
         try {
           copyToClipboard(href, () => alert('Copied to clipboard'));
