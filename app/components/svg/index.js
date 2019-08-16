@@ -10,6 +10,7 @@ import DeleteOutline from './delete-outline';
 import Edit from './edit';
 import FileCopyOutline from './file-copy-outline';
 import Forward10 from './forward-10';
+import Game from './game';
 import Headset from './headset';
 import HiitClock from './hiit-clock';
 import List from './list';
@@ -41,6 +42,7 @@ export {
   Edit,
   FileCopyOutline,
   Forward10,
+  Game,
   Headset,
   HiitClock,
   List,

@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 import BackButton from '../top-bar/back-button';
 import Title from '../top-bar/title';
 import TimerData from '../top-bar/timer-data';
-import TotalTime from '../timer/total-time';
 import constants from '../constants';
 import { TimerContext } from '../contexts/timer-context';
-import ChromecastButton from "../chromecast/chromecast-button";
+import ChromecastButton from '../chromecast/chromecast-button';
+import MediaSessionButton from '../media-session/media-session-button';
 
-export default function TimerTopBar() {
+export default function TimerTopBar({ mediaSessionEnabled, onMediaSessionClick }) {
   const { timerId, timer, totalSeconds, userId } = useContext(TimerContext);
   const timerTopBarViewProps = {
+    mediaSessionEnabled,
     timerId,
     timerName: timer.name,
+    onMediaSessionClick,
     totalSeconds,
     userId,
   };
@@ -19,15 +21,17 @@ export default function TimerTopBar() {
   return <TimerTopBarView {...timerTopBarViewProps} />;
 }
 
-const TimerTopBarView = React.memo(({ timerId, timerName, totalSeconds, userId }) => (
-  <>
-    <BackButton href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`} />
+const TimerTopBarView = React.memo(
+  ({ mediaSessionEnabled, onMediaSessionClick, timerId, timerName, userId }) => (
+    <>
+      <BackButton href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`} />
 
-    <Title>{timerName}</Title>
+      <Title style={{ fontSize: '1rem' }}>{timerName}</Title>
 
-    <TimerData>
-      {/* <TotalTime totalSeconds={totalSeconds} /> */}
-      <ChromecastButton />
-    </TimerData>
-  </>
-));
+      <TimerData>
+        <MediaSessionButton enabled={mediaSessionEnabled} onClick={onMediaSessionClick} />
+        <ChromecastButton />
+      </TimerData>
+    </>
+  )
+);
