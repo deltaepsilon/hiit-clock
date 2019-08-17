@@ -50,7 +50,7 @@ export default (items, searchTerm) => {
     return result.sort((a, b) => (a.lastAccessed < b.lastAccessed ? 1 : -1));
   }
 
-  const local = getFuseResult();
+  const local = getFuseResult().reverse();
   const localIds = new Set(local.map(({ __id }) => __id));
   const search = searchResults.filter(({ objectID }) => !localIds.has(objectID));
 

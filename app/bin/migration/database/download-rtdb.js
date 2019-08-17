@@ -19,7 +19,7 @@ const ref = admin.database().ref('timer/production/user/owned/state');
 
   fs.writeFileSync(outputFilepath, string, 'utf8');
 
-  console.log('written', outputFilepath);
+  console.info('written', outputFilepath);
 
   process.exit();
 })();

@@ -27,7 +27,7 @@ admin.initializeApp({
 
   await writeFirestore(batchRecords);
 
-  console.log('done');
+  console.info('done');
   process.exit();
 })();
 
@@ -130,7 +130,7 @@ async function writeFirestore(batchRecords) {
 
   await batch.commit();
 
-  console.log(
+  console.info(
     `Processed ${recordsToProcess.length} records. ${recordsToDelay.length} records left to process`
   );
 
