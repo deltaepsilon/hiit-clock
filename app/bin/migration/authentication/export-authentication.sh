@@ -1,0 +1,1 @@
+npx firebase auth:export /app/bin/migration/authentication/authentication.csv --format=csv --project=quiver-timer --token=$FIREBASE_TOKEN_2016

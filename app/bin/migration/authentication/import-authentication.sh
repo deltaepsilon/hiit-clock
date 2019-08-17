@@ -1,4 +1,4 @@
-npx firebase auth:import /app/bin/migration/authentication-filtered.csv \
+npx firebase auth:import /app/bin/migration/authentication/authentication-filtered.csv \
   --project=quiver-hiit-clock \
   --token=$FIREBASE_TOKEN \
   --hash-algo=$AUTH_ALGORITHM \
