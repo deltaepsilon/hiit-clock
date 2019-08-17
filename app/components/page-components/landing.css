@@ -10,6 +10,10 @@
   margin: 1rem 0 0;
 }
 
+#landing img {
+  max-width: 100%;
+}
+
 #landing .mdc-fab {
   position: fixed;
   bottom: 2rem;

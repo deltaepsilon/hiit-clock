@@ -11,7 +11,7 @@ export default {
     APPLICATIONS: {
       localhost: 'A6AF8FB4',
       'local.chrisesplin.com': 'A6AF8FB4',
-      'next.hiitclock.com': 'CDBF9AE6',
+      'v2.hiitclock.com': 'CDBF9AE6',
       'www.hiitclock.com': 'CED65B6F',
     },
     NAMESPACE: 'urn:x-cast:com.hiitclock.namespace',
