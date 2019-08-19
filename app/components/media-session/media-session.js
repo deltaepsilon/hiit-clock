@@ -62,5 +62,5 @@ export default () => {
     }
   }, [playState]);
 
-  return <audio ref={audioRef} src="/sounds/30-seconds-of-silence.mp3" loop preload />;
+  return <audio ref={audioRef} src="/sounds/30-seconds-of-silence.mp3" loop preload="true" />;
 };

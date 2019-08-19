@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
 import useWakeLock from '../hooks/use-wake-lock';
@@ -10,16 +10,23 @@ import TimerControls from '../timer/timer-controls';
 import TimerSound from '../timer/timer-sound';
 import TimerFlash from '../timer/timer-flash';
 import TimerProvider from '../contexts/timer-context';
-
+import useAlert from '../hooks/use-alert';
 import './timer-play.css';
 
 export default function TimerPlay({ timerId, userId }) {
+  const alert = useAlert();
   const [mediaSessionEnabled, setMediaSessionEnabled] = useState(false);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const timer = useTimer({ timerId, userId });
   const timerState = useTimerState(timerId, timer, {
     onSecondsElapsed: seconds => setSecondsElapsed(seconds),
   });
+
+  useEffect(() => {
+    if (mediaSessionEnabled) {
+      alert('Media controls enabled.');
+    }
+  }, [mediaSessionEnabled]);
 
   useWakeLock('screen');
 
