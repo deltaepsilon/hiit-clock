@@ -10,7 +10,7 @@ export default cycles => {
     const cycleWithMetadata = cycle.reduce((result, period, periodIndex) => {
       const colors = period.type == 'rest' ? constants.COLORS.REST : constants.COLORS.WORK;
       const periodColor = getColor(colors, cycleIndex + periodIndex);
-      const percentOfCycle = Math.round((100 * period.totalSeconds) / totalSeconds) / 100;
+      const percentOfCycle = Math.round((1000 * period.totalSeconds) / totalSeconds) / 1000;
       const periodWithMetadata = {
         ...period,
         cycleColor,
