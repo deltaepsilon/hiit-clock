@@ -9,6 +9,7 @@ import saveTimerForm from './save-timer-form';
 import saveTimer from './save-timer';
 import signInAnonymously from './sign-in-anonymously';
 import signInWithGoogle from './sign-in-with-google';
+import signInWithFacebook from './sign-in-with-facebook';
 import signOut from './sign-out';
 
 export default {
@@ -22,6 +23,7 @@ export default {
   saveTimer: wrapEffect(saveTimer),
   signInAnonymously: wrapEffect(signInAnonymously),
   signInWithGoogle: wrapEffect(signInWithGoogle),
+  signInWithFacebook: wrapEffect(signInWithFacebook),
   signOut: wrapEffect(signOut),
 };
 

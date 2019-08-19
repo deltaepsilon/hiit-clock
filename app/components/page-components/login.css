@@ -1,0 +1,8 @@
+#login .mdc-button.google {
+  background-color: var(--color-google) !important;
+  color: var(--mdc-theme-secondary-text) !important;
+}
+#login .mdc-button.facebook {
+  background-color: var(--color-facebook) !important;
+  color: var(--mdc-theme-secondary-text) !important;
+}
