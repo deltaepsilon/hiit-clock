@@ -40,7 +40,7 @@
 }
 
 #landing h2 {
-  font-size: 10vw;
+  font-size: 8vw;
 }
 
 #landing hr {
@@ -79,4 +79,8 @@
 
 #landing .mdc-list a {
   text-decoration: none;
+}
+
+#landing .phone-mock {
+  margin: 2rem 0;
 }

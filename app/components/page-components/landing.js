@@ -5,6 +5,7 @@ import { List, SimpleListItem } from '@rmwc/list';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import { Add, NavigateNext } from '../svg';
 import DashboardOrLogin from '../top-bar/dashboard-or-login';
+import PhoneMock from '../phone-mock/phone-mock';
 import constants from '../constants';
 
 import '@material/list/dist/mdc.list.css';
@@ -122,9 +123,13 @@ export default () => {
 
         <section>
           <h2>Optimized for Phones</h2>
-          <p>HiiT Clock is meant for phones.</p>
+          <p>I designed HiiT Clock for phones.</p>
           <p>Install HiiT Clock to your homescreen for Android.</p>
           <p>Navigate to HiiTClock.com in Safari on iOS.</p>
+
+          <PhoneMock>
+            <img src="/images/marketing/add-to-home-screen-prompt.png" alt="Add to home screen" />
+          </PhoneMock>
         </section>
 
         <hr />
@@ -133,6 +138,17 @@ export default () => {
           <h2>Send to Chromecast</h2>
           <p>Cast to your TV using Chromecast</p>
           <p>Perfect for living rooms and personal gyms</p>
+
+          <PhoneMock>
+            <img src="/images/marketing/cast-prompt.png" alt="Chromecast prompt" />
+          </PhoneMock>
+
+          <img
+            style={{ margin: '1rem 0' }}
+            src="/images/marketing/chromecast-tv-cropped-compressed.jpg"
+            alt="Chromecast on the TV"
+          />
+          <aside>This is how it looks on my kitchen TV 📺</aside>
         </section>
 
         <hr />
@@ -140,6 +156,10 @@ export default () => {
         <section>
           <h2>Audio-only mode</h2>
           <p>Out for a run? Turn on audio queues and run HiiT Clock on your phone in your pocket</p>
+
+          <PhoneMock>
+            <img src="/images/marketing/settings.png" alt="Settings" />
+          </PhoneMock>
         </section>
 
         <hr />
@@ -150,6 +170,10 @@ export default () => {
             We've seeded our database with common intervals and workouts from the health and fitness
             community
           </p>
+
+          <PhoneMock>
+            <img src="/images/marketing/timer-list.png" alt="Timer list" />
+          </PhoneMock>
         </section>
 
         <hr />
@@ -158,6 +182,10 @@ export default () => {
           <h2>Contribute to the community</h2>
           <p>Share your custom intervals with the HiiT Clock community.</p>
           <p>Share with a link, or make your workouts publicly searchable.</p>
+
+          <PhoneMock>
+            <img src="/images/marketing/timer-share.png" alt="Timer share" />
+          </PhoneMock>
         </section>
 
         <hr />
@@ -167,6 +195,10 @@ export default () => {
           <p>Create and save your custom workouts.</p>
           <p>Share workouts with friends or clients.</p>
           <p>Copy and modify existing workouts.</p>
+          
+          <PhoneMock>
+            <img src="/images/marketing/timer-edit.png" alt="Timer edit" />
+          </PhoneMock>
         </section>
       </div>
     </>
