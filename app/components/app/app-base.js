@@ -12,6 +12,7 @@ import LoadedProvider, { LoadedContext } from '../contexts/loaded-context';
 import ProfileProvider from '../contexts/profile-context';
 import SettingsProvider from '../contexts/settings-context';
 import UserMenu from '../top-bar/user-menu';
+import Analytics from './analytics';
 import FirebasePerformance from './firebase-performance';
 import useServiceWorker from '../hooks/use-service-worker';
 
@@ -24,6 +25,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
 
   return (
     <>
+      <Analytics />
       <Environment />
       <FirebasePerformance />
       <Fonts />

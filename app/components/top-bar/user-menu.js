@@ -44,7 +44,7 @@ function UserMenu() {
     { html: <MenuItem key="log-out">Log Out</MenuItem>, action: () => effects.signOut() },
   ].filter(({ hidden }) => !hidden);
 
-  return (
+  return currentUser ? (
     <>
       <MenuSurfaceAnchor>
         <Menu
@@ -67,7 +67,7 @@ function UserMenu() {
         />
       </MenuSurfaceAnchor>
     </>
-  );
+  ) : null;
 }
 
 function MicroMenu() {
