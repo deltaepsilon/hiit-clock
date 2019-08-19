@@ -1,7 +1,5 @@
 #timer-play {
   width: 100vw;
-  height: calc(100vh - 5rem);
-
   user-select: none;
 }
 
@@ -10,7 +8,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   flex: 1;
-  max-height: 100%;
+  height: calc(100vh - 142px);
 }
 
 #timer-play .cycles-list .cycle-list-item:not(:last-child) {
@@ -18,8 +16,8 @@
 }
 
 @media (max-height: 480px) {
-  #timer-play {
-    height: calc(100vh - 3.5rem);
+  #timer-play #timer-details-container {
+    height: calc(100vh - 118px);
   }
 }
 
@@ -35,5 +33,10 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
+  }
+
+  #timer-play #timer-details-container {
+    height: calc(100vh - 56px);
+    max-width: calc(100vw - 82px);
   }
 }

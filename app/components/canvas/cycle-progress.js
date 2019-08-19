@@ -37,7 +37,9 @@ export default ({ cycleStats }) => {
                   width: `${period.percentOfCycle * 100}%`,
                 }}
               >
-                <TotalTime totalSeconds={period.totalSeconds} minimal />
+                {period.percentOfCycle > 0.3 && (
+                  <TotalTime totalSeconds={period.totalSeconds} minimal />
+                )}
               </div>
             );
           })}

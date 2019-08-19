@@ -48,6 +48,11 @@
   padding: 0 1rem;
 }
 
+#timer-list #cycles-list {
+  flex: 1;
+  overflow: hidden;
+}
+
 @media (orientation: portrait) {
   #timer-list .big-time {
     font-size: 25vw;
@@ -68,6 +73,10 @@
 }
 
 @media (orientation: landscape) {
+  #timer-list {
+    max-width: calc(100vw - 56px);
+  }
+
   #timer-list .big-time {
     font-size: 22vw;
   }
@@ -84,9 +93,5 @@
 
   #timer-list .seconds-row p {
     font-size: 5vh;
-  }
-
-  #timer-list #cycles-list {
-    /* display: none; */
   }
 }
