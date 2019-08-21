@@ -3,10 +3,11 @@ import getTimerCycles from './get-timer-cycles';
 const powerlifting = require('../data/powerlifting.json');
 const tabata = require('../data/tabata.json');
 const sideSplitsPeriods = require('../data/side-splits.json');
+const mostDensestPeriods = require('../data/most-densest.json');
 
 describe('getTimerCycles', () => {
   describe('Powerlifting 5x5', () => {
-    const expectedCycleCount = 7;
+    const expectedCycleCount = 6;
     let result;
 
     beforeEach(() => {
@@ -25,7 +26,7 @@ describe('getTimerCycles', () => {
   });
 
   describe('Powerlifting 5x5 without ending rest period', () => {
-    const expectedCycleCount = 7;
+    const expectedCycleCount = 6;
     let result;
 
     beforeEach(() => {
@@ -46,7 +47,7 @@ describe('getTimerCycles', () => {
   });
 
   describe('Powerlifting 2x2', () => {
-    const expectedCycleCount = 4;
+    const expectedCycleCount = 3;
     let result;
 
     beforeEach(() => {
@@ -87,6 +88,22 @@ describe('getTimerCycles', () => {
 
     it('should have 10 cycles', () => {
       expect(result.length).toEqual(10);
+    });
+
+    it('should match snapshot', () => {
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('Most Densest', () => {
+    let result;
+
+    beforeEach(() => {
+      result = getTimerCycles({ periods: mostDensestPeriods });
+    });
+
+    it('should have 3 cycles', () => {
+      expect(result.length).toEqual(3);
     });
 
     it('should match snapshot', () => {

@@ -10,14 +10,8 @@
 }
 
 #timer-play .cycles-list .cycle-list-item:not(:last-child) {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
-/* 
-@media (max-height: 480px) {
-  #timer-play #timer-details-container {
-    height: calc(100vh - 118px);
-  }
-} */
 
 @media (orientation: portrait) {
   #timer-play {
