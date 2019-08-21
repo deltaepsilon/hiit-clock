@@ -112,7 +112,7 @@ function Period({ index, periodId }) {
   };
   const periodWrapperRef = useRef(null);
   const src = file && (file.dataUrl || file.downloadURL);
-  const title = flags.isRest ? constants.TEXT.REST : name;
+  const title = flags.isRest ? name || constants.TEXT.REST : name;
 
   return (
     <div

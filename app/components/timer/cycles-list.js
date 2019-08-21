@@ -35,7 +35,7 @@ export default React.memo(
                   return (
                     <li key={`period-${periodIndex}`} className="period-list-item" style={style}>
                       <span className="period-name">
-                        {isRest ? constants.TEXT.REST : period.name}
+                        {isRest ? period.name || constants.TEXT.REST : period.name}
                       </span>
                       <PeriodTime period={period} />
                     </li>

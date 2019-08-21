@@ -69,8 +69,7 @@ export default () => {
             type="text"
             label="Period Name"
             placeholder="Jumping Jacks"
-            value={isWork ? periodValues.name : 'Rest'}
-            disabled={!isWork}
+            value={isWork ? periodValues.name : periodValues.name || 'Rest'}
             onChange={getChangeHandler({ key: 'name', periodValues, setPeriodValues })}
           />
           <div className="row">
