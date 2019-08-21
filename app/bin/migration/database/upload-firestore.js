@@ -92,6 +92,7 @@ function mapRtdbData(dataset) {
             const standardizedType = type == 'rest' ? 'rest' : 'work';
 
             return {
+              id: uuid(),
               name,
               totalSeconds,
               type: standardizedType,
@@ -134,5 +135,5 @@ async function writeFirestore(batchRecords) {
     `Processed ${recordsToProcess.length} records. ${recordsToDelay.length} records left to process`
   );
 
-  recordsToDelay.length && await writeFirestore(recordsToDelay);
+  recordsToDelay.length && (await writeFirestore(recordsToDelay));
 }

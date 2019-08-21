@@ -2,7 +2,7 @@ npx firebase auth:import /app/bin/migration/authentication/authentication-filter
   --project=quiver-hiit-clock \
   --token=$FIREBASE_TOKEN \
   --hash-algo=$AUTH_ALGORITHM \
-  --hash-key=$HASH_KEY \
+  --hash-key=$AUTH_BASE64_SIGNER_KEY \
   --rounds=$AUTH_ROUNDS \
   --mem-cost=$AUTH_MEM_COST \
   --salt-separator=$AUTH_BASE64_SALT_SEPARATOR
