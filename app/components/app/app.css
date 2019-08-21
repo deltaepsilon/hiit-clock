@@ -71,6 +71,7 @@ body {
   font-display: swap;
   overflow-x: hidden;
   touch-action: pan-y;
+  min-height: 100vh;
 }
 
 body[no-scroll='true'] {

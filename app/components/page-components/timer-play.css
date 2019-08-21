@@ -6,25 +6,24 @@
 #timer-play #timer-details-container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   flex: 1;
-  height: calc(100vh - 142px);
 }
 
 #timer-play .cycles-list .cycle-list-item:not(:last-child) {
   margin-bottom: 0px;
 }
-
+/* 
 @media (max-height: 480px) {
   #timer-play #timer-details-container {
     height: calc(100vh - 118px);
   }
-}
+} */
 
 @media (orientation: portrait) {
   #timer-play {
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 5rem);
   }
 }
 
@@ -33,10 +32,16 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: var(--color-gray-dark);
   }
 
   #timer-play #timer-details-container {
-    height: calc(100vh - 56px);
     max-width: calc(100vw - 82px);
+    overflow: hidden;
   }
 }

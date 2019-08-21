@@ -46,11 +46,6 @@
   font-size: 1rem;
 }
 
-.cycles-list .period-list .period-list-item[show-period='false'] {
-  background: var(--color-gray-dark);
-  color: var(--color-gray-dark);
-}
-
 .cycles-list .period-list .period-list-item .period-name {
   flex: 1;
   text-align: left;

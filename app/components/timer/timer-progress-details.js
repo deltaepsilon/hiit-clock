@@ -107,8 +107,23 @@ const DetailsView = React.memo(
         <div id="cycles-list">
           <CyclesList
             cycles={cycles}
-            cycleIndexFilter={index => [cycleStats.index, cycleStats.index + 1].includes(index)}
-            periodFilter={period => period.periodIndex >= periodIndex}
+            cycleIndexFilter={cycle => {
+              const cycleIndex = cycle.index;
+              const isCurrentCycle = cycleStats.index == cycleIndex;
+              const isNextCycle = cycleStats.index + 1 == cycleIndex;
+              const currentCyclePeriods = cycles[cycleIndex];
+              const nextCyclePeriods = cycles[cycleIndex + 1];
+              const currentPeriodsRemaining = currentCyclePeriods.length - 1 - periodIndex;
+
+              return isCurrentCycle || (isNextCycle && currentPeriodsRemaining < 2);
+            }}
+            periodFilter={(period, cycles) => {
+              const periodDiff = period.periodIndex - periodIndex;
+              const isCurrentOrFuturePeriod = periodDiff >= 0;
+              const isNotFarFuture = periodDiff < 3;
+
+              return isCurrentOrFuturePeriod && isNotFarFuture;
+            }}
           />
         </div>
       </div>

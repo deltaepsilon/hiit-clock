@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   padding: 1rem 0 0;
-  height: calc(100% - 1rem);
 }
 
 #timer-list .seconds-row {
@@ -77,7 +76,7 @@
   }
 
   #timer-list .big-time {
-    font-size: 22vw;
+    font-size: 22vh;
   }
 
   #timer-list .big-name {

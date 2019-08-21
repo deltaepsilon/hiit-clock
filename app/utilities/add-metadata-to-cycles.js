@@ -23,6 +23,7 @@ export default cycles => {
     }, []);
 
     cycleWithMetadata.cycleColor = cycleColor;
+    cycleWithMetadata.index = cycleIndex;
 
     return [...result, cycleWithMetadata];
   }, []);
