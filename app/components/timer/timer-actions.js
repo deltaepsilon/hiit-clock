@@ -13,7 +13,7 @@ import './timer-actions.css';
 export default ({ timerId, userId }) => {
   const [scrollY, setScrollY] = useState(0);
   const fixedActions = scrollY > 250;
-  const playHref = `${location.origin}${
+  const playHref = `${
     constants.ROUTES.TIMER.PLAY
   }?id=${timerId}&userId=${userId}`;
   const detailHref = `${location.origin}${
