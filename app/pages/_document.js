@@ -20,7 +20,7 @@ export default class CustomDocument extends Document {
           <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-storage.js" />
           <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-database.js" />
           <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-performance.js" />
-          <script src="/__/firebase/init.js" defer />
+          <script src="/__/firebase/init.js" />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.1/algoliasearchLite.min.js" />
 
           <script
