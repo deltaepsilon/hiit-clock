@@ -24,7 +24,7 @@ export default function TimerPlay({ timerId, userId }) {
 
   useEffect(() => {
     if (mediaSessionEnabled) {
-      alert('Media controls enabled.');
+      alert('Android media controls enabled.');
     }
   }, [mediaSessionEnabled]);
 
