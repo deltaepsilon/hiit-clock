@@ -1,11 +1,11 @@
 .chromecast-base .cycles-list .period-list .period-list-item {
-  padding-right: 1rem;
+  /* padding-right: 1rem; */
 }
 
 @media (orientation: landscape) {
-  #timer-play {
-    height: 100vh !important;
-    position: absolute;
-    top: 0;
+  #timer-details-container,
+  #timer-bars,
+  #timer-list {
+    max-width: 100vw !important;
   }
 }
