@@ -28,20 +28,20 @@ export default function TimerControls() {
     <div id="timer-controls">
       {isPlaying && (
         <>
-          <a onClick={effects.skipBackward}>
+          <a id="timer-controls-skip-backward" onClick={effects.skipBackward}>
             <Replay10 {...smallButtonProps} />
           </a>
-          <a onClick={effects.backward}>
+          <a id="timer-controls-backward" onClick={effects.backward}>
             <SkipPrevious {...smallButtonProps} />
           </a>
 
-          <a onClick={effects.pause}>
+          <a id="timer-controls-pause" onClick={effects.pause}>
             <PauseCircleFilled {...largeButtonProps} />
           </a>
-          <a onClick={effects.forward}>
+          <a id="timer-controls-forward" onClick={effects.forward}>
             <SkipNext {...smallButtonProps} />
           </a>
-          <a onClick={effects.skipForward}>
+          <a id="timer-controls-skip-forward" onClick={effects.skipForward}>
             <Forward10 {...smallButtonProps} />
           </a>
         </>
@@ -53,16 +53,16 @@ export default function TimerControls() {
               <Stop {...smallButtonProps} />
             </span>
           </Link>
-          <a onClick={effects.backward}>
+          <a id="timer-controls-backward" onClick={effects.backward}>
             <SkipPrevious {...smallButtonProps} />
           </a>
-          <a onClick={effects.play} disabled={isAtMax}>
+          <a id="timer-controls-play" onClick={effects.play} disabled={isAtMax}>
             <PlayCircleFilled {...largeButtonProps} />
           </a>
-          <a onClick={effects.forward} disabled={isAtMax}>
+          <a id="timer-controls-forward" onClick={effects.forward} disabled={isAtMax}>
             <SkipNext {...smallButtonProps} />
           </a>
-          <a onClick={effects.replay} disabled={!isInFlight}>
+          <a id="timer-controls-replay" onClick={effects.replay} disabled={!isInFlight}>
             <Replay {...smallButtonProps} />
           </a>
         </>

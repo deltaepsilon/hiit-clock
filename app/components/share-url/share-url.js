@@ -7,18 +7,12 @@ export default function shareUrl({ children, title, href }) {
   const alert = useAlert();
   const handleClick = useCallback(
     async e => {
-      if (navigator.share) {
-        e.preventDefault();
-
+      e.preventDefault();
+      
+      try {
         await navigator.share({ url: href });
-      } else {
-        try {
-          copyToClipboard(href, () => alert('Copied to clipboard'));
-
-          e.preventDefault();
-        } catch (error) {
-          console.error(error);
-        }
+      } catch (error) {
+        copyToClipboard(href, () => alert('Copied to clipboard'));
       }
     },
     [title, href]

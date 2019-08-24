@@ -1,0 +1,19 @@
+{
+  "periods": [
+    {
+      "id": "33b5ee84-a397-4f32-afb6-0afdb89d9586",
+      "name": "Row",
+      "totalSeconds": 1200,
+      "type": "work"
+    }
+  ],
+  "name": "Row",
+  "algolia": {
+    "name": "Row",
+    "totalSeconds": 1210,
+    "uid": "NiEM9XBMrRfwxe93JOgTd2JiP4z2"
+  },
+  "index": "timers",
+  "isSearchable": true,
+  "uid": "NiEM9XBMrRfwxe93JOgTd2JiP4z2"
+}

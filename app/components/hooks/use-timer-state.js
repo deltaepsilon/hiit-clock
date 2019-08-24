@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import getCurrentPeriodStats from '../../utilities/get-current-period-stats';
@@ -17,14 +17,142 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   const [totalMillis, setTotalMillis] = useState(0);
   const [playState, setPlayState] = useState(constants.PLAY_STATES.STOPPED);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
-  const [millisElapsed, setMillisElapsed] = useState(0);
+  const [millisElapsed, setMillisElapsed] = useState(null);
+  const [accumulatedMillisElapsed, setAccumulatedMillisElapsed] = useState(null);
   const [timeStarted, setTimeStarted] = useState(null);
-  const [intervalTracker, setIntervalTracker] = useState(null);
+  const [, setIntervalTracker] = useState(null);
   const [cacheBust, setCacheBust] = useState(0);
 
-  useEffect(() => onSecondsElapsed(secondsElapsed), [secondsElapsed]);
+  const clearTimerInterval = useCallback(() => {
+    setIntervalTracker(intervalTracker => {
+      intervalTracker && clearInterval(intervalTracker);
+      return null;
+    });
+  }, [setIntervalTracker]);
 
-  useEffect(() => setSecondsElapsed(millisecondsToSeconds(millisElapsed)), [millisElapsed]);
+  const bustCache = useCallback(() => {
+    clearTimerInterval();
+    setCacheBust(Date.now());
+  }, [clearTimerInterval, setCacheBust]);
+
+  const updateMillisElapsed = useCallback(
+    updatedMillisElapsed => {
+      setMillisElapsed(updatedMillisElapsed);
+      setAccumulatedMillisElapsed(updatedMillisElapsed);
+      setTimeStarted(Date.now());
+      bustCache();
+    },
+    [bustCache, setAccumulatedMillisElapsed, setMillisElapsed, setTimeStarted]
+  );
+
+  const { play, stop, pause } = useMemo(
+    () => ({
+      play: () => {
+        setTimeStarted(Date.now());
+        setPlayState(constants.PLAY_STATES.PLAYING);
+      },
+      stop: () => {
+        setPlayState(constants.PLAY_STATES.STOPPED);
+      },
+      pause: () => {
+        setAccumulatedMillisElapsed(millisElapsed);
+        setPlayState(constants.PLAY_STATES.PAUSED);
+      },
+    }),
+    [
+      accumulatedMillisElapsed,
+      millisElapsed,
+      setAccumulatedMillisElapsed,
+      setTimeStarted,
+      setPlayState,
+    ]
+  );
+
+  const skipForward = useCallback(() => {
+    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
+    const updatedMillisElapsed = Math.min(totalMillis, millisElapsed + millisToSkip);
+
+    updateMillisElapsed(updatedMillisElapsed);
+  }, [millisElapsed, totalMillis, updateMillisElapsed]);
+
+  const skipBackward = useCallback(() => {
+    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
+    const updatedMillisElapsed = Math.max(0, millisElapsed - millisToSkip);
+
+    updateMillisElapsed(updatedMillisElapsed);
+  }, [millisElapsed, updateMillisElapsed]);
+
+  const replay = useCallback(() => {
+    bustCache();
+    setAccumulatedMillisElapsed(0);
+    setMillisElapsed(0);
+  }, [bustCache, setAccumulatedMillisElapsed, setMillisElapsed]);
+
+  const forward = useCallback(
+    (e, adjustmentSeconds = 0) => {
+      const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
+      const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
+      const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
+
+      if (!stats) return;
+
+      const willAdvance = stats.remainder > 0;
+
+      if (!willAdvance) {
+        forward(null, 1);
+      } else {
+        const remainderMillis = secondsToMilliseconds(stats.remainder);
+        const updatedMillisElapsed = Math.min(
+          totalMillis,
+          millisElapsed + remainderMillis + adjustmentMillis
+        );
+
+        updateMillisElapsed(updatedMillisElapsed);
+      }
+    },
+    [millisElapsed, secondsElapsed, timer, totalMillis, updateMillisElapsed]
+  );
+
+  const backward = useCallback(
+    (e, adjustmentSeconds = 0) => {
+      const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
+      const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
+      const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
+
+      if (!stats) return;
+
+      const periodMillisElapsed = secondsToMilliseconds(stats.periodSecondsElapsed);
+      const millisToRemove = periodMillisElapsed - adjustmentMillis;
+      const willReverse = millisToRemove > 0;
+
+      if (willReverse) {
+        const updatedMillisElapsed = Math.min(totalMillis, millisElapsed - millisToRemove);
+
+        updateMillisElapsed(updatedMillisElapsed);
+      }
+    },
+    [millisElapsed, secondsElapsed, timer, totalMillis, updateMillisElapsed]
+  );
+
+  const handleNextTick = useCallback(() => {
+    const millisElapsed = getAccumulatedMillis(timeStarted, accumulatedMillisElapsed);
+    const shouldStop = millisElapsed >= totalMillis;
+
+    if (shouldStop) {
+      stop();
+      setMillisElapsed(totalMillis);
+    } else {
+      setMillisElapsed(millisElapsed);
+    }
+  }, [accumulatedMillisElapsed, millisElapsed, setMillisElapsed, timeStarted, totalMillis]);
+
+  useEffect(() => {
+    onSecondsElapsed(secondsElapsed);
+  }, [secondsElapsed]);
+
+  useEffect(() => {
+    setSecondsElapsed(millisecondsToSeconds(millisElapsed));
+  }, [millisElapsed]);
 
   useEffect(() => {
     const uid = currentUser && currentUser.uid;
@@ -42,28 +170,6 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   }, [millisElapsed, playState, saveTimerState, timeStarted]);
 
   useEffect(
-    () =>
-      function onUnmount() {
-        transactTimerState(timerState => {
-          const timer = timerState[timerId];
-          const isPlaying = timer && timer.playState == constants.PLAY_STATES.PLAYING;
-
-          if (timerId && isPlaying) {
-            const accumulatedMillis = getAccumulatedMillis(timer.timeStarted, timer.millisElapsed);
-            const millisElapsed = accumulatedMillis;
-            const timeStarted = Date.now();
-            const updatedTimerState = { ...timer, millisElapsed, timeStarted };
-
-            timerState[timerId] = updatedTimerState;
-          }
-
-          return timerState;
-        });
-      },
-    [timerId, timerId]
-  );
-
-  useEffect(
     function onTimerChanged() {
       if (!initialized && timer.periods.length) {
         const totalSeconds = calculateTimerTotalSeconds(timer);
@@ -72,25 +178,16 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
         setTotalMillis(totalMillis);
 
         const timerState = getTimerState();
-        const { playState, millisElapsed, timeStarted } = timerState[timerId] || {};
-        const isPlaying = playState == constants.PLAY_STATES.PLAYING;
+        const { playState, timeStarted, accumulatedMillisElapsed } = timerState[timerId] || {};
 
         playState && setPlayState(playState);
         timeStarted && setTimeStarted(timeStarted);
-
-        if (timeStarted && isPlaying) {
-          updateMillisElapsed(millisElapsed);
-          /**
-           * updateMillisElapsed sets timeStarted to now and sets millisElapsed
-           */
-        } else {
-          millisElapsed && setMillisElapsed(millisElapsed);
-        }
+        accumulatedMillisElapsed && setAccumulatedMillisElapsed(accumulatedMillisElapsed);
 
         setInitialized(true);
       }
     },
-    [timer]
+    [timer, setPlayState, setTimeStarted, setAccumulatedMillisElapsed]
   );
 
   useEffect(
@@ -99,12 +196,12 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
 
       shouldUpdate &&
         transactTimerState(timerState => {
-          timerState[timerId] = { playState, millisElapsed, timeStarted };
+          timerState[timerId] = { playState, accumulatedMillisElapsed, timeStarted };
 
           return timerState;
         });
     },
-    [initialized, millisElapsed, playState, timerId]
+    [accumulatedMillisElapsed, initialized, millisElapsed, playState, timerId, timeStarted]
   );
 
   useEffect(
@@ -125,108 +222,6 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
     },
     [timer, playState, cacheBust]
   );
-
-  function handleNextTick() {
-    const accumulatedMillisElapsed = getAccumulatedMillis(timeStarted, millisElapsed);
-    const shouldStop = accumulatedMillisElapsed >= totalMillis;
-
-    if (shouldStop) {
-      stop();
-      setMillisElapsed(totalMillis);
-    } else {
-      setMillisElapsed(accumulatedMillisElapsed);
-    }
-  }
-
-  function play() {
-    setTimeStarted(Date.now());
-    setPlayState(constants.PLAY_STATES.PLAYING);
-  }
-
-  function stop() {
-    setPlayState(constants.PLAY_STATES.STOPPED);
-  }
-
-  function pause() {
-    setPlayState(constants.PLAY_STATES.PAUSED);
-  }
-
-  function forward(e, adjustmentSeconds = 0) {
-    const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
-    const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
-    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
-
-    if (!stats) return;
-
-    const willAdvance = stats.remainder > 0;
-
-    if (!willAdvance) {
-      forward(null, 1);
-    } else {
-      const remainderMillis = secondsToMilliseconds(stats.remainder);
-      const updatedMillisElapsed = Math.min(
-        totalMillis,
-        millisElapsed + remainderMillis + adjustmentMillis
-      );
-
-      updateMillisElapsed(updatedMillisElapsed);
-    }
-  }
-
-  function backward(e, adjustmentSeconds = 0) {
-    const adjustmentMillis = secondsToMilliseconds(adjustmentSeconds);
-    const secondsElapsed = millisecondsToSeconds(millisElapsed + adjustmentMillis);
-    const stats = getCurrentPeriodStats(timer.periods, secondsElapsed);
-
-    if (!stats) return;
-
-    const periodMillisElapsed = secondsToMilliseconds(stats.periodSecondsElapsed);
-    const millisToRemove = periodMillisElapsed - adjustmentMillis;
-    const willReverse = millisToRemove > 0;
-
-    if (willReverse) {
-      const updatedMillisElapsed = Math.min(totalMillis, millisElapsed - millisToRemove);
-
-      updateMillisElapsed(updatedMillisElapsed);
-    }
-  }
-
-  function skipForward() {
-    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
-    const updatedMillisElapsed = Math.min(totalMillis, millisElapsed + millisToSkip);
-
-    updateMillisElapsed(updatedMillisElapsed);
-  }
-
-  function skipBackward() {
-    const millisToSkip = secondsToMilliseconds(constants.TIMES.SECONDS_TO_SKIP);
-    const updatedMillisElapsed = Math.max(0, millisElapsed - millisToSkip);
-
-    updateMillisElapsed(updatedMillisElapsed);
-  }
-
-  function replay() {
-    bustCache();
-    setMillisElapsed(0);
-  }
-
-  function updateMillisElapsed(updatedMillisElapsed) {
-    setMillisElapsed(updatedMillisElapsed);
-    setTimeStarted(Date.now());
-    bustCache();
-  }
-
-  function bustCache() {
-    clearTimerInterval();
-    setCacheBust(Date.now());
-  }
-
-  function clearTimerInterval() {
-    if (intervalTracker) {
-      clearInterval(intervalTracker);
-      setIntervalTracker(null);
-    }
-  }
 
   const effects = {
     play,

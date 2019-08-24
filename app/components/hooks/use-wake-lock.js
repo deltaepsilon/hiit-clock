@@ -27,7 +27,7 @@ export default function useWakeLock(wakeLockType = 'screen') {
           console.error('👎', 'getWakeLock', error);
         }
       } else {
-        console.info('👎 getWakeLock not available');
+        // console.info('👎 getWakeLock not available');
       }
     })();
   }, []);
