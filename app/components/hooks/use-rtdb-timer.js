@@ -3,10 +3,9 @@ import { useEffect, useMemo, useState } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import schema from '../schema';
 import constants from '../constants';
-import { interval } from 'rxjs';
 
 const DEFAULT_STATE = {
-  millisElapsed: 0,
+  accumulatedMillisElapsed: 0,
   playState: constants.PLAY_STATES.PAUSED,
   timeStarted: Date.now(),
 };
@@ -26,38 +25,49 @@ export default function useRtdbTimer({ uid }) {
   const timerState = { playState: state.playState || DEFAULT_STATE, totalSeconds };
 
   useEffect(() => {
-    const { millisElapsed, playState, timeStarted } = state || DEFAULT_STATE;
-    const intervalTracker = setInterval(() => {
-      const isPlaying = playState == constants.PLAY_STATES.PLAYING;
-      const millisSinceStart = isPlaying ? Date.now() - timeStarted : 0;
-      const millisAccumulated = millisSinceStart + millisElapsed;
-      const secondsElapsed = millisecondsToSeconds(millisAccumulated);
+    const { accumulatedMillisElapsed, millisCorrection, playState, timeStarted } =
+      state || DEFAULT_STATE;
+    const isPlaying = playState == constants.PLAY_STATES.PLAYING;
+
+    if (isPlaying) {
+      const intervalTracker = setInterval(() => {
+        const millisSinceStart = Date.now() - timeStarted;
+        const millisAccumulated = millisSinceStart + accumulatedMillisElapsed - millisCorrection;
+        const secondsElapsed = millisecondsToSeconds(millisAccumulated);
+
+        setSecondsElapsed(secondsElapsed);
+      }, constants.TIMES.MILLIS_TO_POLL);
+
+      return () => clearInterval(intervalTracker);
+    } else {
+      const secondsElapsed = millisecondsToSeconds(accumulatedMillisElapsed);
 
       setSecondsElapsed(secondsElapsed);
-    }, constants.TIMES.MILLIS_TO_POLL);
-
-    return () => clearInterval(intervalTracker);
+    }
   }, [state]);
 
   useEffect(() => {
-    (async () => {
-      const snapshot = await ref.once('value');
-      const { state, timer } = snapshot.val() || {};
-
-      setState(state);
-      setTimer(timer);
-    })();
-  }, [ref]);
-
-  useEffect(() => {
     const stateRef = ref.child('state');
-    const handler = stateRef.on('value', snapshot => {
+    const timerRef = ref.child('timer');
+
+    const stateHandler = stateRef.on('value', snapshot => {
       const state = snapshot.val();
+
+      state.millisCorrection = Date.now() - state.updated;
 
       setState(state);
     });
 
-    return () => stateRef.off('value', handler);
+    const timerHandler = timerRef.on('value', snapshot => {
+      const timer = snapshot.val();
+
+      setTimer(timer);
+    });
+
+    return () => {
+      stateRef.off('value', stateHandler);
+      timerRef.off('value', timerHandler);
+    };
   }, [ref]);
 
   return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };

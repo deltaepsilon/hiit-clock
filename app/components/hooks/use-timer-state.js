@@ -164,10 +164,10 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   }, [currentUser, timer, timerId]);
 
   useEffect(() => {
-    const state = { millisElapsed, playState, timeStarted };
+    const state = { accumulatedMillisElapsed, playState, timeStarted, updated: Date.now() };
 
     saveTimerState && saveTimerState({ state });
-  }, [millisElapsed, playState, saveTimerState, timeStarted]);
+  }, [accumulatedMillisElapsed, playState, saveTimerState, timeStarted]);
 
   useEffect(
     function onTimerChanged() {
@@ -247,11 +247,11 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
   return result;
 };
 
-function getAccumulatedMillis(timeStarted, millisElapsed) {
+function getAccumulatedMillis(timeStarted, accumulatedMillisElapsed) {
   const millisSinceStart = Date.now() - timeStarted;
-  const accumulatedMillisElapsed = millisSinceStart + millisElapsed;
+  const millisAccumulated = millisSinceStart + accumulatedMillisElapsed;
 
-  return accumulatedMillisElapsed;
+  return millisAccumulated;
 }
 
 function millisecondsToSeconds(millis) {
