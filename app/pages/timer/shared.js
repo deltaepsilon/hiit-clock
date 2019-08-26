@@ -21,7 +21,7 @@ export default () => {
   }, [search]);
 
   return (
-    <ChromecastBase>
+    <ChromecastBase className="shared">
       <ChromecastPlay shareId={shareId} uid={uid} />
     </ChromecastBase>
   );

@@ -8,7 +8,7 @@ import CastReceiver from './cast-receiver';
 import './app.css';
 import './chromecast.css';
 
-export function AppBase({ children }) {
+export function AppBase({ children, className = '' }) {
   return (
     <>
       <CastReceiver />
@@ -17,7 +17,7 @@ export function AppBase({ children }) {
       <MDCStyles />
       <Meta />
       <>
-        <div id="app-base" className="chromecast-base">
+        <div id="app-base" className={`chromecast-base ${className}`}>
           <div id="page-content">{children}</div>
         </div>
       </>
