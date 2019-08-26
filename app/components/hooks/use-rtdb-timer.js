@@ -20,19 +20,21 @@ export default function useRtdbTimer({ uid }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [timer, setTimer] = useState(DEFAULT_TIMER);
   const [state, setState] = useState(DEFAULT_STATE);
-  const ref = useMemo(() => schema.getTimerStateRef(uid), [uid]);
+  const [correctionMillis, setCorrectionMillis] = useState(0);
+  const timerStateRef = useMemo(() => schema.getTimerStateRef(uid), [uid]);
+  const correctionMillisRef = useMemo(() => schema.getCorrectionMillisRef(uid), [uid]);
   const totalSeconds = useMemo(() => calculateTimerTotalSeconds(timer || DEFAULT_TIMER), [timer]);
   const timerState = { playState: state.playState || DEFAULT_STATE, totalSeconds };
 
   useEffect(() => {
-    const { accumulatedMillisElapsed, millisCorrection, playState, timeStarted } =
-      state || DEFAULT_STATE;
+    const { accumulatedMillisElapsed, playState, timeStarted } = state || DEFAULT_STATE;
     const isPlaying = playState == constants.PLAY_STATES.PLAYING;
 
     if (isPlaying) {
       const intervalTracker = setInterval(() => {
+        const correctedAccumulatedMillis = accumulatedMillisElapsed - correctionMillis;
         const millisSinceStart = Date.now() - timeStarted;
-        const millisAccumulated = millisSinceStart + accumulatedMillisElapsed - millisCorrection;
+        const millisAccumulated = millisSinceStart + correctedAccumulatedMillis;
         const secondsElapsed = millisecondsToSeconds(millisAccumulated);
 
         setSecondsElapsed(secondsElapsed);
@@ -40,22 +42,33 @@ export default function useRtdbTimer({ uid }) {
 
       return () => clearInterval(intervalTracker);
     } else {
-      const secondsElapsed = millisecondsToSeconds(accumulatedMillisElapsed);
+      const correctedAccumulatedMillis = accumulatedMillisElapsed + correctionMillis;
+      const isAtStart = accumulatedMillisElapsed == 0;
+      const isAtEnd = correctedAccumulatedMillis >= secondsToMilliseconds(totalSeconds);
 
-      setSecondsElapsed(secondsElapsed);
+      if (isAtStart) {
+        setSecondsElapsed(0);
+      } else if (isAtEnd) {
+        setSecondsElapsed(totalSeconds);
+      } else {
+        const secondsElapsed = millisecondsToSeconds(accumulatedMillisElapsed);
+
+        setSecondsElapsed(secondsElapsed);
+      }
     }
-  }, [state]);
+  }, [correctionMillis, state, timer, totalSeconds]);
 
   useEffect(() => {
-    const stateRef = ref.child('state');
-    const timerRef = ref.child('timer');
+    const stateRef = timerStateRef.child('state');
+    const timerRef = timerStateRef.child('timer');
 
     const stateHandler = stateRef.on('value', snapshot => {
       const state = snapshot.val();
-
-      state.millisCorrection = Date.now() - state.updated;
+      const correctionMillis = Date.now() - state.updated;
 
       setState(state);
+
+      correctionMillisRef.set(correctionMillis);
     });
 
     const timerHandler = timerRef.on('value', snapshot => {
@@ -64,15 +77,26 @@ export default function useRtdbTimer({ uid }) {
       setTimer(timer);
     });
 
+    const correctionMillisHandler = correctionMillisRef.on('value', snapshot => {
+      const correctionMillis = snapshot.val();
+
+      setCorrectionMillis(correctionMillis);
+    });
+
     return () => {
       stateRef.off('value', stateHandler);
       timerRef.off('value', timerHandler);
+      correctionMillisRef.off('value', correctionMillisHandler);
     };
-  }, [ref]);
+  }, [correctionMillisRef, timerStateRef]);
 
   return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };
 }
 
 function millisecondsToSeconds(millis) {
   return Math.floor(millis / 1000);
+}
+
+function secondsToMilliseconds(seconds) {
+  return seconds * 1000;
 }

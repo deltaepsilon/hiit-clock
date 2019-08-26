@@ -1,9 +1,20 @@
 /* globals window */
 export default {
+  getCorrectionMillisRef: userId =>
+    rtdb()
+      .ref('public')
+      .child('correctionMillis')
+      .child(userId),
   getProfileRef: uid =>
     db()
       .collection('profiles')
       .doc(uid),
+  getTimerStateRef: userId =>
+    rtdb()
+      .ref('user-owned-public')
+      .child(userId)
+      .child('current-timer'),
+  getTimersGroupRef: () => db().collectionGroup('timers'),
   getUserTimersRef: userId =>
     db()
       .collection('users')
@@ -17,12 +28,6 @@ export default {
 
     return timerId ? timersCollectionRef.doc(timerId) : timersCollectionRef.doc();
   },
-  getTimerStateRef: userId =>
-    rtdb()
-      .ref('user-owned-public')
-      .child(userId)
-      .child('current-timer'),
-  getTimersGroupRef: () => db().collectionGroup('timers'),
   getUserTimerStorageRef: (userId, timerId) =>
     storage()
       .ref('users')
