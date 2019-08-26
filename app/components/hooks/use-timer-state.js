@@ -182,7 +182,11 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
 
         playState && setPlayState(playState);
         timeStarted && setTimeStarted(timeStarted);
-        accumulatedMillisElapsed && setAccumulatedMillisElapsed(accumulatedMillisElapsed);
+
+        if (accumulatedMillisElapsed) {
+          setAccumulatedMillisElapsed(accumulatedMillisElapsed);
+          setMillisElapsed(accumulatedMillisElapsed);
+        }
 
         setInitialized(true);
       }
