@@ -16,13 +16,16 @@ const DEFAULT_TIMER = {
   periods: [],
 };
 
-export default function useRtdbTimer({ uid }) {
+export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [timer, setTimer] = useState(DEFAULT_TIMER);
   const [state, setState] = useState(DEFAULT_STATE);
   const [correctionMillis, setCorrectionMillis] = useState(0);
   const timerStateRef = useMemo(() => schema.getTimerStateRef(uid), [uid]);
-  const correctionMillisRef = useMemo(() => schema.getCorrectionMillisRef(uid), [uid]);
+  const correctionMillisRef = useMemo(
+    () => shareId && schema.getCorrectionMillisRef(uid, shareId),
+    [shareId, uid]
+  );
   const totalSeconds = useMemo(() => calculateTimerTotalSeconds(timer || DEFAULT_TIMER), [timer]);
   const timerState = { playState: state.playState || DEFAULT_STATE, totalSeconds };
 
@@ -44,7 +47,8 @@ export default function useRtdbTimer({ uid }) {
     } else {
       const correctedAccumulatedMillis = accumulatedMillisElapsed + correctionMillis;
       const isAtStart = accumulatedMillisElapsed == 0;
-      const isAtEnd = correctedAccumulatedMillis >= secondsToMilliseconds(totalSeconds);
+      const totalMillis = secondsToMilliseconds(totalSeconds);
+      const isAtEnd = correctedAccumulatedMillis >= totalMillis;
 
       if (isAtStart) {
         setSecondsElapsed(0);
@@ -59,35 +63,40 @@ export default function useRtdbTimer({ uid }) {
   }, [correctionMillis, state, timer, totalSeconds]);
 
   useEffect(() => {
-    const stateRef = timerStateRef.child('state');
-    const timerRef = timerStateRef.child('timer');
+    if (correctionMillisRef) {
+      const stateRef = timerStateRef.child('state');
+      const timerRef = timerStateRef.child('timer');
 
-    const stateHandler = stateRef.on('value', snapshot => {
-      const state = snapshot.val();
-      const correctionMillis = Date.now() - state.updated;
+      const stateHandler = stateRef.on('value', snapshot => {
+        const state = snapshot.val();
 
-      setState(state);
+        if (state) {
+          setState(state);
 
-      correctionMillisRef.set(correctionMillis);
-    });
+          const correctionMillis = Date.now() - state.updated;
 
-    const timerHandler = timerRef.on('value', snapshot => {
-      const timer = snapshot.val();
+          correctionMillisRef.set(correctionMillis);
+        }
+      });
 
-      setTimer(timer);
-    });
+      const timerHandler = timerRef.on('value', snapshot => {
+        const timer = snapshot.val();
 
-    const correctionMillisHandler = correctionMillisRef.on('value', snapshot => {
-      const correctionMillis = snapshot.val();
+        setTimer(timer);
+      });
 
-      setCorrectionMillis(correctionMillis);
-    });
+      const correctionMillisHandler = correctionMillisRef.on('value', snapshot => {
+        const correctionMillis = snapshot.val();
 
-    return () => {
-      stateRef.off('value', stateHandler);
-      timerRef.off('value', timerHandler);
-      correctionMillisRef.off('value', correctionMillisHandler);
-    };
+        setCorrectionMillis(correctionMillis);
+      });
+
+      return () => {
+        stateRef.off('value', stateHandler);
+        timerRef.off('value', timerHandler);
+        correctionMillisRef.off('value', correctionMillisHandler);
+      };
+    }
   }, [correctionMillisRef, timerStateRef]);
 
   return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };

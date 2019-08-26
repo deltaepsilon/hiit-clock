@@ -4,15 +4,17 @@
     "user-owned-public": {
       "$uid": {
         ".read": true,
-        ".write": "auth.uid == $uid",
+        ".write": "auth.uid == $uid"
       }
     },
     "public": {
       "correctionMillis": {
         "$uid": {
-          ".read": true,
-          ".write": true,
-          ".validate": "newData.isNumber()"
+          "$shareId": {
+            ".read": true,
+            ".write": true,
+            ".validate": "newData.isNumber()"
+          }
         }
       }
     }

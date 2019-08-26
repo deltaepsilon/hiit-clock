@@ -8,12 +8,14 @@ import TimerProvider from '../contexts/timer-context';
 
 import './timer-play.css';
 
-export default ({ uid }) => {
+export default ({ shareId, uid }) => {
   const { timer, secondsElapsed, timerState } = useRtdbTimer({
+    shareId,
     uid,
   });
+  const isLoaded = timer.periods.length;
 
-  return (
+  return isLoaded ? (
     <TimerProvider secondsElapsed={secondsElapsed} timer={timer} timerState={timerState}>
       <div id="timer-play">
         <div id="timer-details-container">
@@ -24,5 +26,17 @@ export default ({ uid }) => {
         <TimerFlash />
       </div>
     </TimerProvider>
+  ) : (
+    <EmptyTimerState />
   );
 };
+
+function EmptyTimerState() {
+  return (
+    <div id="empty-timer-state">
+      <marquee>
+        <h1>No timer loaded quite yet. Wait for it...</h1>
+      </marquee>
+    </div>
+  );
+}

@@ -1,10 +1,11 @@
 /* globals window */
 export default {
-  getCorrectionMillisRef: userId =>
+  getCorrectionMillisRef: (userId, shareId) =>
     rtdb()
       .ref('public')
       .child('correctionMillis')
-      .child(userId),
+      .child(userId)
+      .child(shareId),
   getProfileRef: uid =>
     db()
       .collection('profiles')

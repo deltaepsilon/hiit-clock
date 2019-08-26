@@ -141,6 +141,7 @@ export default (timerId, timer, { onSecondsElapsed } = DEFAULT_OPTIONS) => {
     if (shouldStop) {
       stop();
       setMillisElapsed(totalMillis);
+      setAccumulatedMillisElapsed(totalMillis);
     } else {
       setMillisElapsed(millisElapsed);
     }
