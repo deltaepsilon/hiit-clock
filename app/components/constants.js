@@ -89,6 +89,11 @@ export default {
     },
   },
   SHARED_USER: 'shared-user',
+  SOUNDS: [
+    { src: '/sounds/double-chime.mp3', name: 'Chime' },
+    { src: '/sounds/heartbeat.mp3', name: 'Heartbeat' },
+    { src: '/sounds/reverb-chime.mp3', name: 'Reverb' },
+  ],
   TEXT: {
     REST: 'Rest',
     WORK: 'Work',

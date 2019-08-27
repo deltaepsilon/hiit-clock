@@ -1392,6 +1392,19 @@
     "@material/theme" "^3.1.0"
     tslib "^1.9.3"
 
+"@material/radio@^3.0.0":
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/@material/radio/-/radio-3.1.0.tgz#f4bad34c889a44a16e9eabdddae950d89b057106"
+  integrity sha512-et5M32WoFopJGwhAiE6rWkgPHrkQLr+B4sycPJO4u6wBAqxX/XR3h1qyOU52zH7aDwPbK7hJ2/GCaEHHKWrJ1A==
+  dependencies:
+    "@material/animation" "^3.1.0"
+    "@material/base" "^3.1.0"
+    "@material/dom" "^3.1.0"
+    "@material/feature-targeting" "^3.1.0"
+    "@material/ripple" "^3.1.0"
+    "@material/theme" "^3.1.0"
+    tslib "^1.9.3"
+
 "@material/ripple@^2.3.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@material/ripple/-/ripple-2.3.0.tgz#4701b2cfecddc4c83ae62c777ae2bf9607988705"
@@ -1720,6 +1733,18 @@
   integrity sha512-mq691tC5A0hnyCbTpag96f6rkw++4r/nwE9dKw3pDDuHrmE89TWpdGcM5nefb9JVY+bK7IkTKTNH5CLKCV8qBQ==
   dependencies:
     "@rmwc/base" "^5.6.0"
+    "@rmwc/types" "^5.6.0"
+
+"@rmwc/radio@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.npmjs.org/@rmwc/radio/-/radio-5.6.0.tgz#2d3a1dc5feaf6954a6902cec42ca2fa0ada29301"
+  integrity sha512-bW418atdGQyEp8SuOL8MsPUdFT6G/PNBAk4Rzk9+h4s61CWV/Frn+XRthp6vFNeddUjd7yO4ArW6wij4JaofxQ==
+  dependencies:
+    "@material/radio" "^3.0.0"
+    "@rmwc/base" "^5.6.0"
+    "@rmwc/formfield" "^5.6.0"
+    "@rmwc/ripple" "^5.6.0"
+    "@rmwc/toggleable" "^5.6.0"
     "@rmwc/types" "^5.6.0"
 
 "@rmwc/ripple@^5.6.0":

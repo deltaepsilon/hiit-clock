@@ -1,14 +1,15 @@
 /* globals window */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import constants from '../constants';
 
-const defaultSettings = {
+const DEFAULT_SETTINGS = {
   soundAlertsEnabled: false,
   flashAlertsEnabled: true,
+  soundIndex: 0,
 };
 
 export default function useSettings() {
-  const [settings, setSettings] = useState(defaultSettings);
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
   useEffect(() => {
     return subscribe(setSettings);
@@ -22,7 +23,7 @@ function subscribe(setSettings) {
     const settingsString = localStorage.getItem(constants.LOCALSTORAGE.SETTINGS) || '{}';
     const settings = JSON.parse(settingsString);
 
-    setSettings(settings);
+    setSettings({ ...DEFAULT_SETTINGS, ...settings });
   }
 
   window.addEventListener('storage', getAndSetProfile);

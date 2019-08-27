@@ -8,6 +8,14 @@
   max-width: 500px;
 }
 
+#settings .switch {
+  padding: 1rem;
+}
+
+#settings .radio-button {
+  margin-left: -1rem;
+}
+
 #settings .mdc-text-field {
   width: 100%;
 }
@@ -38,7 +46,6 @@
 
 #settings .mdc-form-field {
   width: 100%;
-  padding: 1rem;
 }
 
 #settings .mdc-form-field label {

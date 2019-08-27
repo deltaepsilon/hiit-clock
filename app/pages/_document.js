@@ -1,5 +1,6 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import constants from '../components/constants';
 
 export default class CustomDocument extends Document {
   render() {
@@ -44,7 +45,7 @@ export default class CustomDocument extends Document {
             <div id="title" />
             <div id="user-menu" />
             <div id="timer-data" />
-            <audio id="chime" src="/sounds/double-chime.mp3" />
+            <audio id="chime" src={constants.SOUNDS[0].src} />
           </div>
           <div id="modal" />
           <Main />

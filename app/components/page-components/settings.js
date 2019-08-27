@@ -9,6 +9,7 @@ import constants from '../constants';
 import { TextField } from '@rmwc/textfield';
 import { Switch } from '@rmwc/switch';
 import { Button } from '@rmwc/button';
+import { Radio } from '@rmwc/radio';
 
 import './settings.css';
 
@@ -65,17 +66,36 @@ export default () => {
 
         <hr />
         <Switch
+          className="switch"
           checked={!!settings.soundAlertsEnabled}
           onChange={e => effects.saveSettings({ soundAlertsEnabled: e.target.checked })}
         >
           Sound Alerts
         </Switch>
         <Switch
+          className="switch"
           checked={!!settings.flashAlertsEnabled}
           onChange={e => effects.saveSettings({ flashAlertsEnabled: e.target.checked })}
         >
           Flash Alerts
         </Switch>
+
+        <hr />
+
+        <h3>Sound Selection</h3>
+        {constants.SOUNDS.map(({ name }, i) => {
+          return (
+            <Radio
+              key={name}
+              className="radio-button"
+              value={i}
+              checked={i == settings.soundIndex}
+              onChange={() => effects.saveSettings({ soundIndex: i })}
+            >
+              {name}
+            </Radio>
+          );
+        })}
       </form>
     </div>
   );
