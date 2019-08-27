@@ -5,9 +5,13 @@ import { IconButton } from '@rmwc/icon-button';
 import ArrowBack from '../svg/arrow-back';
 
 export default React.memo(({ href }) => {
-  const el = window.document.querySelector('#back-button');
+  if (typeof window != 'undefined') {
+    const el = window.document.querySelector('#back-button');
 
-  return ReactDOM.createPortal(<BackButton href={href} />, el);
+    return ReactDOM.createPortal(<BackButton href={href} />, el);
+  } else {
+    return null;
+  }
 });
 
 function BackButton({ href }) {

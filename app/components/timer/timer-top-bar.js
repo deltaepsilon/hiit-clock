@@ -16,7 +16,7 @@ export default function TimerTopBar({ mediaSessionEnabled, onMediaSessionClick }
   const { timerId, timer, totalSeconds, userId } = useContext(TimerContext);
   const shareHref = `${location.origin}${
     constants.ROUTES.TIMER.SHARED
-  }?uid=${userId}&shareId=${uuid()}`;
+  }?id=${timerId}&uid=${userId}&shareId=${uuid()}`;
   const timerTopBarViewProps = {
     mediaSessionEnabled,
     onMediaSessionClick,
