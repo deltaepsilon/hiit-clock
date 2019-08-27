@@ -142,7 +142,7 @@ const DetailsView = React.memo(
 
 function CountdownView({ period, periodSecondsElapsed, periodTotalSeconds }) {
   const secondsRemaining = periodTotalSeconds - periodSecondsElapsed;
-  const name = period.type == 'work' ? period.name : 'Rest';
+  const name = period.name;
 
   return (
     <>

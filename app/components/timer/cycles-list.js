@@ -24,7 +24,7 @@ export default React.memo(
 
           return showCycle ? (
             <li key={`cycle-${cycleIndex}`} className="cycle-list-item" style={style}>
-              <span className="cycle-index">{cycleIndex + 1}</span>
+              <span className="cycle-index">{cycleIndex}</span>
               <ul className="period-list">
                 {periods.map((period, periodIndex) => {
                   const isRest = period.type == constants.PERIOD_TYPES.REST;

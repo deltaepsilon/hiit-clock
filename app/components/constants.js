@@ -22,7 +22,8 @@ export default {
     ENABLED_LIGHT: '#ffffff',
     DISABLED_LIGHT: '#666666',
     WARNING: '#a5000f',
-    WORK: ['#f00081', '#ff5400', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
+    PREPARE: ['#333333'],
+    WORK: ['#ff5400', '#f00081', '#ffbd00', '#109648', '#1d4e89', '#d15eff'],
     REST: ['#4f4f4f'],
     HIGHLIGHT: '#df2935',
     BUTTON_ON_WHITE: '#3d3b3c',
@@ -59,6 +60,12 @@ export default {
     PLAYING: 'playing',
     PAUSED: 'paused',
     STOPPED: 'stopped',
+  },
+  PREPARE_PERIOD: {
+    id: 'prepare',
+    name: 'Prepare',
+    totalSeconds: 10,
+    type: 'prepare',
   },
   ROUTES: {
     LANDING: '/',

@@ -5,10 +5,11 @@ export default function findCycles({ periods }) {
     (acc, period, i, periods) => {
       const isLast = i == periods.length - 1;
       const isRest = period.type == constants.PERIOD_TYPES.REST;
+      const isPrepare = period.type == constants.PERIOD_TYPES.PREPARE;
 
       acc[acc.length - 1].push(period);
 
-      if (!isLast && isRest) {
+      if (!isLast && (isRest || isPrepare)) {
         acc.push([]);
       }
 

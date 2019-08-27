@@ -62,11 +62,13 @@ export default () => {
   return (
     <div id="periods-list" ref={wrapperRef}>
       <List id={PERIODS_LIST_ID}>
-        <Period periodId="prepare" />
+        <Period periodId={constants.PREPARE_PERIOD.id} />
 
-        {formValues.periods.map((period, i) => (
-          <Period key={`${period.id}-${i}`} index={i} periodId={period.id} />
-        ))}
+        {formValues.periods
+          .filter(period => !isPreparePeriod(period))
+          .map((period, i) => (
+            <Period key={`${period.id}-${i}`} index={i} periodId={period.id} />
+          ))}
 
         <div
           id="check-all-wrapper"
@@ -91,7 +93,7 @@ export default () => {
 
 function Period({ index, periodId }) {
   const timerFormContextValues = useContext(TimerFormContext);
-  const isPrepare = periodId == 'prepare';
+  const isPrepare = isPreparePeriod(periodId);
   const { handlers, period } = isPrepare
     ? getPrepareDetails(timerFormContextValues)
     : getPeriodDetails(periodId, index, timerFormContextValues);
@@ -427,4 +429,10 @@ function getCheckElementWithin({ deselect }) {
       deselect();
     }
   };
+}
+
+function isPreparePeriod(periodOrId) {
+  return typeof periodOrId == 'string'
+    ? periodOrId == constants.PREPARE_PERIOD.id
+    : periodOrId.type == constants.PERIOD_TYPES.PREPARE;
 }
