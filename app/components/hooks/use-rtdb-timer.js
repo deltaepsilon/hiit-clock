@@ -55,7 +55,7 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
       } else if (isAtEnd) {
         setSecondsElapsed(totalSeconds);
       } else {
-        const secondsElapsed = millisecondsToSeconds(accumulatedMillisElapsed);
+        const secondsElapsed = millisecondsToSeconds(accumulatedMillisElapsed || 0);
 
         setSecondsElapsed(secondsElapsed);
       }
