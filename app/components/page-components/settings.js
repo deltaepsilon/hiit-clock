@@ -3,6 +3,7 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 import { ProfileContext } from '../contexts/profile-context';
 import { SettingsContext } from '../contexts/settings-context';
 import BackButton from '../top-bar/back-button';
+import useSound from '../hooks/use-sound';
 import effects from '../../effects';
 import constants from '../constants';
 
@@ -18,6 +19,7 @@ export default () => {
   const profile = useContext(ProfileContext);
   const settings = useContext(SettingsContext);
   const [username, setUsername] = useState(profile.username);
+  const { playChime } = useSound();
 
   useEffect(() => setUsername(profile.username), [profile.username]);
 
@@ -90,7 +92,13 @@ export default () => {
               className="radio-button"
               value={i}
               checked={i == settings.soundIndex}
-              onChange={() => effects.saveSettings({ soundIndex: i })}
+              onChange={() => {
+                effects.saveSettings({ soundIndex: i });
+
+                setTimeout(() => {
+                  playChime();
+                });
+              }}
             >
               {name}
             </Radio>
