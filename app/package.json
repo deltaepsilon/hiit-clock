@@ -54,7 +54,7 @@
     "start": "next start",
     "serve:static": "yarn ci:build && npx http-server out -p 3000",
     "deploy": "yarn deploy:config && firebase deploy",
-    "deploy:config": "firebase functions:config:set algolia.admin_api_key=$_ALGOLIA_PRIVATE_API_KEY",
+    "deploy:config": "firebase functions:config:set algolia.admin_api_key=$_ALGOLIA_PRIVATE_API_KEY --token $_FIREBASE_TOKEN",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:hosting": "firebase deploy --only hosting",
     "deploy:database": "firebase deploy --only database",

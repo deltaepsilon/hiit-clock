@@ -22,8 +22,8 @@ Run `sh bin/encode-service-account.sh` to get the encoded string.
 
 ### Set the environment variables in GitLab
 
+- _FIREBASE_TOKEN, obtained by running `yarn ci:login` from inside the `dev` container.
 - FIREBASE_DATABASE_URL
-- FIREBASE_TOKEN, obtained by running `yarn ci:login` from inside the `dev` container.
 - SERVICE_ACCOUNT_BASE64
 
 # Certbot

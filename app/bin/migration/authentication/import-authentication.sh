@@ -1,6 +1,6 @@
 npx firebase auth:import /app/bin/migration/authentication/authentication-filtered.csv \
   --project=quiver-hiit-clock \
-  --token=$FIREBASE_TOKEN \
+  --token=$_FIREBASE_TOKEN \
   --hash-algo=$AUTH_ALGORITHM \
   --hash-key=$AUTH_BASE64_SIGNER_KEY \
   --rounds=$AUTH_ROUNDS \
