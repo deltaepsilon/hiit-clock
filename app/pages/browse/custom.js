@@ -8,7 +8,7 @@ import constants from '../../components/constants';
 
 import '../page.css';
 
-export default props => {
+export default () => {
   return (
     <AppBase>
       <div id="custom" className="page">

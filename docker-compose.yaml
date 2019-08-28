@@ -6,6 +6,7 @@ services:
     env_file: ./dev/workspace/env.list
     ports:
       - '3000:3000'
+      - '4000:4000'
       - '8080:8080'
       - '41000:41000'
     volumes:
