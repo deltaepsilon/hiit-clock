@@ -14,6 +14,7 @@ import SettingsProvider from '../contexts/settings-context';
 import UserMenu from '../top-bar/user-menu';
 import Analytics from './analytics';
 import FirebasePerformance from './firebase-performance';
+import SyncSettings from './sync-settings';
 import useServiceWorker from '../hooks/use-service-worker';
 
 import './app.css';
@@ -45,6 +46,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
                     <Router secure={secure} />
                     <ErrorHandler />
                     <CastSender />
+                    <SyncSettings />
                   </>
                 </RenderIfLoaded>
               </SettingsProvider>

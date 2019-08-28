@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import calculateTimerTotalSeconds from '../../utilities/calculate-timer-total-seconds';
 import schema from '../schema';
 import constants from '../constants';
+import effects from '../../effects';
 
 const DEFAULT_STATE = {
   accumulatedMillisElapsed: 0,
@@ -65,8 +66,6 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
   useEffect(() => {
     if (correctionMillisRef) {
       const stateRef = timerStateRef.child('state');
-      const timerRef = timerStateRef.child('timer');
-
       const stateHandler = stateRef.on('value', snapshot => {
         const state = snapshot.val();
 
@@ -79,12 +78,6 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
         }
       });
 
-      const timerHandler = timerRef.on('value', snapshot => {
-        const timer = snapshot.val();
-
-        setTimer(timer);
-      });
-
       const correctionMillisHandler = correctionMillisRef.on('value', snapshot => {
         const correctionMillis = snapshot.val();
 
@@ -93,11 +86,32 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
 
       return () => {
         stateRef.off('value', stateHandler);
-        timerRef.off('value', timerHandler);
         correctionMillisRef.off('value', correctionMillisHandler);
       };
     }
-  }, [correctionMillisRef, timerStateRef]);
+  }, [correctionMillisRef, setCorrectionMillis, setState, timerStateRef]);
+
+  useEffect(() => {
+    const timerRef = timerStateRef.child('timer');
+    const timerHandler = timerRef.on('value', snapshot => {
+      const timer = snapshot.val();
+
+      setTimer(timer);
+    });
+
+    return () => timerRef.off('value', timerHandler);
+  }, [setTimer, timerStateRef]);
+
+  useEffect(() => {
+    const settingsRef = timerStateRef.child('settings');
+    const settingsHandler = settingsRef.on('value', snapshot => {
+      const settings = snapshot.val() || {};
+
+      effects.saveSettings(settings);
+    });
+
+    return () => settingsRef.off('value', settingsHandler);
+  }, [timerStateRef]);
 
   return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };
 }
