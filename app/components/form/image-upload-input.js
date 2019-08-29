@@ -158,8 +158,6 @@ async function rotateImage({ imgRef, setFileUrl, setIsLoading }) {
   const blob = await pica.toBlob(canvas, 'image/jpeg');
   const dataUrl = await getDataUrl(blob);
 
-  document.body.appendChild(canvas);
-
   setFileUrl(dataUrl);
 }
 
@@ -172,8 +170,6 @@ async function resizeImage(imgRef, canvasRef) {
     const resized = await pica.resize(imgRef.current, canvasRef.current, { quality: 3 });
     const blob = await pica.toBlob(resized, 'image/jpeg', 0.9);
     const dataUrl = await getDataUrl(blob);
-
-    document.body.appendChild(resized);
 
     result = { blob, dataUrl, dimensions: { width, height } };
   }

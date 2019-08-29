@@ -156,7 +156,7 @@ function getHandleSubmit({ formValues, isOwned, timerId, currentUser }) {
 
     await effects.saveTimer({ isOwned, timer, timerId, currentUser });
 
-    Router.push(constants.ROUTES.DASHBOARD);
+    // Router.push(constants.ROUTES.DASHBOARD);
   };
 }
 
@@ -171,10 +171,12 @@ function getHandleDelete({ isOwned, timerId, currentUser }) {
 }
 
 function getTimerFromFormValues(formValues) {
-  const periods = formValues.periods.map(period => ({
-    ...period,
-    totalSeconds: +period.totalSeconds,
-  }));
+  const periods = formValues.periods
+    .filter(({ type }) => type != constants.PERIOD_TYPES.PREPARE)
+    .map(period => ({
+      ...period,
+      totalSeconds: +period.totalSeconds,
+    }));
 
   return { ...formValues, periods };
 }

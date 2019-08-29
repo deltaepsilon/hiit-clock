@@ -58,17 +58,18 @@ export default () => {
       editButton && editButton.focus();
     }
   }, [showPeriodSheet]);
+  const periodsWithoutFirstPrepare = formValues.periods.slice(1);
 
   return (
     <div id="periods-list" ref={wrapperRef}>
       <List id={PERIODS_LIST_ID}>
-        <Period periodId={constants.PREPARE_PERIOD.id} />
+        <Period periodId={constants.PREPARE_PERIOD.id} index={0} />
 
-        {formValues.periods
-          .filter(period => !isPreparePeriod(period))
-          .map((period, i) => (
-            <Period key={`${period.id}-${i}`} index={i} periodId={period.id} />
-          ))}
+        {periodsWithoutFirstPrepare.map((period, i) => {
+          const index = i + 1;
+
+          return <Period key={`${period.id}-${index}`} index={index} periodId={period.id} />;
+        })}
 
         <div
           id="check-all-wrapper"
@@ -93,7 +94,7 @@ export default () => {
 
 function Period({ index, periodId }) {
   const timerFormContextValues = useContext(TimerFormContext);
-  const isPrepare = isPreparePeriod(periodId);
+  const isPrepare = index == 0;
   const { handlers, period } = isPrepare
     ? getPrepareDetails(timerFormContextValues)
     : getPeriodDetails(periodId, index, timerFormContextValues);
@@ -237,6 +238,7 @@ function getPeriodDetails(periodId, index, timerFormContextValues) {
     }),
     handleCopy: getHandleCopy({
       index,
+      setActivePeriodId,
       setFormValues,
     }),
     handleEdit: getHandleEdit({
@@ -271,7 +273,7 @@ function getPrepareDetails(timerFormContextValues) {
     handleSelect: deselect,
     handleDeselect: deselect,
     handleAdd: getHandleAdd({
-      index: -1,
+      index: 0,
       setActivePeriodId,
       setActivePeriodIndex,
       setIsAdd,
@@ -366,16 +368,19 @@ function getHandleMoveUp({ index, periodId, setActivePeriodId, setFormValues }) 
   };
 }
 
-function getHandleCopy({ index, setFormValues }) {
+function getHandleCopy({ index, setActivePeriodId, setFormValues }) {
   return e => {
     e.stopPropagation();
     e.preventDefault();
 
     setFormValues(formValues => {
       const periods = formValues.periods.slice(0);
-      const period = { ...periods[index], id: uuid() };
+      const periodToDuplicate = periods[index];
+      const period = { ...periodToDuplicate, id: uuid() };
 
       periods.splice(index, 0, period);
+
+      setActivePeriodId(periodToDuplicate.id);
 
       return { ...formValues, periods };
     });
