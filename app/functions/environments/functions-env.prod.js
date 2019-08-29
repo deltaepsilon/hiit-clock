@@ -1,5 +1,9 @@
 const functions = require('firebase-functions');
-const config = functions.config();
+let config = functions.config();
+
+if (!config.algolia) {
+  config.algolia = { admin_api_key: process.env.ALGOLIA_PRIVATE_API_KEY };
+}
 
 module.exports = {
   algolia: {

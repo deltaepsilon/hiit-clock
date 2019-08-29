@@ -42,7 +42,7 @@
     ],
     "rewrites": [
       {
-        "source": "/http/**",
+        "source": "/sitemap.txt",
         "function": "http"
       }
     ]
