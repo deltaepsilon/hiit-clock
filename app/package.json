@@ -54,7 +54,6 @@
     "export": "rm -rf out && next export && node bin/replace-build-id.js",
     "start": "next start",
     "serve:static": "yarn ci:build && npx http-server out -p 3000",
-    "emulate": "firebase serve",
     "deploy": "firebase deploy --token $FIREBASE_TOKEN",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:hosting": "firebase deploy --only hosting --token $FIREBASE_TOKEN",

@@ -30,6 +30,11 @@
     "maxAgeSeconds": 3600
   },
   {
+    "origin": ["https://local.chrisesplin.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  },
+  {
     "origin": ["http://localhost"],
     "method": ["GET"],
     "maxAgeSeconds": 3600

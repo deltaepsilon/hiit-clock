@@ -11,14 +11,13 @@ module.exports = context => async (req, res) => {
   const allLines = addRecordsToLines({ lines, records });
   const sitemap = allLines.join('\n');
   const headers = { 'Content-Type': 'text/plain' };
-  const host = req.get('host');
-
-  console.info(`host: ${host}; length: ${allLines.length}`);
 
   res
     .set(headers)
     .status(200)
     .send(sitemap);
+
+  console.info(`origin: ${req.get('origin')}; length: ${allLines.length}`);
 };
 
 async function getAllRecordsFromIndex(index) {

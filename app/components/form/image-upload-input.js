@@ -57,11 +57,11 @@ export default ({ id, text = 'Upload', file, onChange }) => {
       <div className="image-upload-input" is-loading={String(isLoading)}>
         {isLoading && <LinearProgress />}
 
-        <label htmlFor={id}>
+        {/*<label htmlFor={id}>
           <Button raised disabled={!currentUser} onClick={triggerInput}>
             {text}
           </Button>
-        </label>
+        </label> */}
 
         <input
           id={id}
