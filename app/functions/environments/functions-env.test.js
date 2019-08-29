@@ -1,6 +1,6 @@
 module.exports = {
   algolia: {
-    apiKey: process.env._ALGOLIA_PRIVATE_API_KEY,
+    apiKey: process.env.ALGOLIA_PRIVATE_API_KEY,
     applicationId: 'TO2F04TXTS',
     indices: { timers: 'hiit-clock-test-2019:timers' },
   },

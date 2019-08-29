@@ -3,9 +3,14 @@ steps:
     args: ['build', '-t', 'us.gcr.io/$PROJECT_ID/hiit-clock:latest', '.']
   - name: 'us.gcr.io/$PROJECT_ID/hiit-clock:latest'
     dir: '/app'
-    args: ['yarn', 'ci:config', '--token', '$_FIREBASE_TOKEN']
+    args: ['yarn', 'ci:config']
+    env:
+      - 'FIREBASE_TOKEN=$_FIREBASE_TOKEN'
+      - 'ALGOIA_PRIVATE_API_KEY=$_ALGOLIA_PRIVATE_API_KEY'
   - name: 'us.gcr.io/$PROJECT_ID/hiit-clock:latest'
     dir: '/app'
-    args: ['yarn', 'ci:deploy', '--token', '$_FIREBASE_TOKEN']
+    args: ['yarn', 'ci:deploy']
+    env:
+      - 'FIREBASE_TOKEN=$_FIREBASE_TOKEN'
 images: ['us.gcr.io/$PROJECT_ID/hiit-clock:latest']
 timeout: 3600s

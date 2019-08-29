@@ -7,5 +7,5 @@ const mountPoint = '/http'
 
 app.use(mountPoint, Http(context));
 app.listen(port, '0.0.0.0', () => {
-  console.log(`mounting on ${mountPoint}; listening on port ${port}`);
+  console.info(`mounting on ${mountPoint}; listening on port ${port}`);
 });
