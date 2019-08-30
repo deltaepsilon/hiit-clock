@@ -1,9 +1,9 @@
 const uuid = require('uuid/v4');
 const context = require('../utilities/test-context');
-const Func = require('./timer-on-write');
+const Func = require('./file-delete');
 const dbTimer = require('../data/db-timer.json');
 
-describe('TimerOnWrite', () => {
+describe('FileDelete', () => {
   let deleteFunc;
 
   beforeEach(() => {

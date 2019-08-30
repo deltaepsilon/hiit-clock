@@ -7,7 +7,7 @@ exports.healthCheck = functions.https.onRequest(HealthCheck(context));
 const Http = require('./src/http');
 exports.http = functions.https.onRequest(Http(context));
 
-const TimerOnWrite = require('./src/timer-on-write');
-exports.timerOnWrite = functions.firestore
+const FileDelete = require('./src/file-delete');
+exports.fileDelete = functions.firestore
   .document('users/{userId}/timers/{timerId}')
-  .onWrite(TimerOnWrite(context));
+  .onWrite(FileDelete(context));
