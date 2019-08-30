@@ -37,9 +37,11 @@ export default ({ id, text = 'Upload', file, onChange }) => {
         }
 
         setIsLoading(false);
+
+        inputRef.current.value = '';
       })();
     }
-  }, [isLoading, canvasRef, imgRef, onChange, setIsLoading]);
+  }, [isLoading, canvasRef, inputRef, imgRef, onChange, setIsLoading]);
 
   useEffect(() => {
     setFileUrl(initialFileUrl);
@@ -125,15 +127,17 @@ export default ({ id, text = 'Upload', file, onChange }) => {
 
 function getFileChangeHandler({ setIsLoading, setPreviewUrl }) {
   return e => {
-    const [file] = e.target.files;
-    const reader = new FileReader();
+    if (e.target.value) {
+      const [file] = e.target.files;
+      const reader = new FileReader();
 
-    setIsLoading(true);
+      setIsLoading(true);
 
-    reader.addEventListener('load', () => setPreviewUrl(reader.result), false);
+      reader.addEventListener('load', () => setPreviewUrl(reader.result), false);
 
-    if (file) {
-      reader.readAsDataURL(file);
+      if (file) {
+        reader.readAsDataURL(file);
+      }
     }
   };
 }
