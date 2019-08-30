@@ -1,0 +1,117 @@
+{
+  "algolia": {
+    "description": "I've been training flexibility for a few months now, so I'm moving to a split routine.\n\n#flexibility\n\nThis is a 20m routine to progress toward the middle splits.",
+    "email": "christopher.esplin@gmail.com",
+    "name": "Flexibility - Hip Opener",
+    "totalSeconds": 1340,
+    "uid": "NiEM9XBMrRfwxe93JOgTd2JiP4z2"
+  },
+  "description": "I've been training flexibility for a few months now, so I'm moving to a split routine.\n\n#flexibility\n\nThis is a 20m routine to progress toward the middle splits.",
+  "file": {
+    "downloadURL": "https://firebasestorage.googleapis.com/v0/b/quiver-hiit-clock.appspot.com/o/users%2FoFFP3himd7fxFj6c93BT6Ifynjh2%2FHbuzYOGCuVTN0ceToHOE%2Fd794b7c1a5f828ceaf4ef31b0b7530fb?alt=media&token=5f2f681e-0467-4060-927f-a98be2dc42f5",
+    "key": "d794b7c1a5f828ceaf4ef31b0b7530fb",
+    "metadata": {
+      "bucket": "quiver-hiit-clock.appspot.com",
+      "contentDisposition": "inline; filename*=utf-8''d794b7c1a5f828ceaf4ef31b0b7530fb",
+      "contentEncoding": "identity",
+      "contentType": "image/png",
+      "fullPath": "users/oFFP3himd7fxFj6c93BT6Ifynjh2/HbuzYOGCuVTN0ceToHOE/d794b7c1a5f828ceaf4ef31b0b7530fb",
+      "generation": "1565360259509362",
+      "md5Hash": "0Z1Vv/t7Nq9O37r/snAo5g==",
+      "metageneration": "1",
+      "name": "d794b7c1a5f828ceaf4ef31b0b7530fb",
+      "size": 391148,
+      "timeCreated": "2019-08-09T14:17:39.509Z",
+      "type": "file",
+      "updated": "2019-08-09T14:17:39.509Z"
+    },
+    "storagePath": "gs://quiver-hiit-clock.appspot.com/users/oFFP3himd7fxFj6c93BT6Ifynjh2/HbuzYOGCuVTN0ceToHOE/d794b7c1a5f828ceaf4ef31b0b7530fb",
+    "totalBytes": 391148
+  },
+  "index": "timers",
+  "isSearchable": true,
+  "lastAccessed": 1566219472005,
+  "name": "Flexibility - Hip Opener",
+  "periods": [
+    {
+      "file": {},
+      "id": "72798cf1-9613-4ccb-8cb2-7bb30f86ac05",
+      "name": "Standing forward bend",
+      "totalSeconds": 30,
+      "type": "work"
+    },
+    {
+      "file": {},
+      "id": "1c143f3c-385e-4003-bd80-e94cdf8ef496",
+      "totalSeconds": 20,
+      "type": "rest"
+    },
+    {
+      "file": {},
+      "id": "7a46bffc-b283-4d74-91a3-d50aecbb09e1",
+      "name": "Frog",
+      "totalSeconds": 300,
+      "type": "work"
+    },
+    {
+      "file": {},
+      "id": "def05079-7203-4cd4-80b7-c836d6a55d0f",
+      "totalSeconds": 30,
+      "type": "rest"
+    },
+    {
+      "file": {
+        "downloadURL": "https://firebasestorage.googleapis.com/v0/b/quiver-hiit-clock.appspot.com/o/users%2FoFFP3himd7fxFj6c93BT6Ifynjh2%2FHbuzYOGCuVTN0ceToHOE%2Fd794b7c1a5f828ceaf4ef31b0b7530fb?alt=media&token=5f2f681e-0467-4060-927f-a98be2dc42f5",
+        "key": "d794b7c1a5f828ceaf4ef31b0b7530fb",
+        "metadata": {
+          "bucket": "quiver-hiit-clock.appspot.com",
+          "contentDisposition": "inline; filename*=utf-8''d794b7c1a5f828ceaf4ef31b0b7530fb",
+          "contentEncoding": "identity",
+          "contentType": "image/png",
+          "fullPath": "users/oFFP3himd7fxFj6c93BT6Ifynjh2/HbuzYOGCuVTN0ceToHOE/d794b7c1a5f828ceaf4ef31b0b7530fb",
+          "generation": "1565360259509362",
+          "md5Hash": "0Z1Vv/t7Nq9O37r/snAo5g==",
+          "metageneration": "1",
+          "name": "d794b7c1a5f828ceaf4ef31b0b7530fb",
+          "size": 391148,
+          "timeCreated": "2019-08-09T14:17:39.509Z",
+          "type": "file",
+          "updated": "2019-08-09T14:17:39.509Z"
+        },
+        "storagePath": "gs://quiver-hiit-clock.appspot.com/users/oFFP3himd7fxFj6c93BT6Ifynjh2/HbuzYOGCuVTN0ceToHOE/d794b7c1a5f828ceaf4ef31b0b7530fb",
+        "totalBytes": 391148
+      },
+      "id": "b88c503e-4d0a-4888-b8b1-366b00b4ac90",
+      "name": "Pancake",
+      "totalSeconds": 300,
+      "type": "work"
+    },
+    {
+      "file": {},
+      "id": "6bb928a7-6e82-4d75-814f-7e8bad1bdc6d",
+      "totalSeconds": 30,
+      "type": "rest"
+    },
+    {
+      "file": {},
+      "id": "6c1f88d0-3bba-4c74-976e-3eace39edade",
+      "name": "Butterfly",
+      "totalSeconds": 300,
+      "type": "work"
+    },
+    {
+      "file": {},
+      "id": "279f7906-742c-4d40-a3e9-bc73040726c9",
+      "totalSeconds": 30,
+      "type": "rest"
+    },
+    {
+      "file": {},
+      "id": "99031c13-c4ba-4e0b-a5f8-7fa48c13cb3d",
+      "name": "Wall splits",
+      "totalSeconds": 300,
+      "type": "work"
+    }
+  ],
+  "uid": "NiEM9XBMrRfwxe93JOgTd2JiP4z2"
+}
