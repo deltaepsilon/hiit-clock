@@ -25,11 +25,32 @@ export default ({ children, isOwned, secondsElapsed, timer, timerId, timerState,
   }, [timer, totalSeconds]);
 
   useEffect(() => {
-    const cycleStats = getCurrentCycleStats(cycles, {
+    let cycleStats = getCurrentCycleStats(cycles, {
       timer,
       secondsElapsed,
     });
-    const periodStats = getCurrentPeriodStats(timer.periods, secondsElapsed);
+    let periodStats = getCurrentPeriodStats(timer.periods, secondsElapsed);
+    const isEndOfPeriod = periodStats && periodStats.remainder == 0;
+
+    if (isEndOfPeriod) {
+      const nextPeriodStats = getCurrentPeriodStats(timer.periods, secondsElapsed + 1);
+
+      if (nextPeriodStats) {
+        periodStats = nextPeriodStats;
+        cycleStats = getCurrentCycleStats(cycles, {
+          timer,
+          secondsElapsed: secondsElapsed + 1,
+        });
+
+        periodStats.periodSecondsElapsed -= 1;
+        periodStats.remainder += 1;
+        periodStats.secondsElapsed -= 1;
+
+        cycleStats.cycleSecondsElapsed -= 1;
+        cycleStats.remainder += 1;
+        cycleStats.secondsElapsed -= 1;
+      }
+    }
 
     cycleStats && setCycleStats(cycleStats);
     periodStats && setPeriodStats(periodStats);
