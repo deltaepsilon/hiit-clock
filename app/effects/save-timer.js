@@ -45,10 +45,6 @@ async function saveImages({ isOwned, timer, timerId, uid }) {
   const timerWithFiles = attachFilesToTimer({ timer, files });
 
   return timerWithFiles;
-
-  /**
-   * TODO: Delete files with a Cloud Function if the record is ever deleted.
-   */
 }
 
 async function saveFile({ file, timerId, uid }) {
