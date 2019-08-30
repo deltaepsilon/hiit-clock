@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useContext, useMemo, useState } from 're
 import CyclesList from './cycles-list';
 import { SecondsContext, TimerContext } from '../contexts/timer-context';
 import TotalTime from './total-time';
-
+import constants from '../constants';
 import './timer-progress-details.css';
 
 const MODES = ['COUNTDOWN', 'PERIOD', 'CYCLE', 'TIME', 'DESCRIPTION', 'IMAGE'];
@@ -115,7 +115,6 @@ const DetailsView = React.memo(
               const isCurrentCycle = cycleStats.index == cycleIndex;
               const isNextCycle = cycleStats.index + 1 == cycleIndex;
               const currentCyclePeriods = cycles[cycleIndex];
-              const nextCyclePeriods = cycles[cycleIndex + 1];
               const currentPeriodsRemaining = currentCyclePeriods.length - 1 - periodIndex;
 
               return isCurrentCycle || (isNextCycle && currentPeriodsRemaining < 2);
@@ -138,14 +137,17 @@ const DetailsView = React.memo(
       prevProps.cycleSecondsElapsed == nextProps.cycleSecondsElapsed;
     const modeEqual = prevProps.mode == nextProps.mode;
     const periodEqual = prevProps.period == nextProps.period;
+    const cycleStatsEqual = prevProps.cycleStats == nextProps.cycleStats;
 
-    return secondsEqual && modeEqual && periodEqual;
+    return secondsEqual && modeEqual && periodEqual && cycleStatsEqual;
   }
 );
 
 function CountdownView({ period, periodSecondsElapsed, periodTotalSeconds }) {
   const secondsRemaining = periodTotalSeconds - periodSecondsElapsed;
-  const name = period.name;
+  const periodNameByType =
+    period.type == constants.PERIOD_TYPES.REST ? constants.TEXT.REST : constants.TEXT.WORK;
+  const name = period.name || periodNameByType;
 
   return (
     <>
