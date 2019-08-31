@@ -10,23 +10,24 @@ import TotalTime from '../timer/total-time';
 import getTimerCycles from '../../utilities/get-timer-cycles';
 import CyclesList from '../timer/cycles-list';
 import TimerActions from '../timer/timer-actions';
+import TimerSchema from '../timer/timer-schema';
 import constants from '../constants';
 
 import './timer-details.css';
 
 export default ({ timerId, userId }) => {
   const { currentUser } = useContext(AuthenticationContext);
+
   const timer = useTimer({ timerId, userId });
   const cycles = getTimerCycles(timer);
   const isOwned = currentUser && currentUser.uid == userId;
-  const fabHref = `${
-    constants.ROUTES.TIMER.EDIT
-  }?id=${timerId}&userId=${userId}&isOwned=${isOwned}`;
+  const fabHref = `${constants.ROUTES.TIMER.EDIT}?id=${timerId}&userId=${userId}&isOwned=${isOwned}`;
   const fabIcon = isOwned ? <Edit /> : <FileCopyOutline />;
   const imageSrc = timer.file && timer.file.downloadURL;
 
   return (
     <>
+      <TimerSchema timer={timer} />
       <BackButton href={constants.ROUTES.DASHBOARD} />
 
       <div id="timer-details">
