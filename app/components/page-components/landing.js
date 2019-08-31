@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from '@rmwc/button';
 import { List, SimpleListItem } from '@rmwc/list';
-import { AuthenticationContext } from '../contexts/authentication-context';
 import { Add, NavigateNext } from '../svg';
 import DashboardOrLogin from '../top-bar/dashboard-or-login';
 import PhoneMock from '../phone-mock/phone-mock';
@@ -11,19 +11,11 @@ import constants from '../constants';
 import '@material/list/dist/mdc.list.css';
 import './landing.css';
 
-const links = {
-  powerlifting: `${constants.ROUTES.TIMER.DETAIL}?id=powerlifting-5x5&userId=${
-    constants.SHARED_USER
-  }`,
-  tabata: `${constants.ROUTES.TIMER.DETAIL}?id=tabata-20-40&userId=${constants.SHARED_USER}`,
-  emom: `${constants.ROUTES.TIMER.DETAIL}?id=emom-for-10-rounds&userId=${constants.SHARED_USER}`,
-};
-
 export default () => {
-  const { currentUser } = useContext(AuthenticationContext);
-
   return (
     <>
+      <LandingPageSchema />
+
       <DashboardOrLogin />
 
       <div id="landing">
@@ -195,7 +187,7 @@ export default () => {
           <p>Create and save your custom workouts.</p>
           <p>Share workouts with friends or clients.</p>
           <p>Copy and modify existing workouts.</p>
-          
+
           <PhoneMock>
             <img src="/images/marketing/timer-edit.png" alt="Timer edit" />
           </PhoneMock>
@@ -204,3 +196,69 @@ export default () => {
     </>
   );
 };
+
+const SOFTWARE_APPLICATION_LD_JSON = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  applicationCategory: 'Fitness',
+  applicationSubCategory: 'Timer',
+  creator: {
+    '@type': 'Person',
+    givenName: 'Chris',
+    familyName: 'Esplin',
+    email: 'chris@hiitclock.com',
+  },
+  description:
+    "HiiT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HiiT, Tabata, CrossFit, Pilates and yoga.",
+  name: 'HiiT Clock',
+  offers: {
+    '@type': 'Offer',
+    availability: 'OnlineOnly',
+    price: 0,
+    priceCurrency: 'USD',
+    seller: {
+      '@type': 'Person',
+      givenName: 'Chris',
+      familyName: 'Esplin',
+      email: 'chris@hiitclock.com',
+    },
+  },
+  operatingSystem: 'iOS, Android, Chrome, Web',
+};
+
+const WEBPAGE_LD_JSON = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  creator: {
+    '@type': 'Person',
+    givenName: 'Chris',
+    familyName: 'Esplin',
+    email: 'chris@hiitclock.com',
+  },
+  name: 'HiiT Clock',
+  description:
+    "HiiT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HiiT, Tabata, CrossFit, Pilates and yoga.",
+};
+
+function LandingPageSchema() {
+  const softwareAppliction = {
+    ...SOFTWARE_APPLICATION_LD_JSON,
+    screenshot: `${location.origin}/images/marketing/10emom-playing.png`,
+    url: location.origin,
+  };
+
+  const webpage = { ...WEBPAGE_LD_JSON };
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppliction) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webpage) }}
+      />
+    </Head>
+  );
+}
