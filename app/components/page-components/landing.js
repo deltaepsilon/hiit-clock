@@ -159,7 +159,7 @@ export default () => {
         <section>
           <h2>Quickstart workouts</h2>
           <p>
-            We've seeded our database with common intervals and workouts from the health and fitness
+            I've seeded the database with common intervals and workouts from the health and fitness
             community
           </p>
 

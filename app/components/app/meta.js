@@ -9,7 +9,7 @@ export default function Meta() {
         name="description"
         content="HiiT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HiiT, Tabata, CrossFit, Pilates and yoga."
       />
-      <title>HiiT Clock</title>
+      <title>Free Timer App - HiiT Clock</title>
     </Head>
   );
 }
