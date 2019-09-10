@@ -24,6 +24,7 @@ export default () => {
     }
 
     function customMessageHandler({ data }) {
+      console.info('message received', data);
       setUid(data.uid);
     }
 
@@ -36,6 +37,7 @@ export default () => {
   useEffect(() => {
     if (!uid && instance) {
       const interval = setInterval(() => {
+        console.info('requesting a uid');
         instance.sendCustomMessage(constants.CHROMECAST.NAMESPACE, undefined, {});
       }, 1000);
 
