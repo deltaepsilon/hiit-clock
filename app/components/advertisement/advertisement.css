@@ -1,0 +1,99 @@
+#advertisement {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1;
+
+  --dismiss-height: 4rem;
+  --img-margin: 1rem;
+}
+
+#advertisement .dismiss {
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  left: 0; */
+
+  position: relative;
+  height: var(--dismiss-height);
+}
+
+#advertisement .dismiss .mdc-icon-button {
+  position: absolute;
+  top: calc(50% - 25px);
+  right: 1rem;
+}
+
+#advertisement .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex: 1;
+  max-height: calc(100% - var(--dismiss-height));
+}
+
+#advertisement .body,
+#advertisement .body > * {
+  width: 100%;
+}
+
+#advertisement .body .banner {
+  text-align: center;
+}
+
+#advertisement .body .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+#advertisement .body .cta {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  background: var(--color-cta);
+}
+
+#advertisement .body img {
+  margin: var(--img-margin);
+}
+
+#advertisement .body p {
+  max-width: 100%;
+  padding: 0rem 2rem;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+@media (orientation: portrait) {
+  #advertisement .body img,
+  #advertisement .body .cta {
+    max-width: calc(100% - 2 * var(--img-margin));
+  }
+
+  #advertisement .body p {
+    font-size: 5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  #advertisement .body .banner {
+    max-height: 20vh;
+  }
+
+  #advertisement .body img {
+    max-width: calc(100% - 2 * var(--img-margin));
+    height: calc(100% - 2 * var(--img-margin));
+  }
+
+  #advertisement .body p {
+    font-size: 5vh;
+  }
+}

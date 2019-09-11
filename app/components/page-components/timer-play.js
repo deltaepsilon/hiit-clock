@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useTimer from '../hooks/use-timer';
 import useTimerState from '../hooks/use-timer-state';
 import useWakeLock from '../hooks/use-wake-lock';
+import Advertisement from '../advertisement/advertisement';
 import MediaSession from '../media-session/media-session';
 import TimerTopBar from '../timer/timer-top-bar';
 import TimerProgressBars from '../timer/timer-progress-bars';
@@ -17,6 +18,7 @@ export default function TimerPlay({ timerId, userId }) {
   const alert = useAlert();
   const [mediaSessionEnabled, setMediaSessionEnabled] = useState(false);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [showAdvertisement, setShowAdvertisement] = useState(false);
   const timer = useTimer({ timerId, userId });
   const timerState = useTimerState(timerId, timer, {
     onSecondsElapsed: seconds => setSecondsElapsed(seconds),
@@ -27,6 +29,15 @@ export default function TimerPlay({ timerId, userId }) {
       alert('Android media controls enabled.');
     }
   }, [mediaSessionEnabled]);
+
+  useEffect(() => {
+    const isTimerComplete = timerState.secondsElapsed == timerState.totalSeconds;
+    const shouldShowAdvertisement = isTimerComplete;
+
+    if (shouldShowAdvertisement != showAdvertisement) {
+      setShowAdvertisement(shouldShowAdvertisement);
+    }
+  }, [showAdvertisement, setShowAdvertisement, timerState]);
 
   useWakeLock('screen');
 
@@ -50,6 +61,7 @@ export default function TimerPlay({ timerId, userId }) {
         <TimerControls />
         <TimerSound />
         <TimerFlash />
+        <Advertisement show={showAdvertisement} />
         {mediaSessionEnabled && <MediaSession />}
       </div>
     </TimerProvider>

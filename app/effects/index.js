@@ -1,6 +1,7 @@
 /* globals window */
 import deleteTimer from './delete-timer';
 import getSaveTimerState from './get-save-timer-state';
+import getAdvertisement from './get-advertisement';
 import linkToGoogle from './link-to-google';
 import localStorage from './local-storage';
 import saveProfile from './save-profile';
@@ -15,6 +16,7 @@ import signOut from './sign-out';
 export default {
   deleteTimer: wrapEffect(deleteTimer),
   getSaveTimerState,
+  getAdvertisement,
   localStorage,
   linkToGoogle: wrapEffect(linkToGoogle),
   saveProfile: wrapEffect(saveProfile),

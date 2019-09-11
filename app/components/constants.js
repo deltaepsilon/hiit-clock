@@ -41,6 +41,7 @@ export default {
     },
   },
   LOCALSTORAGE: {
+    ADVERTISEMENT: 'advertisement',
     PROFILE: 'profile',
     SETTINGS: 'settings',
     TIMERS: 'timers',

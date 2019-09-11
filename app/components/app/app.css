@@ -63,6 +63,9 @@
   /* Login */
   --color-google: #DB4437;
   --color-facebook: #3C5A99;
+
+  /* Advertisement */
+  --color-cta: #1d4e89;
 }
 
 body {
