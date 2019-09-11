@@ -1,4 +1,7 @@
 import OnePassword from './one-password';
 import Shopify from './shopify';
 
-export default [Shopify];
+export default [
+  // OnePassword,
+  Shopify,
+];

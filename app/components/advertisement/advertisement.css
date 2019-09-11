@@ -84,9 +84,9 @@
 }
 
 @media (orientation: landscape) {
-  #advertisement .body .banner {
+  /* #advertisement .body .banner {
     max-height: 20vh;
-  }
+  } */
 
   #advertisement .body img {
     max-width: calc(100% - 2 * var(--img-margin));

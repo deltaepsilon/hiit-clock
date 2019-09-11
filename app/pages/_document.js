@@ -55,6 +55,14 @@ export default class CustomDocument extends Document {
             <p>Email chris@chrisesplin.com with questions.</p>
           </noscript>
         </body>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MG9CZD4"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
       </html>
     );
   }

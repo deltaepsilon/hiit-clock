@@ -1,9 +1,13 @@
 import React from 'react';
+import ClickEventHandler from '../../analytics/click-event-handler';
 
 const ONE_PASSWORD_BACKGROUND_COLOR = '#4d5d8c';
 const LINK_PROPS = {
   href: 'https://www.1password.com',
   target: '_blank',
+};
+const ANALYTICS_EVENT_PROPS = {
+  event: '1password-click',
 };
 
 export default () => {
@@ -17,13 +21,17 @@ export default () => {
         </p>
       </div>
       <a {...LINK_PROPS} className="banner" style={{ background: ONE_PASSWORD_BACKGROUND_COLOR }}>
-        <img
-          src="/images/advertisement/one-password/dotcom-black-mono.svg"
-          alt="1Password Banner"
-        />
+        <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
+          <img
+            src="/images/advertisement/one-password/dotcom-black-mono.svg"
+            alt="1Password Banner"
+          />
+        </ClickEventHandler>
       </a>
       <a {...LINK_PROPS} className="cta" style={{ background: ONE_PASSWORD_BACKGROUND_COLOR }}>
-        Try 1Password, Support HiiTClock.com
+        <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
+          Try 1Password, Support HiiTClock.com
+        </ClickEventHandler>
       </a>
     </>
   );
