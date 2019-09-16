@@ -72,6 +72,18 @@
   text-align: center;
 }
 
+#advertisement .banner {
+  text-decoration: none;
+  font-family: var(--font-bold);
+}
+
+#advertisement .advertising-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (orientation: portrait) {
   #advertisement .body img,
   #advertisement .body .cta {
@@ -80,6 +92,10 @@
 
   #advertisement .body p {
     font-size: 5vw;
+  }
+
+  #advertisement .advertising-banner span {
+    font-size: 15vw;
   }
 }
 
@@ -95,5 +111,9 @@
 
   #advertisement .body p {
     font-size: 5vh;
+  }
+
+  #advertisement .advertising-banner span {
+    font-size: 15vh;
   }
 }
