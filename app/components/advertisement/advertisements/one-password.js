@@ -4,7 +4,7 @@ import DisplayEventHandler from '../../analytics/display-event-handler';
 
 const BACKGROUND_COLOR = '#4d5d8c';
 const LINK_PROPS = {
-  href: 'https://www.1password.com',
+  href: 'http://www.dpbolvw.net/click-9173008-13536585',
   target: '_blank',
 };
 const ANALYTICS_EVENT_PROPS = {

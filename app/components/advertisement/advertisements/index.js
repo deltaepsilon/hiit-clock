@@ -7,7 +7,7 @@ import Wealthfront from './wealthfront';
 export default [
   AmazonChromecast,
   Coinbase,
-  // OnePassword,
+  OnePassword,
   Shopify,
   Wealthfront,
 ];
