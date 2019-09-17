@@ -123,8 +123,9 @@ function cleanPeriods(periods) {
   return periods.map(period => {
     const isRest = period.type == constants.PERIOD_TYPES.REST;
     const file = isRest ? {} : period.file || {};
+    const totalSeconds = +period.totalSeconds;
 
-    return { ...period, file };
+    return { ...period, file, totalSeconds };
   });
 }
 

@@ -58,17 +58,21 @@ export default () => {
       editButton && editButton.focus();
     }
   }, [showPeriodSheet]);
-  const periodsWithoutFirstPrepare = formValues.periods.slice(1);
 
   return (
     <div id="periods-list" ref={wrapperRef}>
       <List id={PERIODS_LIST_ID}>
-        <Period periodId={constants.PREPARE_PERIOD.id} index={0} />
+        <Period periodId={constants.PREPARE_PERIOD.id} indexWithPrepare={0} />
 
-        {periodsWithoutFirstPrepare.map((period, i) => {
-          const index = i + 1;
-
-          return <Period key={`${period.id}-${index}`} index={index} periodId={period.id} />;
+        {formValues.periods.map((period, i) => {
+          return (
+            <Period
+              key={`${period.id}-${i}`}
+              indexWithPrepare={i + 1}
+              index={i}
+              periodId={period.id}
+            />
+          );
         })}
 
         <div
@@ -92,9 +96,9 @@ export default () => {
   );
 };
 
-function Period({ index, periodId }) {
+function Period({ index, indexWithPrepare, periodId }) {
   const timerFormContextValues = useContext(TimerFormContext);
-  const isPrepare = index == 0;
+  const isPrepare = indexWithPrepare == 0;
   const { handlers, period } = isPrepare
     ? getPrepareDetails(timerFormContextValues)
     : getPeriodDetails(periodId, index, timerFormContextValues);
@@ -107,8 +111,8 @@ function Period({ index, periodId }) {
     isChecked: selectedIdsSet.has(period.id),
     isEmpty,
     isFirst: isPrepare,
-    isFirstWork: index == 0,
-    isLast: index == periods.length - 1 || isEmpty,
+    isFirstWork: indexWithPrepare == 0,
+    isLast: indexWithPrepare == periods.length - 1 || isEmpty,
     isMultiSelect,
     isOnly: periods.length == 1,
     isRest: type == constants.PERIOD_TYPES.REST,
@@ -121,7 +125,7 @@ function Period({ index, periodId }) {
     <div
       className="period-wrapper"
       ref={periodWrapperRef}
-      key={`${id}-${index}`}
+      key={`${id}-${indexWithPrepare}`}
       period-id={periodId}
       is-active={String(flags.isActive)}
       is-first={String(flags.isFirst)}
