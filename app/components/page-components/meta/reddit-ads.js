@@ -9,35 +9,71 @@ export default () => {
 
       <div className="grid">
         <div className="desktop ad">
-          <PhoneMock>
-            <img src="/images/screenshots/timer-play.png" alt="timer play" />
-          </PhoneMock>
+          <PhoneMock src="/images/screenshots/timer-detail-low.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+        </div>
+        
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/timer-detail.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+          <PhoneMock src="/images/screenshots/timer-chromecast.png" />
+        </div>
+        
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+          <PhoneMock src="/images/screenshots/timer-share.png" />
+        </div>
+
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+          <PhoneMock src="/images/screenshots/timer-edit-move.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+        </div>
+
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+          <PhoneMock src="/images/screenshots/timer-edit-with-image.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+        </div>
+
+        <div className="mobile ad">
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+        </div>
+
+        <div className="mobile ad">
+          <PhoneMock src="/images/screenshots/timer-search.png" />
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+        </div>
+      </div>
+
+      <div className="grid">
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/timer-detail.png" />
+
           <AdText />
         </div>
         <div className="mobile ad">
-          <PhoneMock>
-            <img src="/images/screenshots/timer-play.png" alt="timer play" />
-          </PhoneMock>
+          <PhoneMock src="/images/screenshots/timer-play.png" />
+
           <AdText />
         </div>
       </div>
 
       <div className="grid">
-        <PhoneMock>
-          <img src="/images/screenshots/timer-detail.png" alt="timer detail" />
-        </PhoneMock>
-        <PhoneMock>
-          <img
-            src="/images/screenshots/timer-chromecast.png"
-            alt="timer chromecast"
-          />
-        </PhoneMock>
-        <PhoneMock>
-          <img src="/images/screenshots/timer-play.png" alt="timer play" />
-        </PhoneMock>
-        <PhoneMock>
-          <img src="/images/screenshots/timer-share.png" alt="timer share" />
-        </PhoneMock>
+        <PhoneMock src="/images/screenshots/timer-chromecast.png" />
+        <PhoneMock src="/images/screenshots/timer-detail-low.png" />
+        <PhoneMock src="/images/screenshots/timer-detail.png" />
+        <PhoneMock src="/images/screenshots/timer-edit-empty.png" />
+        <PhoneMock src="/images/screenshots/timer-edit-move.png" />
+        <PhoneMock src="/images/screenshots/timer-edit-with-image.png" />
+        <PhoneMock src="/images/screenshots/timer-edit.png" />
+        <PhoneMock src="/images/screenshots/timer-media.png" />
+        <PhoneMock src="/images/screenshots/timer-play.png" />
+        <PhoneMock src="/images/screenshots/timer-search.png" />
+        <PhoneMock src="/images/screenshots/timer-share.png" />
       </div>
     </div>
   );

@@ -1,3 +1,7 @@
+#reddit-ads {
+  --background-inset: 32px;
+}
+
 #reddit-ads h2 {
   font-size: 5rem;
   text-align: center;
@@ -19,29 +23,29 @@
 }
 
 #reddit-ads .desktop .phone-mock {
-  max-width: 275px;
+  max-width: 260px;
 }
 
 #reddit-ads .mobile .phone-mock {
-  max-width: 200px;
+  max-width: 110px;
 }
 
 #reddit-ads .ad {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background: var(--mdc-theme-primary);
   padding: 1rem;
 }
 
 #reddit-ads .desktop {
-  width: 1200px;
-  height: 628px;
+  width: calc(1200px - var(--background-inset));
+  height: calc(628px - var(--background-inset));
 }
 
 #reddit-ads .mobile {
-  width: 400px;
-  height: 300px;
+  width: calc(400px - var(--background-inset));
+  height: calc(300px - var(--background-inset));
 }
 
 #reddit-ads .mobile .phone-mock {

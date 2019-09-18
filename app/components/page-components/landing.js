@@ -1,15 +1,15 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { Button } from '@rmwc/button';
-import { List, SimpleListItem } from '@rmwc/list';
-import { Add, NavigateNext } from '../svg';
-import DashboardOrLogin from '../top-bar/dashboard-or-login';
-import PhoneMock from '../phone-mock/phone-mock';
-import constants from '../constants';
+import React from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { Button } from "@rmwc/button";
+import { List, SimpleListItem } from "@rmwc/list";
+import { Add, NavigateNext } from "../svg";
+import DashboardOrLogin from "../top-bar/dashboard-or-login";
+import PhoneMock from "../phone-mock/phone-mock";
+import constants from "../constants";
 
-import '@material/list/dist/mdc.list.css';
-import './landing.css';
+import "@material/list/dist/mdc.list.css";
+import "./landing.css";
 
 export default () => {
   return (
@@ -78,7 +78,11 @@ export default () => {
             </Link>
             <Link href={constants.ROUTES.BROWSE.CUSTOM}>
               <a href={constants.ROUTES.BROWSE.CUSTOM}>
-                <SimpleListItem graphic="️️✏️" text="Custom" metaIcon={<NavigateNext />} />
+                <SimpleListItem
+                  graphic="️️✏️"
+                  text="Custom"
+                  metaIcon={<NavigateNext />}
+                />
               </a>
             </Link>
           </List>
@@ -100,15 +104,22 @@ export default () => {
         <section>
           <h2>Where's the old HIIT Clock?</h2>
           <p>
-            You can find the original HIIT Clock at{' '}
+            You can find the original HIIT Clock at{" "}
             <a href="https://v1.hiitclock.com">https://v1.hiitclock.com</a>
           </p>
-          <p>The original app isn't aging very well, so it was time for a full rewrite.</p>
           <p>
-            The new app has slightly different functionality and a new look. You're welcome to use
-            the old app as long as you like, but it's no longer supported 😭
+            The original app isn't aging very well, so it was time for a full
+            rewrite.
           </p>
-          <p>The upside is that I can maintain and add features to the new HIIT Clock!</p>
+          <p>
+            The new app has slightly different functionality and a new look.
+            You're welcome to use the old app as long as you like, but it's no
+            longer supported 😭
+          </p>
+          <p>
+            The upside is that I can maintain and add features to the new HIIT
+            Clock!
+          </p>
           <p>
             <a href="https://www.chrisesplin.com">Chris Esplin</a>
             <br />
@@ -116,7 +127,7 @@ export default () => {
               chris@hiitclock.com
             </a>
             <img
-              style={{ marginTop: '1rem' }}
+              style={{ marginTop: "1rem" }}
               src="https://storage.googleapis.com/quiver-four.appspot.com/howtofirebase%2F640%2Findia-portrait.JPG?GoogleAccessId=firebase-adminsdk-z45et%40quiver-four.iam.gserviceaccount.com&Expires=2177452800&Signature=EfkdiC7tCn2Z%2FcFi%2BrR%2FsY3b6kwHHJ3SUl5%2FHj%2Fb1eHnAhf8HOZKbWrjMaRkA5DcIL7NsPJwRUF8m17qttKqGqzPQNdWjEQ2l%2BtPImqc02OszxgVrUaL50929so0nEKdbhLcz5ATmWrB%2FQ81CBr%2FJsQqnHnJNmikc4eOuRe%2BjSBFtVoamnF18ks%2BQK%2FVM5rFDC7v1zat9SZ5xzrLpT3b0EwWpWT7XOBUpWzC3FQwJCM50g9bg%2FF5xsg3SssVDcBSjm28CFJDVk9pXpxoEEbTNBOu2yl%2BJKMh83KE3Fo8mj%2B0WHmNPXGE274l%2F7YdACCg8y%2FX%2FA1D7XWV1wycpyM9ZA%3D%3D"
               alt="Chris Esplin at a conference"
             />
@@ -130,9 +141,10 @@ export default () => {
           <p>Install HIIT Clock to your homescreen for Android.</p>
           <p>Navigate to HIITClock.com in Safari on iOS.</p>
 
-          <PhoneMock>
-            <img src="/images/marketing/add-to-home-screen-prompt.png" alt="Add to home screen" />
-          </PhoneMock>
+          <PhoneMock
+            src="/images/marketing/add-to-home-screen-prompt.png"
+            alt="Add to home screen"
+          />
         </section>
 
         <hr />
@@ -142,12 +154,13 @@ export default () => {
           <p>Cast to your TV using Chromecast</p>
           <p>Perfect for living rooms and personal gyms</p>
 
-          <PhoneMock>
-            <img src="/images/marketing/cast-prompt.png" alt="Chromecast prompt" />
-          </PhoneMock>
+          <PhoneMock
+            src="/images/marketing/cast-prompt.png"
+            alt="Chromecast prompt"
+          />
 
           <img
-            style={{ margin: '1rem 0' }}
+            style={{ margin: "1rem 0" }}
             src="/images/marketing/chromecast-tv-cropped-compressed.jpg"
             alt="Chromecast on the TV"
           />
@@ -158,11 +171,12 @@ export default () => {
 
         <section>
           <h2>Audio-only mode</h2>
-          <p>Out for a run? Turn on audio queues and run HIIT Clock on your phone in your pocket</p>
+          <p>
+            Out for a run? Turn on audio queues and run HIIT Clock on your phone
+            in your pocket
+          </p>
 
-          <PhoneMock>
-            <img src="/images/marketing/settings.png" alt="Settings" />
-          </PhoneMock>
+          <PhoneMock src="/images/marketing/settings.png" alt="Settings" />
         </section>
 
         <hr />
@@ -170,13 +184,11 @@ export default () => {
         <section>
           <h2>Quickstart workouts</h2>
           <p>
-            I've seeded the database with common intervals and workouts from the health and fitness
-            community
+            I've seeded the database with common intervals and workouts from the
+            health and fitness community
           </p>
 
-          <PhoneMock>
-            <img src="/images/marketing/timer-list.png" alt="Timer list" />
-          </PhoneMock>
+          <PhoneMock src="/images/marketing/timer-list.png" alt="Timer list" />
         </section>
 
         <hr />
@@ -186,9 +198,10 @@ export default () => {
           <p>Share your custom intervals with the HIIT Clock community.</p>
           <p>Share with a link, or make your workouts publicly searchable.</p>
 
-          <PhoneMock>
-            <img src="/images/marketing/timer-share.png" alt="Timer share" />
-          </PhoneMock>
+          <PhoneMock
+            src="/images/marketing/timer-share.png"
+            alt="Timer share"
+          />
         </section>
 
         <hr />
@@ -199,9 +212,7 @@ export default () => {
           <p>Share workouts with friends or clients.</p>
           <p>Copy and modify existing workouts.</p>
 
-          <PhoneMock>
-            <img src="/images/marketing/timer-edit.png" alt="Timer edit" />
-          </PhoneMock>
+          <PhoneMock src="/images/marketing/timer-edit.png" alt="Timer edit" />
         </section>
       </div>
     </>
@@ -209,53 +220,53 @@ export default () => {
 };
 
 const SOFTWARE_APPLICATION_LD_JSON = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  applicationCategory: 'Fitness',
-  applicationSubCategory: 'Timer',
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  applicationCategory: "Fitness",
+  applicationSubCategory: "Timer",
   creator: {
-    '@type': 'Person',
-    givenName: 'Chris',
-    familyName: 'Esplin',
-    email: 'chris@hiitclock.com',
+    "@type": "Person",
+    givenName: "Chris",
+    familyName: "Esplin",
+    email: "chris@hiitclock.com"
   },
   description:
     "HIIT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HIIT, Tabata, CrossFit, Pilates and yoga.",
-  name: 'HIIT Clock',
+  name: "HIIT Clock",
   offers: {
-    '@type': 'Offer',
-    availability: 'OnlineOnly',
+    "@type": "Offer",
+    availability: "OnlineOnly",
     price: 0,
-    priceCurrency: 'USD',
+    priceCurrency: "USD",
     seller: {
-      '@type': 'Person',
-      givenName: 'Chris',
-      familyName: 'Esplin',
-      email: 'chris@hiitclock.com',
-    },
+      "@type": "Person",
+      givenName: "Chris",
+      familyName: "Esplin",
+      email: "chris@hiitclock.com"
+    }
   },
-  operatingSystem: 'iOS, Android, Chrome, Web',
+  operatingSystem: "iOS, Android, Chrome, Web"
 };
 
 const WEBPAGE_LD_JSON = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
+  "@context": "https://schema.org",
+  "@type": "WebPage",
   creator: {
-    '@type': 'Person',
-    givenName: 'Chris',
-    familyName: 'Esplin',
-    email: 'chris@hiitclock.com',
+    "@type": "Person",
+    givenName: "Chris",
+    familyName: "Esplin",
+    email: "chris@hiitclock.com"
   },
-  name: 'HIIT Clock',
+  name: "HIIT Clock",
   description:
-    "HIIT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HIIT, Tabata, CrossFit, Pilates and yoga.",
+    "HIIT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HIIT, Tabata, CrossFit, Pilates and yoga."
 };
 
 function LandingPageSchema() {
   const softwareAppliction = {
     ...SOFTWARE_APPLICATION_LD_JSON,
     screenshot: `${location.origin}/images/marketing/10emom-playing.png`,
-    url: location.origin,
+    url: location.origin
   };
 
   const webpage = { ...WEBPAGE_LD_JSON };
