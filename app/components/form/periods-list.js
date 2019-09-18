@@ -112,7 +112,7 @@ function Period({ index, indexWithPrepare, periodId }) {
     isEmpty,
     isFirst: isPrepare,
     isFirstWork: indexWithPrepare == 0,
-    isLast: indexWithPrepare == periods.length - 1 || isEmpty,
+    isLast: index == periods.length - 1 || isEmpty,
     isMultiSelect,
     isOnly: periods.length == 1,
     isRest: type == constants.PERIOD_TYPES.REST,
