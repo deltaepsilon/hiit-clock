@@ -18,12 +18,15 @@
   max-width: 100%;
 }
 
-#reddit-ads .phone-mock {
-  max-height: calc(100% - 4rem);
+#reddit-ads .desktop .phone-mock {
+  max-width: 275px;
 }
 
-#reddit-ads .desktop,
-#reddit-ads .mobile {
+#reddit-ads .mobile .phone-mock {
+  max-width: 200px;
+}
+
+#reddit-ads .ad {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,15 +44,41 @@
   height: 300px;
 }
 
-#reddit-ads .mobile .phone-mock img {
-  height: 200px;
-}
-
 #reddit-ads .mobile .phone-mock {
   --speaker-width: 40px;
   --speaker-height: 5px;
   --border-width: 20px 10px 15px 10px;
   --border-radius: 15px;
   --speaker-top: -10px;
-
 }
+
+#reddit-ads .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+#reddit-ads .desktop .text {
+  font-size: 4rem;
+}
+
+#reddit-ads .mobile .text {
+  font-size: 2rem;
+}
+
+#reddit-ads .mobile p {
+  font-size: 1.25rem;
+}
+
+#reddit-ads h3 {
+  margin: 0 0 1rem;
+}
+
+#reddit-ads p {
+  margin: 0.75rem 0
+}
+
