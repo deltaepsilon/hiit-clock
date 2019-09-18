@@ -10,20 +10,23 @@
   transition: top 600ms;
 }
 
-#period-sheet[is-showing='true'] {
+#period-sheet[is-showing="true"] {
   top: 0;
 }
 
-#period-sheet[type='work'] .mdc-toolbar__row {
+#period-sheet[type="work"] .mdc-toolbar__row {
   background: var(--color-form-background-work);
 }
 
-#period-sheet[type='rest'] .mdc-toolbar__row {
+#period-sheet[type="rest"] .mdc-toolbar__row {
   background: var(--color-form-background-rest);
 }
 
 #period-sheet .mdc-toolbar__row {
   justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 
 #period-sheet .form-wrapper {
@@ -35,12 +38,12 @@
   overflow: auto;
 }
 
-#period-sheet[type='work'] .form-wrapper {
+#period-sheet[type="work"] .form-wrapper {
   height: calc(100vh - 10rem);
   padding-top: 5rem;
 }
 
-#period-sheet[type='rest'] .form-wrapper {
+#period-sheet[type="rest"] .form-wrapper {
   padding-top: 12px;
 }
 
