@@ -40,3 +40,16 @@
   width: 400px;
   height: 300px;
 }
+
+#reddit-ads .mobile .phone-mock img {
+  height: 200px;
+}
+
+#reddit-ads .mobile .phone-mock {
+  --speaker-width: 40px;
+  --speaker-height: 5px;
+  --border-width: 20px 10px 15px 10px;
+  --border-radius: 15px;
+  --speaker-top: -10px;
+
+}

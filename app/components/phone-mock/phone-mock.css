@@ -1,20 +1,23 @@
 .phone-mock {
   position: relative;
   border-color: black;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   border-style: solid;
-  border-width: 50px 15px 40px 15px;
+  border-width: var(--border-width);
 
   max-width: 250px;
 
   --color-mock: #222;
   --speaker-width: 100px;
   --speaker-height: 10px;
+  --border-width: 50px 15px 40px 15px;
+  --border-radius: 30px;
+  --speaker-top: -30px;
 }
 
 .phone-mock .camera {
   position: absolute;
-  top: -30px;
+  top: var(--speaker-top);
   width: var(--speaker-height);
   height: var(--speaker-height);
   border-radius: 50%;
@@ -40,11 +43,11 @@
 }
 
 .phone-mock .top-speaker {
-  top: -30px;
+  top: var(--speaker-top);
 }
 
 .phone-mock .bottom-speaker {
-  bottom: -30px;
+  bottom: var(--speaker-top);
 }
 
 .phone-mock .screen {
