@@ -1,0 +1,19 @@
+#screenshots h2 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+#screenshots .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#screenshots .grid > * {
+  margin: 2rem;
+}
+
+#screenshots img {
+  max-width: 100%;
+}

@@ -1,0 +1,42 @@
+#reddit-ads h2 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+#reddit-ads .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#reddit-ads .grid > * {
+  margin: 2rem;
+}
+
+#reddit-ads img {
+  max-width: 100%;
+}
+
+#reddit-ads .phone-mock {
+  max-height: calc(100% - 4rem);
+}
+
+#reddit-ads .desktop,
+#reddit-ads .mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--mdc-theme-primary);
+  padding: 1rem;
+}
+
+#reddit-ads .desktop {
+  width: 1200px;
+  height: 628px;
+}
+
+#reddit-ads .mobile {
+  width: 400px;
+  height: 300px;
+}
