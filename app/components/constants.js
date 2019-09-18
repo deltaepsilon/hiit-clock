@@ -106,9 +106,9 @@ export default {
     FLASH_SECONDS: 3,
   },
   TITLES: {
-    '/': 'HiiT Clock',
+    '/': 'HIIT Clock',
     '/login': 'Login',
-    '/dashboard': 'HiiT Clock',
+    '/dashboard': 'HIIT Clock',
     '/settings': 'settings',
     '/timer/create': 'Create Timer',
     '/timer/edit': 'Edit Timer',

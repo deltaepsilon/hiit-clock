@@ -65,7 +65,7 @@ const TimerTopBarView = React.memo(
 
 function ShareButton({ href }) {
   return href ? (
-    <ShareUrl title="HiiT Clock Timer" href={href}>
+    <ShareUrl title="HIIT Clock Timer" href={href}>
       <IconButton className="share-button" icon={<Share />} />
     </ShareUrl>
   ) : null;

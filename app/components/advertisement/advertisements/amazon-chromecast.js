@@ -18,7 +18,7 @@ export default () => {
       <DisplayEventHandler event="advertisement-chromecast" />
 
       <div className="text">
-        <p>Google Chromecast is a perfect complement to HiiT Clock.</p>
+        <p>Google Chromecast is a perfect complement to HIIT Clock.</p>
 
         <p>Cast your workout timers up to the big screen.</p>
       </div>
@@ -36,7 +36,7 @@ export default () => {
       </a>
       <a {...LINK_PROPS} className="cta" style={{ backgroundImage: BACKGROUND_IMAGE }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
-          Try Chromecast, Support HiiTClock.com
+          Try Chromecast, Support HIITClock.com
         </ClickEventHandler>
       </a>
     </>

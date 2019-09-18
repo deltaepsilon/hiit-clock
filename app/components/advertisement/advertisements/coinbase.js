@@ -20,7 +20,7 @@ export default () => {
         <p>I use Coinbase for all of my crypto.</p>
 
         <p>
-          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HiiTClock.com
+          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
         </p>
       </div>
       <a {...LINK_PROPS} className="banner" style={{ background: BACKGROUND_COLOR }}>
@@ -34,7 +34,7 @@ export default () => {
       </a>
       <a {...LINK_PROPS} className="cta" style={{ background: BACKGROUND_COLOR }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
-          Try Coinbase, Support HiiTClock.com
+          Try Coinbase, Support HIITClock.com
         </ClickEventHandler>
       </a>
     </>

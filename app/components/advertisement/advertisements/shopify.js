@@ -30,7 +30,7 @@ export default () => {
       </a>
       <a {...LINK_PROPS} className="cta" style={{ background: BACKGROUND_COLOR }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
-          Try Shopify, Support HiiTClock.com
+          Try Shopify, Support HIITClock.com
         </ClickEventHandler>
       </a>
     </>

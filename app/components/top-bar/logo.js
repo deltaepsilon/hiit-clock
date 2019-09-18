@@ -15,7 +15,7 @@ function Logo({ href }) {
     <Link href={href}>
       <>
         <a className="text" href={href}>
-          HiiT Clock
+          HIIT Clock
         </a>
         <IconButton icon={<ArrowBack />} tag="a" href={href} />
       </>

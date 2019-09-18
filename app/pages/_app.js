@@ -7,7 +7,7 @@ export default class AppOverride extends App {
 
     return (
       <>
-        <title>HiiT Clock</title>
+        <title>HIIT Clock</title>
 
         <Component {...pageProps} />
       </>

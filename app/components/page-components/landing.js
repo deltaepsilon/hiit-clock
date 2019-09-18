@@ -19,7 +19,7 @@ export default () => {
       <DashboardOrLogin />
 
       <div id="landing">
-        <h1>HiiT Clock</h1>
+        <h1>HIIT Clock</h1>
 
         <div className="user-actions">
           <Link href={constants.ROUTES.TIMER.CREATE}>
@@ -98,9 +98,9 @@ export default () => {
         <hr />
 
         <section>
-          <h2>Where's the old HiiT Clock?</h2>
+          <h2>Where's the old HIIT Clock?</h2>
           <p>
-            You can find the original HiiT Clock at{' '}
+            You can find the original HIIT Clock at{' '}
             <a href="https://v1.hiitclock.com">https://v1.hiitclock.com</a>
           </p>
           <p>The original app isn't aging very well, so it was time for a full rewrite.</p>
@@ -108,11 +108,11 @@ export default () => {
             The new app has slightly different functionality and a new look. You're welcome to use
             the old app as long as you like, but it's no longer supported 😭
           </p>
-          <p>The upside is that I can maintain and add features to the new HiiT Clock!</p>
+          <p>The upside is that I can maintain and add features to the new HIIT Clock!</p>
           <p>
             <a href="https://www.chrisesplin.com">Chris Esplin</a>
             <br />
-            <a href="mailto:chris@hiitclock.com?subject=Hey%20Chris!&body=I've%20got%20some%20questions%2Fcomments%20about%20HiiTClock.com...">
+            <a href="mailto:chris@hiitclock.com?subject=Hey%20Chris!&body=I've%20got%20some%20questions%2Fcomments%20about%20HIITClock.com...">
               chris@hiitclock.com
             </a>
             <img
@@ -126,9 +126,9 @@ export default () => {
 
         <section>
           <h2>Optimized for Phones</h2>
-          <p>I designed HiiT Clock for phones.</p>
-          <p>Install HiiT Clock to your homescreen for Android.</p>
-          <p>Navigate to HiiTClock.com in Safari on iOS.</p>
+          <p>I designed HIIT Clock for phones.</p>
+          <p>Install HIIT Clock to your homescreen for Android.</p>
+          <p>Navigate to HIITClock.com in Safari on iOS.</p>
 
           <PhoneMock>
             <img src="/images/marketing/add-to-home-screen-prompt.png" alt="Add to home screen" />
@@ -158,7 +158,7 @@ export default () => {
 
         <section>
           <h2>Audio-only mode</h2>
-          <p>Out for a run? Turn on audio queues and run HiiT Clock on your phone in your pocket</p>
+          <p>Out for a run? Turn on audio queues and run HIIT Clock on your phone in your pocket</p>
 
           <PhoneMock>
             <img src="/images/marketing/settings.png" alt="Settings" />
@@ -183,7 +183,7 @@ export default () => {
 
         <section>
           <h2>Contribute to the community</h2>
-          <p>Share your custom intervals with the HiiT Clock community.</p>
+          <p>Share your custom intervals with the HIIT Clock community.</p>
           <p>Share with a link, or make your workouts publicly searchable.</p>
 
           <PhoneMock>
@@ -220,8 +220,8 @@ const SOFTWARE_APPLICATION_LD_JSON = {
     email: 'chris@hiitclock.com',
   },
   description:
-    "HiiT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HiiT, Tabata, CrossFit, Pilates and yoga.",
-  name: 'HiiT Clock',
+    "HIIT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HIIT, Tabata, CrossFit, Pilates and yoga.",
+  name: 'HIIT Clock',
   offers: {
     '@type': 'Offer',
     availability: 'OnlineOnly',
@@ -246,9 +246,9 @@ const WEBPAGE_LD_JSON = {
     familyName: 'Esplin',
     email: 'chris@hiitclock.com',
   },
-  name: 'HiiT Clock',
+  name: 'HIIT Clock',
   description:
-    "HiiT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HiiT, Tabata, CrossFit, Pilates and yoga.",
+    "HIIT Clock is an advanced interval timer for web, iOS and Android. It's free to use! Designed for HIIT, Tabata, CrossFit, Pilates and yoga.",
 };
 
 function LandingPageSchema() {

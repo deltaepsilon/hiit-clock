@@ -22,7 +22,7 @@ export default () => {
         <p>Their rates are excellent and their website and mobile apps are top-notch.</p>
 
         <p>
-          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HiiTClock.com
+          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
         </p>
       </div>
       <a
@@ -43,7 +43,7 @@ export default () => {
       </a>
       <a {...LINK_PROPS} className="cta" style={{ backgroundImage: BACKGROUND_IMAGE }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
-          Try Wealthfront, Support HiiTClock.com
+          Try Wealthfront, Support HIITClock.com
         </ClickEventHandler>
       </a>
     </>

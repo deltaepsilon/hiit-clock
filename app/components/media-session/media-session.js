@@ -27,7 +27,7 @@ export default () => {
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: timer.name,
-        artist: 'HiiT Clock',
+        artist: 'HIIT Clock',
         artwork: [
           { src: '/images/icons/icon-96.png', sizes: '96x96', type: 'image/png' },
           { src: '/images/icons/icon-128.png', sizes: '128x128', type: 'image/png' },

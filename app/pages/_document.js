@@ -51,7 +51,7 @@ export default class CustomDocument extends Document {
           <Main />
           <NextScript />
           <noscript>
-            <p>Please enable JavaScript to use HiiT Clock.</p>
+            <p>Please enable JavaScript to use HIIT Clock.</p>
             <p>Email chris@chrisesplin.com with questions.</p>
           </noscript>
         </body>
