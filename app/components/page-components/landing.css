@@ -10,7 +10,8 @@
   margin: 1rem 0 0;
 }
 
-#landing img {
+#landing img,
+#landing iframe {
   max-width: 100%;
 }
 
