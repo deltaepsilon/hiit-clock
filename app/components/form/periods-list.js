@@ -1,24 +1,24 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import uuid from 'uuid/v4';
-import { List, ListItem } from '@rmwc/list';
-import { IconButton } from '@rmwc/icon-button';
-import { Checkbox } from '@rmwc/checkbox';
-import { TimerFormContext } from '../contexts/timer-form-context';
+import React, { useCallback, useContext, useEffect, useRef } from "react";
+import uuid from "uuid/v4";
+import { List, ListItem } from "@rmwc/list";
+import { IconButton } from "@rmwc/icon-button";
+import { Checkbox } from "@rmwc/checkbox";
+import { TimerFormContext } from "../contexts/timer-form-context";
 import {
   AddCircleOutline,
   ArrowUpward,
   ArrowDownward,
   FileCopyOutline,
   DeleteOutline,
-  Edit,
-} from '../svg';
-import TotalTime from '../timer/total-time';
-import constants from '../constants';
-import { PERIOD_SHEET_ID } from './period-sheet';
+  Edit
+} from "../svg";
+import TotalTime from "../timer/total-time";
+import constants from "../constants";
+import { PERIOD_SHEET_ID } from "./period-sheet";
 
-import './periods-list.css';
+import "./periods-list.css";
 
-const PERIODS_LIST_ID = 'periods-list';
+const PERIODS_LIST_ID = "periods-list";
 
 export default () => {
   const {
@@ -30,30 +30,34 @@ export default () => {
     setActivePeriodId,
     setActivePeriodIndex,
     setSelectedIdsSet,
-    showPeriodSheet,
+    showPeriodSheet
   } = useContext(TimerFormContext);
   const wrapperRef = useRef(null);
-  const deselect = useCallback(getDeselect({ setActivePeriodId, setActivePeriodIndex }));
+  const deselect = useCallback(
+    getDeselect({ setActivePeriodId, setActivePeriodIndex })
+  );
 
   useEffect(() => {
     if (!showPeriodSheet) {
       const checkElementWithin = getCheckElementWithin({ deselect });
 
-      window.addEventListener('click', checkElementWithin);
+      window.addEventListener("click", checkElementWithin);
 
-      return () => window.removeEventListener('click', checkElementWithin);
+      return () => window.removeEventListener("click", checkElementWithin);
     }
   }, [showPeriodSheet]);
 
   useEffect(() => {
     if (showPeriodSheet) {
     } else if (isAdd) {
-      const buttons = Array.from(wrapperRef.current.querySelectorAll('button'));
+      const buttons = Array.from(wrapperRef.current.querySelectorAll("button"));
       const [lastButton] = buttons.slice(-1);
 
       lastButton.focus();
     } else {
-      const editButton = wrapperRef.current.querySelector(`[period-id="${activePeriodId}"] .edit`);
+      const editButton = wrapperRef.current.querySelector(
+        `[period-id="${activePeriodId}"] .edit`
+      );
 
       editButton && editButton.focus();
     }
@@ -62,22 +66,19 @@ export default () => {
   return (
     <div id="periods-list" ref={wrapperRef}>
       <List id={PERIODS_LIST_ID}>
-        <Period periodId={constants.PREPARE_PERIOD.id} indexWithPrepare={0} />
+        <Period periodId={constants.PREPARE_PERIOD.id} index={-1} />
 
         {formValues.periods.map((period, i) => {
           return (
-            <Period
-              key={`${period.id}-${i}`}
-              indexWithPrepare={i + 1}
-              index={i}
-              periodId={period.id}
-            />
+            <Period key={`${period.id}-${i}`} index={i} periodId={period.id} />
           );
         })}
 
         <div
           id="check-all-wrapper"
-          can-multi-select={String(isMultiSelect && !!formValues.periods.length)}
+          can-multi-select={String(
+            isMultiSelect && !!formValues.periods.length
+          )}
         >
           <Checkbox
             checked={formValues.periods.length == selectedIdsSet.size}
@@ -96,13 +97,18 @@ export default () => {
   );
 };
 
-function Period({ index, indexWithPrepare, periodId }) {
+function Period({ index, periodId }) {
   const timerFormContextValues = useContext(TimerFormContext);
-  const isPrepare = indexWithPrepare == 0;
+  const isPrepare = index == -1;
   const { handlers, period } = isPrepare
     ? getPrepareDetails(timerFormContextValues)
     : getPeriodDetails(periodId, index, timerFormContextValues);
-  const { activePeriodId, formValues, isMultiSelect, selectedIdsSet } = timerFormContextValues;
+  const {
+    activePeriodId,
+    formValues,
+    isMultiSelect,
+    selectedIdsSet
+  } = timerFormContextValues;
   const periods = formValues.periods;
   const { id, file, name, type, totalSeconds } = period;
   const isEmpty = !formValues.periods.length;
@@ -111,11 +117,11 @@ function Period({ index, indexWithPrepare, periodId }) {
     isChecked: selectedIdsSet.has(period.id),
     isEmpty,
     isFirst: isPrepare,
-    isFirstWork: indexWithPrepare == 0,
+    isFirstWork: index == 0,
     isLast: index == periods.length - 1 || isEmpty,
     isMultiSelect,
     isOnly: periods.length == 1,
-    isRest: type == constants.PERIOD_TYPES.REST,
+    isRest: type == constants.PERIOD_TYPES.REST
   };
   const periodWrapperRef = useRef(null);
   const src = file && (file.dataUrl || file.downloadURL);
@@ -125,7 +131,7 @@ function Period({ index, indexWithPrepare, periodId }) {
     <div
       className="period-wrapper"
       ref={periodWrapperRef}
-      key={`${id}-${indexWithPrepare}`}
+      key={`${id}-${index}`}
       period-id={periodId}
       is-active={String(flags.isActive)}
       is-first={String(flags.isFirst)}
@@ -133,7 +139,12 @@ function Period({ index, indexWithPrepare, periodId }) {
       is-only={String(flags.isOnly)}
     >
       <div className="list-item-wrapper">
-        <ListItem tabIndex="-1" type={type} className="flex" onClick={handlers.handleSelect}>
+        <ListItem
+          tabIndex="-1"
+          type={type}
+          className="flex"
+          onClick={handlers.handleSelect}
+        >
           <TotalTime totalSeconds={totalSeconds} />
 
           <span className="title" title={title}>
@@ -182,7 +193,10 @@ function Period({ index, indexWithPrepare, periodId }) {
 
       <div className="buttons">
         {flags.isMultiSelect ? (
-          <Checkbox checked={flags.isChecked} onChange={handlers.handleCheckboxChange} />
+          <Checkbox
+            checked={flags.isChecked}
+            onChange={handlers.handleCheckboxChange}
+          />
         ) : (
           <AddButton
             onClick={handlers.handleAdd}
@@ -204,7 +218,7 @@ function getPeriodDetails(periodId, index, timerFormContextValues) {
     setFormValues,
     setIsAdd,
     setSelectedIdsSet,
-    setShowPeriodSheet,
+    setShowPeriodSheet
   } = timerFormContextValues;
   const periods = formValues.periods;
   const period = periods.find(period => period.id == periodId);
@@ -215,35 +229,35 @@ function getPeriodDetails(periodId, index, timerFormContextValues) {
       setActivePeriodId,
       setActivePeriodIndex,
       setIsAdd,
-      setShowPeriodSheet,
+      setShowPeriodSheet
     }),
     handleCheckboxChange: getHandleCheckboxChange({
       periodId,
-      setSelectedIdsSet,
+      setSelectedIdsSet
     }),
     handleDeselect: getDeselect({ setActivePeriodId, setActivePeriodIndex }),
     handleSelect: getHandleSelect({
       periodId,
-      setActivePeriodId,
+      setActivePeriodId
     }),
     handleMoveUp: getHandleMoveUp({
       index,
       isActive,
       periodId,
       setActivePeriodId,
-      setFormValues,
+      setFormValues
     }),
     handleMoveDown: getHandleMoveDown({
       index,
       isActive,
       periodId,
       setActivePeriodId,
-      setFormValues,
+      setFormValues
     }),
     handleCopy: getHandleCopy({
       index,
       setActivePeriodId,
-      setFormValues,
+      setFormValues
     }),
     handleEdit: getHandleEdit({
       index,
@@ -251,17 +265,17 @@ function getPeriodDetails(periodId, index, timerFormContextValues) {
       setActivePeriodId,
       setActivePeriodIndex,
       setIsAdd,
-      setShowPeriodSheet,
+      setShowPeriodSheet
     }),
     handleDelete: getHandleDelete({
       index,
-      setFormValues,
-    }),
+      setFormValues
+    })
   };
 
   return {
     handlers,
-    period,
+    period
   };
 }
 
@@ -270,7 +284,7 @@ function getPrepareDetails(timerFormContextValues) {
     setActivePeriodId,
     setActivePeriodIndex,
     setIsAdd,
-    setShowPeriodSheet,
+    setShowPeriodSheet
   } = timerFormContextValues;
   const deselect = getDeselect({ setActivePeriodId, setActivePeriodIndex });
   const handlers = {
@@ -281,10 +295,10 @@ function getPrepareDetails(timerFormContextValues) {
       setActivePeriodId,
       setActivePeriodIndex,
       setIsAdd,
-      setShowPeriodSheet,
-    }),
+      setShowPeriodSheet
+    })
   };
-  const period = { type: 'prepare', totalSeconds: 10, name: 'prepare' };
+  const period = { type: "prepare", totalSeconds: 10, name: "prepare" };
 
   return { period, handlers };
 }
@@ -293,7 +307,11 @@ function AddButton({ isEmpty, onClick, onFocus }) {
   return (
     <div className="add-button-wrapper">
       {isEmpty && <aside>Click to add a period 👉</aside>}
-      <IconButton icon={<AddCircleOutline />} onClick={onClick} onFocus={onFocus} />
+      <IconButton
+        icon={<AddCircleOutline />}
+        onClick={onClick}
+        onFocus={onFocus}
+      />
     </div>
   );
 }
@@ -303,7 +321,7 @@ function getHandleAdd({
   setIsAdd,
   setActivePeriodId,
   setActivePeriodIndex,
-  setShowPeriodSheet,
+  setShowPeriodSheet
 }) {
   return e => {
     e.stopPropagation();
@@ -349,11 +367,26 @@ function getDeselect({ setActivePeriodId, setActivePeriodIndex }) {
   };
 }
 
-function getHandleMoveDown({ index, periodId, setActivePeriodId, setFormValues }) {
-  return getHandleMoveUp({ index: index + 1, periodId, setActivePeriodId, setFormValues });
+function getHandleMoveDown({
+  index,
+  periodId,
+  setActivePeriodId,
+  setFormValues
+}) {
+  return getHandleMoveUp({
+    index: index + 1,
+    periodId,
+    setActivePeriodId,
+    setFormValues
+  });
 }
 
-function getHandleMoveUp({ index, periodId, setActivePeriodId, setFormValues }) {
+function getHandleMoveUp({
+  index,
+  periodId,
+  setActivePeriodId,
+  setFormValues
+}) {
   return e => {
     e.stopPropagation();
     e.preventDefault();
@@ -397,7 +430,7 @@ function getHandleEdit({
   setActivePeriodId,
   setActivePeriodIndex,
   setIsAdd,
-  setShowPeriodSheet,
+  setShowPeriodSheet
 }) {
   return e => {
     e.stopPropagation();
@@ -441,7 +474,7 @@ function getCheckElementWithin({ deselect }) {
 }
 
 function isPreparePeriod(periodOrId) {
-  return typeof periodOrId == 'string'
+  return typeof periodOrId == "string"
     ? periodOrId == constants.PREPARE_PERIOD.id
     : periodOrId.type == constants.PERIOD_TYPES.PREPARE;
 }

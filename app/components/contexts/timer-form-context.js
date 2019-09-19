@@ -1,14 +1,20 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { TimerContext } from './timer-context';
-import effects from '../../effects';
-import constants from '../constants';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from "react";
+import { TimerContext } from "./timer-context";
+import effects from "../../effects";
+import constants from "../constants";
 
 export const DEFAULT_TIMER = {
-  description: '',
+  description: "",
   file: null,
   isSearchable: false,
   periods: [],
-  name: '',
+  name: ""
 };
 
 export const TimerFormContext = React.createContext();
@@ -30,21 +36,28 @@ export default ({ children }) => {
     [activePeriodId, activePeriodIndex, isAdd]
   );
   const toggleMultiSelect = useCallback(() => setIsMultiSelect(x => !x));
-  const activePeriod = useMemo(() => getActivePeriodById(formValues.periods, activePeriodId), [
-    formValues,
-    activePeriodId,
-  ]);
+  const activePeriod = useMemo(
+    () => getActivePeriodById(formValues.periods, activePeriodId),
+    [formValues, activePeriodId]
+  );
 
-  useEffect(() => (!isMultiSelect && setSelectedIdsSet(new Set()), undefined), [isMultiSelect]);
+  useEffect(() => (!isMultiSelect && setSelectedIdsSet(new Set()), undefined), [
+    isMultiSelect
+  ]);
 
   useEffect(() => saveFormValues(formValues), [formValues]);
 
-  useEffect(() => (timerId && mapTimerToFormValues({ timer, setFormValues }), undefined), [
-    timerId,
-    timer,
-  ]);
+  useEffect(
+    () => (
+      timerId && mapTimerToFormValues({ timer, setFormValues }), undefined
+    ),
+    [timerId, timer]
+  );
 
-  useEffect(() => checkIsDirty({ formValues, setIsDirty, timer }), [formValues, timer]);
+  useEffect(() => checkIsDirty({ formValues, setIsDirty, timer }), [
+    formValues,
+    timer
+  ]);
 
   const value = {
     activePeriod,
@@ -67,10 +80,14 @@ export default ({ children }) => {
     setSelectedIdsSet,
     setShowPeriodSheet,
     timerId,
-    toggleMultiSelect,
+    toggleMultiSelect
   };
 
-  return <TimerFormContext.Provider value={value}>{children}</TimerFormContext.Provider>;
+  return (
+    <TimerFormContext.Provider value={value}>
+      {children}
+    </TimerFormContext.Provider>
+  );
 };
 
 function getFormError(formValues) {
@@ -81,19 +98,20 @@ function getFormError(formValues) {
   }
 
   if (!formValues.periods.length) {
-    error = 'At least one period is required';
+    error = "At least one period is required";
   }
 
   return error;
 }
 
 function getStartingFormValues() {
-  const localStorageString = localStorage.getItem(constants.LOCALSTORAGE.TIMER_FORM) || '{}';
+  const localStorageString =
+    localStorage.getItem(constants.LOCALSTORAGE.TIMER_FORM) || "{}";
   const localStorageValue = JSON.parse(localStorageString);
 
   return {
     ...DEFAULT_TIMER,
-    ...localStorageValue,
+    ...localStorageValue
   };
 }
 
@@ -134,7 +152,12 @@ function getActivePeriodById(periods, id) {
 }
 
 function mapTimerToFormValues({ timer, setFormValues }) {
-  setFormValues(timer);
+  const periodsWithoutPrepare = timer.periods.filter(
+    ({ type }) => type != constants.PERIOD_TYPES.PREPARE
+  );
+  const timerWithoutPrepare = { ...timer, periods: periodsWithoutPrepare };
+
+  setFormValues(timerWithoutPrepare);
 }
 
 function checkIsDirty({ formValues, setIsDirty, timer }) {
@@ -142,8 +165,10 @@ function checkIsDirty({ formValues, setIsDirty, timer }) {
   const isDescriptionChanged = formValues.description != timer.description;
   const isSearchableChanged = formValues.isSearchable != timer.isSearchable;
   const isFileChanged =
-    (formValues.file && formValues.file.dataUrl) || !!formValues.file != !!timer.file;
-  const isPeriodsChanged = JSON.stringify(formValues.periods) != JSON.stringify(timer.periods);
+    (formValues.file && formValues.file.dataUrl) ||
+    !!formValues.file != !!timer.file;
+  const isPeriodsChanged =
+    JSON.stringify(formValues.periods) != JSON.stringify(timer.periods);
   const isDirty =
     isNameChanged ||
     isDescriptionChanged ||

@@ -1,23 +1,26 @@
-import React, { useEffect, useContext, useState } from 'react';
-import Router from 'next/router';
-import useTimer from '../hooks/use-timer';
-import useTimerState from '../hooks/use-timer-state';
-import TimerProvider, { TimerContext } from '../contexts/timer-context';
-import TimerFormProvider, { TimerFormContext, DEFAULT_TIMER } from '../contexts/timer-form-context';
-import { AuthenticationContext } from '../contexts/authentication-context';
-import { Button } from '@rmwc/button';
-import BackButton from '../top-bar/back-button';
-import Title from '../top-bar/title';
-import TimerMetadataInputs from '../form/timer-metadata-inputs';
-import PeriodSheet from '../form/period-sheet';
-import PeriodsList from '../form/periods-list';
-import MultiSelectControls from '../form/multi-select-controls';
-import ConfirmButton from '../form/confirm-button';
-import effects from '../../effects';
-import { List } from '../svg';
-import constants from '../constants';
+import React, { useEffect, useContext, useState } from "react";
+import Router from "next/router";
+import useTimer from "../hooks/use-timer";
+import useTimerState from "../hooks/use-timer-state";
+import TimerProvider, { TimerContext } from "../contexts/timer-context";
+import TimerFormProvider, {
+  TimerFormContext,
+  DEFAULT_TIMER
+} from "../contexts/timer-form-context";
+import { AuthenticationContext } from "../contexts/authentication-context";
+import { Button } from "@rmwc/button";
+import BackButton from "../top-bar/back-button";
+import Title from "../top-bar/title";
+import TimerMetadataInputs from "../form/timer-metadata-inputs";
+import PeriodSheet from "../form/period-sheet";
+import PeriodsList from "../form/periods-list";
+import MultiSelectControls from "../form/multi-select-controls";
+import ConfirmButton from "../form/confirm-button";
+import effects from "../../effects";
+import { List } from "../svg";
+import constants from "../constants";
 
-import './timer-edit.css';
+import "./timer-edit.css";
 
 const BUTTON_ICON_PX = 16;
 
@@ -53,7 +56,7 @@ function TimerForm() {
     setShowPeriodSheet,
     setIsMultiSelect,
     timerId,
-    toggleMultiSelect,
+    toggleMultiSelect
   } = useContext(TimerFormContext);
   const savedDisabled = isOwned && (!!formError || isSaving || !isDirty);
 
@@ -63,9 +66,11 @@ function TimerForm() {
 
   return (
     <>
-      <BackButton href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`} />
+      <BackButton
+        href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`}
+      />
 
-      <Title>{isAdd ? `Edit ${formValues.name}` : 'Create Timer'}</Title>
+      <Title>{isAdd ? `Edit ${formValues.name}` : "Create Timer"}</Title>
 
       <div id="timer-edit">
         <form
@@ -74,7 +79,7 @@ function TimerForm() {
               currentUser,
               formValues,
               isOwned,
-              timerId,
+              timerId
             });
 
             setIsSaving(true);
@@ -92,7 +97,7 @@ function TimerForm() {
 
           <div className="row buttons">
             <Button type="submit" raised disabled={savedDisabled}>
-              {isSaving ? 'Saving...' : 'Save'}
+              {isSaving ? "Saving..." : "Save"}
             </Button>
             <Button
               raised={isMultiSelect}
@@ -127,15 +132,15 @@ function getKeyUpEffect({ setShowPeriodSheet, setIsMultiSelect }) {
   function handleKeyUp(e) {
     const { key } = e;
 
-    if (key == 'Escape') {
+    if (key == "Escape") {
       setShowPeriodSheet(false);
       setIsMultiSelect(false);
     }
   }
 
-  window.addEventListener('keyup', handleKeyUp);
+  window.addEventListener("keyup", handleKeyUp);
 
-  return () => window.removeEventListener('keyup', handleKeyUp);
+  return () => window.removeEventListener("keyup", handleKeyUp);
 }
 
 function routeChangeStartEffect() {
@@ -143,9 +148,9 @@ function routeChangeStartEffect() {
     effects.saveTimerForm(DEFAULT_TIMER);
   }
 
-  Router.events.on('routeChangeStart', handleRouteChange);
+  Router.events.on("routeChangeStart", handleRouteChange);
 
-  return () => Router.events.off('routeChangeStart', handleRouteChange);
+  return () => Router.events.off("routeChangeStart", handleRouteChange);
 }
 
 function getHandleSubmit({ formValues, isOwned, timerId, currentUser }) {
@@ -175,7 +180,7 @@ function getTimerFromFormValues(formValues) {
     .filter(({ type }) => type != constants.PERIOD_TYPES.PREPARE)
     .map(period => ({
       ...period,
-      totalSeconds: +period.totalSeconds,
+      totalSeconds: +period.totalSeconds
     }));
 
   return { ...formValues, periods };
