@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useMemo, useState } from "react";
 import Router from "next/router";
 import useTimer from "../hooks/use-timer";
 import useTimerState from "../hooks/use-timer-state";
@@ -59,6 +59,15 @@ function TimerForm() {
     toggleMultiSelect
   } = useContext(TimerFormContext);
   const savedDisabled = isOwned && (!!formError || isSaving || !isDirty);
+  const backButtonHref = useMemo(() => {
+    let result = constants.ROUTES.DASHBOARD;
+
+    if (timerId && userId) {
+      result = `${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`;
+    }
+
+    return result;
+  }, [timerId, userId]);
 
   useEffect(routeChangeStartEffect, []);
 
@@ -66,9 +75,7 @@ function TimerForm() {
 
   return (
     <>
-      <BackButton
-        href={`${constants.ROUTES.TIMER.DETAIL}?id=${timerId}&userId=${userId}`}
-      />
+      <BackButton href={backButtonHref} />
 
       <Title>{isAdd ? `Edit ${formValues.name}` : "Create Timer"}</Title>
 
