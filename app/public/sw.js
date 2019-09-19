@@ -60,18 +60,19 @@ const originsToCache = new Set([
   "https://firebasestorage.googleapis.com",
   "https://local.chrisesplin.com",
   "http://localhost:3000",
-  "https://www.hiitclock.com",
+  "https://www.hiitclock.com"
 ]);
 
-workbox.routing.registerRoute(function matchingFunction({ url, event }) {
-  const isOriginToCache = originsToCache.has(url.origin);
+workbox.routing.registerRoute(
+  function matchingFunction({ url, event }) {
+    const isOriginToCache = originsToCache.has(url.origin);
 
-  console.log({isOriginToCache, origin: url.origin})
-
-  return isOriginToCache;
-}, new workbox.strategies.StaleWhileRevalidate({
-  cacheName: `origins-cache-${buildId}`
-}));
+    return isOriginToCache;
+  },
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: `origins-cache-${buildId}`
+  })
+);
 
 self.addEventListener("install", event => {
   const promise = new Promise(async resolve => {
