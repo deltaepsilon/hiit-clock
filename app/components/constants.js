@@ -9,8 +9,8 @@ export default {
   },
   CHROMECAST: {
     APPLICATIONS: {
-      localhost: 'A6AF8FB4',
       'local.chrisesplin.com': 'A6AF8FB4',
+      'localhost:3000': 'A6AF8FB4',
       'v2.hiitclock.com': 'CDBF9AE6',
       'www.hiitclock.com': 'CED65B6F',
     },
