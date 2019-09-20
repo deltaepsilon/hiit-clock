@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import useTimer from '../hooks/use-timer';
-import useTimerState from '../hooks/use-timer-state';
-import useWakeLock from '../hooks/use-wake-lock';
-import Advertisement from '../advertisement/advertisement';
-import MediaSession from '../media-session/media-session';
-import TimerTopBar from '../timer/timer-top-bar';
-import TimerProgressBars from '../timer/timer-progress-bars';
-import TimerProgressDetails from '../timer/timer-progress-details';
-import TimerControls from '../timer/timer-controls';
-import TimerSound from '../timer/timer-sound';
-import TimerFlash from '../timer/timer-flash';
-import TimerProvider from '../contexts/timer-context';
-import useAlert from '../hooks/use-alert';
+import useTimer from '../../hooks/use-timer';
+import useTimerState from '../../hooks/use-timer-state';
+import useWakeLock from '../../hooks/use-wake-lock';
+import Advertisement from '../../advertisement/advertisement';
+import MediaSession from '../../media-session/media-session';
+import TimerTopBar from '../../timer/timer-top-bar';
+import TimerProgressBars from '../../timer/timer-progress-bars';
+import TimerProgressDetails from '../../timer/timer-progress-details';
+import TimerControls from '../../timer/timer-controls';
+import TimerSound from '../../timer/timer-sound';
+import TimerFlash from '../../timer/timer-flash';
+import TimerProvider from '../../contexts/timer-context';
+import useAlert from '../../hooks/use-alert';
 import './timer-play.css';
 
 export default function TimerPlay({ timerId, userId }) {

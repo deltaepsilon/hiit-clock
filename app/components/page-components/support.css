@@ -1,0 +1,27 @@
+#support ul {
+  list-style-type: none;
+  margin-top: 4rem;
+}
+
+#support li {
+  margin: 2rem 0;
+}
+
+#support a {
+  display: block;
+  text-decoration: none;
+}
+
+#support a div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#support img {
+  width: 100%;
+}
+
+#support span {
+  font-size: 5vw;
+}

@@ -73,6 +73,7 @@ export default {
     LOGIN: '/login',
     DASHBOARD: '/dashboard',
     SETTINGS: '/settings',
+    SUPPORT: '/support',
     TIMER: {
       CHROMECAST: '/timer/chromecast',
       CREATE: '/timer/create',

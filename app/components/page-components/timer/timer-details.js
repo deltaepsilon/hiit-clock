@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import { Fab } from '@rmwc/fab';
-import { AuthenticationContext } from '../contexts/authentication-context';
-import { Edit, FileCopyOutline } from '../svg';
-import useTimer from '../hooks/use-timer';
-import BackButton from '../top-bar/back-button';
-import Title from '../top-bar/title';
-import TotalTime from '../timer/total-time';
-import getTimerCycles from '../../utilities/get-timer-cycles';
-import CyclesList from '../timer/cycles-list';
-import TimerActions from '../timer/timer-actions';
-import TimerSchema from '../timer/timer-schema';
-import constants from '../constants';
+import { AuthenticationContext } from '../../contexts/authentication-context';
+import { Edit, FileCopyOutline } from '../../svg';
+import useTimer from '../../hooks/use-timer';
+import BackButton from '../../top-bar/back-button';
+import Title from '../../top-bar/title';
+import TotalTime from '../../timer/total-time';
+import getTimerCycles from '../../../utilities/get-timer-cycles';
+import CyclesList from '../../timer/cycles-list';
+import TimerActions from '../../timer/timer-actions';
+import TimerSchema from '../../timer/timer-schema';
+import constants from '../../constants';
 
 import './timer-details.css';
 

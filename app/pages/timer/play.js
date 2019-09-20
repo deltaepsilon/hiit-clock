@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AppBase from '../../components/app/app-base';
-import TimerPlay from '../../components/page-components/timer-play';
+import TimerPlay from '../../components/page-components/timer/timer-play';
 import parseSearch from '../../utilities/parse-search';
 import constants from '../../components/constants';
 

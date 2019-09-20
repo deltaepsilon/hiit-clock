@@ -14,10 +14,10 @@ import React from 'react';
 import uuid from 'uuid/v4';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import TimerProvider from '../contexts/timer-context';
+import TimerProvider from '../../contexts/timer-context';
 import TimerPlay from './timer-play';
 
-import constants from '../constants';
+import constants from '../../constants';
 
 describe('TimerPlay', () => {
   let props;

@@ -39,6 +39,11 @@ function UserMenu() {
       hidden: location.pathname == constants.ROUTES.SETTINGS,
     },
     {
+      html: <MenuItem key="support">Support</MenuItem>,
+      action: () => router.push(constants.ROUTES.SUPPORT),
+      hidden: location.pathname == constants.ROUTES.SUPPORT,
+    },
+    {
       html: <ListDivider key="bottom-divider" />,
     },
     { html: <MenuItem key="log-out">Log Out</MenuItem>, action: () => effects.signOut() },

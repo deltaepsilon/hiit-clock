@@ -131,11 +131,12 @@ export default function CastSender() {
  */
 function initializeCastApi() {
   const receiverApplicationId = constants.CHROMECAST.APPLICATIONS[location.host];
-
-  window.cast.framework.CastContext.getInstance().setOptions({
+  const options = {
     receiverApplicationId,
     autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
-  });
+  };
+
+  window.cast.framework.CastContext.getInstance().setOptions(options);
 
   externalSetIsLoaded(true);
 }

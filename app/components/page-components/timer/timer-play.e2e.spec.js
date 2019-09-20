@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
-import logPuppeteerMessage from '../../utilities/log-puppeteer-message';
-import wait from '../../utilities/wait';
+import logPuppeteerMessage from '../../../utilities/log-puppeteer-message';
+import wait from '../../../utilities/wait';
 
 describe('TimerPlay', () => {
   const playUrl =

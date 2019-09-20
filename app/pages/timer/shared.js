@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChromecastBase from '../../components/app/chromecast-base';
-import ChromecastPlay from '../../components/page-components/chromecast-play';
+import ChromecastPlay from '../../components/page-components/timer/chromecast-play';
 import BackButton from '../../components/top-bar/back-button';
 import parseSearch from '../../utilities/parse-search';
 import constants from '../../components/constants';

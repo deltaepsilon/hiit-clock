@@ -1,24 +1,24 @@
 import React, { useEffect, useContext, useMemo, useState } from "react";
 import Router from "next/router";
-import useTimer from "../hooks/use-timer";
-import useTimerState from "../hooks/use-timer-state";
-import TimerProvider, { TimerContext } from "../contexts/timer-context";
+import useTimer from "../../hooks/use-timer";
+import useTimerState from "../../hooks/use-timer-state";
+import TimerProvider, { TimerContext } from "../../contexts/timer-context";
 import TimerFormProvider, {
   TimerFormContext,
   DEFAULT_TIMER
-} from "../contexts/timer-form-context";
-import { AuthenticationContext } from "../contexts/authentication-context";
+} from "../../contexts/timer-form-context";
+import { AuthenticationContext } from "../../contexts/authentication-context";
 import { Button } from "@rmwc/button";
-import BackButton from "../top-bar/back-button";
-import Title from "../top-bar/title";
-import TimerMetadataInputs from "../form/timer-metadata-inputs";
-import PeriodSheet from "../form/period-sheet";
-import PeriodsList from "../form/periods-list";
-import MultiSelectControls from "../form/multi-select-controls";
-import ConfirmButton from "../form/confirm-button";
-import effects from "../../effects";
-import { List } from "../svg";
-import constants from "../constants";
+import BackButton from "../../top-bar/back-button";
+import Title from "../../top-bar/title";
+import TimerMetadataInputs from "../../form/timer-metadata-inputs";
+import PeriodSheet from "../../form/period-sheet";
+import PeriodsList from "../../form/periods-list";
+import MultiSelectControls from "../../form/multi-select-controls";
+import ConfirmButton from "../../form/confirm-button";
+import effects from "../../../effects";
+import { List } from "../../svg";
+import constants from "../../constants";
 
 import "./timer-edit.css";
 
