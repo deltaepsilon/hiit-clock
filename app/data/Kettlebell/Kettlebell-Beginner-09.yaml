@@ -1,0 +1,103 @@
+name: KettlebellWorkouts.com 09
+description: |
+  KettlebellWorkouts.com; Beginner Workout 09 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Slingshot
+    totalSeconds: 30
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Slingshot
+    totalSeconds: 30
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Slingshot
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Slingshot
+    totalSeconds: 30
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 15
+    type: work
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Slingshot
+    totalSeconds: 30
+    type: work
+  - name: Halo
+    totalSeconds: 30
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 15
+    type: work

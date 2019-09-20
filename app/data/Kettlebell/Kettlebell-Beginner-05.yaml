@@ -1,0 +1,68 @@
+name: KettlebellWorkouts.com 05
+description: |
+  KettlebellWorkouts.com; Beginner Workout 05 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  

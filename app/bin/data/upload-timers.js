@@ -95,7 +95,7 @@ async function saveJson(filesJson) {
 
   for (const tag in filesJsonByTag) {
     const json = filesJsonByTag[tag];
-    const filepath = path.join(__dirname, '..', 'data', `${tag}.json`);
+    const filepath = path.join(__dirname, '..', '..', 'data', `${tag}.json`);
 
     await promisify(fs.writeFile)(filepath, JSON.stringify(json), 'utf8');
   }

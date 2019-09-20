@@ -1,0 +1,103 @@
+name: KettlebellWorkouts.com 03
+description: |
+  KettlebellWorkouts.com; Beginner Workout 03 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest

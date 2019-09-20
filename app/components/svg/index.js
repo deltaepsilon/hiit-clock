@@ -13,6 +13,7 @@ import Forward10 from './forward-10';
 import Game from './game';
 import Headset from './headset';
 import HiitClock from './hiit-clock';
+import Kettlebell from './kettlebell';
 import List from './list';
 import NavigateNext from './navigate-next';
 import PauseCircleFilled from './pause-circle-filled';
@@ -45,6 +46,7 @@ export {
   Game,
   Headset,
   HiitClock,
+  Kettlebell,
   List,
   NavigateNext,
   PauseCircleFilled,

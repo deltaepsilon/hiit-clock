@@ -1,0 +1,55 @@
+name: KettlebellWorkouts.com 01
+description: |
+  KettlebellWorkouts.com; Beginner Workout 01 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest

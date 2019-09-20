@@ -1,0 +1,94 @@
+name: KettlebellWorkouts.com 08
+description: |
+  KettlebellWorkouts.com; Beginner Workout 08 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Good Morning
+    totalSeconds: 30
+    type: work
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 20
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Halo Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 15
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 20
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 20
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Slingshot Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 20
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest

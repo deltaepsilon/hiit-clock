@@ -1,0 +1,79 @@
+name: KettlebellWorkouts.com 04
+description: |
+  KettlebellWorkouts.com; Beginner Workout 04 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Goblet Squat
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest

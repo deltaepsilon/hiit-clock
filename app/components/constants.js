@@ -85,6 +85,7 @@ export default {
     BROWSE: {
       CROSSFIT: '/browse/crossfit',
       CUSTOM: '/browse/custom',
+      KETTLEBELL: '/browse/kettlebell',
       POWERLIFTING: '/browse/powerlifting',
       STRONGLIFTS: '/browse/stronglifts',
       TABATA: '/browse/tabata',

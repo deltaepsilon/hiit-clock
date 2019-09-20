@@ -1,0 +1,55 @@
+name: KettlebellWorkouts.com 02
+description: |
+  KettlebellWorkouts.com; Beginner Workout 02 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 25
+    type: rest

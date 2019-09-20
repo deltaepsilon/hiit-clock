@@ -1,0 +1,32 @@
+name: KettlebellWorkouts.com 10
+description: |
+  KettlebellWorkouts.com; Beginner Workout 10 #kettlebell
+tags:
+  - .Default
+  - Kettlebell
+periods:
+  - name: Good Morning
+    totalSeconds: 60
+    type: work
+  - name: Slingshot Clockwise
+    totalSeconds: 60
+    type: work
+  - name: Slingshot Counter-Clockwise
+    totalSeconds: 60
+    type: work
+  - name: Goblet Squat
+    totalSeconds: 60
+    type: work
+  - name: Halo Clockwise
+    totalSeconds: 60
+    type: work
+  - name: Halo Counter-Clockwise
+    totalSeconds: 60
+    type: work
+  - name: Single-Arm Deadlift Left
+    totalSeconds: 60
+    type: work
+  - name: Single-Arm Deadlift Right
+    totalSeconds: 60
+    type: work
+  
