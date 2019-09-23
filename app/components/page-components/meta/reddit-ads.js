@@ -1,6 +1,6 @@
-import React from "react";
-import PhoneMock from "../../phone-mock/phone-mock";
-import "./reddit-ads.css";
+import React from 'react';
+import PhoneMock from '../../phone-mock/phone-mock';
+import './reddit-ads.css';
 
 export default () => {
   return (
@@ -13,13 +13,31 @@ export default () => {
           <PhoneMock src="/images/screenshots/timer-play.png" />
           <PhoneMock src="/images/screenshots/timer-search.png" />
         </div>
-        
+
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/kettlebell-list.png" />
+          <PhoneMock src="/images/screenshots/kettlebell-01.png" />
+          <PhoneMock src="/images/screenshots/kettlebell-playing.png" />
+        </div>
+
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/flexibility-list.png" />
+          <PhoneMock src="/images/screenshots/flexibility-middle-splits.png" />
+          <PhoneMock src="/images/screenshots/flexibility-playing.png" />
+        </div>
+
+        <div className="desktop ad">
+          <PhoneMock src="/images/screenshots/fitness-blender-list.png" />
+          <PhoneMock src="/images/screenshots/fitness-blender-brutal-hiit-ladder.png" />
+          <PhoneMock src="/images/screenshots/fitness-blender-playing.png" />
+        </div>
+
         <div className="desktop ad">
           <PhoneMock src="/images/screenshots/timer-detail.png" />
           <PhoneMock src="/images/screenshots/timer-play.png" />
           <PhoneMock src="/images/screenshots/timer-chromecast.png" />
         </div>
-        
+
         <div className="desktop ad">
           <PhoneMock src="/images/screenshots/timer-search.png" />
           <PhoneMock src="/images/screenshots/timer-play.png" />

@@ -1,5 +1,6 @@
 import React from 'react';
 import PhoneMock from '../../phone-mock/phone-mock';
+import screenshots from '../../../public/images/screenshots/screenshots.json';
 import './screenshots.css';
 
 export default () => {
@@ -8,18 +9,13 @@ export default () => {
       <h2>Screenshots</h2>
 
       <div className="grid">
-        <PhoneMock>
-          <img src="/images/screenshots/timer-chromecast.png" alt="timer chromecast" />
-        </PhoneMock>
-        <PhoneMock>
-          <img src="/images/screenshots/timer-detail.png" alt="timer detail" />
-        </PhoneMock>
-        <PhoneMock>
-          <img src="/images/screenshots/timer-play.png" alt="timer play" />
-        </PhoneMock>
-        <PhoneMock>
-          <img src="/images/screenshots/timer-share.png" alt="timer share" />
-        </PhoneMock>
+        {screenshots.map(filename => (
+          <PhoneMock
+            key={filename}
+            src={`/images/screenshots/${filename}`}
+            alt="timer chromecast"
+          />
+        ))}
       </div>
     </div>
   );

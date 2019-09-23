@@ -74,7 +74,7 @@ async function parseYamlFiles(files) {
 
         return json;
       } catch (error) {
-        console.log(file);
+        console.info(file);
         console.error(error);
       }
     })
