@@ -1,0 +1,222 @@
+name: Fat Burning Ladder
+description: |
+  FitnessBlender.com; https://www.fitnessblender.com/videos/brutal-hiit-workout-game-fat-burning-ladder-pyramid-and-tabata-hiit-at-home #fitnessblender
+tags:
+  - FitnessBlender
+periods:
+  - name: High Knee March
+    totalSeconds: 45
+    type: work
+  - name: Arm Push Pulls
+    totalSeconds: 45
+    type: work
+  - name: Toe Touch Circles
+    totalSeconds: 45
+    type: work
+  - name: Boxer Shuffle
+    totalSeconds: 45
+    type: work
+  - name: Up and Outs
+    totalSeconds: 45
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 60
+    type: rest
+  - name: Burpees
+    totalSeconds: 50
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Burpees
+    totalSeconds: 40
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 10
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Knee Up Push Up
+    totalSeconds: 10
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Knee Up Push Up
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Star Jump
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Star Jump
+    totalSeconds: 40
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Star Jump
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Star Jump
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Star Jump
+    totalSeconds: 10
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Seal Push Ups
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Seal Push Ups
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat w/ Leg Raise L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat w/ Leg Raise L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Jumping Jacks
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Jumping Jacks
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Jumping Lunges
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Jumping Lunges
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Agility Dots L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Agility Dots L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Side Plank Toe Touches L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Side Plank Toe Touches L&R
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knees
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knees
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Front Jack
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Front Jack
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Rocket Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Rocket Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Cooldown
+    totalSeconds: 120
+    type: work

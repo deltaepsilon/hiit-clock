@@ -85,6 +85,7 @@ export default {
     BROWSE: {
       CROSSFIT: '/browse/crossfit',
       CUSTOM: '/browse/custom',
+      FITNESS_BLENDER: '/browse/fitness-blender',
       FLEXIBILITY: '/browse/flexibility',
       KETTLEBELL: '/browse/kettlebell',
       POWERLIFTING: '/browse/powerlifting',

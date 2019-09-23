@@ -1,0 +1,117 @@
+name: Brutal HIIT Ladder
+description: |
+  FitnessBlender.com; https://www.fitnessblender.com/videos/brutal-hiit-ladder-workout #fitnessblender
+tags:
+  - FitnessBlender
+periods:
+  - name: Leg Swings Left
+    totalSeconds: 30
+    type: work
+  - name: Leg Swings Right
+    totalSeconds: 30
+    type: work
+  - name: Knee Up Twists
+    totalSeconds: 30
+    type: work
+  - name: Squat w/ Toe Touch
+    totalSeconds: 30
+    type: work
+  - name: Log Jumps
+    totalSeconds: 30
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Flutter Kick Squat
+    totalSeconds: 60
+    type: work
+  - name: High Knees
+    totalSeconds: 60
+    type: work
+  - name: Burpee
+    totalSeconds: 60
+    type: work
+  - name: Jumping Jacks
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest

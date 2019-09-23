@@ -1,0 +1,372 @@
+name: Intense Active/Static LB Strength and HIIT
+description: |
+  FitnessBlender.com; https://www.fitnessblender.com/videos/56-minute-hiit-and-strength-workout-intense-active-static-lower-body-strength-and-hiit #fitnessblender
+tags:
+  - FitnessBlender
+periods:
+  - name: Right Over Left + Side Lean
+    totalSeconds: 30
+    type: work
+  - name: Left Over Right + Side Lean
+    totalSeconds: 30
+    type: work
+  - name: Warrior Left
+    totalSeconds: 30
+    type: work
+  - name: Warrior Right
+    totalSeconds: 30
+    type: work
+  - name: Toe Touch Sweeps
+    totalSeconds: 30
+    type: work
+  - name: Toe Touch Kick Left
+    totalSeconds: 30
+    type: work
+  - name: Toe Touch Kick Right
+    totalSeconds: 30
+    type: work
+  - name: High Knee March
+    totalSeconds: 30
+    type: work
+  - name: Boxer Shuffle
+    totalSeconds: 30
+    type: work
+  - name: Jumping Jack
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knee Pause
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat + Front Kick
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Squat Jack to Jumping Lunge 2x2
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Burpee
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knee Pause
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat + Front Kick
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Squat Jack to Jumping Lunge 2x2
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Burpee
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Water Break
+    totalSeconds: 60
+    type: rest
+  - name: Squat
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Squat Hold
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Hold Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Hold Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Squat
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Squat Hold
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Hold Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Lunge Hold Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knee Pause
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat + Front Kick
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Squat Jack to Jumping Lunge 2x2
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Burpee
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Lateral Jumps
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Pop Squats
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: High Knee Pause
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat + Front Kick
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Squat Jack to Jumping Lunge 2x2
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Burpee
+    totalSeconds: 20
+    type: work
+  - name: Rest
+    totalSeconds: 10
+    type: rest
+  - name: Sumo Squat
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Sumo Squat Hold
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Hold Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Hold Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Sumo Squat
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Sumo Squat Hold
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Hold Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Hold Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Standing Quad Left
+    totalSeconds: 30
+    type: work
+  - name: Standing Quad Right
+    totalSeconds: 30
+    type: work
+  - name: Inside Thigh Left
+    totalSeconds: 30
+    type: work
+  - name: Inside Thigh Right
+    totalSeconds: 30
+    type: work
+  - name: Wide Stance Toe Touch
+    totalSeconds: 30
+    type: work
+  - name: Seated Toe Touch
+    totalSeconds: 30
+    type: work
+  - name: Single Leg Stretch Left
+    totalSeconds: 30
+    type: work
+  - name: Single Leg Stretch Right
+    totalSeconds: 30
+    type: work
+  - name: Butterfly
+    totalSeconds: 30
+    type: work
+  - name: Deep Hip Stretch
+    totalSeconds: 30
+    type: work
+  - name: Deep Glute Left
+    totalSeconds: 30
+    type: work
+  - name: Deep Glute Right
+    totalSeconds: 30
+    type: work
+  - name: Torso Stretch Left
+    totalSeconds: 30
+    type: work
+  - name: Torso Stretch Right
+    totalSeconds: 30
+    type: work

@@ -9,6 +9,7 @@ import Dashboard from './dashboard';
 import DeleteOutline from './delete-outline';
 import Edit from './edit';
 import FileCopyOutline from './file-copy-outline';
+import FitnessBlender from './fitness-blender';
 import Forward10 from './forward-10';
 import Game from './game';
 import Headset from './headset';
@@ -42,6 +43,7 @@ export {
   DeleteOutline,
   Edit,
   FileCopyOutline,
+  FitnessBlender,
   Forward10,
   Game,
   Headset,

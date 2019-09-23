@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from '@rmwc/button';
 import { List, SimpleListItem } from '@rmwc/list';
-import { Add, Kettlebell, NavigateNext } from '../svg';
+import { Add, FitnessBlender, Kettlebell, NavigateNext } from '../svg';
 import DashboardOrLogin from '../top-bar/dashboard-or-login';
 import PhoneMock from '../phone-mock/phone-mock';
 import constants from '../constants';
@@ -52,6 +52,16 @@ export default () => {
                   className="flexibility"
                   graphic="🧘‍♀️"
                   text="Flexibility"
+                  metaIcon={<NavigateNext />}
+                />
+              </a>
+            </Link>
+            <Link href={constants.ROUTES.BROWSE.FITNESS_BLENDER}>
+              <a href={constants.ROUTES.BROWSE.FITNESS_BLENDER}>
+                <SimpleListItem
+                  className="fitness-blander"
+                  graphic={<FitnessBlender />}
+                  text="Fitness Blender"
                   metaIcon={<NavigateNext />}
                 />
               </a>
