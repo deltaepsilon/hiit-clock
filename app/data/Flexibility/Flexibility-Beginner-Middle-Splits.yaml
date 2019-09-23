@@ -1,0 +1,37 @@
+name: Flexibility Middle Splits
+description: |
+  Flexibility; Beginner Middle Splits #flexibility
+tags:
+  - .Default
+  - Flexibility
+periods:
+  - name: Standing Hamstring Center
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 20
+    type: rest
+  - name: Frog
+    totalSeconds: 300
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Pancake
+    totalSeconds: 300
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Butterfly
+    totalSeconds: 300
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Wall Splits
+    totalSeconds: 300
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest

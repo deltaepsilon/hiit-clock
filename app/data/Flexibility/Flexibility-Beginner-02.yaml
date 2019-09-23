@@ -1,0 +1,103 @@
+name: Flexibility 02
+description: |
+  Flexibility; Beginner Workout 02 #flexibility
+tags:
+  - .Default
+  - Flexibility
+periods:
+  - name: Standing Hamstring Center
+    totalSeconds: 30
+    type: work
+  - name: Standing Hamstring Left
+    totalSeconds: 15
+    type: work
+  - name: Standing Hamstring Right
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Butterfly
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Left
+    totalSeconds: 30
+    type: work
+  - name: Reverse Lunge Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Lunge Right
+    totalSeconds: 30
+    type: work
+  - name: Reverse Lunge Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Splits Right
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Side Splits Left
+    totalSeconds: 60
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Pancake
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Frog
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Hamstring On-Bar Extension Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Hamstring On-Bar Extension Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Hamstring On-Back Extension Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Hamstring On-Back Extension Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Pancake
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Frog
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest

@@ -1,0 +1,67 @@
+name: Flexibility Side Splits
+description: |
+  Flexibility; Beginner Side Splits #flexibility
+tags:
+  - .Default
+  - Flexibility
+periods:
+  - name: Standing Hamstring Center
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Sprinter Left
+    totalSeconds: 120
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Sprinter Right
+    totalSeconds: 120
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Pike
+    totalSeconds: 120
+    type: work
+  - name: Rest
+    totalSeconds: 30
+    type: rest
+  - name: Quad/Hip Flexors Left
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Quad/Hip Flexors Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Hanging Side Split Left
+    totalSeconds: 120
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Hanging Side Split Right
+    totalSeconds: 120
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Floor Side Split Left
+    totalSeconds: 180
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest
+  - name: Floor Side Split Right
+    totalSeconds: 180
+    type: work
+  - name: Rest
+    totalSeconds: 45
+    type: rest

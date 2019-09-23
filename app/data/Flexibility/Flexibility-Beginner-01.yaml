@@ -1,0 +1,91 @@
+name: Flexibility 01
+description: |
+  Flexibility; Beginner Workout 01 #flexibility
+tags:
+  - .Default
+  - Flexibility
+periods:
+  - name: Standing Hamstring Center
+    totalSeconds: 45
+    type: work
+  - name: Standing Hamstring Left
+    totalSeconds: 15
+    type: work
+  - name: Standing Hamstring Right
+    totalSeconds: 15
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Kneeling Lunge Left
+    totalSeconds: 30
+    type: work
+  - name: Kneeling Lunge Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Kneeling Lunge Left
+    totalSeconds: 30
+    type: work
+  - name: Kneeling Lunge Right
+    totalSeconds: 30
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Frog
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Pancake
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest  
+  - name: Cossack Squat Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest  
+  - name: Cossack Squat Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Hamstring On-Back Extension Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest  
+  - name: Hamstring On-Back Extension Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Middle Splits
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest
+  - name: Side Splits Left
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest  
+  - name: Side Splits Right
+    totalSeconds: 45
+    type: work
+  - name: Rest
+    totalSeconds: 15
+    type: rest

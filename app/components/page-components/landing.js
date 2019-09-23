@@ -46,6 +46,16 @@ export default () => {
                 />
               </a>
             </Link>
+            <Link href={constants.ROUTES.BROWSE.FLEXIBILITY}>
+              <a href={constants.ROUTES.BROWSE.FLEXIBILITY}>
+                <SimpleListItem
+                  className="flexibility"
+                  graphic="🧘‍♀️"
+                  text="Flexibility"
+                  metaIcon={<NavigateNext />}
+                />
+              </a>
+            </Link>
             <Link href={constants.ROUTES.BROWSE.CROSSFIT}>
               <a href={constants.ROUTES.BROWSE.CROSSFIT}>
                 <SimpleListItem

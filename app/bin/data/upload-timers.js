@@ -64,14 +64,19 @@ async function getYamlFiles(pathToEvaluate, files = []) {
 async function parseYamlFiles(files) {
   return Promise.all(
     files.map(async file => {
-      const text = await promisify(fs.readFile)(file, 'utf8');
-      const json = yaml.parse(text);
-      const __id = file.match(/\/([^/]*)\.yaml/)[1];
+      try {
+        const text = await promisify(fs.readFile)(file, 'utf8');
+        const json = yaml.parse(text);
+        const __id = file.match(/\/([^/]*)\.yaml/)[1];
 
-      json.__id = __id.toLowerCase();
-      json.uid = uid;
+        json.__id = __id.toLowerCase();
+        json.uid = uid;
 
-      return json;
+        return json;
+      } catch (error) {
+        console.log(file);
+        console.error(error);
+      }
     })
   );
 }
