@@ -1,5 +1,5 @@
 /* globals window */
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import constants from '../constants';
 
@@ -44,15 +44,22 @@ export default (items, searchTerm) => {
     }
   }, [isSearchingAlgolia, index, searchTerm]);
 
-  function getFuseResult() {
-    const result = searchTerm ? fuse.search(searchTerm) : items;
+  const { local, search } = useMemo(() => {
+    const local = getFuseResult({ fuse, searchTerm, items });
+    const localIds = new Set(local.map(({ __id }) => __id));
+    const search = searchResults.filter(({ objectID }) => !localIds.has(objectID));
 
-    return result.sort((a, b) => (a.lastAccessed < b.lastAccessed ? 1 : -1));
-  }
-
-  const local = getFuseResult().reverse();
-  const localIds = new Set(local.map(({ __id }) => __id));
-  const search = searchResults.filter(({ objectID }) => !localIds.has(objectID));
+    return { local, search };
+  }, [fuse, items, searchResults, searchTerm]);
 
   return { local, search };
 };
+
+function getFuseResult({ fuse, searchTerm, items }) {
+  const result = searchTerm ? fuse.search(searchTerm) : items;
+  const sorted = result.sort((a, b) =>
+    !a.lastAccessed || a.lastAccessed < b.lastAccessed ? 1 : -1
+  );
+
+  return sorted;
+}

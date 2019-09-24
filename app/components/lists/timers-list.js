@@ -24,7 +24,7 @@ export default ({ searchLabel, items }) => {
         {local.map(timer => (
           <TimerRow timer={timer} key={timer.__id} />
         ))}
-        {search.length ? (
+        {hasSearch ? (
           <div className="interstitial">
             <span className="text-bold">Search</span>
           </div>
