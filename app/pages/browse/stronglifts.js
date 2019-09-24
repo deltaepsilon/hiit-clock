@@ -20,7 +20,7 @@ export default props => {
           <h2>A Companion App</h2>
           <p>
             We haven't used the{' '}
-            <a href="https://stronglifts.com/" target="_blank">
+            <a href="https://stronglifts.com/" target="_blank" rel="noopener noreferrer">
               Stronglifts App for Android or iOS
             </a>
             . Maybe check it out?

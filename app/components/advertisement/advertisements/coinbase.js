@@ -6,6 +6,7 @@ const BACKGROUND_COLOR = '#0168bb';
 const LINK_PROPS = {
   href: 'https://www.coinbase.com/join/cesplin',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'coinbase-click',

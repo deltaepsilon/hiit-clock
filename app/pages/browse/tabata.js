@@ -24,6 +24,7 @@ export default props => {
             <a
               href="https://breakingmuscle.com/fitness/how-tabata-really-works-what-the-research-says"
               target="_blank"
+              rel="noopener noreferrer"
             >
               research review
             </a>{' '}

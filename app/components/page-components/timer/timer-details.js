@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Fab } from '@rmwc/fab';
 import { AuthenticationContext } from '../../contexts/authentication-context';
 import { Edit, FileCopyOutline } from '../../svg';
+import useMarkdown from '../../hooks/use-markdown';
 import useTimer from '../../hooks/use-timer';
 import BackButton from '../../top-bar/back-button';
 import Title from '../../top-bar/title';
@@ -12,7 +13,6 @@ import CyclesList from '../../timer/cycles-list';
 import TimerActions from '../../timer/timer-actions';
 import TimerSchema from '../../timer/timer-schema';
 import constants from '../../constants';
-
 import './timer-details.css';
 
 export default ({ timerId, userId }) => {
@@ -24,6 +24,7 @@ export default ({ timerId, userId }) => {
   const fabHref = `${constants.ROUTES.TIMER.EDIT}?id=${timerId}&userId=${userId}&isOwned=${isOwned}`;
   const fabIcon = isOwned ? <Edit /> : <FileCopyOutline />;
   const imageSrc = timer.file && timer.file.downloadURL;
+  const markdownDescription = useMarkdown(timer.description);
 
   return (
     <>
@@ -44,7 +45,7 @@ export default ({ timerId, userId }) => {
           </li>
         </ul>
 
-        <p>{timer.description}</p>
+        <div className="markdown" dangerouslySetInnerHTML={{ __html: markdownDescription }} />
 
         {imageSrc && <img src={imageSrc} alt={`${timer.name} descriptive image`} />}
 

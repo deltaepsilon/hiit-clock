@@ -11,6 +11,7 @@ const LINK_DETAILS = {
       href:
         'https://www.amazon.com/s/ref=as_li_ss_tl?k=chromecast&ref=nb_sb_noss_2&linkCode=ll2&tag=calligraphyor-20&linkId=d75c93bc44807e9b4178b99fd97827eb&language=en_US',
       target: '_blank',
+      rel: 'noopener noreferrer',
     },
     ANALYTICS_EVENT_PROPS: {
       event: 'chromecast-click',
@@ -21,6 +22,7 @@ const LINK_DETAILS = {
     LINK_PROPS: {
       href: 'https://www.coinbase.com/join/cesplin',
       target: '_blank',
+      rel: 'noopener noreferrer',
     },
     ANALYTICS_EVENT_PROPS: {
       event: 'coinbase-click',
@@ -31,6 +33,7 @@ const LINK_DETAILS = {
     LINK_PROPS: {
       href: 'http://www.dpbolvw.net/click-9173008-13536585',
       target: '_blank',
+      rel: 'noopener noreferrer',
     },
     ANALYTICS_EVENT_PROPS: {
       event: '1password-click',
@@ -41,6 +44,7 @@ const LINK_DETAILS = {
     LINK_PROPS: {
       href: 'https://www.shopify.com/?ref=developer-3dfd5c56918d6397',
       target: '_blank',
+      rel: 'noopener noreferrer',
     },
     ANALYTICS_EVENT_PROPS: {
       event: 'shopify-click',
@@ -51,6 +55,7 @@ const LINK_DETAILS = {
     LINK_PROPS: {
       href: 'https://www.wealthfront.com/c/affiliates/invited/AFFD-UXC1-MMN7-CETA',
       target: '_blank',
+      rel: 'noopener noreferrer',
     },
     ANALYTICS_EVENT_PROPS: {
       event: 'wealthfront-click',

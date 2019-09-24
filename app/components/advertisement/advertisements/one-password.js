@@ -6,6 +6,7 @@ const BACKGROUND_COLOR = '#4d5d8c';
 const LINK_PROPS = {
   href: 'http://www.dpbolvw.net/click-9173008-13536585',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
   event: '1password-click',

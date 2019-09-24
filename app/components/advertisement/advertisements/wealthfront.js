@@ -6,6 +6,7 @@ const BACKGROUND_IMAGE = 'linear-gradient(to right, #8f53d7, #4840bb, #4840bb, #
 const LINK_PROPS = {
   href: 'https://www.wealthfront.com/c/affiliates/invited/AFFD-UXC1-MMN7-CETA',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'wealthfront-click',

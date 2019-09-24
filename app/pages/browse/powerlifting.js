@@ -20,7 +20,7 @@ export default props => {
           <h2>Generous Rest Periods</h2>
           <p>
             These intervals are inspired by{' '}
-            <a href="https://startingstrength.com/" target="_blank">
+            <a href="https://startingstrength.com/" target="_blank" rel="noopener noreferrer">
               Starting Strength
             </a>{' '}
             by Mark Rippetoe.

@@ -8,7 +8,7 @@ export default function shareUrl({ children, title, href }) {
   const handleClick = useCallback(
     async e => {
       e.preventDefault();
-      
+
       try {
         await navigator.share({ url: href });
       } catch (error) {
@@ -19,7 +19,7 @@ export default function shareUrl({ children, title, href }) {
   );
 
   return (
-    <a href={href} onClick={handleClick} target="_blank">
+    <a href={href} onClick={handleClick} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   );

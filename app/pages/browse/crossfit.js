@@ -21,7 +21,11 @@ export default props => {
           <p>The Girls workouts have been Crossfit benchmarks since 2003</p>
           <p>
             Grab a{' '}
-            <a href="https://stuff.crossfit.com/products/copy-of-the-girls-poster" target="_blank">
+            <a
+              href="https://stuff.crossfit.com/products/copy-of-the-girls-poster"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               poster
             </a>{' '}
             for your muscle garage, and use these timers to get motivated.

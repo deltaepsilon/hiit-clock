@@ -7,6 +7,7 @@ const LINK_PROPS = {
   href:
     'https://www.amazon.com/s/ref=as_li_ss_tl?k=chromecast&ref=nb_sb_noss_2&linkCode=ll2&tag=calligraphyor-20&linkId=d75c93bc44807e9b4178b99fd97827eb&language=en_US',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'chromecast-click',

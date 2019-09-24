@@ -6,6 +6,7 @@ const BACKGROUND_COLOR = '#212b35';
 const LINK_PROPS = {
   href: 'https://www.shopify.com/?ref=developer-3dfd5c56918d6397',
   target: '_blank',
+  rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'shopify-click',
