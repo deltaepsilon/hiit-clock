@@ -20,14 +20,22 @@ export default props => {
           <h2>Minimal/Effective</h2>
 
           <p>
-            We've started out with a series of kettlebell workouts from{' '}
-            <a href="https://kettlebellsworkouts.com/kettlebell-exercises/">
-              kettlebellsworkouts.com
+            We're starting with workouts from{' '}
+            <a
+              href="https://kettlebellsworkouts.com/kettlebell-exercises/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              KettlebellsWorkouts.com
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://www.cavemantraining.com/kettlebell-workouts/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CavemanTraining.com
             </a>
-          </p>
-          <p>
-            The workouts are meant for beginners and should be followed from 01 to 10. It's a
-            gradual ramp up :)
           </p>
         </section>
 
