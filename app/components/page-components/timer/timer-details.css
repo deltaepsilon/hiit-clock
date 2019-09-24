@@ -58,3 +58,7 @@
   top: 28px;
   right: -30%;
 }
+
+#timer-details .markdown {
+  width: 100%;
+}
