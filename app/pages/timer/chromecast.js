@@ -45,5 +45,9 @@ export default () => {
     }
   }, [instance, uid]);
 
-  return <ChromecastBase>{uid && <ChromecastPlay uid={uid} />}</ChromecastBase>;
+  return (
+    <ChromecastBase>
+      <ChromecastPlay uid={uid} />
+    </ChromecastBase>
+  );
 };

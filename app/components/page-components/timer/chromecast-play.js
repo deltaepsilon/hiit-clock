@@ -34,9 +34,9 @@ export default ({ shareId, uid }) => {
 function EmptyTimerState() {
   return (
     <div id="empty-timer-state">
-      <marquee>
-        <h1>No timer loaded quite yet. Wait for it...</h1>
-      </marquee>
+      <h1>Timer not loaded...</h1>
+      <p>Try reloading the app from your casting device.</p>
+      <p>Dragging down from the phone app usually works 😉</p>
     </div>
   );
 }

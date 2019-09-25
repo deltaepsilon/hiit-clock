@@ -30,8 +30,8 @@ export default function TimerProgressDetails() {
 
   useEffect(() => {
     isImage && (!period.file || !period.file.downloadURL) && cycleMode();
-    isDescription && !period.description && cycleMode();
-  }, [isDescription && isImage, period, cycleMode]);
+    isDescription && !timer.description && cycleMode();
+  }, [cycleMode, isDescription, isImage, period, timer]);
 
   const shouldRenderDetails = periodStats.period;
   const detailsViewProps = {

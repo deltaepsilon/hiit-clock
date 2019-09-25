@@ -20,6 +20,14 @@
   max-height: 35vh;
 }
 
+#timer-list .seconds-row p {
+  height: 30vh;
+  overflow: hidden;
+  overflow-y: auto;
+  font-size: 1rem !important;
+  max-width: 100vw;
+}
+
 #timer-list .big-time {
   display: flex;
   flex-direction: column;

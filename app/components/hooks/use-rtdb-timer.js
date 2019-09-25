@@ -22,9 +22,9 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
   const [timer, setTimer] = useState(DEFAULT_TIMER);
   const [state, setState] = useState(DEFAULT_STATE);
   const [correctionMillis, setCorrectionMillis] = useState(0);
-  const timerStateRef = useMemo(() => schema.getTimerStateRef(uid), [uid]);
+  const timerStateRef = useMemo(() => uid && schema.getTimerStateRef(uid), [uid]);
   const correctionMillisRef = useMemo(
-    () => shareId && schema.getCorrectionMillisRef(uid, shareId),
+    () => uid && shareId && schema.getCorrectionMillisRef(uid, shareId),
     [shareId, uid]
   );
   const totalSeconds = useMemo(() => calculateTimerTotalSeconds(timer || DEFAULT_TIMER), [timer]);
@@ -64,7 +64,7 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
   }, [correctionMillis, state, timer, totalSeconds]);
 
   useEffect(() => {
-    if (correctionMillisRef) {
+    if (timerStateRef && correctionMillisRef) {
       const stateRef = timerStateRef.child('state');
       const stateHandler = stateRef.on('value', snapshot => {
         const state = snapshot.val();
@@ -92,25 +92,29 @@ export default function useRtdbTimer({ shareId = 'chromecast', uid }) {
   }, [correctionMillisRef, setCorrectionMillis, setState, timerStateRef]);
 
   useEffect(() => {
-    const timerRef = timerStateRef.child('timer');
-    const timerHandler = timerRef.on('value', snapshot => {
-      const timer = snapshot.val();
+    if (timerStateRef) {
+      const timerRef = timerStateRef.child('timer');
+      const timerHandler = timerRef.on('value', snapshot => {
+        const timer = snapshot.val();
 
-      setTimer(timer);
-    });
+        setTimer(timer);
+      });
 
-    return () => timerRef.off('value', timerHandler);
+      return () => timerRef.off('value', timerHandler);
+    }
   }, [setTimer, timerStateRef]);
 
   useEffect(() => {
-    const settingsRef = timerStateRef.child('settings');
-    const settingsHandler = settingsRef.on('value', snapshot => {
-      const settings = snapshot.val() || {};
+    if (timerStateRef) {
+      const settingsRef = timerStateRef.child('settings');
+      const settingsHandler = settingsRef.on('value', snapshot => {
+        const settings = snapshot.val() || {};
 
-      effects.saveSettings(settings);
-    });
+        effects.saveSettings(settings);
+      });
 
-    return () => settingsRef.off('value', settingsHandler);
+      return () => settingsRef.off('value', settingsHandler);
+    }
   }, [timerStateRef]);
 
   return { secondsElapsed, timer: timer || DEFAULT_TIMER, timerState };
