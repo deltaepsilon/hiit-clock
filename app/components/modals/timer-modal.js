@@ -17,7 +17,6 @@ export default React.memo(props => {
 function TimerModal({ timerId, onClose }) {
   const { currentUser } = useContext(AuthenticationContext);
   const timer = useTimer({ timerId, userId: currentUser.uid });
-  const isOwned = timer.uid == currentUser.uid;
 
   return (
     <div onClick={onClose}>
@@ -31,7 +30,7 @@ function TimerModal({ timerId, onClose }) {
             raised
             className="accent"
             onClick={async e => {
-              await effects.deleteTimer({ timerId, currentUser, isOwned });
+              await effects.deleteTimer({ timerId, currentUser });
 
               onClose(e);
             }}

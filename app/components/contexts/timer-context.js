@@ -9,7 +9,7 @@ import addMetadataToCycles from '../../utilities/add-metadata-to-cycles';
 export const TimerContext = React.createContext();
 export const SecondsContext = React.createContext();
 
-export default ({ children, isOwned, secondsElapsed, timer, timerId, timerState, userId }) => {
+export default ({ children, secondsElapsed, timer, timerId, timerState, userId }) => {
   const { effects, playState, totalSeconds } = timerState;
   const [cycleStats, setCycleStats] = useState({});
   const [periodStats, setPeriodStats] = useState({});
@@ -19,7 +19,7 @@ export default ({ children, isOwned, secondsElapsed, timer, timerId, timerState,
     const periodsWithMetadata = convertCyclesToPeriodsWithMetadata(cyclesWithMetadata, {
       totalSeconds,
     });
-    const periodsWithIds = isOwned ? periodsWithMetadata : addPeriodIds(periodsWithMetadata);
+    const periodsWithIds = addPeriodIds(periodsWithMetadata);
 
     return [cyclesWithMetadata, periodsWithIds];
   }, [timer, totalSeconds]);
@@ -60,14 +60,13 @@ export default ({ children, isOwned, secondsElapsed, timer, timerId, timerState,
     () => ({
       cycles,
       effects,
-      isOwned,
       playState,
       timerId,
       timer: { ...timer, periods },
       totalSeconds,
       userId,
     }),
-    [cycles, effects, isOwned, periods, playState, timer, timerId, totalSeconds, userId]
+    [cycles, effects, periods, playState, timer, timerId, totalSeconds, userId]
   );
   const secondsValue = useMemo(() => ({ secondsElapsed, cycleStats, periodStats }), [
     periodStats,
@@ -94,5 +93,5 @@ function convertCyclesToPeriodsWithMetadata(cycles, { totalSeconds }) {
 }
 
 function addPeriodIds(periods) {
-  return periods.map(period => ({ ...period, id: uuid() }));
+  return periods.map(period => ({ id: uuid(), ...period }));
 }

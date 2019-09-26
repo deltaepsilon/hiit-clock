@@ -9,6 +9,7 @@ export default function ConfirmButton({
   confirmText = 'confirm',
   ...buttonProps
 }) {
+  const [disabled, setDisabled] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
   const [timer, setTimer] = useState(null);
 
@@ -23,15 +24,21 @@ export default function ConfirmButton({
   return (
     <Button
       className="confirm-button"
+      disabled={disabled}
       is-confirming={String(isConfirming)}
       {...buttonProps}
-      onClick={e => {
+      onClick={async e => {
         e.preventDefault();
 
         if (isConfirming) {
           clearTimeout(timer);
 
-          onClick(e);
+          setDisabled(true);
+
+          await onClick(e);
+
+          setIsConfirming(false);
+          setDisabled(false);
         } else {
           setIsConfirming(true);
         }

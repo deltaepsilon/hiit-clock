@@ -1,4 +1,4 @@
-.confirm-button[is-confirming='true'] {
+.confirm-button[is-confirming='true']:not([disabled]) {
   background-color: var(--mdc-theme-secondary) !important;
   color: var(--mdc-theme-secondary-text) !important;
 }

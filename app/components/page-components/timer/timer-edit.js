@@ -28,26 +28,33 @@ const DEAD_END_PROMISE = new Promise(() => {});
 export default ({ timerId, userId, isOwned }) => {
   const timer = useTimer({ timerId, userId });
   const timerState = useTimerState(timerId, timer);
+  const { currentUser } = useContext(AuthenticationContext);
+
+  useEffect(() => {
+    if (currentUser && !isOwned && timer && timerId) {
+      const newTimerHref = `${constants.ROUTES.TIMER.EDIT}?id=${timerId}&userId=${currentUser.uid}`;
+
+      (async () => {
+        await effects.saveTimer({ currentUser, isOwned, timer, timerId });
+
+        Router.push(newTimerHref);
+      })();
+    }
+  }, [currentUser, isOwned, timer, timerId]);
 
   return (
-    <TimerProvider
-      isOwned={isOwned}
-      timer={timer}
-      timerId={timerId}
-      timerState={timerState}
-      userId={userId}
-    >
+    <TimerProvider timer={timer} timerId={timerId} timerState={timerState} userId={userId}>
       <TimerFormProvider>
-        <TimerForm />
+        <TimerForm isOwned={isOwned} />
       </TimerFormProvider>
     </TimerProvider>
   );
 };
 
-function TimerForm() {
+function TimerForm({ isOwned }) {
   const [isSaving, setIsSaving] = useState(false);
   const { currentUser } = useContext(AuthenticationContext);
-  const { isOwned, userId } = useContext(TimerContext);
+  const { userId } = useContext(TimerContext);
   const {
     formValues,
     formError,
@@ -59,8 +66,10 @@ function TimerForm() {
     timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
+
   const isNewTimer = !timerId;
-  const savedDisabled = (isOwned || isNewTimer) && (!!formError || isSaving || !isDirty);
+  const savedDisabled = isNewTimer || !!formError || isSaving || !isDirty;
+
   const backButtonHref = useMemo(() => {
     let result = constants.ROUTES.DASHBOARD;
 
@@ -81,13 +90,12 @@ function TimerForm() {
 
       <Title>{isAdd ? `Edit ${formValues.name}` : 'Create Timer'}</Title>
 
-      <div id="timer-edit">
+      <div id="timer-edit" is-owned={String(isOwned)}>
         <form
           onSubmit={async e => {
             const handleSubmit = getHandleSubmit({
               currentUser,
               formValues,
-              isOwned,
               timerId,
             });
 
@@ -117,7 +125,7 @@ function TimerForm() {
               Toggle
             </Button>
             <ConfirmButton
-              onClick={getHandleDelete({ isOwned, timerId, currentUser })}
+              onClick={getHandleDelete({ timerId, currentUser })}
               confirmText="Confirm"
             >
               Delete
@@ -162,13 +170,13 @@ function routeChangeStartEffect() {
   return () => Router.events.off('routeChangeStart', handleRouteChange);
 }
 
-function getHandleSubmit({ formValues, isOwned, timerId, currentUser }) {
+function getHandleSubmit({ formValues, timerId, currentUser }) {
   return async e => {
     e.preventDefault();
 
     const timer = getTimerFromFormValues(formValues);
 
-    await effects.saveTimer({ isOwned, timer, timerId, currentUser });
+    await effects.saveTimer({ isOwned: true, timer, timerId, currentUser });
 
     if (!timerId) {
       Router.push(constants.ROUTES.DASHBOARD);
@@ -178,11 +186,11 @@ function getHandleSubmit({ formValues, isOwned, timerId, currentUser }) {
   };
 }
 
-function getHandleDelete({ isOwned, timerId, currentUser }) {
+function getHandleDelete({ timerId, currentUser }) {
   return async e => {
     e.preventDefault();
 
-    await effects.deleteTimer({ isOwned, timerId, currentUser });
+    await effects.deleteTimer({ timerId, currentUser });
 
     Router.push(constants.ROUTES.DASHBOARD);
   };

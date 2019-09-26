@@ -12,7 +12,7 @@ export default () => {
   useEffect(() => {
     if (search) {
       const { id, userId, isOwned: isOwnedString } = parseSearch(search);
-      const isOwned = isOwnedString == 'true';
+      const isOwned = isOwnedString != 'false';
 
       setTimerId(id);
       setUserId(userId);
