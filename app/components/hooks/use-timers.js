@@ -1,5 +1,5 @@
 /* globals window */
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AuthenticationContext } from '../contexts/authentication-context';
 import constants from '../constants';
 import schema from '../schema';
@@ -8,12 +8,22 @@ export default function useTimers() {
   const { currentUser } = useContext(AuthenticationContext);
   const [timers, setTimers] = useState({});
   const uid = useMemo(() => currentUser && currentUser.uid, [currentUser]);
+  const updateLocalStorageTimers = useCallback(() => setLocalTimers(setTimers), [setTimers]);
 
   useEffect(() => {
     if (currentUser) {
-      return subscribe(currentUser, setTimers);
+      const unsubscribe = subscribe(currentUser, setTimers);
+
+      window.addEventListener('storage', updateLocalStorageTimers);
+
+      updateLocalStorageTimers();
+
+      return () => {
+        unsubscribe();
+        window.removeEventListener('storage', updateLocalStorageTimers);
+      };
     }
-  }, [currentUser]);
+  }, [currentUser, setTimers, updateLocalStorageTimers]);
 
   return Object.keys(timers)
     .reduce((result, __id) => {
@@ -26,8 +36,6 @@ export default function useTimers() {
 
 function subscribe(currentUser = {}, setTimers) {
   const { uid } = currentUser;
-
-  setLocalTimers(setTimers);
 
   if (uid) {
     const userTimersRef = schema.getUserTimersRef(uid);
