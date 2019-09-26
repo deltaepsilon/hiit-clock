@@ -18,6 +18,10 @@
   max-width: var(--dimensions-max-width);
 }
 
+.timers-list .mdc-list-item__text * {
+  user-select: none !important;
+}
+
 .timers-list a {
   text-decoration: none;
 }
