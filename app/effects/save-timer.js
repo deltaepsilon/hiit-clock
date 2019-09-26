@@ -5,9 +5,11 @@ import dataUrlToBlob from '../utilities/data-url-to-blob';
 import recursivelyOmitEmptyValues from '../utilities/recursively-omit-empty-values';
 import calculateTimerTotalSeconds from '../utilities/calculate-timer-total-seconds';
 
-export default async function saveTimer({ currentUser, isOwned, timer, timerId }) {
+export default async function saveTimer({ currentUser, isOwned, timer: rawTimer, timerId }) {
   const { isAnonymous, uid } = currentUser;
   const userTimerRef = schema.getUserTimerRef(uid || 'guest', timerId);
+  const lastAccessed = Date.now();
+  const timer = { ...rawTimer, lastAccessed };
 
   saveToLocalStorage({ timerId: userTimerRef.id, timer, uid });
 
@@ -125,13 +127,15 @@ async function saveToDb({ currentUser, isOwned, timer, timerId }) {
 
 function getPersonalTimer({ currentUser, timer }) {
   const { email, uid } = currentUser;
-  const periods = timer.periods.map(period => ({
-    id: period.id,
-    name: period.name,
-    totalSeconds: period.totalSeconds,
-    type: period.type,
-    file: period.file,
-  }));
+  const periods = timer.periods
+    .filter(period => period.type != constants.PERIOD_TYPES.PREPARE)
+    .map(period => ({
+      id: period.id,
+      name: period.name,
+      totalSeconds: period.totalSeconds,
+      type: period.type,
+      file: period.file,
+    }));
   const totalSeconds = calculateTimerTotalSeconds({ periods });
   const search = timer.isSearchable
     ? {
