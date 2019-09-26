@@ -5,6 +5,7 @@ import AlertsHandler from './alerts-handler';
 import Fonts from './fonts';
 import MdcStyles from './mdc-styles';
 import Meta from './meta';
+import RedditPixel from './reddit-pixel';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
 import AlertsProvider from '../contexts/alerts-context';
@@ -32,6 +33,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
       <Fonts />
       <MdcStyles />
       <Meta />
+      <RedditPixel />
       <LoadedProvider>
         <AuthenticationProvider>
           <AlertsProvider>

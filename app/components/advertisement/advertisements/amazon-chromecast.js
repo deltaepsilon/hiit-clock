@@ -1,6 +1,7 @@
 import React from 'react';
 import ClickEventHandler from '../../analytics/click-event-handler';
 import DisplayEventHandler from '../../analytics/display-event-handler';
+import constants from '../../constants';
 
 const BACKGROUND_IMAGE = 'linear-gradient(to right, #4285f4, #db4437, #f4b400, #0f9d58)';
 const LINK_PROPS = {
@@ -11,6 +12,7 @@ const LINK_PROPS = {
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'chromecast-click',
+  redditEvent: constants.REDDIT_EVENTS.LEAD,
 };
 
 export default () => {

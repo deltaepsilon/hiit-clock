@@ -93,6 +93,16 @@ export default {
       TABATA: '/browse/tabata',
     },
   },
+  REDDIT_EVENTS: {
+    PAGE_VISIT: 'PageVisit',
+    VIEW_CONTENT: 'ViewContent',
+    SEARCH: 'Search',
+    ADD_TO_CART: 'AddToCart',
+    ADD_TO_WISHLIST: 'AddToWishlist',
+    PURCHASE: 'Purchase',
+    LEAD: 'Lead',
+    SIGN_UP: 'SignUp',
+  },
   SHARED_USER: 'shared-user',
   SOUNDS: [
     { src: '/sounds/double-chime.mp3', name: 'Chime' },

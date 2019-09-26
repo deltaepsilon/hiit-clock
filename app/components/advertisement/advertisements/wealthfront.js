@@ -1,6 +1,7 @@
 import React from 'react';
 import ClickEventHandler from '../../analytics/click-event-handler';
 import DisplayEventHandler from '../../analytics/display-event-handler';
+import constants from '../../constants';
 
 const BACKGROUND_IMAGE = 'linear-gradient(to right, #8f53d7, #4840bb, #4840bb, #09f)';
 const LINK_PROPS = {
@@ -10,6 +11,7 @@ const LINK_PROPS = {
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'wealthfront-click',
+  redditEvent: constants.REDDIT_EVENTS.LEAD,
 };
 
 export default () => {
@@ -26,11 +28,7 @@ export default () => {
           - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
         </p>
       </div>
-      <a
-        {...LINK_PROPS}
-        className="banner"
-        style={{ backgroundImage: BACKGROUND_IMAGE }}
-      >
+      <a {...LINK_PROPS} className="banner" style={{ backgroundImage: BACKGROUND_IMAGE }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
           <div className="advertising-banner">
             <img

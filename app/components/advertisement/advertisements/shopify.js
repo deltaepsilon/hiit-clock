@@ -1,6 +1,7 @@
 import React from 'react';
 import ClickEventHandler from '../../analytics/click-event-handler';
 import DisplayEventHandler from '../../analytics/display-event-handler';
+import constants from '../../constants';
 
 const BACKGROUND_COLOR = '#212b35';
 const LINK_PROPS = {
@@ -10,6 +11,7 @@ const LINK_PROPS = {
 };
 const ANALYTICS_EVENT_PROPS = {
   event: 'shopify-click',
+  redditEvent: constants.REDDIT_EVENTS.LEAD,
 };
 
 export default () => {
