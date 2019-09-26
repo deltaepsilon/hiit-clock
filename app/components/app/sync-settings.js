@@ -3,7 +3,7 @@ import { AuthenticationContext } from '../contexts/authentication-context';
 import useSettings from '../hooks/use-settings';
 import effects from '../../effects';
 
-export default () => {
+export default function SyncSettings() {
   const { currentUser } = useContext(AuthenticationContext);
   const settings = useSettings();
 
@@ -19,4 +19,4 @@ export default () => {
   }, [currentUser, settings]);
 
   return null;
-};
+}

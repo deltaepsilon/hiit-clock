@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import CastSender from './cast-sender';
 import Environment from './environment';
-import ErrorHandler from './alerts-handler';
+import AlertsHandler from './alerts-handler';
 import Fonts from './fonts';
-import MDCStyles from './mdc-styles';
+import MdcStyles from './mdc-styles';
 import Meta from './meta';
 import Router from './router';
 import AuthenticationProvider from '../contexts/authentication-context';
@@ -30,7 +30,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
       <Environment />
       <FirebasePerformance />
       <Fonts />
-      <MDCStyles />
+      <MdcStyles />
       <Meta />
       <LoadedProvider>
         <AuthenticationProvider>
@@ -44,7 +44,7 @@ export function AppBase({ children, secure, hideUserMenu }) {
                     </div>
                     {!hideUserMenu && <UserMenu />}
                     <Router secure={secure} />
-                    <ErrorHandler />
+                    <AlertsHandler />
                     <CastSender />
                     <SyncSettings />
                   </>

@@ -6,7 +6,7 @@ export const AlertsContext = React.createContext();
 
 const queue = createSnackbarQueue();
 
-export default ({ children }) => {
+export default function AlertsProvider({ children }) {
   const handleError = useCallback(
     error =>
       queue.notify({
@@ -31,7 +31,7 @@ export default ({ children }) => {
       <AlertsContext.Provider value={value}>{children}</AlertsContext.Provider>
     </ErrorBoundary>
   );
-};
+}
 
 class ErrorBoundary extends React.Component {
   componentDidCatch(error, info) {

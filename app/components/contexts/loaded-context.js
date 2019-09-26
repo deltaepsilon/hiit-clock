@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export const LoadedContext = React.createContext();
 
-export default ({ children }) => {
+export default function LoadedProvider({ children }) {
   const documentReady = typeof window != 'undefined' && window.document.readyState == 'complete';
   const [loaded, setLoaded] = useState(documentReady);
 
@@ -28,4 +28,4 @@ export default ({ children }) => {
   }, [loaded, documentReady]);
 
   return <LoadedContext.Provider value={loaded}>{children}</LoadedContext.Provider>;
-};
+}

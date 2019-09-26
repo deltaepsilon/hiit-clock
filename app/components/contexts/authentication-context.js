@@ -4,7 +4,7 @@ import { LoadedContext } from './loaded-context';
 
 export const AuthenticationContext = React.createContext();
 
-export default ({ children }) => {
+export default function AuthenticationProvider({ children }) {
   const loaded = useContext(LoadedContext);
   const [currentUser, setCurrentUser] = useState();
   const updateCurrentUser = useCallback(() => {
@@ -24,4 +24,4 @@ export default ({ children }) => {
       {children}
     </AuthenticationContext.Provider>
   );
-};
+}

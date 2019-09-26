@@ -4,7 +4,7 @@ import constants from '../constants';
 
 const loginPaths = [constants.ROUTES.LOGIN];
 
-export default ({ secure = false }) => {
+export default function Router({ secure = false }) {
   const { currentUser } = useContext(AuthenticationContext);
   const isLoggedOut = currentUser === null;
   const isLoggedIn = !!currentUser;
@@ -19,4 +19,4 @@ export default ({ secure = false }) => {
   }
 
   return null;
-};
+}

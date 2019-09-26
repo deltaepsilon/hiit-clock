@@ -6,7 +6,7 @@ import Head from 'next/head';
  * Instructions: https://firebase.google.com/docs/perf-mon/get-started-web#cdn_standard-sdk
  * Polyfill: https://github.com/GoogleChromeLabs/first-input-delay
  */
-export default function useFirebasePerformance() {
+export default function FirebasePerformance() {
   const [perf, setPerf] = useState(null);
 
   useEffect(() => {

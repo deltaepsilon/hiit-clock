@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-export default function Fonts() {
+export default function MdcStyles() {
   return (
     <Head>
       <link

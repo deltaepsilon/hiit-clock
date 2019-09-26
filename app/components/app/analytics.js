@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-export default props => {
+export default function Analytics() {
   return (
     <Head>
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6859198-23" />
@@ -29,4 +29,4 @@ export default props => {
       />
     </Head>
   );
-};
+}
