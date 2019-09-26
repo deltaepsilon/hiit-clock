@@ -29,11 +29,7 @@ function TimerModal({ timerId, onClose }) {
           <ConfirmButton
             raised
             className="accent"
-            onClick={async e => {
-              await effects.deleteTimer({ timerId, currentUser });
-
-              onClose(e);
-            }}
+            onClick={async () => effects.deleteTimer({ timerId, currentUser })}
           >
             Delete Me
           </ConfirmButton>

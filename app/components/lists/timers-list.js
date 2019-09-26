@@ -62,7 +62,13 @@ function TimerRow({ timer, isSearch }) {
     <>
       {showModal && <TimerModal timerId={timer.__id} onClose={() => setShowModal(false)} />}
       <Link href={href}>
-        <a href={href}>
+        <a
+          href={href}
+          onContextMenu={e => {
+            e.preventDefault();
+            handleSwipe();
+          }}
+        >
           <TouchEvents onRightSwipe={handleSwipe} onLeftSwipe={handleSwipe}>
             <SimpleListItem
               text={timer.name}

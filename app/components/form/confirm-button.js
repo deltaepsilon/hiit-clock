@@ -15,11 +15,19 @@ export default function ConfirmButton({
 
   useEffect(() => {
     if (isConfirming) {
-      clearTimeout(timer);
+      let localTimer;
 
-      setTimer(setTimeout(() => setIsConfirming(false), 1000 * 2));
+      setTimer(timer => {
+        clearTimeout(timer);
+
+        localTimer = setTimeout(() => setIsConfirming(false), 1000 * 2);
+
+        return localTimer;
+      });
+
+      return () => clearTimeout(localTimer);
     }
-  }, [isConfirming]);
+  }, [isConfirming, setTimer]);
 
   return (
     <Button
@@ -32,13 +40,9 @@ export default function ConfirmButton({
 
         if (isConfirming) {
           clearTimeout(timer);
-
           setDisabled(true);
 
-          await onClick(e);
-
-          setIsConfirming(false);
-          setDisabled(false);
+          return onClick(e);
         } else {
           setIsConfirming(true);
         }
