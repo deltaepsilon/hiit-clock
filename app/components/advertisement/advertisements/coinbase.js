@@ -23,7 +23,7 @@ export default () => {
         <p>I use Coinbase for all of my crypto.</p>
 
         <p>
-          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
+          - <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">Chris Esplin</a>, HIITClock.com
         </p>
       </div>
       <a {...LINK_PROPS} className="banner" style={{ background: BACKGROUND_COLOR }}>

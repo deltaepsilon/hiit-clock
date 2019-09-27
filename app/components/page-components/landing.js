@@ -140,7 +140,9 @@ export default () => {
           </p>
           <p>The upside is that I can maintain and add features to the new HIIT Clock!</p>
           <p>
-            <a href="https://www.chrisesplin.com">Chris Esplin</a>
+            <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">
+              Chris Esplin
+            </a>
             <br />
             <a href="mailto:chris@hiitclock.com?subject=Hey%20Chris!&body=I've%20got%20some%20questions%2Fcomments%20about%20HIITClock.com...">
               chris@hiitclock.com

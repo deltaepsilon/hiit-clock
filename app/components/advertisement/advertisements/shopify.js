@@ -23,7 +23,7 @@ export default () => {
         <p>I run my business on Shopify.</p>
         <p>Shopify is, hands down, the best eCommerce platform I've ever tried.</p>
         <p>
-          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, Calligraphy.org
+          - <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">Chris Esplin</a>, Calligraphy.org
         </p>
       </div>
       <a {...LINK_PROPS} className="banner" style={{ background: BACKGROUND_COLOR }}>

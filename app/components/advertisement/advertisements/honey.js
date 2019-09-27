@@ -3,25 +3,25 @@ import ClickEventHandler from '../../analytics/click-event-handler';
 import DisplayEventHandler from '../../analytics/display-event-handler';
 import constants from '../../constants';
 
-const BACKGROUND_COLOR = '#4d5d8c';
+const BACKGROUND_COLOR = '#ffffff';
 const LINK_PROPS = {
-  href: 'http://www.dpbolvw.net/click-9173008-13536585',
+  href: 'https://joinhoney.com/ref/hwe2zkt',
   target: '_blank',
   rel: 'noopener noreferrer',
 };
 const ANALYTICS_EVENT_PROPS = {
-  event: '1password-click',
+  event: 'honey-click',
   redditEvent: constants.REDDIT_EVENTS.LEAD,
 };
 
 export default () => {
   return (
     <>
-      <DisplayEventHandler event="advertisement-one-password" />
+      <DisplayEventHandler event="advertisement-honey" />
 
       <div className="text">
-        <p>I've used 1Password for years.</p>
-        <p>1Password handles all of my web and app logins so I stay safe online.</p>
+        <p>Honey is FREE.</p>
+        <p>I use honey to always get the best price when shopping online.</p>
         <p>
           - <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">Chris Esplin</a>, HIITClock.com
         </p>
@@ -29,14 +29,15 @@ export default () => {
       <a {...LINK_PROPS} className="banner" style={{ background: BACKGROUND_COLOR }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
           <img
-            src="/images/advertisement/one-password/dotcom-black-mono.svg"
-            alt="1Password Banner"
+            src="/images/advertisement/honey/logo-orange.svg"
+            alt="Honey Banner"
+            style={{ width: '80vw', maxWidth: 600 }}
           />
         </ClickEventHandler>
       </a>
-      <a {...LINK_PROPS} className="cta" style={{ background: BACKGROUND_COLOR }}>
+      <a {...LINK_PROPS} className="cta" style={{ background: BACKGROUND_COLOR, color: 'black' }}>
         <ClickEventHandler {...ANALYTICS_EVENT_PROPS}>
-          Try 1Password, Support HIITClock.com
+          Try Honey, Support HIITClock.com
         </ClickEventHandler>
       </a>
     </>

@@ -30,7 +30,7 @@ export default props => {
           </p>
 
           <p>
-            - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
+            - <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">Chris Esplin</a>, HIITClock.com
           </p>
         </section>
 

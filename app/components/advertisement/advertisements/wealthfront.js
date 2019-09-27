@@ -25,7 +25,7 @@ export default () => {
         <p>Their rates are excellent and their website and mobile apps are top-notch.</p>
 
         <p>
-          - <a href="https://www.chrisesplin.com">Chris Esplin</a>, HIITClock.com
+          - <a href="https://www.chrisesplin.com" target="_blank" rel="noopener noreferrer">Chris Esplin</a>, HIITClock.com
         </p>
       </div>
       <a {...LINK_PROPS} className="banner" style={{ backgroundImage: BACKGROUND_IMAGE }}>
