@@ -6,30 +6,36 @@ tags:
   - Flexibility
 periods:
   - name: Standing Hamstring Center
+    image: /images/timer-details/flexibility/hamstring-standing.jpg
     totalSeconds: 30
     type: work
   - name: Standing Hamstring Left
+    image: /images/timer-details/flexibility/hamstring-standing-left.jpg
     totalSeconds: 15
     type: work
   - name: Standing Hamstring Right
+    image: /images/timer-details/flexibility/hamstring-standing-right.jpg
     totalSeconds: 15
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Frog
+    image: /images/timer-details/flexibility/frog.jpg
     totalSeconds: 60
     type: work
   - name: Rest
     totalSeconds: 30
     type: rest
   - name: Pike
+    image: /images/timer-details/flexibility/pike.jpg
     totalSeconds: 60
     type: work
   - name: Rest
     totalSeconds: 30
     type: rest
   - name: Lunge Left
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Reverse Lunge Left
@@ -39,6 +45,7 @@ periods:
     totalSeconds: 15
     type: rest
   - name: Lunge Right
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Reverse Lunge Right
@@ -48,24 +55,28 @@ periods:
     totalSeconds: 15
     type: rest
   - name: Side Splits Right
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 60
     type: work
   - name: Rest
     totalSeconds: 30
     type: rest
   - name: Side Splits Left
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 60
     type: work
   - name: Rest
     totalSeconds: 30
     type: rest
   - name: Pancake
+    image: /images/timer-details/flexibility/pancake.jpg
     totalSeconds: 90
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Wall Splits
+    image: /images/timer-details/flexibility/wall-splits-lying.jpg
     totalSeconds: 300
     type: work
   - name: Rest

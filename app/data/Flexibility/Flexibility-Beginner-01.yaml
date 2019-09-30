@@ -6,84 +6,100 @@ tags:
   - Flexibility
 periods:
   - name: Standing Hamstring Center
+    image: /images/timer-details/flexibility/hamstring-standing.jpg
     totalSeconds: 45
     type: work
   - name: Standing Hamstring Left
+    image: /images/timer-details/flexibility/hamstring-standing-left.jpg
     totalSeconds: 15
     type: work
   - name: Standing Hamstring Right
+    image: /images/timer-details/flexibility/hamstring-standing-right.jpg
     totalSeconds: 15
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Kneeling Lunge Left
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Kneeling Lunge Right
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Kneeling Lunge Left
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Kneeling Lunge Right
+    image: /images/timer-details/flexibility/lunge.jpg
     totalSeconds: 30
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Frog
+    image: /images/timer-details/flexibility/frog.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Pancake
+    image: /images/timer-details/flexibility/pancake.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest  
   - name: Cossack Squat Left
+    image: /images/timer-details/flexibility/cossack-squat.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest  
   - name: Cossack Squat Right
+    image: /images/timer-details/flexibility/cossack-squat.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Hamstring On-Back Extension Left
+    image: /images/timer-details/flexibility/hamstring-lying.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest  
   - name: Hamstring On-Back Extension Right
+    image: /images/timer-details/flexibility/hamstring-lying.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Middle Splits
+    image: /images/timer-details/flexibility/middle-splits.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Side Splits Left
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 45
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest  
   - name: Side Splits Right
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 45
     type: work
   - name: Rest

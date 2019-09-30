@@ -18,18 +18,20 @@ const uid = 'shared-user';
 
   filesJson.forEach(({ __id, ...json }) => {
     const ref = schema.getUserTimerRef(uid, __id);
-
-    batch.set(ref, {
+    const timerData = {
       ...json,
       updated,
       index: 'timers',
+      periods: mapPeriods(json.periods),
       algolia: {
         uid,
         name: json.name,
         tags: json.tags,
         totalSeconds: json.periods.reduce((result, { totalSeconds }) => totalSeconds + result, 0),
       },
-    });
+    };
+
+    batch.set(ref, timerData);
   });
 
   await batch.commit();
@@ -104,4 +106,17 @@ async function saveJson(filesJson) {
 
     await promisify(fs.writeFile)(filepath, JSON.stringify(json), 'utf8');
   }
+}
+
+function mapPeriods(periods) {
+  return periods.map(p => {
+    const period = { ...p };
+
+    if (period.image) {
+      period.file = { downloadURL: period.image };
+      delete period.image;
+    }
+
+    return period;
+  });
 }

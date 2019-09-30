@@ -57,6 +57,7 @@
   position: relative;
   top: 28px;
   right: -30%;
+  z-index: 1;
 }
 
 #timer-details .markdown {

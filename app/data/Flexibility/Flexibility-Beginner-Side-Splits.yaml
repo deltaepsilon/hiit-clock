@@ -6,24 +6,28 @@ tags:
   - Flexibility
 periods:
   - name: Standing Hamstring Center
+    image: /images/timer-details/flexibility/hamstring-standing.jpg
     totalSeconds: 30
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Sprinter Left
+    image: /images/timer-details/flexibility/sprinter.jpg
     totalSeconds: 120
     type: work
   - name: Rest
     totalSeconds: 15
     type: rest
   - name: Sprinter Right
+    image: /images/timer-details/flexibility/sprinter.jpg
     totalSeconds: 120
     type: work
   - name: Rest
     totalSeconds: 30
     type: rest
   - name: Pike
+    image: /images/timer-details/flexibility/pike.jpg
     totalSeconds: 120
     type: work
   - name: Rest
@@ -42,24 +46,28 @@ periods:
     totalSeconds: 45
     type: rest
   - name: Hanging Side Split Left
+    image: /images/timer-details/flexibility/side-split-hanging.jpg
     totalSeconds: 120
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Hanging Side Split Right
+    image: /images/timer-details/flexibility/side-split-hanging.jpg
     totalSeconds: 120
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Floor Side Split Left
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 180
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Floor Side Split Right
+    image: /images/timer-details/flexibility/side-split-right-1.jpg
     totalSeconds: 180
     type: work
   - name: Rest

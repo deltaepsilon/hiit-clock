@@ -6,30 +6,35 @@ tags:
   - Flexibility
 periods:
   - name: Standing Hamstring Center
+    image: /images/timer-details/flexibility/hamstring-standing.jpg
     totalSeconds: 30
     type: work
   - name: Rest
     totalSeconds: 20
     type: rest
   - name: Frog
+    image: /images/timer-details/flexibility/frog.jpg
     totalSeconds: 300
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Pancake
+    image: /images/timer-details/flexibility/pancake.jpg
     totalSeconds: 300
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Butterfly
+    image: /images/timer-details/flexibility/butterfly.jpg
     totalSeconds: 300
     type: work
   - name: Rest
     totalSeconds: 45
     type: rest
   - name: Wall Splits
+    image: /images/timer-details/flexibility/wall-splits-lying.jpg
     totalSeconds: 300
     type: work
   - name: Rest

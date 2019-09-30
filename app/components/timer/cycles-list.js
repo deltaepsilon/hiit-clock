@@ -37,6 +37,9 @@ export default React.memo(
                       <span className="period-name">
                         {isRest ? period.name || constants.TEXT.REST : period.name}
                       </span>
+                      {period.file && (
+                        <img src={period.file.downloadURL} alt={`${period.name} thumbnail`} />
+                      )}
                       <PeriodTime period={period} />
                     </li>
                   );
