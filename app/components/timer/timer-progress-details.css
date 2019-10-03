@@ -21,11 +21,12 @@
 }
 
 #timer-list .seconds-row p {
-  height: 30vh;
+  height: 18vh;
   overflow: hidden;
   overflow-y: auto;
   font-size: 1rem !important;
-  max-width: 100vw;
+  padding: 0 1rem;
+  margin: 0;
 }
 
 #timer-list .big-time {
