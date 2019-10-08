@@ -66,9 +66,7 @@ function TimerForm({ isOwned }) {
     timerId,
     toggleMultiSelect,
   } = useContext(TimerFormContext);
-
-  const isNewTimer = !timerId;
-  const savedDisabled = isNewTimer || !!formError || isSaving || !isDirty;
+  const savedDisabled = !!formError || isSaving || !isDirty;
 
   const backButtonHref = useMemo(() => {
     let result = constants.ROUTES.DASHBOARD;
