@@ -10,16 +10,16 @@
   transition: top 600ms;
 }
 
-#period-sheet[is-showing="true"] {
+#period-sheet[is-showing='true'] {
   top: 0;
 }
 
-#period-sheet[type="work"] .mdc-toolbar__row {
+#period-sheet[type='work'] .mdc-toolbar__row {
   background: var(--color-form-background-work);
 }
 
-#period-sheet[type="rest"] .mdc-toolbar__row {
-  background: var(--color-form-background-rest);
+#period-sheet[type='rest'] .mdc-toolbar__row {
+  background: var(--color-dark-background);
 }
 
 #period-sheet .mdc-toolbar__row {
@@ -38,13 +38,8 @@
   overflow: auto;
 }
 
-#period-sheet[type="work"] .form-wrapper {
-  height: calc(100vh - 10rem);
-  padding-top: 5rem;
-}
-
-#period-sheet[type="rest"] .form-wrapper {
-  padding-top: 12px;
+#period-sheet[type='rest'] .form-wrapper {
+  margin-top: -97px;
 }
 
 #period-sheet .form-wrapper form {
@@ -75,18 +70,25 @@
 
 #period-sheet .mdc-button--raised {
   background-color: var(--color-sheet-color);
+  color: var(--color-dark-background-text);
 }
 
 #period-sheet hr {
   border-color: var(--color-sheet-color);
 }
 
+#period-sheet .type-selection .mdc-button:not([disabled]) {
+  opacity: 0.25;
+}
+
 #period-sheet .mdc-button.work {
   background: var(--color-form-background-work);
+  color: var(--color-dark-background-text);
 }
 
 #period-sheet .mdc-button.rest {
-  background: var(--color-form-background-rest);
+  background: var(--color-dark-background);
+  color: var(--color-dark-background-text);
 }
 
 #period-sheet .type-selection {

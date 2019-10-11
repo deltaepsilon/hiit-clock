@@ -20,6 +20,7 @@
   --color-light-background: #ffffff;
   --color-light-background-text: var(--mdc-theme-primary);
   --color-dark-background: #333333;
+  --color-dark-background-text: #ffffff);
 
   /* Fonts */
   --font-book: 'antartican-mono', monospace;
