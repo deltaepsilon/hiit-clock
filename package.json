@@ -2,7 +2,7 @@
   "name": "@quiver/hiit-clock",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://gitlab.com/deltaepsilon/hiit-click.git",
+  "repository": "https://gitlab.com/deltaepsilon/hiit-clock.git",
   "author": "Chris Esplin <chris@christopheresplin.com>",
   "license": "MIT",
   "private": true,
