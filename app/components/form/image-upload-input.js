@@ -70,7 +70,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
           type="file"
           ref={inputRef}
           disabled={!currentUser}
-          onChange={getFileChangeHandler({ setIsLoading, setPreviewUrl })}
+          onChange={getFileChangeHandler({ setIsLoading, setFileUrl, setPreviewUrl })}
         />
         <div className="image-upload-preview">
           {!!currentUser && !currentUser.isAnonymous ? (
@@ -125,7 +125,7 @@ export default ({ id, text = 'Upload', file, onChange }) => {
   );
 };
 
-function getFileChangeHandler({ setIsLoading, setPreviewUrl }) {
+function getFileChangeHandler({ setIsLoading, setFileUrl, setPreviewUrl }) {
   return e => {
     if (e.target.value) {
       const [file] = e.target.files;
@@ -133,7 +133,14 @@ function getFileChangeHandler({ setIsLoading, setPreviewUrl }) {
 
       setIsLoading(true);
 
-      reader.addEventListener('load', () => setPreviewUrl(reader.result), false);
+      reader.addEventListener(
+        'load',
+        () => {
+          setFileUrl(reader.result);
+          setPreviewUrl(reader.result);
+        },
+        false
+      );
 
       if (file) {
         reader.readAsDataURL(file);
