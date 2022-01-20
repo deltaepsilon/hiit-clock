@@ -1,5 +1,11 @@
 # HiiT Clock
 
+🚨🚨🚨 Moved to [https://source.cloud.google.com/quiver-hiit-clock/hiit-clock-2019](https://source.cloud.google.com/quiver-hiit-clock/hiit-clock-2019)
+
+
+
+
+
 ## Installation
 
 Front-end environments
