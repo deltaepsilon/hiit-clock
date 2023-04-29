@@ -20,7 +20,7 @@
     "@zeit/next-source-maps": "^0.0.3",
     "dompurify": "^2.0.5",
     "fuse.js": "^3.4.5",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "md5": "^2.2.1",
     "next": "^9.1.1",
     "pica": "^5.1.0",
